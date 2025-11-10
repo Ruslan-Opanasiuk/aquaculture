@@ -1,8 +1,13 @@
 import IndicatorRow from "./IndicatorRow";
 
-function ProductCard({ image, name, description, price }) {
+function ProductCard({ image, name, description, price, cardBg }) {
   return (
-    <div className="group relative w-[387px] h-[628px] rounded-[12px] bg-[#E9E5DB] overflow-hidden cursor-pointer">
+    <div
+      className="group relative w-[387px] h-[628px] rounded-[12px] overflow-hidden cursor-pointer"
+      style={{ backgroundColor: cardBg }}
+    >
+      {/* далі все без змін */}
+
       {/* Внутрішній блок, що плавно рухається */}
       <div
         className="

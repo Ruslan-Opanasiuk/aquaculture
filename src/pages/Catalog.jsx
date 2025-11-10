@@ -1,45 +1,59 @@
-import ProductCard from "../components/ProductCard";
-import ketaImg from "../assets/images/keta.webp";
+
+import ProductSection from "../components/ProductSection";
 import forelImg from "../assets/images/forel.webp";
-import nerkaImg from "../assets/images/nerka.webp";
 
 function Catalog() {
-  const products = [
+  const redCaviarProducts = [
     {
-      id: 1,
-      name: "кета",
-      image: ketaImg,
-      price: 1234,
+      name: "чавича",
+      image: forelImg,
       description: "Благородна — смак гармонії та сили океану.",
+      price: 1234,
     },
     {
-      id: 2,
+      name: "кіжуч",
+      image: forelImg,
+      description: "Благородна — смак гармонії та сили океану.",
+      price: 1234,
+    },
+    {
+      name: "нерка",
+      image: forelImg,
+      description: "Благородна — смак гармонії та сили океану.",
+      price: 1234,
+    },
+    {
+      name: "горбуша",
+      image: forelImg,
+      description: "Благородна — смак гармонії та сили океану.",
+      price: 1234,
+    },
+    {
+      name: "кета",
+      image: forelImg,
+      description: "Благородна — смак гармонії та сили океану.",
+      price: 1234,
+    },
+    {
       name: "форель",
       image: forelImg,
-      price: 1234,
       description: "Благородна — смак гармонії та сили океану.",
-    },
-    {
-      id: 3,
-      name: "нерка",
-      image: nerkaImg,
       price: 1234,
-      description: "Благородна — смак гармонії та сили океану.",
     },
+
+    
   ];
 
   return (
-    <div className="min-h-screen bg-[#f9f8f5] flex flex-wrap justify-center gap-8 p-8">
-      {products.map((p) => (
-        <ProductCard
-          key={p.id}
-          name={p.name}
-          image={p.image}
-          price={p.price}
-          description={p.description}
-        />
-      ))}
-    </div>
+    <main className="min-h-screen bg-[#FEFAF3] px-[60px] py-[80px]">
+      <ProductSection
+        title="червона ікра"
+        description="Отримана з найцінніших видів лососевих риб, червона ікра має насичений смак моря та люксу, маслянисту текстуру, її зерна пружні, блискучі."
+        sectionBg="#E9E5DB"
+        cardBg="#FEFAF3"
+        products={redCaviarProducts}
+      />
+    </main>
   );
 }
 
