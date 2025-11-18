@@ -13,7 +13,7 @@ function ProductSection({
   return (
     <section
       className="
-        w-full max-w-[1257px] mx-auto
+        w-full max-w-[1240px] mx-auto
         rounded-[20px]
         px-[24px] pt-[16px] pb-[24px]
       "
@@ -44,7 +44,8 @@ function ProductSection({
       {/* Сітка карток */}
       <div
         className="
-          flex flex-wrap justify-center gap-[24px]
+          grid grid-cols-[repeat(auto-fit,minmax(281px,1fr))]
+          gap-[24px]
         "
       >
         {products.map((p, i) => (

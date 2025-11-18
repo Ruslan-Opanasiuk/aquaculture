@@ -1,4 +1,3 @@
-
 import ProductSection from "../components/ProductSection";
 import forelImg from "../assets/images/forel.webp";
 
@@ -7,41 +6,72 @@ function Catalog() {
     {
       name: "чавича",
       image: forelImg,
-      description: "Благородна — смак гармонії та сили океану.",
+      description: "Благородна — смак гармонії\nта сили океану.",
       price: 1234,
+      indicators: [
+        { label: "Колір", leftLabel: "Світлий", rightLabel: "Темний", value: 5 },
+        { label: "Пружність", leftLabel: "М’яка", rightLabel: "Щільна", value: 4 },
+        { label: "Розмір", leftLabel: "Дрібний", rightLabel: "Великий", value: 5 },
+      ],
     },
+  
     {
       name: "кіжуч",
       image: forelImg,
       description: "Благородна — смак гармонії та сили океану.",
       price: 1234,
+      indicators: [
+        { label: "Колір", leftLabel: "Світлий", rightLabel: "Темний", value: 4 },
+        { label: "Пружність", leftLabel: "М’яка", rightLabel: "Щільна", value: 5 },
+        { label: "Розмір", leftLabel: "Дрібний", rightLabel: "Великий", value: 3 },
+      ],
     },
+
     {
       name: "нерка",
       image: forelImg,
-      description: "Благородна — смак гармонії та сили океану.",
+      description: "Благородна — смак гармонії та.",
       price: 1234,
+      indicators: [
+        { label: "Колір", leftLabel: "Світлий", rightLabel: "Темний", value: 2 },
+        { label: "Пружність", leftLabel: "М’яка", rightLabel: "Щільна", value: 3 },
+        { label: "Розмір", leftLabel: "Дрібний", rightLabel: "Великий", value: 4 },
+      ],
     },
+
     {
       name: "горбуша",
       image: forelImg,
       description: "Благородна — смак гармонії та сили океану.",
       price: 1234,
+      indicators: [
+        { label: "Колір", leftLabel: "Світлий", rightLabel: "Темний", value: 3 },
+        { label: "Пружність", leftLabel: "М’яка", rightLabel: "Щільна", value: 3 },
+        { label: "Розмір", leftLabel: "Дрібний", rightLabel: "Великий", value: 3 },
+      ],
     },
     {
       name: "кета",
       image: forelImg,
       description: "Благородна — смак гармонії та сили океану.",
       price: 1234,
+      indicators: [
+        { label: "Колір", leftLabel: "Світлий", rightLabel: "Темний", value: 4 },
+        { label: "Пружність", leftLabel: "М’яка", rightLabel: "Щільна", value: 2 },
+        { label: "Розмір", leftLabel: "Дрібний", rightLabel: "Великий", value: 4 },
+      ],
     },
     {
       name: "форель",
       image: forelImg,
       description: "Благородна — смак гармонії та сили океану.",
       price: 1234,
+      indicators: [
+        { label: "Колір", leftLabel: "Світлий", rightLabel: "Темний", value: 3 },
+        { label: "Пружність", leftLabel: "М’яка", rightLabel: "Щільна", value: 3 },
+        { label: "Розмір", leftLabel: "Дрібний", rightLabel: "Великий", value: 2 },
+      ],
     },
-
-    
   ];
 
   return (
