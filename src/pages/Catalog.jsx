@@ -75,7 +75,7 @@ function Catalog() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#FEFAF3] px-[60px] py-[80px]">
+    <main className="min-h-screen bg-[#FEFAF3] px-[0px] py-[0px]">
       <ProductSection
         title="червона ікра"
         description="Отримана з найцінніших видів лососевих риб, червона ікра має насичений смак моря та люксу, маслянисту текстуру, її зерна пружні, блискучі."

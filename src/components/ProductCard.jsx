@@ -7,7 +7,24 @@ function ProductCard({
   price,
   cardBg,
   indicators = [],
+  isActive = false, // Новий пропс для активації
 }) {
+  
+  // Класи для керування рухом контенту (слайд вгору)
+  const contentTranslate = isActive 
+    ? '-translate-y-[7.484cqh]' 
+    : 'translate-y-0';
+
+  // Класи для керування масштабуванням фото
+  const imageScale = isActive 
+    ? 'scale-105' 
+    : 'scale-100';
+    
+  // Класи для керування прозорістю індикаторів
+  const indicatorsOpacity = isActive
+    ? 'opacity-100'
+    : 'opacity-0';
+
   return (
     <div
       className="
@@ -19,20 +36,26 @@ function ProductCard({
     >
       {/* Внутрішній блок, що плавно рухається */}
       <div
-        className="
+        className={`
           absolute left-0 w-full flex flex-col items-center 
           will-change-transform transition-transform duration-500 ease-out 
-          translate-y-0 group-hover:-translate-y-[7.484cqh] 
           px-[8.88cqw]
-        "
+          
+          /* isActive або group-hover керують рухом вгору */
+          ${contentTranslate}
+          group-hover:-translate-y-[7.484cqh] 
+        `}
       >
         {/* Фото */}
         <div
-          className="
+          className={`
             mt-[13.217cqh] w-full aspect-square overflow-hidden
             transition-transform duration-500 ease-out
+            
+            /* isActive або group-hover керують масштабуванням */
+            ${imageScale}
             group-hover:scale-105
-          "
+          `}
         >
           <img
             src={image}
@@ -75,15 +98,18 @@ function ProductCard({
         </p>
       </div>
 
-      {/* 2. Повністю перебудований блок індикаторів */}
+      {/* 2. Блок індикаторів */}
       <div
-        className="
+        className={`
           absolute left-0 bottom-[5cqh] w-full 
-          opacity-0 group-hover:opacity-100
           transition-opacity duration-500 ease-out delay-100
           px-[8.88cqw]
           flex flex-col items-center gap-[2.3885cqh]
-        "
+          
+          /* isActive або group-hover керують видимістю */
+          ${indicatorsOpacity}
+          group-hover:opacity-100
+        `}
       >
         {/* Роздільча лінія */}
         <div className="w-full h-[0.5px] bg-[#DAC284]" />
