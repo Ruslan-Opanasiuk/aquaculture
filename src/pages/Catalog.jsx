@@ -79,8 +79,8 @@ function Catalog() {
       <ProductSection
         title="червона ікра"
         description="Отримана з найцінніших видів лососевих риб, червона ікра має насичений смак моря та люксу, маслянисту текстуру, її зерна пружні, блискучі."
-        sectionBg="#E9E5DB"
-        cardBg="#FEFAF3"
+        sectionBg="#FEFAF3"
+        cardBg="#E9E5DB"
         products={redCaviarProducts}
       />
     </main>

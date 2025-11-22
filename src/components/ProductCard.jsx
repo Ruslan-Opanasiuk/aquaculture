@@ -7,7 +7,7 @@ function ProductCard({
   price,
   cardBg,
   indicators = [],
-  isActive = false, // Новий пропс для активації
+  isActive = false, 
 }) {
   
   // Класи для керування рухом контенту (слайд вгору)
@@ -41,9 +41,11 @@ function ProductCard({
           will-change-transform transition-transform duration-500 ease-out 
           px-[8.88cqw]
           
-          /* isActive або group-hover керують рухом вгору */
           ${contentTranslate}
           group-hover:-translate-y-[7.484cqh] 
+          
+          /* FIX: Примусове скидання на десктопі */
+          md:translate-y-0
         `}
       >
         {/* Фото */}
@@ -52,9 +54,11 @@ function ProductCard({
             mt-[13.217cqh] w-full aspect-square overflow-hidden
             transition-transform duration-500 ease-out
             
-            /* isActive або group-hover керують масштабуванням */
             ${imageScale}
             group-hover:scale-105
+            
+            /* FIX: Примусове скидання на дескропі */
+            md:scale-100
           `}
         >
           <img
@@ -64,7 +68,7 @@ function ProductCard({
           />
         </div>
 
-        {/* Назва (без змін) */}
+        {/* Назва */}
         <h2 
             className="
                 mt-[1.27cqh] 
@@ -106,9 +110,11 @@ function ProductCard({
           px-[8.88cqw]
           flex flex-col items-center gap-[2.3885cqh]
           
-          /* isActive або group-hover керують видимістю */
           ${indicatorsOpacity}
           group-hover:opacity-100
+          
+          /* FIX: Примусове скидання на десктопі */
+          md:opacity-0
         `}
       >
         {/* Роздільча лінія */}
