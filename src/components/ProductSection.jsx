@@ -43,7 +43,6 @@ function ProductSection({
       const targetCard = container.children[activeIndex];
 
       if (targetCard) {
-        // Тут важливо: враховуємо нову геометрію
         const scrollPos = 
           targetCard.offsetLeft - 
           (container.clientWidth / 2) + 
@@ -60,7 +59,7 @@ function ProductSection({
   return (
     <section
       className="
-        relative w-full max-w-[1240px] mx-auto
+        relative w-full max-w-[453px] mx-auto
         rounded-[20px]
         px-[24px] pt-[16px] pb-[24px]
         group/section
