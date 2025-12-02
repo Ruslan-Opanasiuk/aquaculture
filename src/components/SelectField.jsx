@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { questionnaireFonts } from "../theme/fontSizes";
 
 export default function SelectField({ label, options, value, onChange }) {
   const [open, setOpen] = useState(false);
@@ -12,13 +13,15 @@ export default function SelectField({ label, options, value, onChange }) {
           pb-[5px]
           border-b-[1px]
           border-[#e4d7a7]
-          text-[17px]
           font-[Montserrat]
           text-[#000000]
           flex justify-between items-center
           cursor-pointer
           select-none
         "
+        style={{
+          fontSize: questionnaireFonts.placeholder,
+        }}
         onClick={() => setOpen(!open)}
       >
         <span className={value ? "text-[#000000]" : "text-[#A8A8A8]"}>
@@ -63,12 +66,14 @@ export default function SelectField({ label, options, value, onChange }) {
               className="
                 px-[12px] 
                 py-[8px] 
-                text-[16px] 
                 font-[Montserrat] 
                 cursor-pointer
                 hover:bg-[#f5f0e6]
                 transition-colors
               "
+              style={{
+                fontSize: questionnaireFonts.placeholder,
+              }}
             >
               {item}
             </div>

@@ -1,19 +1,11 @@
 import ProductSection from "../components/ProductSection";
 import forelImg from "../assets/images/forel.webp";
-import InputField from "../components/InputField";
-import RadioGroup from "../components/RadioGroup";
-import SelectField from "../components/SelectField";
+import WholesaleForm from "../components/WholesaleForm";
 import React, { useState } from "react";
 
 
 function Catalog() {
   
-  const [workFormat, setWorkFormat] = useState("");
-  const [paymentFormat, setPaymentFormat] = useState("");
-  const [caviarType, setCaviarType] = useState("");
-  const [caviarVolume, setCaviarVolume] = useState("");
-  const [city, setCity] = useState("");
-
   const redCaviarProducts = [
     {
       name: "чавича",
@@ -96,85 +88,7 @@ function Catalog() {
         products={redCaviarProducts}
       />
 
-      <h1
-        className="
-          text-[52.5px]
-          text-center
-          font-[Cormorant_Garamond]
-          text-[#000000]
-          mt-[134px]
-          mb-[48px]
-          leading-[0.9]
-        "
-      >
-        <span className="italic">індивідуальний</span> прайс<br/>для гуртовиків
-      </h1>
-
-      {/* Підзаголовок */}
-      <p
-        className="
-          text-[15px]
-          leading-[1.5]
-          text-center
-          text-[#121212]/75
-          font-[Montserrat]
-          font-medium
-          max-w-[500px]
-          mx-auto
-          mb-[60px]
-        "
-      >
-        Заповніть коротку форму — ми підготуємо індивідуальну пропозицію 
-        з урахуванням ваших обсягів та умов співпраці й надішлемо її 
-        на email протягом кількох хвилин.
-      </p>
-
-      <div className="max-w-[400px] mx-auto">
-        <InputField label="Контактна особа" />
-        <InputField label="Номер телефона" />
-        <InputField label="Електронна пошта" />
-        
-          <SelectField
-            label="Місто"
-            options={["Київ", "Житомир", "Львів", "Харків"]}
-            value={city}
-            onChange={setCity}
-          />
-
-        <div className="flex flex-row gap-[12px]">
-          <SelectField
-            label="Тип ікри"
-            options={["Форель", "Осетер", "Лосось", "Ікра щуки"]}
-            value={caviarType}
-            onChange={setCaviarType}
-          />
-          <SelectField
-            label="Об'єм на місяць"
-            options={["1-10", "10-25", "25-100", "100+"]}
-            value={caviarVolume}
-            onChange={setCaviarVolume}
-          />
-        </div>
-
-        <div className="flex flex-row gap-[12px]">
-          <RadioGroup
-            label="Формат роботи"
-            options={["Інтернет магазин", "Торгова точка", "Власна мережа клієнтів"]}
-            selected={workFormat}
-            onChange={setWorkFormat}
-          />
-          <RadioGroup
-            label="Формат оплати"
-            options={["Договір", "По факту доставки"]}
-            selected={paymentFormat}
-            onChange={setPaymentFormat}
-          />
-        </div>
-        
-           
-        <main className="min-h-screen bg-[#FEFAF3] px-[0px] pt-[0px] pb-[100px]"></main>
-
-      </div>
+      <WholesaleForm />
 
     </main>
   );

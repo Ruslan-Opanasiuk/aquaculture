@@ -1,5 +1,8 @@
 export const CONTAINER_WIDTH = 405;
 export const CONTAINER_HEIGHT = 670;
+
+export const QUESTIONNAIRE_WIDTH = 500;
+
 export const aspectRatio = `${CONTAINER_WIDTH} / ${CONTAINER_HEIGHT}`;
 
 const toCqi = (px) => `calc(${px} / ${CONTAINER_WIDTH} * 100cqi)`;

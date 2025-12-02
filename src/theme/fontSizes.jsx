@@ -1,6 +1,6 @@
 // src/theme/fontSizes.js
 
-import { CONTAINER_WIDTH } from "./sizes";
+import { CONTAINER_WIDTH, QUESTIONNAIRE_WIDTH } from "./sizes";
 
 // Коефіцієнти масштабування
 export const FONT_MIN_COEF = 0.67;
@@ -19,12 +19,24 @@ export const CARD_FONTS = {
   title: 52.5,
   subtitle: 15,
   price: 15,
-
   indicator: 13,
 };
 
 export const cardFonts = Object.fromEntries(
   Object.entries(CARD_FONTS).map(([key, base]) => [
+    key,
+    makeClampFont(base),
+  ])
+);
+
+export const QUESTIONNAIRE_FONTS = {
+  title: 52.5,
+  subtitle: 15,
+  placeholder: 17,
+};
+
+export const questionnaireFonts = Object.fromEntries(
+  Object.entries(QUESTIONNAIRE_FONTS).map(([key, base]) => [
     key,
     makeClampFont(base),
   ])

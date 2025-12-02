@@ -1,4 +1,5 @@
 import React from "react";
+import { questionnaireFonts } from "../theme/fontSizes";
 
 export default function RadioGroup({ label, options, selected, onChange }) {
   return (
@@ -37,12 +38,14 @@ export default function RadioGroup({ label, options, selected, onChange }) {
             <span
               onClick={() => onChange(item)}
               className="
-                text-[17px]
                 font-[Montserrat]
                 text-[#000000]
                 leading-[1.2]
                 flex-1
               "
+              style={{
+                fontSize: questionnaireFonts.placeholder,
+              }}
             >
               {item}
             </span>

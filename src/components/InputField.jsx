@@ -1,4 +1,5 @@
 import React from "react";
+import { questionnaireFonts } from "../theme/fontSizes";
 
 export default function InputField({ label, value, onChange }) {
   return (
@@ -13,7 +14,6 @@ export default function InputField({ label, value, onChange }) {
           bg-transparent
           focus:outline-none
           pb-[5px]
-          text-[17px]
           font-[Montserrat]
           text-[#000000]
           placeholder:text-[#A8A8A8]
@@ -21,6 +21,9 @@ export default function InputField({ label, value, onChange }) {
           border-[#e4d7a7]
           transition-colors
         "
+        style={{
+          fontSize: questionnaireFonts.placeholder,
+        }}
       />
     </div>
   );
