@@ -59,7 +59,7 @@ function ProductSection({
   return (
     <section
       className="
-        relative w-full max-w-[453px] mx-auto
+        relative w-full max-w-[1240px] mx-auto
         rounded-[20px]
         px-[24px] pt-[16px] pb-[24px]
         group/section

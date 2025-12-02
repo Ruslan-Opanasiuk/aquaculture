@@ -1,0 +1,54 @@
+import React from "react";
+
+export default function RadioGroup({ label, options, selected, onChange }) {
+  return (
+    <div className="w-full mt-[17px]">
+      <p className="text-[17px] font-[Montserrat] text-[#000000] tracking-wide mb-[12px]">
+        {label.toUpperCase()}
+      </p>
+
+      <div className="flex flex-col gap-[12px] mt-[17px]">
+        {options.map((item) => (
+          <label
+            key={item}
+            className="flex items-start gap-[12px] cursor-pointer select-none"
+          >
+            {/* Outer circle */}
+            <span
+              className="
+                w-[24px]
+                h-[24px]
+                rounded-full
+                border-[1px]
+                border-[#000000]
+                flex items-center justify-center
+                flex-shrink-0
+                self-start
+              "
+              onClick={() => onChange(item)}
+            >
+              {/* Inner dot */}
+              {selected === item && (
+                <span className="w-[12px] h-[12px] bg-black rounded-full"></span>
+              )}
+            </span>
+
+            {/* Text */}
+            <span
+              onClick={() => onChange(item)}
+              className="
+                text-[17px]
+                font-[Montserrat]
+                text-[#000000]
+                leading-[1.2]
+                flex-1
+              "
+            >
+              {item}
+            </span>
+          </label>
+        ))}
+      </div>
+    </div>
+  );
+}
