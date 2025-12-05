@@ -23,6 +23,7 @@ export default function WholesaleForm() {
           mt-[134px]
           mb-[48px]
           leading-[0.9]
+          whitespace-nowrap
         "
         style={{
             fontSize: questionnaireFonts.title,
@@ -39,7 +40,7 @@ export default function WholesaleForm() {
           text-[#121212]/75
           font-[Montserrat]
           font-medium
-          max-w-[500px]
+          max-w-[400px]
           mx-auto
           mb-[60px]
         "
@@ -53,7 +54,7 @@ export default function WholesaleForm() {
       </p>
 
       {/* Форма */}
-      <div className="max-w-[400px] mx-auto">
+      <div className="max-w-[400px] mx-auto px-[24px] md:px-0">
         <InputField label="Контактна особа" />
         <InputField label="Номер телефона" />
         <InputField label="Електронна пошта" />

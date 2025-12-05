@@ -16,10 +16,10 @@ export const makeClampFont = (basePx, container = CONTAINER_WIDTH) => `
 `;
 
 export const CARD_FONTS = {
-  title: 52.5,
-  subtitle: 15,
-  price: 15,
-  indicator: 13,
+  title: 58,
+  subtitle: 18.87,
+  price: 18.87,
+  indicator: 16.18,
 };
 
 export const cardFonts = Object.fromEntries(
@@ -30,7 +30,7 @@ export const cardFonts = Object.fromEntries(
 );
 
 export const QUESTIONNAIRE_FONTS = {
-  title: 52.5,
+  title: 46,
   subtitle: 15,
   placeholder: 17,
 };

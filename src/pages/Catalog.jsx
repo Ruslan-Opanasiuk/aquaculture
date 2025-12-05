@@ -10,7 +10,7 @@ function Catalog() {
     {
       name: "чавича",
       image: forelImg,
-      description: "Благородна — смак гармонії\nта сили океану.",
+      description: "Благородна — смак гармонії та сили океану.",
       price: 1234,
       indicators: [
         { label: "Колір", leftLabel: "Світлий", rightLabel: "Темний", value: 5 },
@@ -34,7 +34,7 @@ function Catalog() {
     {
       name: "нерка",
       image: forelImg,
-      description: "Благородна — смак гармонії та.",
+      description: "Благородна — смак гармонії та сили океану.",
       price: 1234,
       indicators: [
         { label: "Колір", leftLabel: "Світлий", rightLabel: "Темний", value: 2 },

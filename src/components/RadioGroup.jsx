@@ -4,7 +4,10 @@ import { questionnaireFonts } from "../theme/fontSizes";
 export default function RadioGroup({ label, options, selected, onChange }) {
   return (
     <div className="w-full mt-[17px]">
-      <p className="text-[17px] font-[Montserrat] text-[#000000] tracking-wide mb-[12px]">
+      <p className="font-[Montserrat] text-[#000000] tracking-wide mb-[12px]"
+        style={{
+          fontSize: questionnaireFonts.placeholder,
+        }}>
         {label.toUpperCase()}
       </p>
 

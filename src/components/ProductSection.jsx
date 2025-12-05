@@ -23,7 +23,7 @@ function ProductSection({
   const words = title.split(" ");
   const firstWord = words[0];
   const secondWord = words.slice(1).join(" ");
-  
+   
   const [activeIndex, setActiveIndex] = useState(0);
   const scrollContainerRef = useRef(null);
 
@@ -43,11 +43,7 @@ function ProductSection({
       const targetCard = container.children[activeIndex];
 
       if (targetCard) {
-        const scrollPos = 
-          targetCard.offsetLeft - 
-          (container.clientWidth / 2) + 
-          (targetCard.clientWidth / 2);
-
+        const scrollPos = targetCard.offsetLeft;
         container.scrollTo({
           left: scrollPos,
           behavior: "smooth",
@@ -59,14 +55,17 @@ function ProductSection({
   return (
     <section
       className="
-        relative w-full max-w-[1240px] mx-auto
+        relative w-full max-w-[1204px] mx-auto
         rounded-[20px]
-        px-[24px] pt-[16px] pb-[24px]
+        
+        /* === ВАЖЛИВО: Єдине місце, де задаємо зовнішні відступи === */
+        px-[20px] md:px-[32px]
+        
+        pt-[16px] pb-[24px]
         group/section
       "
       style={{ backgroundColor: sectionBg }}
     >
-      {/* Заголовок і текст залишаються в межах padding */}
       <h2 className="text-[clamp(2.68rem,5.2cqi,4rem)] font-['Cormorant_Garamond'] leading-none">
         <span className="font-medium">{firstWord}</span>{" "}
         <span className="font-medium italic">{secondWord}</span>
@@ -80,15 +79,19 @@ function ProductSection({
         {description}
       </p>
 
-
-      <div className="relative mx-[-24px] md:mx-0">
+      {/* Обгортка для слайдера та кнопок. Ніяких негативних margin'ів */}
+      <div className="relative w-full">
+        
+        {/* Кнопки навігації (для мобілок) */}
         <button
           onClick={() => handleNavigation("left")}
           className="
-            absolute left-[12px] top-1/2 -translate-y-1/2 z-20
+            absolute left-0 top-1/2 -translate-y-1/2 z-20
             w-[40px] h-[40px] bg-white rounded-full shadow-lg
             flex items-center justify-center
             md:hidden opacity-90 active:scale-95 transition-transform cursor-pointer
+            /* Зсув вліво, щоб кнопка була наполовину на картці, наполовину на падінгу, або прибрати translate якщо треба поверх */
+            -ml-[10px] 
           "
           aria-label="Scroll left"
         >
@@ -98,40 +101,49 @@ function ProductSection({
         <button
           onClick={() => handleNavigation("right")}
           className="
-            absolute right-[12px] top-1/2 -translate-y-1/2 z-20
+            absolute right-0 top-1/2 -translate-y-1/2 z-20
             w-[40px] h-[40px] bg-white rounded-full shadow-lg
             flex items-center justify-center
             md:hidden opacity-90 active:scale-95 transition-transform cursor-pointer
+            -mr-[10px]
           "
           aria-label="Scroll right"
         >
           <ArrowIcon className="w-5 h-5 text-[#121212]" />
         </button>
 
-        {/* КОНТЕЙНЕР СПИСКУ */}
+        {/* === КОНТЕЙНЕР СПИСКУ === 
+            Прибрано px, mx. 
+            Ширина w-full заповнює все місце всередині батьківського px-[20px].
+        */}
         <div
           ref={scrollContainerRef}
           className="
-            flex overflow-hidden gap-[24px]
-            px-[24px]
+            flex w-full overflow-hidden 
+            gap-[20px]             /* Відстань між картками, коли вони за екраном */
+            snap-x snap-mandatory 
             
+            /* Desktop styles */
             md:grid md:grid-cols-[repeat(auto-fit,minmax(281px,1fr))] 
-            md:overflow-visible md:px-0
+            md:overflow-visible md:gap-[32px]
           "
         >
           {products.map((p, i) => (
             <div 
               key={i} 
               className="
-                w-[87%] max-w-[320px] flex-shrink-0                
+                /* === ВАЖЛИВО === */
+                w-full flex-shrink-0   /* Картка розтягується на всю ширину контейнера */
+                snap-center
+                
+                /* Desktop styles */
                 md:w-full md:max-w-none md:min-w-0
               "
             >
-              {/* === ПЕРЕДАЧА ПРОПСУ === */}
               <ProductCard 
                 {...p} 
                 cardBg={cardBg} 
-                isActive={i === activeIndex} // Перевіряємо, чи індекс картки відповідає активному індексу
+                isActive={i === activeIndex}
               />
             </div>
           ))}
