@@ -1,97 +1,33 @@
-import ProductSection from "../components/ProductSection";
-import forelImg from "../assets/images/forel.webp";
-import WholesaleForm from "../components/WholesaleForm";
-import React, { useState } from "react";
+import CatalogSection from "../components/CatalogSection";
+import { catalogSections } from "../data/catalogData";
+import WholesaleBanner from "../components/WholesaleBanner";
 
-
-function Catalog() {
-  
-  const redCaviarProducts = [
-    {
-      name: "чавича",
-      image: forelImg,
-      description: "Благородна — смак гармонії та сили океану.",
-      price: 1234,
-      indicators: [
-        { label: "Колір", leftLabel: "Світлий", rightLabel: "Темний", value: 5 },
-        { label: "Пружність", leftLabel: "М’яка", rightLabel: "Щільна", value: 4 },
-        { label: "Розмір", leftLabel: "Дрібний", rightLabel: "Великий", value: 5 },
-      ],
-    },
-  
-    {
-      name: "кіжуч",
-      image: forelImg,
-      description: "Благородна — смак гармонії та сили океану.",
-      price: 1234,
-      indicators: [
-        { label: "Колір", leftLabel: "Світлий", rightLabel: "Темний", value: 4 },
-        { label: "Пружність", leftLabel: "М’яка", rightLabel: "Щільна", value: 5 },
-        { label: "Розмір", leftLabel: "Дрібний", rightLabel: "Великий", value: 3 },
-      ],
-    },
-
-    {
-      name: "нерка",
-      image: forelImg,
-      description: "Благородна — смак гармонії та сили океану.",
-      price: 1234,
-      indicators: [
-        { label: "Колір", leftLabel: "Світлий", rightLabel: "Темний", value: 2 },
-        { label: "Пружність", leftLabel: "М’яка", rightLabel: "Щільна", value: 3 },
-        { label: "Розмір", leftLabel: "Дрібний", rightLabel: "Великий", value: 4 },
-      ],
-    },
-
-    {
-      name: "горбуша",
-      image: forelImg,
-      description: "Благородна — смак гармонії та сили океану.",
-      price: 1234,
-      indicators: [
-        { label: "Колір", leftLabel: "Світлий", rightLabel: "Темний", value: 3 },
-        { label: "Пружність", leftLabel: "М’яка", rightLabel: "Щільна", value: 3 },
-        { label: "Розмір", leftLabel: "Дрібний", rightLabel: "Великий", value: 3 },
-      ],
-    },
-    {
-      name: "кета",
-      image: forelImg,
-      description: "Благородна — смак гармонії та сили океану.",
-      price: 1234,
-      indicators: [
-        { label: "Колір", leftLabel: "Світлий", rightLabel: "Темний", value: 4 },
-        { label: "Пружність", leftLabel: "М’яка", rightLabel: "Щільна", value: 2 },
-        { label: "Розмір", leftLabel: "Дрібний", rightLabel: "Великий", value: 4 },
-      ],
-    },
-    {
-      name: "форель",
-      image: forelImg,
-      description: "Благородна — смак гармонії та сили океану.",
-      price: 1234,
-      indicators: [
-        { label: "Колір", leftLabel: "Світлий", rightLabel: "Темний", value: 3 },
-        { label: "Пружність", leftLabel: "М’яка", rightLabel: "Щільна", value: 3 },
-        { label: "Розмір", leftLabel: "Дрібний", rightLabel: "Великий", value: 2 },
-      ],
-    },
-  ];
-
+export default function Catalog() {
   return (
-    <main className="min-h-screen bg-[#FEFAF3] px-[0px] py-[0px]">
-      <ProductSection
-        title="червона ікра"
-        description="Отримана з найцінніших видів лососевих риб, червона ікра має насичений смак моря та люксу, маслянисту текстуру, її зерна пружні, блискучі."
-        sectionBg="#FEFAF3"
-        cardBg="#E9E5DB"
-        products={redCaviarProducts}
-      />
+    <main className="bg-[#E9E5DB] pt-[120px] pb-[120px] flex flex-col gap-[120px]">
+      
+      <WholesaleBanner />
 
-      <WholesaleForm />
-
+      <CatalogSection {...catalogSections[0]} />
+      <CatalogSection {...catalogSections[2]} />
+      <CatalogSection {...catalogSections[1]} />
+      <CatalogSection {...catalogSections[3]} />
     </main>
   );
 }
 
-export default Catalog;
+
+
+
+    // <main className="min-h-screen bg-[#FEFAF3] px-[0px] py-[50px]">
+    //   <ProductSection
+    //     title="червона ікра"
+    //     description="ОТРИМАНА З НАЙЦІННІШИХ ВИДІВ ЛОСОСЕВИХ РИБ, ЧЕРВОНА ІКРА МАЄ НАСИЧЕНИЙ СМАК МОРЯ ТА НІЖНУ, МАСЛЯНИСТУ ТЕКСТУРУ. ЇЇ ЗЕРНА ПРУЖНІ, БЛИСКУЧІ."
+    //     sectionBg="#E9E5DB"
+    //     cardBg="#FEFAF3"
+    //     products={redCaviarProducts}
+    //   />
+
+    //   <WholesaleForm />
+
+    // </main>
