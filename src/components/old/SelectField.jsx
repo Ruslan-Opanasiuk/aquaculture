@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { questionnaireFonts } from "../theme/fontSizes";
+import { questionnaireFonts } from "../../theme/old/fontSizes";
 
 export default function SelectField({ label, options, value, onChange }) {
   const [open, setOpen] = useState(false);

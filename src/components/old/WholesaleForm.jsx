@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import InputField from "./InputField";
 import SelectField from "./SelectField";
 import RadioGroup from "./RadioGroup";
-import { questionnaireFonts } from "../theme/fontSizes";
+import { questionnaireFonts } from "../../theme/old/fontSizes";
 
 export default function WholesaleForm() {
   const [workFormat, setWorkFormat] = useState("");

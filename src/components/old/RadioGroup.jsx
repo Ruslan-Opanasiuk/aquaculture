@@ -1,5 +1,5 @@
 import React from "react";
-import { questionnaireFonts } from "../theme/fontSizes";
+import { questionnaireFonts } from "../../theme/old/fontSizes";
 
 export default function RadioGroup({ label, options, selected, onChange }) {
   return (

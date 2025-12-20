@@ -1,10 +1,11 @@
 import CatalogSection from "../components/CatalogSection";
 import { catalogSections } from "../data/catalogData";
 import WholesaleBanner from "../components/WholesaleBanner";
+import WholesaleForm from "../components/old/WholesaleForm";
 
 export default function Catalog() {
   return (
-    <main className="bg-[#E9E5DB] pt-[120px] pb-[120px] flex flex-col gap-[120px]">
+    <main className="bg-[#E9E5DB] pb-[120px] flex flex-col gap-[120px]">
       
       <WholesaleBanner />
 
@@ -12,6 +13,9 @@ export default function Catalog() {
       <CatalogSection {...catalogSections[2]} />
       <CatalogSection {...catalogSections[1]} />
       <CatalogSection {...catalogSections[3]} />
+
+      {/* <WholesaleForm /> */}
+
     </main>
   );
 }
@@ -28,6 +32,6 @@ export default function Catalog() {
     //     products={redCaviarProducts}
     //   />
 
-    //   <WholesaleForm />
+    //   
 
     // </main>
