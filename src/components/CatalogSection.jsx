@@ -8,8 +8,8 @@ export default function CatalogSection({
       <div
         className="
           w-full px-layout-gap 
-          tablet:max-w-[754px] 
-          desktop:max-w-[1140px]
+          tablet:max-w-[794px] 
+          desktop:max-w-[1180px]
         "
       >
         <h2 className="text-section-title font-semibold mb-3">
@@ -26,11 +26,18 @@ export default function CatalogSection({
           className="
             flex gap-layout-gap overflow-x-auto snap-x snap-mandatory
             py-6
-            -mx-layout-gap px-layout-gap
-            phone-wide:-mx-layout-gap phone-wide:px-[26vw]
-            tablet:mx-0 tablet:px-0 tablet:grid tablet:overflow-visible tablet:snap-none
+            -mx-layout-gap 
+            px-layout-gap
+            phone-wide:-mx-layout-gap 
+            phone-wide:px-[26vw]
+            tablet:mx-0 
+            tablet:px-0 
+            tablet:grid 
+            tablet:overflow-visible 
+            tablet:snap-none
             tablet:grid-cols-2
-            desktop:grid-cols-3 desktop:justify-items-start
+            desktop:grid-cols-3 
+            desktop:justify-items-start
           "
         >
           {Array.from({ length: count }).map((_, i) => (
@@ -61,3 +68,4 @@ export default function CatalogSection({
 // TODO: нормальну логіку для max-w subtitle
 // TODO: нормальну логіку для phone-wide
 // TODO: нормальну логіку для ключів key={i} 
+// TODO: логіку активних карток

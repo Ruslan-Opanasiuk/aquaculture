@@ -1,22 +1,27 @@
 import CatalogSection from "../components/CatalogSection";
 import { catalogSections } from "../data/catalogData";
 import WholesaleBanner from "../components/WholesaleBanner";
+import Header from "../components/Header";
 import WholesaleForm from "../components/old/WholesaleForm";
 
 export default function Catalog() {
   return (
-    <main className="bg-[#E9E5DB] pb-[120px] flex flex-col gap-[120px]">
-      
-      <WholesaleBanner />
+    <div className="bg-[#E9E5DB] min-h-screen">
+      <Header />
 
-      <CatalogSection {...catalogSections[0]} />
-      <CatalogSection {...catalogSections[2]} />
-      <CatalogSection {...catalogSections[1]} />
-      <CatalogSection {...catalogSections[3]} />
+      <main className="bg-[#E9E5DB] pb-[120px] flex flex-col gap-[120px]">
+        {/* Hero-банер на повен екран, під хедером, але візуально перекривається ним */}
+        <WholesaleBanner />
 
-      {/* <WholesaleForm /> */}
+        {/* Каталог — у тому самому порядку, який ти задав */}
+        <CatalogSection {...catalogSections[0]} />
+        <CatalogSection {...catalogSections[2]} />
+        <CatalogSection {...catalogSections[1]} />
+        <CatalogSection {...catalogSections[3]} />
 
-    </main>
+        {/* <WholesaleForm /> */}
+      </main>
+    </div>
   );
 }
 

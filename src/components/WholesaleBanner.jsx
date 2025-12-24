@@ -3,51 +3,62 @@ import wholesaleHero from "../assets/images/Frame-9.webp";
 export default function WholesaleHero() {
   return (
     <section className="relative w-full h-screen flex justify-center">
-      {/* Фото-фон */}
-      <img
-        src={wholesaleHero}
-        alt="Преміальна ікра для гуртових клієнтів"
-        className="
-          absolute inset-0
-          w-full h-full
-          object-cover
-          object-[28%_72%]
-        "
-      />
+      <div className="absolute inset-0 tablet:px-[10px] desktop:px-[10px]">
+        <div className="relative w-full h-full overflow-hidden">
+          <img
+            src={wholesaleHero}
+            alt="Преміальна ікра для гуртових клієнтів"
+            className="
+              absolute inset-0
+              w-full h-full
+              object-cover
+              object-[28%_72%]
+            "
+          />
 
-      {/* Затемнення для читабельності тексту */}
-      <div
-        className="
-          absolute inset-0
-          bg-black/45
-        "
-        aria-hidden="true"
-      />
+          <div
+            className="
+              absolute inset-0
+              bg-black/45
+            "
+            aria-hidden="true"
+          />
+        </div>
+      </div>
 
-      {/* Контент поверх фото */}
       <div className="relative z-10 w-full h-full">
         <div
           className="
             w-full h-full
             px-layout-gap
-            tablet:max-w-[754px]
-            desktop:max-w-[1140px]
+            tablet:max-w-[794px]
+            desktop:max-w-[1180px]
             mx-auto
           "
         >
-          <div
-            className="
-              pt-[10vh]
-              max-w-[520px]
-              text-white
-            "
-          >
-            <h1 className="text-section-title font-semibold mb-3">
-              СПЕЦІАЛЬНІ УМОВИ ДЛЯ ГУРТОВИХ КЛІЄНТІВ
+          <div className="pt-[20vh] max-w-[520px] text-white">
+            <h1
+              className="
+                font-['Cormorant_Garamond']
+                text-[58px]
+                font-medium
+                leading-[0.95]
+                mb-10
+              "
+            >
+              <span className="italic">гуртовим</span> клієнтам
             </h1>
 
-            <p className="text-section-subtitle leading-[1.5] text-[#F5F5F5] mb-5">
-              Прямі поставки преміальної ікри для вашого бізнесу. Ціни в каталозі — роздрібні. 
+            <p
+              className="
+                font-['Montserrat']
+                text-[18px]
+                leading-[1.5]
+                text-[#F5F5F5]
+                mb-6
+              "
+            >
+              Прямі поставки преміальної ікри для вашого бізнесу. Ціни в каталозі — роздрібні.
               Отримайте індивідуальний прайс та гарантію стабільності.
             </p>
 
@@ -57,14 +68,17 @@ export default function WholesaleHero() {
                 inline-flex items-center justify-center
                 rounded-full
                 px-6 py-3
-                text-[15px] font-medium
+                font-['Montserrat']
+                text-[18px]
+                uppercase
+                tracking-[0.02em]
                 bg-white text-black
                 hover:bg-[#F5F1E8]
                 active:bg-[#E2D8C8]
                 transition-colors
               "
             >
-              Запитати гуртовий прайс
+              Оформити анкету
             </button>
           </div>
         </div>
