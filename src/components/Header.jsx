@@ -18,8 +18,8 @@ export default function Header() {
         className="
           w-full h-full
           px-layout-gap
-          tablet:max-w-[754px]
-          desktop:max-w-[1140px]
+          tablet:max-w-[794px]
+          desktop:max-w-[1180px]
           mx-auto
           relative
           flex items-center

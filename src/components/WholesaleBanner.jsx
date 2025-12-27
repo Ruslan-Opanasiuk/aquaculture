@@ -39,20 +39,20 @@ export default function WholesaleHero() {
           <div className="pt-[20vh] max-w-[520px] text-white">
             <h1
               className="
-                font-['Cormorant_Garamond']
-                text-[58px]
-                font-medium
+                font-['Montserrat']
+                text-[28px]
+                font-semibold
                 leading-[0.95]
                 mb-10
               "
             >
-              <span className="italic">гуртовим</span> клієнтам
+              Гуртовим клієнтам
             </h1>
 
             <p
               className="
                 font-['Montserrat']
-                text-[18px]
+                text-[17px]
                 leading-[1.5]
                 text-[#F5F5F5]
                 mb-6
@@ -67,10 +67,9 @@ export default function WholesaleHero() {
               className="
                 inline-flex items-center justify-center
                 rounded-full
-                px-6 py-3
+                px-6 py-2.5
                 font-['Montserrat']
-                text-[18px]
-                uppercase
+                text-[17px]
                 tracking-[0.02em]
                 bg-white text-black
                 hover:bg-[#F5F1E8]

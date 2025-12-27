@@ -1,8 +1,7 @@
-export default function CatalogSection({
-  count,
-  title,
-  subtitle,
-}) {
+// src/components/CatalogSection.jsx
+import ProductCard from "./ProductCard";
+
+export default function CatalogSection({ title, subtitle, items = [] }) {
   return (
     <section className="w-full flex justify-center">
       <div
@@ -12,12 +11,27 @@ export default function CatalogSection({
           desktop:max-w-[1180px]
         "
       >
-        <h2 className="text-section-title font-semibold mb-3">
+        <h2
+          className="
+            font-['Montserrat']
+            font-semibold
+            text-[28px]
+            mb-3
+          "
+        >
           {title}
         </h2>
 
         {subtitle && (
-          <p className="text-section-subtitle leading-[1.5] text-caviar-text max-w-[67%] mb-4">
+          <p
+            className="
+              leading-[1.5] 
+              font-['Montserrat']
+              text-[17px]
+              max-w-[67%] 
+              mb-4
+            "
+          >
             {subtitle}
           </p>
         )}
@@ -40,14 +54,10 @@ export default function CatalogSection({
             desktop:justify-items-start
           "
         >
-          {Array.from({ length: count }).map((_, i) => (
+          {items.map((p) => (
             <div
-              key={i}
+              key={p.key}
               className="
-                bg-caviar-cream  
-                rounded-[20px]
-                shadow-card-custom
-                aspect-[1/1.5]
                 flex-shrink-0
                 snap-center
                 max-w-card
@@ -55,17 +65,17 @@ export default function CatalogSection({
                 phone-wide:w-[74vw] 
                 tablet:w-full
               "
-            />
+            >
+              <ProductCard
+                title={p.title}
+                price={p.priceText}
+                imageSrc={p.imageSrc}
+                imageAlt={p.title}
+              />
+            </div>
           ))}
         </div>
       </div>
     </section>
   );
 }
-
-
-
-// TODO: нормальну логіку для max-w subtitle
-// TODO: нормальну логіку для phone-wide
-// TODO: нормальну логіку для ключів key={i} 
-// TODO: логіку активних карток

@@ -1,29 +1,37 @@
+// src/pages/Catalog.jsx (або де в тебе Catalog)
 import CatalogSection from "../components/CatalogSection";
-import { catalogSections } from "../data/catalogData";
 import WholesaleBanner from "../components/WholesaleBanner";
-import Header from "../components/Header";
-import WholesaleForm from "../components/old/WholesaleForm";
+import { catalogSections, productVariantsList } from "../data/catalogData";
 
 export default function Catalog() {
+  let cursor = 0;
+
   return (
-    <div className="bg-[#E9E5DB] min-h-screen">
-      <Header />
+    <main className="bg-[#E9E5DB] pb-[120px] flex flex-col gap-[120px]">
+      <WholesaleBanner />
 
-      <main className="bg-[#E9E5DB] pb-[120px] flex flex-col gap-[120px]">
-        {/* Hero-банер на повен екран, під хедером, але візуально перекривається ним */}
-        <WholesaleBanner />
+      {catalogSections.map((section) => {
+        const items = productVariantsList
+          .slice(cursor, cursor + section.count)
+          .map((p, idx) => ({ ...p, key: `${p.key}-${cursor + idx}` }));
 
-        {/* Каталог — у тому самому порядку, який ти задав */}
-        <CatalogSection {...catalogSections[0]} />
-        <CatalogSection {...catalogSections[2]} />
-        <CatalogSection {...catalogSections[1]} />
-        <CatalogSection {...catalogSections[3]} />
+        cursor += section.count;
 
-        {/* <WholesaleForm /> */}
-      </main>
-    </div>
+        return (
+          <CatalogSection
+            key={section.title}
+            title={section.title}
+            subtitle={section.subtitle}
+            items={items}
+          />
+        );
+      })}
+
+      {/* <WholesaleForm /> */}
+    </main>
   );
 }
+
 
 
 
