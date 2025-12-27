@@ -1,7 +1,10 @@
 // src/components/CatalogSection.jsx
 import ProductCard from "./ProductCard";
+import { productVariantsList } from "../data/catalogData";
 
-export default function CatalogSection({ title, subtitle, items = [] }) {
+export default function CatalogSection({ count, title, subtitle, startIndex = 0 }) {
+  const items = productVariantsList.slice(startIndex, startIndex + count);
+
   return (
     <section className="w-full flex justify-center">
       <div
@@ -11,27 +14,12 @@ export default function CatalogSection({ title, subtitle, items = [] }) {
           desktop:max-w-[1180px]
         "
       >
-        <h2
-          className="
-            font-['Montserrat']
-            font-semibold
-            text-[28px]
-            mb-3
-          "
-        >
+        <h2 className="font-['Montserrat'] font-semibold text-[28px] mb-3">
           {title}
         </h2>
 
         {subtitle && (
-          <p
-            className="
-              leading-[1.5] 
-              font-['Montserrat']
-              text-[17px]
-              max-w-[67%] 
-              mb-4
-            "
-          >
+          <p className="leading-[1.5] font-['Montserrat'] text-[17px] max-w-[67%] mb-4">
             {subtitle}
           </p>
         )}

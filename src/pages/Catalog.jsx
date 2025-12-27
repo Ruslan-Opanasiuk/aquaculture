@@ -1,34 +1,43 @@
-// src/pages/Catalog.jsx (або де в тебе Catalog)
+// src/pages/Catalog.jsx
 import CatalogSection from "../components/CatalogSection";
+import { catalogSections } from "../data/catalogData";
 import WholesaleBanner from "../components/WholesaleBanner";
-import { catalogSections, productVariantsList } from "../data/catalogData";
+import Header from "../components/Header";
+// import WholesaleForm from "../components/old/WholesaleForm";
 
 export default function Catalog() {
-  let cursor = 0;
+  const sectionsInOrder = [
+    catalogSections[0],
+    catalogSections[2],
+    catalogSections[1],
+    catalogSections[3],
+  ];
+
+  let offset = 0;
 
   return (
-    <main className="bg-[#E9E5DB] pb-[120px] flex flex-col gap-[120px]">
-      <WholesaleBanner />
+    <div className="bg-[#E9E5DB] min-h-screen">
+      <Header />
 
-      {catalogSections.map((section) => {
-        const items = productVariantsList
-          .slice(cursor, cursor + section.count)
-          .map((p, idx) => ({ ...p, key: `${p.key}-${cursor + idx}` }));
+      <main className="bg-[#E9E5DB] pb-[120px] flex flex-col gap-[120px]">
+        <WholesaleBanner />
 
-        cursor += section.count;
+        {sectionsInOrder.map((section) => {
+          const startIndex = offset;
+          offset += section.count;
 
-        return (
-          <CatalogSection
-            key={section.title}
-            title={section.title}
-            subtitle={section.subtitle}
-            items={items}
-          />
-        );
-      })}
+          return (
+            <CatalogSection
+              key={section.title}
+              {...section}
+              startIndex={startIndex}
+            />
+          );
+        })}
 
-      {/* <WholesaleForm /> */}
-    </main>
+        {/* <WholesaleForm /> */}
+      </main>
+    </div>
   );
 }
 
