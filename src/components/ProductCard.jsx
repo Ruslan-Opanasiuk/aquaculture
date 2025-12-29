@@ -52,7 +52,7 @@ export default function ProductCard({
       </div>
 
       <div className="h-[60px] flex items-end justify-between">
-        <p className="text-[14px] font-normal leading-none text-caviar-text">
+        <p className="text-[14px] font-normal leading-none text-caviar-text whitespace-pre-line">
           {price}
         </p>
 

@@ -4,7 +4,8 @@ import whiteImg from "../assets/images/white.webp";
 import welcomeImg from "../assets/images/welcome.webp";
 
 
-const priceText = "від 1234.00 грн, гурт: за запитом";
+const priceText = "від 1234.00 грн\nгурт - за запитом";
+
 
 export const productVariants = {
   chavicha: { title: "Чавича", imageSrc: redImg, priceText },

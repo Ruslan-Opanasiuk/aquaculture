@@ -19,7 +19,7 @@ export default function CatalogSection({ count, title, subtitle, startIndex = 0 
         </h2>
 
         {subtitle && (
-          <p className="leading-[1.5] font-['Montserrat'] text-[17px] max-w-[67%] mb-4">
+          <p className="leading-[1.5] font-['Montserrat'] text-[17px] max-w-[754px] mb-4">
             {subtitle}
           </p>
         )}
@@ -31,7 +31,6 @@ export default function CatalogSection({ count, title, subtitle, startIndex = 0 
             -mx-layout-gap 
             px-layout-gap
             phone-wide:-mx-layout-gap 
-            phone-wide:px-[26vw]
             tablet:mx-0 
             tablet:px-0 
             tablet:grid 
@@ -67,3 +66,9 @@ export default function CatalogSection({ count, title, subtitle, startIndex = 0 
     </section>
   );
 }
+
+
+
+// TODO: нормальну логіку для phone-wide 
+// TODO: нормальну логіку для ключів key={i} 
+// TODO: логіку активних карток
