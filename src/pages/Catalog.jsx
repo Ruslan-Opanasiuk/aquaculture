@@ -3,6 +3,7 @@ import CatalogSection from "../components/CatalogSection";
 import { catalogSections } from "../data/catalogData";
 import WholesaleBanner from "../components/WholesaleBanner";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 // import WholesaleForm from "../components/old/WholesaleForm";
 
 export default function Catalog() {
@@ -16,10 +17,10 @@ export default function Catalog() {
   let offset = 0;
 
   return (
-    <div className="bg-[#E9E5DB] min-h-screen">
+    <div className="bg-[#E9E5DB] min-h-screen flex flex-col">
       <Header />
 
-      <main className="bg-[#E9E5DB] pb-[120px] flex flex-col gap-[120px]">
+      <main className="bg-[#E9E5DB] pb-[120px] flex flex-col gap-[120px] flex-1">
         <WholesaleBanner />
 
         {sectionsInOrder.map((section) => {
@@ -37,23 +38,8 @@ export default function Catalog() {
 
         {/* <WholesaleForm /> */}
       </main>
+
+      <Footer />
     </div>
   );
 }
-
-
-
-
-
-    // <main className="min-h-screen bg-[#FEFAF3] px-[0px] py-[50px]">
-    //   <ProductSection
-    //     title="червона ікра"
-    //     description="ОТРИМАНА З НАЙЦІННІШИХ ВИДІВ ЛОСОСЕВИХ РИБ, ЧЕРВОНА ІКРА МАЄ НАСИЧЕНИЙ СМАК МОРЯ ТА НІЖНУ, МАСЛЯНИСТУ ТЕКСТУРУ. ЇЇ ЗЕРНА ПРУЖНІ, БЛИСКУЧІ."
-    //     sectionBg="#E9E5DB"
-    //     cardBg="#FEFAF3"
-    //     products={redCaviarProducts}
-    //   />
-
-    //   
-
-    // </main>
