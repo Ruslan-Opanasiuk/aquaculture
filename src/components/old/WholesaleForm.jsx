@@ -24,7 +24,6 @@ export default function WholesaleForm() {
           mt-[48px]
           mb-[48px]
           leading-[0.9]
-          whitespace-nowrap
         "
       >
         Індивідуальний прайс для гуртовиків
