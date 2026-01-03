@@ -18,18 +18,16 @@ export default function WholesaleForm() {
       <h1
         className="
           text-center
-          font-[Cormorant_Garamond]
-          text-[#000000]
-          mt-[134px]
+          font-['Montserrat']
+          text-[28px]
+          font-semibold
+          mt-[48px]
           mb-[48px]
           leading-[0.9]
           whitespace-nowrap
         "
-        style={{
-            fontSize: questionnaireFonts.title,
-        }}
       >
-        <span className="italic">індивідуальний</span> прайс<br />для гуртовиків
+        Індивідуальний прайс для гуртовиків
       </h1>
 
       {/* Підзаголовок */}
@@ -37,6 +35,7 @@ export default function WholesaleForm() {
         className="
           leading-[1.5]
           text-center
+          text-[17px]
           text-[#121212]/75
           font-[Montserrat]
           font-medium
@@ -44,9 +43,6 @@ export default function WholesaleForm() {
           mx-auto
           mb-[60px]
         "
-        style={{
-            fontSize: questionnaireFonts.subtitle,
-        }}
       >
         Заповніть коротку форму — ми підготуємо індивідуальну пропозицію 
         з урахуванням ваших обсягів та умов співпраці й надішлемо її 

@@ -64,6 +64,12 @@ export default function WholesaleHero() {
 
             <button
               type="button"
+              onClick={() => {
+                document.getElementById("wholesale-form")?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
+              }}
               className="
                 inline-flex items-center justify-center
                 rounded-full

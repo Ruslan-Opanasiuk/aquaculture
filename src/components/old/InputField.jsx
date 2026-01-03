@@ -15,15 +15,13 @@ export default function InputField({ label, value, onChange }) {
           focus:outline-none
           pb-[5px]
           font-[Montserrat]
+          text-[17px]
           text-[#000000]
           placeholder:text-[#A8A8A8]
           border-b-[1px]
           border-[#e4d7a7]
           transition-colors
         "
-        style={{
-          fontSize: questionnaireFonts.placeholder,
-        }}
       />
     </div>
   );

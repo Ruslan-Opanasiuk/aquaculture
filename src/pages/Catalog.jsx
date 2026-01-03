@@ -4,7 +4,7 @@ import { catalogSections } from "../data/catalogData";
 import WholesaleBanner from "../components/WholesaleBanner";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-// import WholesaleForm from "../components/old/WholesaleForm";
+import WholesaleForm from "../components/old/WholesaleForm";
 
 export default function Catalog() {
   const sectionsInOrder = [
@@ -36,7 +36,10 @@ export default function Catalog() {
           );
         })}
 
-        {/* <WholesaleForm /> */}
+        <section id="wholesale-form" className="scroll-mt-[100px]">
+          <WholesaleForm />
+        </section>
+
       </main>
 
       <Footer />
