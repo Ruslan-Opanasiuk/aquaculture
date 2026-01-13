@@ -10,7 +10,6 @@ export default function Header() {
         fixed top-0 left-0 right-0
         h-[80px]
         bg-[#E9E5DB]
-        shadow-[0_4px_16px_rgba(0,0,0,0.08)]
         z-50
       "
     >

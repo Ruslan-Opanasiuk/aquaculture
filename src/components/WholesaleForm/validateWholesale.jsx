@@ -24,7 +24,7 @@ export function validateWholesale(values) {
       errors.phone = "Некоректний формат номера";
     } else {
       const digitsCount = phoneRaw.replace(/\D/g, "").length;
-      if (digitsCount < 10) {
+      if (digitsCount < 9) {
         errors.phone = "Номер телефону занадто короткий";
       }
     }

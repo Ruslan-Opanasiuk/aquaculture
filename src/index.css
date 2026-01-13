@@ -4,38 +4,82 @@
   container-type: size;
 }
 
+/* ============================= */
+/* === Design tokens ========== */
+/* ============================= */
 @theme {
-  /* --- Ваші існуючі брейкпоінти --- */
+  /* --- Breakpoints --- */
   --breakpoint-phone-wide: 406.67px;
   --breakpoint-tablet: 660px;
   --breakpoint-desktop: 980px;
 
-  /* --- Ваші кастомні налаштування --- */
+  /* --- Layout --- */
   --max-width-card: 366.67px;
-  
-  /* 1. Кольори (виносимо з #hex) */
-  /* Назвемо їх за суттю. #FEFAF3 схожий на колір слонової кістки або кремовий */
-  --color-caviar-cream: #FEFAF3; 
-  --color-caviar-text: #3A3A3A; 
 
-  /* 2. Шрифти (Typography) */
-  /* Визначаємо розмір шрифту + висоту рядка (line-height) за замовчуванням */
-  --text-section-title: 32px;
-  --text-section-subtitle: 18px; 
-  
-  /* 3. Відступи (Spacing) */
-  /* Якщо 20px - це ваш стандартний відступ для контейнера, назвемо його так */
-  --spacing-layout-gap: 20px; 
+  /* Content field (main container) */
+  --max-width-content-tablet: 794px;
+  --max-width-content-desktop: 1180px;
 
-  --shadow-card-custom: 0 5px 10px rgba(0, 0, 0, 0.25);
+  /* --- Spacing --- */
+  --spacing-layout-gap: 20px;
+
+  /* --- H1 --- */
+  --font-size-h1-phone: 48px;
+  --font-size-h1-tablet: 62px;
+  --font-size-h1-desktop: 80px;
+
+  /* --- H2 --- */
+  --font-size-h2-phone: 28px;
+  --font-size-h2-tablet: 48px;
+  --font-size-h2-desktop: 56px;
+
+  /* --- H3 --- */
+  --font-size-h3-phone: 21px;
+  --font-size-h3-tablet: 24px;
+  --font-size-h3-desktop: 28px;
+
+  /* --- Body text --- */
+  --font-size-body-phone: 15px;
+  --font-size-body-tablet: 16px;
+  --font-size-body-desktop: 17px;
 }
 
+/* ============================= */
+/* === Token implementation === */
+/* ============================= */
 
+/* Default: phone + phone-wide */
+:root {
+  /* Typography */
+  --h1-font-size: var(--font-size-h1-phone);
+  --h2-font-size: var(--font-size-h2-phone);
+  --h3-font-size: var(--font-size-h3-phone);
+  --body-font-size: var(--font-size-body-phone);
 
-/* .scrollbar-hide::-webkit-scrollbar {
-    display: none;
+  /* Layout */
+  --content-max-width: 100%;
 }
-.scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-} */
+
+/* Tablet */
+@media (min-width: 660px) {
+  :root {
+    --h1-font-size: var(--font-size-h1-tablet);
+    --h2-font-size: var(--font-size-h2-tablet);
+    --h3-font-size: var(--font-size-h3-tablet);
+    --body-font-size: var(--font-size-body-tablet);
+
+    --content-max-width: var(--max-width-content-tablet);
+  }
+}
+
+/* Desktop */
+@media (min-width: 980px) {
+  :root {
+    --h1-font-size: var(--font-size-h1-desktop);
+    --h2-font-size: var(--font-size-h2-desktop);
+    --h3-font-size: var(--font-size-h3-desktop);
+    --body-font-size: var(--font-size-body-desktop);
+
+    --content-max-width: var(--max-width-content-desktop);
+  }
+}

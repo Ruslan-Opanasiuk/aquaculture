@@ -2,42 +2,84 @@
 import ProductCard from "./ProductCard";
 import { productVariantsList } from "../data/catalogData";
 
-export default function CatalogSection({ count, title, subtitle, startIndex = 0 }) {
-  const items = productVariantsList.slice(startIndex, startIndex + count);
+export default function CatalogSection({
+  count,
+  title,
+  subtitle,
+  startIndex = 0,
+}) {
+  const items = productVariantsList.slice(
+    startIndex,
+    startIndex + count
+  );
 
   return (
-    <section className="w-full flex justify-center">
+    <section
+      className="
+        w-full
+        flex
+        justify-center
+      "
+    >
       <div
         className="
-          w-full px-layout-gap 
-          tablet:max-w-[794px] 
-          desktop:max-w-[1180px]
+          w-full
+          px-layout-gap
         "
+        style={{
+          maxWidth: "var(--content-max-width)",
+        }}
       >
-        <h2 className="font-['Montserrat'] font-semibold text-[28px] mb-3">
+        <h2
+          className="
+            font-['Montserrat']
+            font-medium
+            mb-3
+          "
+          style={{
+            fontSize: "var(--h2-font-size)",
+          }}
+        >
           {title}
         </h2>
 
         {subtitle && (
-          <p className="leading-[1.5] font-['Montserrat'] text-[17px] max-w-[754px] mb-4">
+          <p
+            className="
+              font-['Montserrat']
+              leading-[1.5]
+              max-w-[754px]
+              mb-4
+            "
+            style={{
+              fontSize: "var(--body-font-size)",
+            }}
+          >
             {subtitle}
           </p>
         )}
 
         <div
           className="
-            flex gap-layout-gap overflow-x-auto snap-x snap-mandatory
+            flex
+            gap-layout-gap
+            overflow-x-auto
+            snap-x
+            snap-mandatory
             py-6
-            -mx-layout-gap 
+            -mx-layout-gap
             px-layout-gap
-            phone-wide:-mx-layout-gap 
-            tablet:mx-0 
-            tablet:px-0 
-            tablet:grid 
-            tablet:overflow-visible 
+
+            phone-wide:-mx-layout-gap
+
+            tablet:mx-0
+            tablet:px-0
+            tablet:grid
+            tablet:overflow-visible
             tablet:snap-none
             tablet:grid-cols-2
-            desktop:grid-cols-3 
+
+            desktop:grid-cols-3
             desktop:justify-items-start
           "
         >
@@ -49,7 +91,8 @@ export default function CatalogSection({ count, title, subtitle, startIndex = 0 
                 snap-center
                 max-w-card
                 w-full
-                phone-wide:w-[74vw] 
+
+                phone-wide:w-[74vw]
                 tablet:w-full
               "
             >
@@ -66,9 +109,3 @@ export default function CatalogSection({ count, title, subtitle, startIndex = 0 
     </section>
   );
 }
-
-
-
-// TODO: нормальну логіку для phone-wide 
-// TODO: нормальну логіку для ключів key={i} 
-// TODO: логіку активних карток

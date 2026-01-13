@@ -12,7 +12,7 @@ export default function Footer() {
           desktop:max-w-[1180px]
           py-[100px]
           font-['Montserrat']
-          text-[17px]
+          text-[16px]
           leading-[1.6]
           flex flex-col
           gap-[72px]
@@ -48,7 +48,7 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col gap-[8px] whitespace-nowrap">
-          <p className="font-semibold tracking-[0.08em]">КОНТАКТИ</p>
+          <p className="font-bold tracking-[0.08em]">КОНТАКТИ</p>
 
           <p className="text-white/85">
             email:{" "}
