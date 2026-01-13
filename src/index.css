@@ -24,22 +24,22 @@
   --spacing-layout-gap: 20px;
 
   /* --- H1 --- */
-  --font-size-h1-phone: 48px;
-  --font-size-h1-tablet: 62px;
+  --font-size-h1-phone: 56px;
+  --font-size-h1-tablet: 64px;
   --font-size-h1-desktop: 80px;
 
   /* --- H2 --- */
-  --font-size-h2-phone: 28px;
+  --font-size-h2-phone: 48px;
   --font-size-h2-tablet: 48px;
   --font-size-h2-desktop: 56px;
 
   /* --- H3 --- */
-  --font-size-h3-phone: 21px;
+  --font-size-h3-phone: 24px;
   --font-size-h3-tablet: 24px;
   --font-size-h3-desktop: 28px;
 
   /* --- Body text --- */
-  --font-size-body-phone: 15px;
+  --font-size-body-phone: 16px;
   --font-size-body-tablet: 16px;
   --font-size-body-desktop: 17px;
 }
