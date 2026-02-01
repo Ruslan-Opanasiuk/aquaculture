@@ -2,14 +2,14 @@
 import logoPng from "../assets/images/logo.png";
 import searchPng from "../assets/images/search.png";
 import cartPng from "../assets/images/cart.png";
-
+// FEFAF3
 export default function Header() {
   return (
     <header
       className="
         fixed top-0 left-0 right-0
         h-[80px]
-        bg-[#E9E5DB]
+        bg-[#F5F1E7]
         z-50
       "
     >

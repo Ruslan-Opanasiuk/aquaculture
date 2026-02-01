@@ -30,7 +30,7 @@ export default function ProductCard({
   return (
     <div
       className="
-        bg-caviar-cream
+        bg-[#FEFAF3]
         rounded-[20px]
         shadow-[-10px_-10px_22px_rgba(254,250,243,0.75),10px_10px_22px_rgba(0,0,0,0.18)]
         w-full

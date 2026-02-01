@@ -1,4 +1,5 @@
 // src/pages/Catalog.jsx
+
 import CatalogSection from "../components/CatalogSection";
 import { catalogSections } from "../data/catalogData";
 import WholesaleBanner from "../components/WholesaleBanner";
@@ -17,10 +18,10 @@ export default function Catalog() {
   let offset = 0;
 
   return (
-    <div className="bg-[#E9E5DB] min-h-screen flex flex-col">
+    <div className="bg-[#F5F1E7] min-h-screen flex flex-col">
       <Header />
 
-      <main className="bg-[#E9E5DB] pb-[120px] flex flex-col gap-[120px] flex-1">
+      <main className="bg-[#F5F1E7] pb-[120px] flex flex-col gap-[120px] flex-1">
         <WholesaleBanner />
 
         {sectionsInOrder.map((section) => {
@@ -36,10 +37,24 @@ export default function Catalog() {
           );
         })}
 
-        <section id="wholesale-form" className="scroll-mt-[100px]">
-          <WholesaleForm />
+        {/* ===== WHOLESALE FORM ===== */}
+        <section
+          id="wholesale-form"
+          className="scroll-mt-[50px]"
+        >
+          <div className="w-full flex justify-center">
+            <div
+              className="
+                w-full
+                px-layout-gap
+                tablet:max-w-[794px]
+                desktop:max-w-[1180px]
+              "
+            >
+              <WholesaleForm />
+            </div>
+          </div>
         </section>
-
       </main>
 
       <Footer />

@@ -33,7 +33,7 @@ export default function CatalogSection({
         <h2
           className="
             font-['Montserrat']
-            font-medium
+            font-semibold
             mb-3
           "
           style={{

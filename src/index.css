@@ -83,3 +83,7 @@
     --content-max-width: var(--max-width-content-desktop);
   }
 }
+
+html.smooth-scroll {
+  scroll-behavior: smooth;
+}
