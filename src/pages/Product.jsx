@@ -38,7 +38,7 @@ export default function Product() {
         className="
           bg-[#F5F1E7]
           flex-1
-          pt-[40px]
+          pt-[32px]
           pb-[120px]
           flex
           flex-col
@@ -47,21 +47,10 @@ export default function Product() {
         "
       >
         {/* ===== HERO / PRODUCT SECTION ===== */}
-        <section
-          className="
-            w-full
-            flex
-            justify-center
-          "
-        >
+        <section className="w-full flex justify-center">
           <div
-            className="
-              w-full
-              px-layout-gap
-            "
-            style={{
-              maxWidth: "var(--content-max-width)",
-            }}
+            className="w-full px-layout-gap"
+            style={{ maxWidth: "var(--content-max-width)" }}
           >
             <div
               className="
@@ -74,7 +63,7 @@ export default function Product() {
                 gap-y-[40px]
               "
             >
-              {/* 1. TOP TEXT */}
+              {/* 1. TOP TEXT — ALWAYS CENTERED */}
               <div
                 className="
                   order-1
@@ -83,8 +72,6 @@ export default function Product() {
                   flex-col
                   items-center
                   text-center
-                  tablet:items-start
-                  tablet:text-left
                 "
               >
                 <span
@@ -93,21 +80,14 @@ export default function Product() {
                     tracking-[0.12em]
                     text-black/50
                   "
-                  style={{
-                    fontSize: "13px",
-                  }}
+                  style={{ fontSize: "13px" }}
                 >
                   Аквакультура
                 </span>
 
                 <h1
-                  className="
-                    font-semibold
-                    leading-[1.1]
-                  "
-                  style={{
-                    fontSize: "var(--h2-font-size)",
-                  }}
+                  className="font-semibold leading-[1.1]"
+                  style={{ fontSize: "var(--h2-font-size)" }}
                 >
                   Форель
                 </h1>
@@ -115,15 +95,12 @@ export default function Product() {
                 <p
                   className="
                     mt-[20px]
-                    tablet:mt-[30px]
+                    tablet:mt-[16px]
                     leading-[1.6]
                     text-black/80
                     max-w-[400px]
-                    tablet:max-w-none
                   "
-                  style={{
-                    fontSize: "var(--body-font-size)",
-                  }}
+                  style={{ fontSize: "var(--body-font-size)" }}
                 >
                   Ніжна, збалансована та яскрава за смаком.
                 </p>
@@ -137,19 +114,13 @@ export default function Product() {
                     w-full
                   "
                 >
-                  <div
-                    className="
-                      mt-[40px]
-                      mx-[-10px]
-                      tablet:mx-0
-                    "
-                  >
+                  <div className="mt-[56px] mx-[-10px] tablet:mx-0">
                     <OrderVolumeGrid packages={product.packages} />
                   </div>
 
                   <div
                     className="
-                      mt-[20px]
+                      mt-[80px]
                       flex
                       flex-col
                       gap-[20px]
@@ -157,28 +128,21 @@ export default function Product() {
                       text-black/80
                       text-left
                     "
-                    style={{
-                      fontSize: "var(--body-font-size)",
-                    }}
+                    style={{ fontSize: "var(--body-font-size)" }}
                   >
                     <p>
-                      Ікра форелі — це гармонія смаку, кольору й текстури у доступному
-                      та якісному виконанні. Ікринки мають глибокий
-                      червоно-помаранчевий колір, менші за розміром, ніж у горбуші,
-                      та щільніші на дотик.
+                      Ікра форелі — це гармонія смаку, кольору й текстури у
+                      доступному та якісному виконанні. Ікринки мають глибокий
+                      червоно-помаранчевий колір, менші за розміром, ніж у
+                      горбуші, та щільніші на дотик.
                     </p>
                     <p>
                       Насичений смак із легкою солоністю робить її ідеальною для
                       канапок, тарталеток і закусок.
                     </p>
                     <p
-                      className="
-                        whitespace-pre-line
-                        opacity-60
-                      "
-                      style={{
-                        fontSize: "15px",
-                      }}
+                      className="whitespace-pre-line opacity-60"
+                      style={{ fontSize: "15px" }}
                     >
                       Ікра форелі{"\n"}
                       Упаковка — вак./склобанка, 100 г{"\n"}
@@ -191,13 +155,7 @@ export default function Product() {
               </div>
 
               {/* 2. IMAGES */}
-              <div
-                className="
-                  order-2
-                  tablet:order-1
-                  w-full
-                "
-              >
+              <div className="order-2 tablet:order-1 w-full">
                 <div
                   className="
                     w-full
@@ -262,35 +220,16 @@ export default function Product() {
               </div>
 
               {/* 3. MOBILE CONTENT */}
-              <div
-                className="
-                  order-3
-                  tablet:hidden
-                  flex
-                  flex-col
-                "
-              >
-                <div
-                  className="
-                    w-full
-                    flex
-                    justify-center
-                    text-center
-                  "
-                >
-                  <div
-                    className="
-                      w-full
-                      max-w-[450px]
-                    "
-                  >
+              <div className="order-3 tablet:hidden flex flex-col">
+                <div className="w-full flex justify-center text-center">
+                  <div className="w-full max-w-[450px]">
                     <OrderVolumeGrid packages={product.packages} />
                   </div>
                 </div>
 
                 <div
                   className="
-                    mt-[40px]
+                    mt-[80px]
                     flex
                     flex-col
                     gap-[20px]
@@ -299,15 +238,13 @@ export default function Product() {
                     text-left
                     items-start
                   "
-                  style={{
-                    fontSize: "var(--body-font-size)",
-                  }}
+                  style={{ fontSize: "var(--body-font-size)" }}
                 >
                   <p>
-                    Ікра форелі — це гармонія смаку, кольору й текстури у доступному
-                    та якісному виконанні. Ікринки мають глибокий
-                    червоно-помаранчевий колір, менші за розміром, ніж у горбуші,
-                    та щільніші на дотик.
+                    Ікра форелі — це гармонія смаку, кольору й текстури у
+                    доступному та якісному виконанні. Ікринки мають глибокий
+                    червоно-помаранчевий колір, менші за розміром, ніж у
+                    горбуші, та щільніші на дотик.
                   </p>
                   <p>
                     Насичений смак із легкою солоністю робить її ідеальною для
@@ -315,13 +252,8 @@ export default function Product() {
                     не розтікається та приємно хрумтить.
                   </p>
                   <p
-                    className="
-                      whitespace-pre-line
-                      opacity-60
-                    "
-                    style={{
-                      fontSize: "15px",
-                    }}
+                    className="whitespace-pre-line opacity-60"
+                    style={{ fontSize: "15px" }}
                   >
                     Ікра форелі{"\n"}
                     Упаковка — вак./склобанка, 100 г{"\n"}
@@ -335,25 +267,11 @@ export default function Product() {
         </section>
 
         {/* ===== WHOLESALE FORM ===== */}
-        <section
-          id="wholesale-form"
-          className="scroll-mt-[50px]"
-        >
-          <div
-            className="
-              w-full
-              flex
-              justify-center
-            "
-          >
+        <section id="wholesale-form" className="scroll-mt-[50px]">
+          <div className="w-full flex justify-center">
             <div
-              className="
-                w-full
-                px-layout-gap
-              "
-              style={{
-                maxWidth: "var(--content-max-width)",
-              }}
+              className="w-full px-layout-gap"
+              style={{ maxWidth: "var(--content-max-width)" }}
             >
               <WholesaleForm />
             </div>

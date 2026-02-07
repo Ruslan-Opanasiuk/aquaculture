@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import OrderVolumeItem from "./OrderVolumeItem";
+import OrderSummary from "./OrderSummary";
 
 export default function OrderVolumeGrid({
   packages,
@@ -81,8 +82,10 @@ export default function OrderVolumeGrid({
   ]);
 
   const updateQuantity = (index, value) => {
+    const numericValue = Math.max(0, Number(value) || 0);
+
     setQuantities((prev) =>
-      prev.map((v, i) => (i === index ? value : v))
+      prev.map((v, i) => (i === index ? numericValue : v))
     );
   };
 
@@ -90,12 +93,32 @@ export default function OrderVolumeGrid({
     packages.length % layout.columns === 0;
 
   return (
-    <div ref={ref}>
+    <div
+      ref={ref}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center", // ⬅️ центр усього блоку
+      }}
+    >
+      {/* SECTION TITLE */}
+      <div
+        style={{
+          fontSize: "var(--body-font-size)",
+          textAlign: "center",
+          marginBottom: 24,
+        }}
+      >
+        СКЛАДІТЬ СВІЙ НАБІР
+      </div>
+
+      {/* GRID */}
       <div
         style={{
           display: "grid",
           gridTemplateColumns: `repeat(${layout.columns}, ${layout.size}px)`,
           gap,
+          justifyContent: "center", // ⬅️ грід по центру
         }}
       >
         {packages.map((pkg, index) => (
@@ -112,14 +135,16 @@ export default function OrderVolumeGrid({
             onDecrement={() =>
               updateQuantity(
                 index,
-                Math.max(0, quantities[index] - 1)
+                quantities[index] - 1
               )
             }
-            onChange={(val) => updateQuantity(index, val)}
+            onChange={(val) =>
+              updateQuantity(index, val)
+            }
           />
         ))}
 
-        {/* Текстовий спец-блок / CTA */}
+        {/* WHOLESALE CTA */}
         <a
           href="#wholesale-form"
           onClick={() => {
@@ -127,9 +152,10 @@ export default function OrderVolumeGrid({
           }}
           aria-label="Перейти до гуртової анкети"
           style={{
-            backgroundColor: "#000",
-            color: "#fff",
+            backgroundColor: "#E9E5DB", // ⬅️ як фасовки
+            color: "#000",
             borderRadius: 20,
+            fontWeight: 600,
 
             display: "flex",
             alignItems: "center",
@@ -141,8 +167,6 @@ export default function OrderVolumeGrid({
             textDecoration: "none",
             cursor: "pointer",
 
-            transition: "background-color 0.2s ease",
-
             gridColumn: isFullRow
               ? `1 / span ${layout.columns}`
               : "span 1",
@@ -151,16 +175,16 @@ export default function OrderVolumeGrid({
               ? layout.size / 3
               : layout.size,
           }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = "#111";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = "#000";
-          }}
         >
           Ви — гуртовик?
         </a>
       </div>
+
+      {/* SUMMARY */}
+      <OrderSummary
+        packages={packages}
+        quantities={quantities}
+      />
     </div>
   );
 }

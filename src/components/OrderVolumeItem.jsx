@@ -13,6 +13,8 @@ export default function OrderVolumeItem({
   const buttonSize = Math.round(size * 0.3333);
   const borderColor = "#E9E5DB";
 
+  const isActive = Number(value) > 0;
+
   return (
     <div
       style={{
@@ -45,6 +47,11 @@ export default function OrderVolumeItem({
             userSelect: "none",
             pointerEvents: "none",
             display: "block",
+
+            /* 👇 ВАЖЛИВА ЛОГІКА */
+            filter: isActive ? "grayscale(0)" : "grayscale(1)",
+            opacity: isActive ? 1 : 0.5,
+            transition: "filter 0.25s ease, opacity 0.25s ease",
           }}
         />
 
@@ -66,7 +73,7 @@ export default function OrderVolumeItem({
         </div>
       </div>
 
-      {/* ЦІНА — під фото, піднята на 10px */}
+      {/* ЦІНА — під фото */}
       <div
         style={{
           marginTop: -10,
@@ -79,7 +86,7 @@ export default function OrderVolumeItem({
         {price} ₴
       </div>
 
-      {/* НИЗ — КНОПКИ (ЖОРСТКО ЗАКРІПЛЕНІ ДО НИЗУ) */}
+      {/* НИЗ — КНОПКИ */}
       <div
         style={{
           position: "absolute",
