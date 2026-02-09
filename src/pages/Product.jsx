@@ -9,34 +9,51 @@ import productImage2 from "../assets/images/product2.png";
 
 import { caviarCatalog } from "../data/caviarPackages";
 
+// Простий компонент Лоадера (можна винести в окремий файл)
+const FullScreenLoader = () => (
+  <div className="fixed inset-0 bg-[#F5F1E7] z-50 flex items-center justify-center">
+    <div className="w-12 h-12 border-4 border-black/10 border-t-black rounded-full animate-spin"></div>
+  </div>
+);
+
 export default function Product() {
   const product = caviarCatalog.trout;
-
+  
+  // 1. Починаємо зі стану завантаження = true
+  const [isLoading, setIsLoading] = useState(true);
   const [animate, setAnimate] = useState(false);
-  const [isReady, setIsReady] = useState(false);
 
-  /* ⬇️ ЧЕКАЄМО, ПОКИ СТОРІНКА ПОВНІСТЮ ЗАВАНТАЖИТЬСЯ */
   useEffect(() => {
-    const onLoad = () => setIsReady(true);
+    // Список картинок, які критичні для першого екрану
+    const imagesToLoad = [productImage1, productImage2];
 
-    if (document.readyState === "complete") {
-      setIsReady(true);
-    } else {
-      window.addEventListener("load", onLoad);
-      return () => window.removeEventListener("load", onLoad);
-    }
+    const loadImage = (src) => {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.src = src;
+        // Успіх або помилка - все одно завершуємо проміс, щоб сайт не завис навічно
+        img.onload = () => resolve(true);
+        img.onerror = () => resolve(false);
+      });
+    };
+
+    // 2. Чекаємо поки завантажаться ВСІ картинки
+    Promise.all(imagesToLoad.map(loadImage))
+      .then(() => {
+        // Коли все завантажилось:
+        setIsLoading(false);
+        
+        // 3. Даємо браузеру мить на відмальовку (50-100мс) і запускаємо анімацію
+        setTimeout(() => {
+          setAnimate(true);
+        }, 100);
+      });
   }, []);
 
-  /* ⬇️ АНІМАЦІЯ СТАРТУЄ ТІЛЬКИ ПІСЛЯ ГОТОВНОСТІ */
-  useEffect(() => {
-    if (!isReady) return;
-
-    const t = setTimeout(() => {
-      setAnimate(true);
-    }, 200);
-
-    return () => clearTimeout(t);
-  }, [isReady]);
+  // 4. Поки вантажиться - показуємо лоадер або пустий екран
+  if (isLoading) {
+    return <FullScreenLoader />;
+  }
 
   return (
     <div
@@ -46,6 +63,7 @@ export default function Product() {
         flex
         flex-col
         font-['Montserrat']
+        animate-fadeIn // Можна додати плавну появу сторінки
       "
     >
       <Header />
@@ -79,7 +97,7 @@ export default function Product() {
                 gap-y-[40px]
               "
             >
-              {/* 1. TOP TEXT */}
+              {/* 1. TOP TEXT — ALWAYS CENTERED */}
               <div
                 className="
                   order-1
@@ -122,7 +140,14 @@ export default function Product() {
                 </p>
 
                 {/* DESKTOP ONLY */}
-                <div className="hidden tablet:flex flex-col w-full">
+                <div
+                  className="
+                    hidden
+                    tablet:flex
+                    flex-col
+                    w-full
+                  "
+                >
                   <div className="mt-[56px] mx-[-10px] tablet:mx-0">
                     <OrderVolumeGrid packages={product.packages} />
                   </div>
@@ -175,7 +200,7 @@ export default function Product() {
                     py-[20%]
                   "
                 >
-                  {/* layout placeholder */}
+                  {/* Статична картинка для збереження розміру блоку */}
                   <img
                     src={productImage1}
                     alt=""
@@ -189,6 +214,7 @@ export default function Product() {
                     aria-hidden="true"
                   />
 
+                  {/* Кришка */}
                   <img
                     src={productImage2}
                     alt="Кришка"
@@ -208,6 +234,7 @@ export default function Product() {
                     `}
                   />
 
+                  {/* Банка */}
                   <img
                     src={productImage1}
                     alt="Банка"
