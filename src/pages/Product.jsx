@@ -1,5 +1,3 @@
-// src/pages/Product.jsx
-
 import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -13,14 +11,32 @@ import { caviarCatalog } from "../data/caviarPackages";
 
 export default function Product() {
   const product = caviarCatalog.trout;
-  const [animate, setAnimate] = useState(false);
 
+  const [animate, setAnimate] = useState(false);
+  const [isReady, setIsReady] = useState(false);
+
+  /* ⬇️ ЧЕКАЄМО, ПОКИ СТОРІНКА ПОВНІСТЮ ЗАВАНТАЖИТЬСЯ */
   useEffect(() => {
+    const onLoad = () => setIsReady(true);
+
+    if (document.readyState === "complete") {
+      setIsReady(true);
+    } else {
+      window.addEventListener("load", onLoad);
+      return () => window.removeEventListener("load", onLoad);
+    }
+  }, []);
+
+  /* ⬇️ АНІМАЦІЯ СТАРТУЄ ТІЛЬКИ ПІСЛЯ ГОТОВНОСТІ */
+  useEffect(() => {
+    if (!isReady) return;
+
     const t = setTimeout(() => {
       setAnimate(true);
     }, 200);
+
     return () => clearTimeout(t);
-  }, []);
+  }, [isReady]);
 
   return (
     <div
@@ -63,7 +79,7 @@ export default function Product() {
                 gap-y-[40px]
               "
             >
-              {/* 1. TOP TEXT — ALWAYS CENTERED */}
+              {/* 1. TOP TEXT */}
               <div
                 className="
                   order-1
@@ -106,14 +122,7 @@ export default function Product() {
                 </p>
 
                 {/* DESKTOP ONLY */}
-                <div
-                  className="
-                    hidden
-                    tablet:flex
-                    flex-col
-                    w-full
-                  "
-                >
+                <div className="hidden tablet:flex flex-col w-full">
                   <div className="mt-[56px] mx-[-10px] tablet:mx-0">
                     <OrderVolumeGrid packages={product.packages} />
                   </div>
@@ -166,6 +175,7 @@ export default function Product() {
                     py-[20%]
                   "
                 >
+                  {/* layout placeholder */}
                   <img
                     src={productImage1}
                     alt=""
