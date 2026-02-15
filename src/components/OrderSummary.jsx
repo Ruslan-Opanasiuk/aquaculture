@@ -2,15 +2,31 @@
 
 import { useMemo } from "react";
 
-export default function OrderSummary({ packages, quantities }) {
+function ArrowIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+      <path
+        d="M9 18l6-6-6-6"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+export default function OrderSummary({
+  packages,
+  quantities,
+  onAddToCart,
+}) {
   const { totalGrams, totalPrice } = useMemo(() => {
     return packages.reduce(
       (acc, pkg, index) => {
         const qty = Number(quantities[index] || 0);
-
         acc.totalGrams += qty * pkg.grams;
         acc.totalPrice += qty * pkg.price;
-
         return acc;
       },
       { totalGrams: 0, totalPrice: 0 }
@@ -20,241 +36,198 @@ export default function OrderSummary({ packages, quantities }) {
   const totalKg = totalGrams / 1000;
   const formattedKg = totalKg.toFixed(2);
   const formattedPrice = new Intl.NumberFormat("uk-UA").format(totalPrice);
-
   const hasSelection = totalKg > 0;
 
-  /* ========= BREAKPOINT CONFIG ========= */
-
+  /* ================= PROGRESS BAR LOGIC ================= */
   const breakpoints = [3, 6, 12, 24];
   const discountPerBreakpoint = 7;
   const maxDiscount = breakpoints.length * discountPerBreakpoint;
-
   const segmentCount = breakpoints.length + 1;
   const segmentWidth = 100 / segmentCount;
 
-  /* ========= HYBRID PROGRESS ========= */
-
   let progressPercent = 0;
-
   if (totalKg > 0) {
     let prev = 0;
-
     for (let i = 0; i < breakpoints.length; i++) {
       const bp = breakpoints[i];
-
       if (totalKg < bp) {
-        const segmentProgress =
-          (totalKg - prev) / (bp - prev);
-
-        progressPercent =
-          i * segmentWidth +
-          segmentProgress * segmentWidth;
+        const segmentProgress = (totalKg - prev) / (bp - prev);
+        progressPercent = i * segmentWidth + segmentProgress * segmentWidth;
         break;
       }
-
       prev = bp;
-
       if (i === breakpoints.length - 1) {
-        progressPercent = segmentCount * segmentWidth;
+        progressPercent = 100;
       }
     }
   }
 
-  /* ========= DISCOUNT INFO ========= */
-
-  const achievedBreakpoints = breakpoints.filter(
-    (bp) => totalKg >= bp
-  ).length;
-
-  const currentDiscount =
-    achievedBreakpoints * discountPerBreakpoint;
-
-  const nextBreakpoint = breakpoints.find(
-    (bp) => bp > totalKg
-  );
-
-  const remainingKg =
-    nextBreakpoint !== undefined
-      ? (nextBreakpoint - totalKg).toFixed(2)
-      : null;
-
+  const achievedBreakpoints = breakpoints.filter((bp) => totalKg >= bp).length;
+  const currentDiscount = achievedBreakpoints * discountPerBreakpoint;
+  const nextBreakpoint = breakpoints.find((bp) => bp > totalKg);
+  const remainingKg = nextBreakpoint !== undefined ? (nextBreakpoint - totalKg).toFixed(2) : null;
   const isMaxDiscount = remainingKg === null;
+  const nextLegendKg = breakpoints.find((bp) => totalKg < bp);
 
-  /* ========= LEGEND LOGIC ========= */
-
-  const nextLegendKg = breakpoints.find(
-    (bp) => totalKg < bp
-  );
-
-  /* =================================== */
+  /* ================= HANDLERS ================= */
+  const handleClick = () => {
+    if (!hasSelection) return;
+    if (typeof onAddToCart === "function") {
+      onAddToCart();
+    }
+  };
 
   return (
     <div
       style={{
         marginTop: 40,
-        fontFamily: "Montserrat",
-        color: "rgba(0,0,0,0.85)",
+        fontFamily: "Montserrat, sans-serif",
+        color: "#262626", // Статичний темний замість rgba(0,0,0,0.85)
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         textAlign: "center",
+        width: "100%",
+        WebkitFontSmoothing: "antialiased",
+        MozOsxFontSmoothing: "grayscale",
       }}
     >
       {/* TOTAL WEIGHT */}
-      <div
-        style={{
-          fontSize: "var(--body-font-size)",
-          fontWeight: 400,
-          marginBottom: 56,
-        }}
-      >
-        Загальний обʼєм:{" "}
+      <div style={{ fontSize: "var(--body-font-size)", fontWeight: 400, marginBottom: 56 }}>
+        Загальний обʼєм{" "}
         <span style={{ fontSize: "var(--h3-font-size)", fontWeight: 600 }}>
           {formattedKg} кг
         </span>
       </div>
 
       {/* BREAKPOINT BAR */}
-      <div
-        style={{
-          width: "100%",
-          maxWidth: 400,
-          position: "relative",
-        }}
-      >
-        {/* BASE BAR */}
-        <div
-          style={{
-            height: 8,
-            width: "100%",
-            backgroundColor: "#E9E5DB",
-            borderRadius: 4,
-            overflow: "hidden",
-          }}
-        >
-          {/* FILLED BAR */}
+      <div style={{ width: "100%", maxWidth: 400, position: "relative", marginBottom: 24 }}>
+        <div style={{ height: 8, width: "100%", backgroundColor: "#E9E5DB", borderRadius: 4, overflow: "hidden" }}>
           <div
             style={{
               height: "100%",
               width: `${progressPercent}%`,
               backgroundColor: "#DAC284",
-              transition: "width 0.35s ease",
+              transition: "width 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
             }}
           />
         </div>
 
-        {/* LABELS */}
+        {/* Labels & Dots */}
         {breakpoints.map((kg, index) => {
           const isCompleted = totalKg >= kg;
-          const isNext = nextLegendKg === kg;
-          const isActive = isCompleted || isNext;
+          const isActive = isCompleted || nextLegendKg === kg;
+          const position = ((index + 1) / segmentCount) * 100;
 
           return (
-            <div
-              key={kg}
-              style={{
-                position: "absolute",
-                bottom: 18,
-                left: `${((index + 1) / segmentCount) * 100}%`,
-                transform: "translateX(-50%)",
-                fontSize: "var(--body-font-size)",
-                fontWeight: 600,
-                whiteSpace: "nowrap",
-                color: isActive
-                  ? "rgba(0,0,0,0.85)"
-                  : "rgba(0,0,0,0.5)",
-              }}
-            >
-              {kg} кг
+            <div key={kg}>
+              {/* Text Label */}
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: 18,
+                  left: `${position}%`,
+                  transform: "translateX(-50%)",
+                  fontSize: "var(--body-font-size)",
+                  fontWeight: 600,
+                  whiteSpace: "nowrap",
+                  // ВИКОРИСТОВУЄМО HEX ЗАМІСТЬ RGBA ДЛЯ МОБІЛОК
+                  color: isActive ? "#262626" : "#B8B5AD", 
+                  transition: "color 0.3s ease",
+                }}
+              >
+                {kg} кг
+              </div>
+              {/* Dot */}
+              <div
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  left: `${position}%`,
+                  transform: "translate(-50%, -50%)",
+                  width: 18,
+                  height: 18,
+                  borderRadius: "50%",
+                  backgroundColor: "#F5F1E7",
+                  border: `4px solid ${isCompleted ? "#DAC284" : "#E9E5DB"}`,
+                  transition: "all 0.3s ease",
+                  zIndex: 2,
+                }}
+              />
             </div>
-          );
-        })}
-
-        {/* DOTS */}
-        {breakpoints.map((kg, index) => {
-          const isActive = totalKg >= kg;
-
-          return (
-            <div
-              key={kg}
-              style={{
-                position: "absolute",
-                top: "50%",
-                left: `${((index + 1) / segmentCount) * 100}%`,
-                transform: "translate(-50%, -50%)",
-                width: 20,
-                height: 20,
-                borderRadius: "50%",
-                backgroundColor: "#F5F1E7",
-                boxSizing: "border-box",
-                border: `4px solid ${
-                  isActive ? "#DAC284" : "#E9E5DB"
-                }`,
-                transition: "border-color 0.3s ease",
-              }}
-            />
           );
         })}
       </div>
 
       {/* DISCOUNT MESSAGE */}
-      <div
-        style={{
-          marginTop: 16,
-          fontSize: "var(--body-font-size)",
-          fontWeight: 400,
-          marginBottom: 48,
-        }}
-      >
-        {isMaxDiscount ? (
-          <>
-            Максимальну знижку{" "}
-            <span style={{ fontWeight: 600 }}>
-              {maxDiscount}%
-            </span>{" "}
-            на весь кошик досягнуто
-          </>
+      <div style={{ fontSize: "var(--body-font-size)", fontWeight: 400, marginBottom: 48, minHeight: "1.5em" }}>
+        {totalKg === 0 ? (
+          <span style={{ color: "#999999" }}>Оберіть фасовку для отримання знижки</span>
+        ) : isMaxDiscount ? (
+          <>Максимальну знижку <span style={{ fontWeight: 600 }}>{maxDiscount}%</span> досягнуто</>
         ) : (
-          <>
-            До знижки{" "}
-            <span style={{ fontWeight: 600 }}>
-              {currentDiscount + discountPerBreakpoint}%
-            </span>{" "}
-            на весь кошик залишилось:{" "}
-            <span style={{ fontWeight: 600 }}>
-              {remainingKg} кг
-            </span>
-          </>
+          <>До знижки <span style={{ fontWeight: 600 }}>{currentDiscount + discountPerBreakpoint}%</span> залишилось <span style={{ fontWeight: 600 }}>{remainingKg} кг</span></>
         )}
       </div>
 
       {/* TOTAL PRICE */}
-      <div
-        style={{
-          fontSize: "var(--body-font-size)",
-          fontWeight: 400,
-          marginBottom: 32,
-        }}
-      >
-        Загальна сума:{" "}
+      <div style={{ fontSize: "var(--body-font-size)", fontWeight: 400, marginBottom: 32 }}>
+        Загальна сума{" "}
         <span style={{ fontSize: "var(--h3-font-size)", fontWeight: 600 }}>
           {formattedPrice} ₴
         </span>
       </div>
 
-      {/* ADD TO CART */}
-      <div
-        style={{
-          fontSize: "var(--body-font-size)",
-          fontWeight: 600,
-          color: hasSelection
-            ? "rgba(0,0,0,0.85)"
-            : "rgba(0,0,0,0.4)",
-          transition: "color 0.2s ease",
-        }}
-      >
-        ДОДАТИ В КОШИК
-      </div>
+      {/* ADD TO CART BUTTON */}
+{/* ADD TO CART BUTTON */}
+<div
+  onClick={handleClick}
+  className={`
+    flex items-center gap-4 select-none transition-all duration-300
+    /* Прибираємо opacity-50, щоб кольори були чесними, 
+       керуємо "неактивністю" через самі кольори */
+    ${hasSelection ? "group cursor-pointer scale-100" : "pointer-events-none"}
+  `}
+>
+  <button
+    type="button"
+    className={`
+      w-[44px] h-[44px]
+      rounded-full
+      flex items-center justify-center
+      border-[2px]
+      transition-all duration-200
+      ${
+        hasSelection
+          ? `
+              border-black
+              bg-black text-[#F5F1E7]
+              lg:bg-transparent lg:text-black lg:group-hover:bg-black lg:group-hover:text-[#F5F1E7]
+              active:scale-90
+            `
+          : `
+              /* Тепер колір обводки точно збігається з текстом */
+              border-[#B8B5AD] 
+              text-[#B8B5AD] 
+              bg-transparent
+            `
+      }
+    `}
+  >
+    <ArrowIcon className="w-6 h-6" />
+  </button>
+
+  <span
+    className={`
+      font-semibold tracking-wider
+      transition-colors duration-200
+      ${hasSelection ? "text-[#262626]" : "text-[#B8B5AD]"}
+    `}
+    style={{ fontSize: "var(--body-font-size)" }}
+  >
+    ДОДАТИ В КОШИК
+  </span>
+</div>
     </div>
   );
 }

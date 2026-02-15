@@ -10,6 +10,10 @@ function App() {
       
       <Routes>
         <Route path="/" element={<Catalog />} />
+        
+        <Route path="/product/:productId" element={<Product />} />
+
+        {/* Запасний маршрут (якщо хтось введе просто /product, відкриється дефолтний) */}
         <Route path="/product" element={<Product />} />
       </Routes>
     </>

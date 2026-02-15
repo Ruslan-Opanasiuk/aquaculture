@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom"; // Хуки роутера
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import OrderVolumeGrid from "../components/OrderVolumeGrid";
 import WholesaleForm from "../components/WholesaleForm/WholesaleForm";
 
-import productImage1 from "../assets/images/product1.png";
-import productImage2 from "../assets/images/product2.png";
-
+// Імпорт словника даних
 import { caviarCatalog } from "../data/caviarPackages";
 
-// Простий компонент Лоадера (можна винести в окремий файл)
 const FullScreenLoader = () => (
   <div className="fixed inset-0 bg-[#F5F1E7] z-50 flex items-center justify-center">
     <div className="w-12 h-12 border-4 border-black/10 border-t-black rounded-full animate-spin"></div>
@@ -17,246 +15,131 @@ const FullScreenLoader = () => (
 );
 
 export default function Product() {
-  const product = caviarCatalog.trout;
-  
-  // 1. Починаємо зі стану завантаження = true
+  // 1. Отримуємо ID з адреси (наприклад, "trout")
+  const { productId } = useParams(); 
+  const navigate = useNavigate();
+
+  // 2. Знаходимо потрібний продукт у базі
+  // Якщо productId undefined (наприклад, просто /product), пробуємо дефолтний 'trout' або null
+  const productKey = productId || 'trout'; 
+  const product = caviarCatalog[productKey];
+
   const [isLoading, setIsLoading] = useState(true);
   const [animate, setAnimate] = useState(false);
 
+  // Якщо продукту немає в базі — редірект на головну
   useEffect(() => {
-    // Список картинок, які критичні для першого екрану
-    const imagesToLoad = [productImage1, productImage2];
+    if (!product) {
+      navigate("/");
+    }
+  }, [product, navigate]);
+
+  // Скидаємо анімацію при зміні продукту
+  useEffect(() => {
+    setIsLoading(true);
+    setAnimate(false);
+  }, [productKey]);
+
+  // Завантаження картинок
+  useEffect(() => {
+    if (!product) return;
+
+    const imagesToLoad = [product.images.jar, product.images.lid];
 
     const loadImage = (src) => {
       return new Promise((resolve) => {
         const img = new Image();
         img.src = src;
-        // Успіх або помилка - все одно завершуємо проміс, щоб сайт не завис навічно
         img.onload = () => resolve(true);
         img.onerror = () => resolve(false);
       });
     };
 
-    // 2. Чекаємо поки завантажаться ВСІ картинки
-    Promise.all(imagesToLoad.map(loadImage))
-      .then(() => {
-        // Коли все завантажилось:
-        setIsLoading(false);
-        
-        // 3. Даємо браузеру мить на відмальовку (50-100мс) і запускаємо анімацію
-        setTimeout(() => {
-          setAnimate(true);
-        }, 100);
-      });
-  }, []);
+    Promise.all(imagesToLoad.map(loadImage)).then(() => {
+      setIsLoading(false);
+      setTimeout(() => {
+        setAnimate(true);
+      }, 100);
+    });
+  }, [product]);
 
-  // 4. Поки вантажиться - показуємо лоадер або пустий екран
-  if (isLoading) {
-    return <FullScreenLoader />;
-  }
+  if (!product) return null;
+  if (isLoading) return <FullScreenLoader />;
 
   return (
-    <div
-      className="
-        bg-[#F5F1E7]
-        min-h-screen
-        flex
-        flex-col
-        font-['Montserrat']
-        animate-fadeIn // Можна додати плавну появу сторінки
-      "
-    >
+    <div className="bg-[#F5F1E7] min-h-screen flex flex-col font-['Montserrat'] animate-fadeIn">
       <Header />
 
-      <main
-        className="
-          bg-[#F5F1E7]
-          flex-1
-          pt-[32px]
-          pb-[120px]
-          flex
-          flex-col
-          gap-[100px]
-          tablet:gap-[160px]
-        "
-      >
+      <main className="bg-[#F5F1E7] flex-1 pt-[32px] pb-[120px] flex flex-col gap-[100px] tablet:gap-[160px]">
         {/* ===== HERO / PRODUCT SECTION ===== */}
         <section className="w-full flex justify-center">
-          <div
-            className="w-full px-layout-gap"
-            style={{ maxWidth: "var(--content-max-width)" }}
-          >
-            <div
-              className="
-                flex
-                flex-col
-                tablet:grid
-                tablet:grid-cols-2
-                mt-[60px]
-                tablet:mt-[100px]
-                gap-y-[40px]
-              "
-            >
-              {/* 1. TOP TEXT — ALWAYS CENTERED */}
-              <div
-                className="
-                  order-1
-                  tablet:order-2
-                  flex
-                  flex-col
-                  items-center
-                  text-center
-                "
-              >
-                <span
-                  className="
-                    uppercase
-                    tracking-[0.12em]
-                    text-black/50
-                  "
-                  style={{ fontSize: "13px" }}
-                >
-                  Аквакультура
+          <div className="w-full px-layout-gap" style={{ maxWidth: "var(--content-max-width)" }}>
+            <div className="flex flex-col tablet:grid tablet:grid-cols-2 mt-[60px] tablet:mt-[100px] gap-y-[40px]">
+              
+              {/* 1. TEXT INFO */}
+              <div className="order-1 tablet:order-2 flex flex-col items-center text-center">
+                <span className="uppercase tracking-[0.12em] text-black/50" style={{ fontSize: "13px" }}>
+                  {product.subtitle}
                 </span>
 
-                <h1
-                  className="font-semibold leading-[1.1]"
-                  style={{ fontSize: "var(--h2-font-size)" }}
-                >
-                  Форель
+                <h1 className="font-semibold leading-[1.1]" style={{ fontSize: "var(--h2-font-size)" }}>
+                  {product.title}
                 </h1>
 
-                <p
-                  className="
-                    mt-[20px]
-                    tablet:mt-[16px]
-                    leading-[1.6]
-                    text-black/80
-                    max-w-[400px]
-                  "
-                  style={{ fontSize: "var(--body-font-size)" }}
-                >
-                  Ніжна, збалансована та яскрава за смаком.
+                <p className="mt-[20px] tablet:mt-[16px] leading-[1.6] text-black/80 max-w-[400px]" style={{ fontSize: "var(--body-font-size)" }}>
+                  {product.shortDescription}
                 </p>
 
-                {/* DESKTOP ONLY */}
-                <div
-                  className="
-                    hidden
-                    tablet:flex
-                    flex-col
-                    w-full
-                  "
-                >
+                {/* DESKTOP DETAILS */}
+                <div className="hidden tablet:flex flex-col w-full">
                   <div className="mt-[56px] mx-[-10px] tablet:mx-0">
                     <OrderVolumeGrid packages={product.packages} />
                   </div>
 
-                  <div
-                    className="
-                      mt-[80px]
-                      flex
-                      flex-col
-                      gap-[20px]
-                      leading-[1.6]
-                      text-black/80
-                      text-left
-                    "
-                    style={{ fontSize: "var(--body-font-size)" }}
-                  >
-                    <p>
-                      Ікра форелі — це гармонія смаку, кольору й текстури у
-                      доступному та якісному виконанні. Ікринки мають глибокий
-                      червоно-помаранчевий колір, менші за розміром, ніж у
-                      горбуші, та щільніші на дотик.
-                    </p>
-                    <p>
-                      Насичений смак із легкою солоністю робить її ідеальною для
-                      канапок, тарталеток і закусок.
-                    </p>
-                    <p
-                      className="whitespace-pre-line opacity-60"
-                      style={{ fontSize: "15px" }}
-                    >
-                      Ікра форелі{"\n"}
-                      Упаковка — вак./склобанка, 100 г{"\n"}
-                      Виробник — ПП СВ-ІМПЕКС КО{"\n"}
-                      Термін зберігання — 12 міс.{"\n"}
-                      Без ГМО, HACCP
+                  <div className="mt-[80px] flex flex-col gap-[20px] leading-[1.6] text-black/80 text-left" style={{ fontSize: "var(--body-font-size)" }}>
+                    {/* Вивід абзаців */}
+                    {product.longDescription.map((paragraph, idx) => (
+                      <p key={idx}>{paragraph}</p>
+                    ))}
+                    
+                    <p className="whitespace-pre-line opacity-60" style={{ fontSize: "15px" }}>
+                      {product.specs}
                     </p>
                   </div>
                 </div>
               </div>
 
-              {/* 2. IMAGES */}
+              {/* 2. IMAGES (ANIMATION) */}
               <div className="order-2 tablet:order-1 w-full">
-                <div
-                  className="
-                    w-full
-                    relative
-                    flex
-                    justify-center
-                    items-center
-                    py-[20%]
-                  "
-                >
-                  {/* Статична картинка для збереження розміру блоку */}
-                  <img
-                    src={productImage1}
-                    alt=""
-                    className="
-                      w-[80%]
-                      h-auto
-                      opacity-0
-                      pointer-events-none
-                      select-none
-                    "
-                    aria-hidden="true"
-                  />
+                <div className="w-full relative flex justify-center items-center py-[20%]">
+                  {/* Placeholder for sizing */}
+                  <img src={product.images.jar} alt="" className="w-[80%] h-auto opacity-0 pointer-events-none select-none" />
 
-                  {/* Кришка */}
+                  {/* Lid */}
                   <img
-                    src={productImage2}
+                    src={product.images.lid}
                     alt="Кришка"
                     className={`
-                      absolute
-                      top-1/2
-                      left-1/2
-                      -translate-x-1/2
-                      w-[80%]
-                      h-auto
-                      object-contain
-                      z-[20]
-                      transition-transform
-                      duration-[1200ms]
-                      ease-[cubic-bezier(0.22,1,0.36,1)]
+                      absolute top-1/2 left-1/2 -translate-x-1/2 w-[80%] h-auto object-contain z-[20]
+                      transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)]
                       ${animate ? "-translate-y-[75%]" : "-translate-y-1/2"}
                     `}
                   />
 
-                  {/* Банка */}
+                  {/* Jar */}
                   <img
-                    src={productImage1}
+                    src={product.images.jar}
                     alt="Банка"
                     className={`
-                      absolute
-                      top-1/2
-                      left-1/2
-                      -translate-x-1/2
-                      w-[80%]
-                      h-auto
-                      object-contain
-                      z-[10]
-                      transition-transform
-                      duration-[1200ms]
-                      ease-[cubic-bezier(0.22,1,0.36,1)]
+                      absolute top-1/2 left-1/2 -translate-x-1/2 w-[80%] h-auto object-contain z-[10]
+                      transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)]
                       ${animate ? "translate-y-[-25%]" : "-translate-y-1/2"}
                     `}
                   />
                 </div>
               </div>
 
-              {/* 3. MOBILE CONTENT */}
+              {/* 3. MOBILE DETAILS */}
               <div className="order-3 tablet:hidden flex flex-col">
                 <div className="w-full flex justify-center text-center">
                   <div className="w-full max-w-[450px]">
@@ -264,41 +147,16 @@ export default function Product() {
                   </div>
                 </div>
 
-                <div
-                  className="
-                    mt-[80px]
-                    flex
-                    flex-col
-                    gap-[20px]
-                    leading-[1.6]
-                    text-black/80
-                    text-left
-                    items-start
-                  "
-                  style={{ fontSize: "var(--body-font-size)" }}
-                >
-                  <p>
-                    Ікра форелі — це гармонія смаку, кольору й текстури у
-                    доступному та якісному виконанні. Ікринки мають глибокий
-                    червоно-помаранчевий колір, менші за розміром, ніж у
-                    горбуші, та щільніші на дотик.
-                  </p>
-                  <p>
-                    Насичений смак із легкою солоністю робить її ідеальною для
-                    канапок, тарталеток і закусок. Продукт добре тримає форму,
-                    не розтікається та приємно хрумтить.
-                  </p>
-                  <p
-                    className="whitespace-pre-line opacity-60"
-                    style={{ fontSize: "15px" }}
-                  >
-                    Ікра форелі{"\n"}
-                    Упаковка — вак./склобанка, 100 г{"\n"}
-                    Виробник — ПП СВ-ІМПЕКС КО{"\n"}
-                    Термін зберігання — 12 міс.
+                <div className="mt-[80px] flex flex-col gap-[20px] leading-[1.6] text-black/80 text-left items-start" style={{ fontSize: "var(--body-font-size)" }}>
+                  {product.longDescription.map((paragraph, idx) => (
+                    <p key={idx}>{paragraph}</p>
+                  ))}
+                  <p className="whitespace-pre-line opacity-60" style={{ fontSize: "15px" }}>
+                    {product.specs}
                   </p>
                 </div>
               </div>
+
             </div>
           </div>
         </section>
@@ -306,10 +164,7 @@ export default function Product() {
         {/* ===== WHOLESALE FORM ===== */}
         <section id="wholesale-form" className="scroll-mt-[50px]">
           <div className="w-full flex justify-center">
-            <div
-              className="w-full px-layout-gap"
-              style={{ maxWidth: "var(--content-max-width)" }}
-            >
+            <div className="w-full px-layout-gap" style={{ maxWidth: "var(--content-max-width)" }}>
               <WholesaleForm />
             </div>
           </div>
