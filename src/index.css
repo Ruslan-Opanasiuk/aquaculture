@@ -42,6 +42,11 @@
   --font-size-body-phone: 16px;
   --font-size-body-tablet: 16px;
   --font-size-body-desktop: 17px;
+
+  /* --- Body text SMALL (New) --- */
+  --font-size-body-small-phone: 14px;
+  --font-size-body-small-tablet: 14px;
+  --font-size-body-small-desktop: 15px;
 }
 
 /* ============================= */
@@ -54,7 +59,9 @@
   --h1-font-size: var(--font-size-h1-phone);
   --h2-font-size: var(--font-size-h2-phone);
   --h3-font-size: var(--font-size-h3-phone);
+  
   --body-font-size: var(--font-size-body-phone);
+  --body-small-font-size: var(--font-size-body-small-phone); /* 15px */
 
   /* Layout */
   --content-max-width: 100%;
@@ -66,7 +73,9 @@
     --h1-font-size: var(--font-size-h1-tablet);
     --h2-font-size: var(--font-size-h2-tablet);
     --h3-font-size: var(--font-size-h3-tablet);
+    
     --body-font-size: var(--font-size-body-tablet);
+    --body-small-font-size: var(--font-size-body-small-tablet); /* 14px */
 
     --content-max-width: var(--max-width-content-tablet);
   }
@@ -78,7 +87,9 @@
     --h1-font-size: var(--font-size-h1-desktop);
     --h2-font-size: var(--font-size-h2-desktop);
     --h3-font-size: var(--font-size-h3-desktop);
+    
     --body-font-size: var(--font-size-body-desktop);
+    --body-small-font-size: var(--font-size-body-small-desktop); /* 14px */
 
     --content-max-width: var(--max-width-content-desktop);
   }
