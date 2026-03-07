@@ -217,7 +217,7 @@ export default function Product() {
                 </div>
               </div>
 
-              {/* 3. MOBILE DETAILS */}
+              {/* 3. MOBILE DETAILS (HIDDEN ON DESKTOP) */}
               <div className="order-3 tablet:hidden flex flex-col">
                 <div className="w-full flex justify-center text-center">
                   <div className="w-full max-w-[450px]">
