@@ -1,6 +1,7 @@
 // src/components/OrderSummary.jsx
 
 import { useMemo } from "react";
+import { useCartStore } from "../store/cartStore"; // 👈 Імпортуємо наш магазин
 
 function ArrowIcon(props) {
   return (
@@ -21,22 +22,36 @@ export default function OrderSummary({
   quantities,
   onAddToCart,
 }) {
-  const { totalGrams, totalPrice } = useMemo(() => {
+  // 1. Дістаємо товари, які ВЖЕ лежать у глобальному кошику
+  const cartItems = useCartStore((state) => state.items);
+
+  // 2. Рахуємо вагу товарів у глобальному кошику
+  const cartTotalGrams = useMemo(() => {
+    return cartItems.reduce((acc, item) => acc + (item.grams * item.quantity), 0);
+  }, [cartItems]);
+
+  // 3. Рахуємо вагу і суму товарів, які обрані на екрані ПРЯМО ЗАРАЗ
+  const { localTotalGrams, localTotalPrice } = useMemo(() => {
     return packages.reduce(
       (acc, pkg, index) => {
         const qty = Number(quantities[index] || 0);
-        acc.totalGrams += qty * pkg.grams;
-        acc.totalPrice += qty * pkg.price;
+        acc.localTotalGrams += qty * pkg.grams;
+        acc.localTotalPrice += qty * pkg.price;
         return acc;
       },
-      { totalGrams: 0, totalPrice: 0 }
+      { localTotalGrams: 0, localTotalPrice: 0 }
     );
   }, [packages, quantities]);
 
-  const totalKg = totalGrams / 1000;
+  // 4. ФІНАЛЬНА ВАГА (Кошик + Екран) для шкали знижок
+  const grandTotalGrams = cartTotalGrams + localTotalGrams;
+  const totalKg = grandTotalGrams / 1000;
+  
   const formattedKg = totalKg.toFixed(2);
-  const formattedPrice = new Intl.NumberFormat("uk-UA").format(totalPrice);
-  const hasSelection = totalKg > 0;
+  const formattedPrice = new Intl.NumberFormat("uk-UA").format(localTotalPrice);
+  
+  // Кнопка активна тільки якщо користувач обрав щось нове на екрані
+  const hasSelection = localTotalGrams > 0;
 
   /* ================= PROGRESS BAR LOGIC ================= */
   const breakpoints = [3, 6, 12, 24];
@@ -79,20 +94,20 @@ export default function OrderSummary({
 
   return (
     <div
+      className="
+        flex flex-col w-full
+        items-center text-center          /* Mobile: Center */
+        tablet:items-start tablet:text-left /* Desktop: Left align */
+      "
       style={{
         marginTop: 40,
         fontFamily: "Montserrat, sans-serif",
-        color: "#262626", // Статичний темний замість rgba(0,0,0,0.85)
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        textAlign: "center",
-        width: "100%",
+        color: "#262626",
         WebkitFontSmoothing: "antialiased",
         MozOsxFontSmoothing: "grayscale",
       }}
     >
-      {/* TOTAL WEIGHT */}
+      {/* TOTAL WEIGHT (Тепер показує загальну вагу з урахуванням кошика) */}
       <div style={{ fontSize: "var(--body-font-size)", fontWeight: 400, marginBottom: 56 }}>
         Загальний обʼєм{" "}
         <span style={{ fontSize: "var(--h3-font-size)", fontWeight: 600 }}>
@@ -113,7 +128,6 @@ export default function OrderSummary({
           />
         </div>
 
-        {/* Labels & Dots */}
         {breakpoints.map((kg, index) => {
           const isCompleted = totalKg >= kg;
           const isActive = isCompleted || nextLegendKg === kg;
@@ -121,7 +135,6 @@ export default function OrderSummary({
 
           return (
             <div key={kg}>
-              {/* Text Label */}
               <div
                 style={{
                   position: "absolute",
@@ -131,14 +144,12 @@ export default function OrderSummary({
                   fontSize: "var(--body-font-size)",
                   fontWeight: 600,
                   whiteSpace: "nowrap",
-                  // ВИКОРИСТОВУЄМО HEX ЗАМІСТЬ RGBA ДЛЯ МОБІЛОК
                   color: isActive ? "#262626" : "#B8B5AD", 
                   transition: "color 0.3s ease",
                 }}
               >
                 {kg} кг
               </div>
-              {/* Dot */}
               <div
                 style={{
                   position: "absolute",
@@ -161,73 +172,67 @@ export default function OrderSummary({
 
       {/* DISCOUNT MESSAGE */}
       <div style={{ fontSize: "var(--body-font-size)", fontWeight: 400, marginBottom: 48, minHeight: "1.5em" }}>
-        {totalKg === 0 ? (
-          <span style={{ color: "#999999" }}>Оберіть фасовку для отримання знижки</span>
-        ) : isMaxDiscount ? (
+        {isMaxDiscount ? (
           <>Максимальну знижку <span style={{ fontWeight: 600 }}>{maxDiscount}%</span> досягнуто</>
         ) : (
           <>До знижки <span style={{ fontWeight: 600 }}>{currentDiscount + discountPerBreakpoint}%</span> залишилось <span style={{ fontWeight: 600 }}>{remainingKg} кг</span></>
         )}
       </div>
 
-      {/* TOTAL PRICE */}
+      {/* TOTAL PRICE (Показує ціну тільки за те, що додається зараз) */}
       <div style={{ fontSize: "var(--body-font-size)", fontWeight: 400, marginBottom: 32 }}>
-        Загальна сума{" "}
+        Сума додання{" "}
         <span style={{ fontSize: "var(--h3-font-size)", fontWeight: 600 }}>
           {formattedPrice} ₴
         </span>
       </div>
 
       {/* ADD TO CART BUTTON */}
-{/* ADD TO CART BUTTON */}
-<div
-  onClick={handleClick}
-  className={`
-    flex items-center gap-4 select-none transition-all duration-300
-    /* Прибираємо opacity-50, щоб кольори були чесними, 
-       керуємо "неактивністю" через самі кольори */
-    ${hasSelection ? "group cursor-pointer scale-100" : "pointer-events-none"}
-  `}
->
-  <button
-    type="button"
-    className={`
-      w-[44px] h-[44px]
-      rounded-full
-      flex items-center justify-center
-      border-[2px]
-      transition-all duration-200
-      ${
-        hasSelection
-          ? `
-              border-black
-              bg-black text-[#F5F1E7]
-              lg:bg-transparent lg:text-black lg:group-hover:bg-black lg:group-hover:text-[#F5F1E7]
-              active:scale-90
-            `
-          : `
-              /* Тепер колір обводки точно збігається з текстом */
-              border-[#B8B5AD] 
-              text-[#B8B5AD] 
-              bg-transparent
-            `
-      }
-    `}
-  >
-    <ArrowIcon className="w-6 h-6" />
-  </button>
+      <div
+        onClick={handleClick}
+        className={`
+          flex items-center gap-4 select-none transition-all duration-300
+          ${hasSelection ? "group cursor-pointer scale-100" : "pointer-events-none"}
+        `}
+      >
+        <button
+          type="button"
+          className={`
+            w-[36px] h-[36px]
+            rounded-full
+            flex items-center justify-center
+            border-[2px]
+            transition-all duration-200
+            ${
+              hasSelection
+                ? `
+                    border-black
+                    bg-black text-[#F5F1E7]
+                    lg:bg-transparent lg:text-black lg:group-hover:bg-black lg:group-hover:text-[#F5F1E7]
+                    active:scale-90
+                  `
+                : `
+                    border-[#B8B5AD] 
+                    text-[#B8B5AD] 
+                    bg-transparent
+                  `
+            }
+          `}
+        >
+          <ArrowIcon className="w-6 h-6" />
+        </button>
 
-  <span
-    className={`
-      font-semibold tracking-wider
-      transition-colors duration-200
-      ${hasSelection ? "text-[#262626]" : "text-[#B8B5AD]"}
-    `}
-    style={{ fontSize: "var(--body-font-size)" }}
-  >
-    ДОДАТИ В КОШИК
-  </span>
-</div>
+        <span
+          className={`
+            font-semibold tracking-wider
+            transition-colors duration-200
+            ${hasSelection ? "text-[#262626]" : "text-[#B8B5AD]"}
+          `}
+          style={{ fontSize: "var(--body-font-size)" }}
+        >
+          ДОДАТИ В КОШИК
+        </span>
+      </div>
     </div>
   );
 }

@@ -1,36 +1,42 @@
 // src/components/Header.jsx
+import { Link } from "react-router-dom";
 import logoPng from "../assets/images/logo.png";
 import searchPng from "../assets/images/search.png";
 import cartPng from "../assets/images/cart.png";
-// FEFAF3
+
 export default function Header() {
   return (
     <header
       className="
         fixed top-0 left-0 right-0
         h-[80px]
-        bg-[#F5F1E7]
         z-50
+        transition-colors duration-300
       "
+      style={{
+        backgroundColor: "var(--color-brand-beige)"
+      }}
     >
       <div
         className="
           w-full h-full
           px-layout-gap
-          tablet:max-w-[794px]
-          desktop:max-w-[1180px]
+          tablet:max-w-[var(--max-width-content-tablet)]
+          desktop:max-w-[var(--max-width-content-desktop)]
           mx-auto
           relative
           flex items-center
         "
       >
-        <a
-          href="/"
+        {/* ЛОГОТИП — ПЕРЕХІД НА ГОЛОВНУ */}
+        <Link
+          to="/"
           className="
             inline-flex items-center
             tablet:absolute tablet:left-1/2 tablet:-translate-x-1/2
+            transition-opacity hover:opacity-80
           "
-          aria-label="AQUACULTURE"
+          aria-label="На головну"
         >
           <img
             src={logoPng}
@@ -38,12 +44,21 @@ export default function Header() {
             className="h-[50px] w-auto select-none"
             draggable="false"
           />
-        </a>
+        </Link>
 
+        {/* ІКОНКИ ПРАВОРУЧ */}
         <div className="ml-auto flex items-center gap-4">
+          {/* ПОШУК (ПОКИ КНОПКА) */}
           <button
             type="button"
-            className="w-10 h-10 flex items-center justify-center rounded-full"
+            className="
+              w-10 h-10 
+              flex items-center justify-center 
+              rounded-full 
+              transition-colors
+              hover:bg-[var(--color-brand-sand)]
+              active:scale-95
+            "
             aria-label="Пошук"
           >
             <img
@@ -54,9 +69,17 @@ export default function Header() {
             />
           </button>
 
-          <button
-            type="button"
-            className="w-10 h-10 flex items-center justify-center rounded-full"
+          {/* КОШИК — ПЕРЕХІД НА СТОРІНКУ КОШИКА */}
+          <Link
+            to="/cart"
+            className="
+              w-10 h-10 
+              flex items-center justify-center 
+              rounded-full 
+              transition-colors
+              hover:bg-[var(--color-brand-sand)]
+              active:scale-95
+            "
             aria-label="Кошик"
           >
             <img
@@ -65,7 +88,7 @@ export default function Header() {
               className="w-8 h-8 select-none"
               draggable="false"
             />
-          </button>
+          </Link>
         </div>
       </div>
     </header>

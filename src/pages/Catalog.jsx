@@ -6,6 +6,8 @@ import WholesaleBanner from "../components/WholesaleBanner";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import WholesaleForm from "../components/WholesaleForm/WholesaleForm";
+import PageHeader from "../components/PageHeader";
+
 
 export default function Catalog() {
   const sectionsInOrder = [
@@ -18,11 +20,26 @@ export default function Catalog() {
   let offset = 0;
 
   return (
-    <div className="bg-[#F5F1E7] min-h-screen flex flex-col">
+    <div 
+      className="min-h-screen flex flex-col animate-fadeIn"
+      style={{ backgroundColor: "var(--color-brand-beige)" }}
+    >
       <Header />
 
-      <main className="bg-[#F5F1E7] pb-[120px] flex flex-col gap-[120px] flex-1">
+
+      <main 
+        className="pb-[120px] flex flex-col gap-[80px] flex-1"
+        style={{ backgroundColor: "var(--color-brand-beige)" }}
+      >
         <WholesaleBanner />
+
+        <PageHeader
+          title="Каталог"
+          breadcrumbs={[
+            { label: "Головна", link: "/" },
+            { label: "Каталог" }
+          ]}
+        />
 
         {sectionsInOrder.map((section) => {
           const startIndex = offset;
@@ -40,15 +57,15 @@ export default function Catalog() {
         {/* ===== WHOLESALE FORM ===== */}
         <section
           id="wholesale-form"
-          className="scroll-mt-[50px]"
+          className="scroll-mt-[100px]" // Збільшив відступ для кращого візуального фокусу
         >
           <div className="w-full flex justify-center">
             <div
               className="
                 w-full
                 px-layout-gap
-                tablet:max-w-[794px]
-                desktop:max-w-[1180px]
+                tablet:max-w-[var(--max-width-content-tablet)]
+                desktop:max-w-[var(--max-width-content-desktop)]
               "
             >
               <WholesaleForm />

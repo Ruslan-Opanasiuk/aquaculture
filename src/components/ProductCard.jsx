@@ -16,15 +16,12 @@ export default function ProductCard({
   imageAlt = "",
   onAction,
 }) {
-  // Логіка посилання
   const productPath = id ? `/product/${id}` : "/product";
 
   return (
     <div
       className="
-        bg-[#FEFAF3]
         rounded-[20px]
-        shadow-[-10px_-10px_22px_rgba(254,250,243,0.75),10px_10px_22px_rgba(0,0,0,0.18)]
         w-full
         h-full
         font-['Montserrat']
@@ -32,25 +29,35 @@ export default function ProductCard({
         flex
         flex-col
       "
+      style={{ 
+        backgroundColor: "var(--color-brand-sand)",
+        /* Shadow commented out as requested: */
+        /* boxShadow: "-10px -10px 22px rgba(254,250,243,0.75), 10px 10px 22px rgba(0,0,0,0.18)" */
+      }}
     >
       <div className="h-[60px] flex items-start">
         <h3
           className="font-semibold leading-[1.05]"
-          style={{ fontSize: "var(--h3-font-size)" }}
+          style={{ 
+            fontSize: "var(--h3-font-size)",
+            color: "var(--color-brand-dark)" 
+          }}
         >
           {title}
         </h3>
       </div>
 
-      <div className="flex-1 min-h-0 w-full">
-        <div className="w-full h-full overflow-hidden rounded-[16px]">
-          {/* Додано Link, але прибрано scale/hover ефекти */}
+      <div className="flex-1 min-h-0 w-full mt-4">
+        <div 
+          className="w-full h-full overflow-hidden rounded-[16px]"
+          style={{ backgroundColor: "var(--color-brand-sand)" }} // Легкий фон для контейнера фото
+        >
           <Link to={productPath} className="block w-full h-full">
             {imageSrc ? (
               <img
                 src={imageSrc}
                 alt={imageAlt}
-                className="w-full h-full object-cover" // ❌ Ніякого зуму
+                className="w-full h-full object-cover"
                 draggable="false"
               />
             ) : null}
@@ -58,10 +65,13 @@ export default function ProductCard({
         </div>
       </div>
 
-      <div className="h-[60px] flex items-end justify-between">
+      <div className="h-[60px] flex items-end justify-between mt-4">
         <p
-          className="font-normal leading-none text-caviar-text whitespace-pre-line"
-          style={{ fontSize: "var(--body-font-size)" }}
+          className="font-normal leading-none whitespace-pre-line"
+          style={{ 
+            fontSize: "var(--body-font-size)",
+            color: "var(--color-brand-dark)" 
+          }}
         >
           {price}
         </p>
@@ -76,12 +86,13 @@ export default function ProductCard({
               flex
               items-center
               justify-center
-              bg-black
-              text-white
-              hover:bg-black/90
-              active:scale-[0.98]
-              transition
+              transition-all
+              active:scale-[0.92]
             "
+            style={{ 
+              backgroundColor: "var(--color-brand-dark)",
+              color: "var(--color-brand-light)" 
+            }}
           >
             <ArrowIcon className="w-5 h-5" />
           </button>
