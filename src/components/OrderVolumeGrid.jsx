@@ -9,6 +9,7 @@ export default function OrderVolumeGrid({
   packages,
   productImage,
   productTitle,
+  productKey, // ✅ додали
   maxColumns = 4,
   maxSize = 120,
   minSize = 100,
@@ -16,18 +17,13 @@ export default function OrderVolumeGrid({
 }) {
   const ref = useRef(null);
   const [layout, setLayout] = useState({ columns: 1, size: maxSize });
-  const [quantities, setQuantities] = useState(() =>
-    packages.map(() => 0)
-  );
+  const [quantities, setQuantities] = useState(() => packages.map(() => 0));
 
   const addToCart = useCartStore((state) => state.addToCart);
 
-  // Скидання кількості при зміні пакетів
   useEffect(() => {
     setQuantities(packages.map(() => 0));
   }, [packages]);
-
-  /* ================= SMART GRID ENGINE ================= */
 
   useEffect(() => {
     if (!ref.current) return;
@@ -60,10 +56,7 @@ export default function OrderVolumeGrid({
 
       const finalGaps = (bestCols - 1) * gap;
       const rawSize = (width - finalGaps) / bestCols;
-      const finalSize = Math.min(
-        Math.max(rawSize, minSize),
-        maxSize
-      );
+      const finalSize = Math.min(Math.max(rawSize, minSize), maxSize);
 
       setLayout({ columns: bestCols, size: finalSize });
     });
@@ -72,33 +65,20 @@ export default function OrderVolumeGrid({
     return () => observer.disconnect();
   }, [packages.length, maxColumns, minSize, maxSize, gap]);
 
-  /* ================= FILLER CALCULATION ================= */
-
   const count = packages.length;
   const { columns, size } = layout;
   const remainder = count % columns;
 
   const isFullRow = remainder === 0;
-  const emptySlots = isFullRow
-    ? columns
-    : columns - remainder;
+  const emptySlots = isFullRow ? columns : columns - remainder;
 
   const ctaGridColumn = isFullRow
     ? `1 / span ${columns}`
     : `auto / span ${emptySlots}`;
 
-  /* ================= HANDLERS ================= */
-
   const updateQuantity = (index, value) => {
-    const numericValue = Math.max(
-      0,
-      Number(value) || 0
-    );
-    setQuantities((prev) =>
-      prev.map((v, i) =>
-        i === index ? numericValue : v
-      )
-    );
+    const numericValue = Math.max(0, Number(value) || 0);
+    setQuantities((prev) => prev.map((v, i) => (i === index ? numericValue : v)));
   };
 
   return (
@@ -110,7 +90,6 @@ export default function OrderVolumeGrid({
         tablet:items-start
       "
     >
-      {/* TITLE */}
       <div
         className="text-center tablet:text-left mb-8"
         style={{ fontSize: "var(--body-font-size)" }}
@@ -118,13 +97,8 @@ export default function OrderVolumeGrid({
         СКЛАДІТЬ СВІЙ НАБІР
       </div>
 
-      {/* GRID CONTAINER */}
       <div
-        className="
-          grid
-          justify-center
-          tablet:justify-start
-        "
+        className="grid justify-center tablet:justify-start"
         style={{
           gridTemplateColumns: `repeat(${columns}, ${size}px)`,
           gap,
@@ -138,31 +112,15 @@ export default function OrderVolumeGrid({
             grams={pkg.grams}
             price={pkg.price}
             value={quantities[index]}
-            onIncrement={() =>
-              updateQuantity(
-                index,
-                quantities[index] + 1
-              )
-            }
-            onDecrement={() =>
-              updateQuantity(
-                index,
-                quantities[index] - 1
-              )
-            }
-            onChange={(val) =>
-              updateQuantity(index, val)
-            }
+            onIncrement={() => updateQuantity(index, quantities[index] + 1)}
+            onDecrement={() => updateQuantity(index, quantities[index] - 1)}
+            onChange={(val) => updateQuantity(index, val)}
           />
         ))}
 
         <button
           onClick={() =>
-            document
-              .getElementById("wholesale-form")
-              ?.scrollIntoView({
-                behavior: "smooth",
-              })
+            document.getElementById("wholesale-form")?.scrollIntoView({ behavior: "smooth" })
           }
           style={{
             backgroundColor: "#E9E5DB",
@@ -177,9 +135,7 @@ export default function OrderVolumeGrid({
             padding: 12,
             cursor: "pointer",
             gridColumn: ctaGridColumn,
-            minHeight: isFullRow
-              ? size / 2.5
-              : size,
+            minHeight: isFullRow ? size / 2.5 : size,
             transition: "all 0.2s ease",
           }}
         >
@@ -194,20 +150,19 @@ export default function OrderVolumeGrid({
           const itemsToAdd = packages
             .map((pkg, index) => ({
               id: pkg.id,
-              title: productTitle, // ← ОСЬ ГОЛОВНЕ
+              productKey,          // ✅ додали
+              title: productTitle,
               grams: pkg.grams,
               price: pkg.price,
               quantity: quantities[index],
               image: productImage,
             }))
-            .filter(item => item.quantity > 0);
+            .filter((item) => item.quantity > 0);
 
           if (itemsToAdd.length === 0) return;
 
           addToCart(itemsToAdd);
-          setQuantities(
-            packages.map(() => 0)
-          );
+          setQuantities(packages.map(() => 0));
         }}
       />
     </div>

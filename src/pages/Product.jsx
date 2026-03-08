@@ -121,6 +121,7 @@ export default function Product() {
                       packages={product.packages || []}
                       productImage={product.images.jar}
                       productTitle={product.title}
+                      productKey={productKey}
                     />
                   </div>
 
@@ -225,6 +226,7 @@ export default function Product() {
                       packages={product.packages || []}
                       productImage={product.images.jar}
                       productTitle={product.title}
+                      productKey={productKey}
                     />
                   </div>
                 </div>
