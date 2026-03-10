@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Catalog from "./pages/Catalog";
@@ -22,11 +22,14 @@ function App() {
         {/* Сторінка конкретного продукту */}
         <Route path="/product/:productId" element={<Product />} />
 
-        {/* Запасний маршрут для продукту */}
-        <Route path="/product" element={<Product />} />
+        {/* Якщо відкрили /product → відправляємо в каталог */}
+        <Route path="/product" element={<Navigate to="/catalog" replace />} />
 
         {/* Кошик */}
         <Route path="/cart" element={<Cart />} />
+
+        {/* TODO: замінити Home на справжню сторінку 404 */}
+        <Route path="*" element={<Home />} />
       </Routes>
     </>
   );

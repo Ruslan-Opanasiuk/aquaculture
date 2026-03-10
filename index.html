@@ -1,32 +1,47 @@
 <!doctype html>
-<html lang="en">
+<html lang="uk">
+
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+  <!-- Mobile адаптивність -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>aquaculture</title>
 
-  <!-- Cormorant Garamond -->
+  <!-- Базовий title. Реальні title сторінок задаються у React сторінках -->
+  <title>Aquaculture</title>
+
+  <!-- TODO: перед релізом написати нормальний SEO description -->
+  <meta
+    name="description"
+    content="Преміум червона та чорна ікра."
+  />
+
+  <!-- TODO: змінити після покупки домену -->
+  <link rel="canonical" href="https://aquaculture.com" />
+
+  <!-- Оптимізація завантаження шрифтів -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Основний шрифт сайту -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap"
     rel="stylesheet"
   />
 
-  <!-- Montserrat -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@400;500&display=swap"
-    rel="stylesheet"
-  />
+  <!-- TODO: додати favicon коли з'явиться іконка сайту -->
+  <!-- <link rel="icon" href="/favicon.ico" /> -->
 
-  <!-- ⭐ Новий шрифт: Cormorant Infant -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,400;0,500;1,400;1,500&display=swap"
-    rel="stylesheet"
-  />
 </head>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<body>
+
+  <!-- Тут React рендерить весь сайт -->
+  <div id="root"></div>
+
+  <!-- Точка входу React додатку -->
+  <script type="module" src="/src/main.jsx"></script>
+
+</body>
+
 </html>

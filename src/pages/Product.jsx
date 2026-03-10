@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
@@ -28,7 +27,8 @@ export default function Product() {
   const { productId } = useParams();
   const navigate = useNavigate();
 
-  const productKey = productId || "forel";
+  // використовуємо productId напряму (без дефолтного продукту)
+  const productKey = productId;
   const product = caviarCatalog[productKey];
 
   const [isLoading, setIsLoading] = useState(true);
@@ -36,6 +36,7 @@ export default function Product() {
 
   useEffect(() => {
     if (!product) {
+      // TODO: після створення сторінки 404 редіректити туди
       navigate("/");
     }
   }, [product, navigate]);
@@ -218,7 +219,7 @@ export default function Product() {
                 </div>
               </div>
 
-              {/* 3. MOBILE DETAILS (HIDDEN ON DESKTOP) */}
+              {/* 3. MOBILE DETAILS */}
               <div className="order-3 tablet:hidden flex flex-col">
                 <div className="w-full flex justify-center text-center">
                   <div className="w-full max-w-[450px]">
@@ -264,10 +265,7 @@ export default function Product() {
                   {product.longDescription &&
                     product.longDescription.map(
                       (paragraph, idx) => (
-                        <p
-                          key={idx}
-                          className="opacity-90"
-                        >
+                        <p key={idx} className="opacity-90">
                           {paragraph}
                         </p>
                       )
@@ -289,16 +287,12 @@ export default function Product() {
         </section>
 
         {/* ===== WHOLESALE FORM ===== */}
-        <section
-          id="wholesale-form"
-          className="scroll-mt-[100px]"
-        >
+        <section id="wholesale-form" className="scroll-mt-[100px]">
           <div className="w-full flex justify-center">
             <div
               className="w-full px-layout-gap"
               style={{
-                maxWidth:
-                  "var(--content-max-width)",
+                maxWidth: "var(--content-max-width)",
               }}
             >
               <WholesaleForm />
@@ -311,4 +305,3 @@ export default function Product() {
     </div>
   );
 }
-
