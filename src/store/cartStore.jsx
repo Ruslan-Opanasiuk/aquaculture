@@ -17,8 +17,7 @@ export const useCartStore = create(
             );
 
             if (existingIndex >= 0) {
-              updatedItems[existingIndex].quantity +=
-                newItem.quantity;
+              updatedItems[existingIndex].quantity += newItem.quantity;
             } else {
               updatedItems.push(newItem);
             }
@@ -28,25 +27,28 @@ export const useCartStore = create(
         }),
 
       updateQuantity: (id, newQuantity) =>
-        set((state) => ({
-          items: state.items.map((item) =>
-            item.id === id
-              ? { ...item, quantity: Math.max(0, newQuantity) }
-              : item
-          ),
-        })),
+        set((state) => {
+          const updatedItems = state.items
+            .map((item) =>
+              item.id === id
+                ? { ...item, quantity: Math.max(0, newQuantity) }
+                : item
+            )
+            .filter((item) => item.quantity > 0);
+
+          return { items: updatedItems };
+        }),
 
       removeItem: (id) =>
         set((state) => ({
-          items: state.items.filter(
-            (item) => item.id !== id
-          ),
+          items: state.items.filter((item) => item.id !== id),
         })),
 
       clearCart: () => set({ items: [] }),
     }),
     {
       name: "caviar-cart",
+      version: 1,
     }
   )
 );

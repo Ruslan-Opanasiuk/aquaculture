@@ -24,7 +24,6 @@ export default function Catalog() {
       className="min-h-screen flex flex-col animate-fadeIn"
       style={{ backgroundColor: "var(--color-brand-beige)" }}
     >
-      <Header />
 
 
       <main 
@@ -73,8 +72,6 @@ export default function Catalog() {
           </div>
         </section>
       </main>
-
-      <Footer />
     </div>
   );
 }

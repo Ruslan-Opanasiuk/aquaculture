@@ -1,21 +1,32 @@
 // src/components/Header.jsx
+
 import { Link } from "react-router-dom";
+import { useCartStore } from "../store/cartStore";
+
+/*
+  TODO:
+  Зараз використовується PNG логотип.
+  Коли буде готовий SVG — замінити імпорт на SVG.
+*/
+
 import logoPng from "../assets/images/logo.png";
-import searchPng from "../assets/images/search.png";
 import cartPng from "../assets/images/cart.png";
 
 export default function Header() {
+  // Рахуємо загальну кількість одиниць товару в кошику
+  const cartCount = useCartStore((state) =>
+    state.items.reduce((sum, item) => sum + item.quantity, 0)
+  );
+
   return (
     <header
       className="
         fixed top-0 left-0 right-0
         h-[80px]
         z-50
+        bg-[var(--color-brand-beige)]
         transition-colors duration-300
       "
-      style={{
-        backgroundColor: "var(--color-brand-beige)"
-      }}
     >
       <div
         className="
@@ -38,44 +49,27 @@ export default function Header() {
           "
           aria-label="На головну"
         >
+          {/* 
+            Висота зафіксована → це запобігає CLS.
+            width:auto дозволяє логотипу масштабуватись пропорційно.
+          */}
           <img
             src={logoPng}
             alt="AQUACULTURE"
-            className="h-[50px] w-auto select-none"
+            className="h-[48px] w-auto select-none"
             draggable="false"
           />
         </Link>
 
-        {/* ІКОНКИ ПРАВОРУЧ */}
-        <div className="ml-auto flex items-center gap-4">
-          {/* ПОШУК (ПОКИ КНОПКА) */}
-          <button
-            type="button"
-            className="
-              w-10 h-10 
-              flex items-center justify-center 
-              rounded-full 
-              transition-colors
-              hover:bg-[var(--color-brand-sand)]
-              active:scale-95
-            "
-            aria-label="Пошук"
-          >
-            <img
-              src={searchPng}
-              alt=""
-              className="w-6 h-6 select-none"
-              draggable="false"
-            />
-          </button>
-
-          {/* КОШИК — ПЕРЕХІД НА СТОРІНКУ КОШИКА */}
+        {/* КНОПКА КОШИКА */}
+        <div className="ml-auto flex items-center">
           <Link
             to="/cart"
             className="
-              w-10 h-10 
-              flex items-center justify-center 
-              rounded-full 
+              relative
+              w-11 h-11
+              flex items-center justify-center
+              rounded-full
               transition-colors
               hover:bg-[var(--color-brand-sand)]
               active:scale-95
@@ -85,9 +79,31 @@ export default function Header() {
             <img
               src={cartPng}
               alt=""
-              className="w-8 h-8 select-none"
+              className="w-7 h-7 select-none"
               draggable="false"
             />
+
+            {/* COUNTER */}
+            {cartCount > 0 && (
+              <span
+                className="
+                  absolute
+                  -top-1 -right-1
+                  min-w-[18px]
+                  h-[18px]
+                  px-[4px]
+                  flex items-center justify-center
+                  rounded-full
+                  bg-black
+                  text-white
+                  text-[11px]
+                  font-semibold
+                  leading-none
+                "
+              >
+                {cartCount > 99 ? "99+" : cartCount}
+              </span>
+            )}
           </Link>
         </div>
       </div>

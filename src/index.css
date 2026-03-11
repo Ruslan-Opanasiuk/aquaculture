@@ -16,6 +16,9 @@
   --color-brand-beige: #FEFAF3;    /* Основний фон сторінки */
   --color-brand-light: #F5F1E7;    /* Кнопки лічильника (світлі) */
 
+  /* NEW: темний колір для футера */
+  --color-brand-black: #1b1a1a;
+
   /* --- Breakpoints --- */
   --breakpoint-phone-wide: 406.67px;
   --breakpoint-tablet: 660px;
@@ -67,6 +70,8 @@
   --bg-main: var(--color-brand-beige);
   --bg-card: var(--color-brand-sand);
   --bg-light: var(--color-brand-light);
+  --bg-footer: var(--color-brand-black);
+
   --text-main: var(--color-brand-dark);
   --text-muted: var(--color-brand-gray);
   --accent-gold: var(--color-brand-gold);
