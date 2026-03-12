@@ -1,5 +1,6 @@
 // src/components/Footer.jsx
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -20,8 +21,6 @@ export default function Footer() {
 
     setError("");
     console.log("EMAIL:", email);
-
-    // тут пізніше буде інтеграція з сервісом розсилки
   };
 
   return (
@@ -62,7 +61,7 @@ export default function Footer() {
           >
             {/* ABOUT */}
             <div className="flex flex-col gap-[12px]">
-              <p className="font-bold tracking-[0.08em] mb-2">ПРО НАС</p>
+              <p className="font-bold tracking-[0.08em]">ПРО НАС</p>
 
               <p className="text-white/80">
                 Ми спеціалізуємось на гуртових постачаннях червоної ікри для
@@ -76,17 +75,41 @@ export default function Footer() {
             </div>
 
             {/* CATALOG */}
-            <div className="flex flex-col gap-[10px]">
-              <p className="font-bold tracking-[0.08em] mb-2">КАТАЛОГ</p>
+            <div className="flex flex-col gap-[12px]">
+              <p className="font-bold tracking-[0.08em]">КАТАЛОГ</p>
 
-              <p className="text-white/80">Червона ікра</p>
-              <p className="text-white/80">Чорна ікра</p>
-              <p className="text-white/80">Біла ікра</p>
+              <Link
+                to="/catalog#red-caviar"
+                className="text-white/80 hover:text-white transition-colors"
+              >
+                Червона ікра
+              </Link>
+
+              <Link
+                to="/catalog#black-caviar"
+                className="text-white/80 hover:text-white transition-colors"
+              >
+                Чорна ікра
+              </Link>
+
+              <Link
+                to="/catalog#white-caviar"
+                className="text-white/80 hover:text-white transition-colors"
+              >
+                Біла ікра
+              </Link>
+
+              <Link
+                to="/catalog#welcome_pack"
+                className="text-white/80 hover:text-white transition-colors"
+              >
+                Welcome Pack
+              </Link>
             </div>
 
             {/* CONTACTS */}
-            <div className="flex flex-col gap-[10px] whitespace-nowrap">
-              <p className="font-bold tracking-[0.08em] mb-2">КОНТАКТИ</p>
+            <div className="flex flex-col gap-[12px] whitespace-nowrap">
+              <p className="font-bold tracking-[0.08em]">КОНТАКТИ</p>
 
               <a
                 href="tel:+380509999999"
@@ -111,8 +134,8 @@ export default function Footer() {
             </div>
 
             {/* NEWSLETTER */}
-            <div className="flex flex-col gap-[14px]">
-              <p className="font-bold tracking-[0.08em] mb-2">РОЗСИЛКА</p>
+            <div className="flex flex-col gap-[12px]">
+              <p className="font-bold tracking-[0.08em]">РОЗСИЛКА</p>
 
               <p className="text-white/80">
                 Отримуйте новини та спеціальні пропозиції.
@@ -155,14 +178,14 @@ export default function Footer() {
                       h-[36px]
                       rounded-full
                       bg-black
-                      text-[#F5F1E7]
+                      bg-[var(--color-brand-light)]
                       flex
                       items-center
                       justify-center
                       transition-all
                       duration-200
                       active:scale-90
-                      hover:bg-[#262626]
+                      hover:bg-[var(--color-brand-dark)]
                     "
                   >
                     <svg
@@ -182,7 +205,7 @@ export default function Footer() {
                 </div>
 
                 {error && (
-                  <p className="text-red-400 text-[12px] mt-[6px] pl-[18px]">
+                  <p className="text-red-400 text-[12px] mt-[6px]">
                     {error}
                   </p>
                 )}
@@ -191,10 +214,10 @@ export default function Footer() {
           </div>
 
           {/* LINE */}
-          <div className="w-full h-[0.5px] bg-[var(--color-brand-sand)] mt-[64px] mb-[24px]" />
+          <div className="w-full h-[0.5px] bg-[var(--color-brand-sand)] mt-[32px] mb-[32px]" />
 
           {/* LEGAL */}
-          <p className="text-[13px] text-[var(--color-brand-sand)] text-center tablet:text-left">
+          <p className="text-[12px] text-[var(--color-brand-sand)] text-center tablet:text-left">
             © 2025 Aquaculture Всі права захищені | Договір публічної оферти |
             Політика конфіденційності
           </p>

@@ -1,5 +1,8 @@
 // src/pages/Catalog.jsx
 
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
 import CatalogSection from "../components/CatalogSection";
 import { catalogSections } from "../data/catalogData";
 import WholesaleBanner from "../components/WholesaleBanner";
@@ -8,25 +11,38 @@ import Footer from "../components/Footer";
 import WholesaleForm from "../components/WholesaleForm/WholesaleForm";
 import PageHeader from "../components/PageHeader";
 
-
 export default function Catalog() {
+  const location = useLocation();
+
+  // ===== SCROLL TO HASH =====
+  useEffect(() => {
+    if (location.hash) {
+      const el = document.querySelector(location.hash);
+
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth" });
+        }, 50);
+      }
+    }
+  }, [location]);
+
+  // ===== ORDER OF SECTIONS =====
   const sectionsInOrder = [
-    catalogSections[0],
-    catalogSections[2],
-    catalogSections[1],
-    catalogSections[3],
+    { ...catalogSections[0], id: "red-caviar" },
+    { ...catalogSections[2], id: "black-caviar" },
+    { ...catalogSections[1], id: "white-caviar" },
+    { ...catalogSections[3], id: "welcome_pack" },
   ];
 
   let offset = 0;
 
   return (
-    <div 
+    <div
       className="min-h-screen flex flex-col animate-fadeIn"
       style={{ backgroundColor: "var(--color-brand-beige)" }}
     >
-
-
-      <main 
+      <main
         className="pb-[120px] flex flex-col gap-[80px] flex-1"
         style={{ backgroundColor: "var(--color-brand-beige)" }}
       >
@@ -36,7 +52,7 @@ export default function Catalog() {
           title="Каталог"
           breadcrumbs={[
             { label: "Головна", link: "/" },
-            { label: "Каталог" }
+            { label: "Каталог" },
           ]}
         />
 
@@ -49,6 +65,7 @@ export default function Catalog() {
               key={section.title}
               {...section}
               startIndex={startIndex}
+              id={section.id}
             />
           );
         })}
@@ -56,7 +73,7 @@ export default function Catalog() {
         {/* ===== WHOLESALE FORM ===== */}
         <section
           id="wholesale-form"
-          className="scroll-mt-[100px]" // Збільшив відступ для кращого візуального фокусу
+          className="scroll-mt-[100px]"
         >
           <div className="w-full flex justify-center">
             <div

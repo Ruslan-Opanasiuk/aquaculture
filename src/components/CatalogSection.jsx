@@ -6,6 +6,7 @@ export default function CatalogSection({
   title,
   subtitle,
   startIndex = 0,
+  id,
 }) {
   const items = productVariantsList.slice(
     startIndex,
@@ -13,8 +14,14 @@ export default function CatalogSection({
   );
 
   return (
-    <section className="w-full flex justify-center">
-      <div className="w-full px-layout-gap" style={{ maxWidth: "var(--content-max-width)" }}>
+    <section
+      id={id}
+      className="w-full flex justify-center scroll-mt-[100px]"
+    >
+      <div
+        className="w-full px-layout-gap"
+        style={{ maxWidth: "var(--content-max-width)" }}
+      >
         <h2
           className="font-['Montserrat'] font-semibold mb-3"
           style={{ fontSize: "var(--h2-font-size)" }}
@@ -42,10 +49,17 @@ export default function CatalogSection({
           {items.map((p) => (
             <div
               key={p.key}
-              className="flex-shrink-0 snap-center max-w-card w-full phone-wide:w-[74vw] tablet:w-full"
+              className="
+                flex-shrink-0
+                snap-center
+                max-w-card
+                w-full
+                phone-wide:w-[74vw]
+                tablet:w-full
+              "
             >
               <ProductCard
-                id={p.key} /* ✅ Тільки додали ID */
+                id={p.key}
                 title={p.title}
                 price={p.priceText}
                 imageSrc={p.imageSrc}
