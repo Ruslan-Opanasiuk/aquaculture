@@ -13,8 +13,7 @@ export default function ProductCard({
   title = "Назва продукту",
   price = "від 0 ₴",
   imageSrc,
-  imageAlt = "",
-  onAction,
+  imageAlt = ""
 }) {
   const productPath = id ? `/product/${id}` : "/product";
 
@@ -28,20 +27,17 @@ export default function ProductCard({
         p-[30px]
         flex
         flex-col
+        bg-brand-sand
       "
-      style={{ 
-        backgroundColor: "var(--color-brand-sand)",
-        /* Shadow commented out as requested: */
-        /* boxShadow: "-10px -10px 22px rgba(254,250,243,0.75), 10px 10px 22px rgba(0,0,0,0.18)" */
-      }}
     >
       <div className="h-[60px] flex items-start">
         <h3
-          className="font-semibold leading-[1.05]"
-          style={{ 
-            fontSize: "var(--h3-font-size)",
-            color: "var(--color-brand-dark)" 
-          }}
+          className="
+            font-semibold 
+            leading-[1.05]
+            text-h3
+            text-brand-black
+          "
         >
           {title}
         </h3>
@@ -49,14 +45,20 @@ export default function ProductCard({
 
       <div className="flex-1 min-h-0 w-full mt-4">
         <div 
-          className="w-full h-full overflow-hidden rounded-[16px]"
-          style={{ backgroundColor: "var(--color-brand-sand)" }} // Легкий фон для контейнера фото
+          className="
+            w-full 
+            aspect-square
+            overflow-hidden 
+            rounded-[16px] 
+            bg-brand-sand 
+          " 
         >
-          <Link to={productPath} className="block w-full h-full">
+          <Link to={productPath} className="block w-full h-full" tabIndex="-1" aria-hidden="true">
             {imageSrc ? (
               <img
                 src={imageSrc}
                 alt={imageAlt}
+                loading="lazy"
                 className="w-full h-full object-cover"
                 draggable="false"
               />
@@ -67,35 +69,40 @@ export default function ProductCard({
 
       <div className="h-[60px] flex items-end justify-between mt-4">
         <p
-          className="font-normal leading-none whitespace-pre-line"
-          style={{ 
-            fontSize: "var(--body-font-size)",
-            color: "var(--color-brand-dark)" 
-          }}
+          className="
+            font-normal 
+            leading-none 
+            whitespace-pre-line
+            text-body
+            text-brand-black
+          "
         >
           {price}
         </p>
 
-        <Link to={productPath} aria-label="Відкрити товар">
-          <button
-            type="button"
-            className="
-              w-[36px]
-              h-[36px]
-              rounded-full
-              flex
-              items-center
-              justify-center
-              transition-all
-              active:scale-[0.92]
-            "
-            style={{ 
-              backgroundColor: "var(--color-brand-dark)",
-              color: "var(--color-brand-light)" 
-            }}
-          >
-            <ArrowIcon className="w-5 h-5" />
-          </button>
+        <Link 
+          to={productPath} 
+          aria-label={`Відкрити товар: ${title}`}
+          className="
+            w-[44px]
+            h-[44px]
+            rounded-full
+            flex
+            items-center
+            justify-center
+            transition-all
+            active:scale-[0.92]
+            bg-brand-dark
+            text-brand-light
+            hover:opacity-90
+            focus-visible:ring-2
+            focus-visible:ring-brand-gold
+            focus-visible:ring-offset-2
+            focus-visible:ring-offset-brand-sand
+            focus-visible:outline-none
+          "
+        >
+          <ArrowIcon className="w-5 h-5" />
         </Link>
       </div>
     </div>

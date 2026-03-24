@@ -1,44 +1,30 @@
 import ProductCard from "./ProductCard";
-import { productVariantsList } from "../data/catalogData";
+import { productVariants } from "../data/catalogData";
 
-export default function CatalogSection({
-  count,
-  title,
-  subtitle,
-  startIndex = 0,
-  id,
-}) {
-  const items = productVariantsList.slice(
-    startIndex,
-    startIndex + count
-  );
+export default function CatalogSection({ products, title, subtitle, id }) {
+  const items = products.map((key) => ({
+    key,
+    ...productVariants[key],
+  }));
 
   return (
     <section
       id={id}
       className="w-full flex justify-center scroll-mt-[100px]"
     >
-      <div
-        className="w-full px-layout-gap"
-        style={{ maxWidth: "var(--content-max-width)" }}
-      >
-        <h2
-          className="font-['Montserrat'] font-semibold mb-3"
-          style={{ fontSize: "var(--h2-font-size)" }}
-        >
+      <div className="w-full px-layout-gap max-content">
+        
+        <h2 className="font-['Montserrat'] font-semibold mb-3 text-h2 text-brand-black">
           {title}
         </h2>
 
         {subtitle && (
-          <p
-            className="font-['Montserrat'] leading-[1.5] max-w-[754px] mb-4"
-            style={{ fontSize: "var(--body-font-size)" }}
-          >
+          <p className="font-['Montserrat'] leading-[1.5] max-w-[754px] mb-4 text-body text-brand-black">
             {subtitle}
           </p>
         )}
 
-        <div
+        <ul
           className="
             flex gap-layout-gap overflow-x-auto snap-x snap-mandatory py-6 -mx-layout-gap px-layout-gap
             phone-wide:-mx-layout-gap
@@ -47,7 +33,7 @@ export default function CatalogSection({
           "
         >
           {items.map((p) => (
-            <div
+            <li
               key={p.key}
               className="
                 flex-shrink-0
@@ -65,9 +51,9 @@ export default function CatalogSection({
                 imageSrc={p.imageSrc}
                 imageAlt={p.title}
               />
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

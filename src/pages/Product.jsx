@@ -76,7 +76,6 @@ export default function Product() {
       className="min-h-screen flex flex-col font-['Montserrat'] animate-fadeIn"
       style={{ backgroundColor: "var(--color-brand-beige)" }}
     >
-      <Header />
 
       <main className="flex-1 pb-[120px] flex flex-col gap-[100px] tablet:gap-[160px]">
         {/* ===== HERO / PRODUCT SECTION ===== */}
@@ -85,7 +84,7 @@ export default function Product() {
             className="w-full px-layout-gap"
             style={{ maxWidth: "var(--content-max-width)" }}
           >
-            <div className="flex flex-col tablet:grid tablet:grid-cols-2 mt-[60px] tablet:mt-[100px] gap-y-[40px]">
+            <div className="flex flex-col tablet:grid tablet:grid-cols-2 mt-[100px] tablet:mt-[100px] gap-y-[40px]">
               {/* 1. TEXT INFO */}
               <div
                 className="
@@ -301,7 +300,6 @@ export default function Product() {
         </section>
       </main>
 
-      <Footer />
     </div>
   );
 }

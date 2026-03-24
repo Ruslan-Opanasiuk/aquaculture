@@ -68,7 +68,7 @@ export default function Cart() {
       className="min-h-screen flex flex-col font-['Montserrat']"
       style={{ backgroundColor: "var(--color-brand-beige)" }}
     >
-      <Header />
+
 
       <div className="mt-[80px]">
         <PageHeader
@@ -279,7 +279,6 @@ export default function Cart() {
         </div>
       </main>
 
-      <Footer />
     </div>
   );
 }

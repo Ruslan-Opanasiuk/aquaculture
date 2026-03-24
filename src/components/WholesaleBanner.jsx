@@ -1,6 +1,6 @@
 import wholesaleHero from "../assets/images/Frame-9.webp";
 
-export default function WholesaleHero() {
+export default function WholesaleBanner() {
   return (
     <section
       className="
@@ -33,6 +33,7 @@ export default function WholesaleHero() {
           <img
             src={wholesaleHero}
             alt="Преміальна ікра для гуртових клієнтів"
+            fetchPriority="high"
             className="
               absolute
               inset-0
@@ -69,47 +70,41 @@ export default function WholesaleHero() {
             h-full
             px-layout-gap
             mx-auto
+            max-content
           "
-          style={{
-            maxWidth: "var(--content-max-width)",
-          }}
         >
           <div
             className="
               pt-[12vh]
               max-w-[754px]
               mx-auto
-              text-white
               flex
               flex-col
               items-center
               text-center
+              text-brand-beige
             "
           >
-            <h1
+            <h2
               className="
                 font-['Montserrat']
                 font-medium
                 leading-[0.95]
                 mb-10
+                text-h1
               "
-              style={{
-                fontSize: "var(--h1-font-size)",
-              }}
             >
               Гуртовим клієнтам
-            </h1>
+            </h2>
 
             <p
               className="
                 font-['Montserrat']
                 leading-[1.5]
-                text-[#F5F5F5]
+                text-brand-beige
                 mb-8
+                text-body
               "
-              style={{
-                fontSize: "var(--body-font-size)",
-              }}
             >
               Прямі поставки преміальної ікри для вашого бізнесу. Ціни в каталозі — роздрібні.
               Отримайте індивідуальний прайс та гарантію стабільності.
@@ -131,18 +126,21 @@ export default function WholesaleHero() {
                 justify-center
                 rounded-full
                 px-6
-                py-2.5
+                min-h-[44px]
                 font-['Montserrat']
                 tracking-[0.02em]
-                bg-white
-                text-black
-                hover:bg-[#F5F1E8]
-                active:bg-[#E2D8C8]
+                bg-brand-beige
+                text-brand-black
+                hover:bg-brand-sand
+                active:bg-brand-gray
                 transition-colors
+                text-body
+                focus-visible:ring-2
+                focus-visible:ring-brand-gold
+                focus-visible:ring-offset-2
+                focus-visible:ring-offset-black
+                focus-visible:outline-none
               "
-              style={{
-                fontSize: "var(--body-font-size)",
-              }}
             >
               Оформити анкету
             </button>

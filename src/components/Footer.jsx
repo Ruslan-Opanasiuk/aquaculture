@@ -1,4 +1,3 @@
-// src/components/Footer.jsx
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -28,8 +27,8 @@ export default function Footer() {
       <div
         className="
           w-full
-          bg-[var(--bg-footer)]
-          text-white
+          bg-footer
+          text-brand-beige
           rounded-[20px]
           flex
           justify-center
@@ -40,12 +39,12 @@ export default function Footer() {
           className="
             w-full
             px-layout-gap
-            tablet:max-w-[794px]
-            desktop:max-w-[1180px]
+            tablet:max-w-[var(--max-width-content-tablet)]
+            desktop:max-w-[var(--max-width-content-desktop)]
             py-[64px]
 
             font-['Montserrat']
-            text-[15px]
+            text-body-small
             leading-[1.6]
           "
         >
@@ -63,82 +62,87 @@ export default function Footer() {
             <div className="flex flex-col gap-[12px]">
               <p className="font-bold tracking-[0.08em]">ПРО НАС</p>
 
-              <p className="text-white/80">
+              <p className="text-brand-beige-80">
                 Ми спеціалізуємось на гуртових постачаннях червоної ікри для
                 ресторанів, магазинів та корпоративних клієнтів.
               </p>
 
-              <p className="text-white/80">
+              <p className="text-brand-beige-80">
                 Працюємо безпосередньо з виробниками та гарантуємо стабільну
                 якість і свіжість кожної партії.
               </p>
             </div>
 
             {/* CATALOG */}
-            <div className="flex flex-col gap-[12px]">
+            <div className="flex flex-col gap-[8px]">
               <p className="font-bold tracking-[0.08em]">КАТАЛОГ</p>
 
               <Link
                 to="/catalog#red-caviar"
-                className="text-white/80 hover:text-white transition-colors"
+                className="text-brand-beige-80 hover:text-brand-beige transition-colors"
               >
                 Червона ікра
               </Link>
 
               <Link
                 to="/catalog#black-caviar"
-                className="text-white/80 hover:text-white transition-colors"
+                className="text-brand-beige-80 hover:text-brand-beige transition-colors"
               >
                 Чорна ікра
               </Link>
 
               <Link
                 to="/catalog#white-caviar"
-                className="text-white/80 hover:text-white transition-colors"
+                className="text-brand-beige-80 hover:text-brand-beige transition-colors"
               >
                 Біла ікра
               </Link>
 
               <Link
                 to="/catalog#welcome_pack"
-                className="text-white/80 hover:text-white transition-colors"
+                className="text-brand-beige-80 hover:text-brand-beige transition-colors"
               >
                 Welcome Pack
               </Link>
             </div>
 
             {/* CONTACTS */}
-            <div className="flex flex-col gap-[12px] whitespace-nowrap">
+            <div className="flex flex-col gap-[8px] whitespace-nowrap">
               <p className="font-bold tracking-[0.08em]">КОНТАКТИ</p>
 
               <a
                 href="tel:+380509999999"
-                className="text-white/80 hover:text-white transition-colors"
+                className="text-brand-beige-80 hover:text-brand-beige transition-colors"
               >
                 +38 050 999 99 99
               </a>
 
               <a
                 href="tel:+380509999999"
-                className="text-white/80 hover:text-white transition-colors"
+                className="text-brand-beige-80 hover:text-brand-beige transition-colors"
               >
                 +38 050 999 99 99
               </a>
 
               <a
                 href="mailto:poshta@gmail.com"
-                className="text-white/80 hover:text-white transition-colors"
+                className="text-brand-beige-80 hover:text-brand-beige transition-colors"
               >
                 poshta@gmail.com
               </a>
+
+              <p className="font-bold tracking-[0.08em] mt-[12px]">ПРАЦЮЄМО</p>
+
+              <p className="text-brand-beige-80">Пн-Нд: 10:00–19:00</p>
             </div>
 
             {/* NEWSLETTER */}
             <div className="flex flex-col gap-[12px]">
-              <p className="font-bold tracking-[0.08em]">РОЗСИЛКА</p>
+              <p className="font-bold tracking-[0.08em]">БУДЬ В КУРСІ</p>
 
-              <p className="text-white/80">
-                Отримуйте новини та спеціальні пропозиції.
+              <p className="text-brand-beige-80">
+                Підпишіться на останні оновлення та дізнавайтеся про новинки та
+                спеціальні пропозиції першими.
               </p>
 
               <form
@@ -146,9 +150,15 @@ export default function Footer() {
                 noValidate
                 className="w-full max-w-[320px]"
               >
+                <label htmlFor="newsletter-email" className="sr-only">
+                  Email
+                </label>
+
                 <div className="relative">
                   <input
+                    id="newsletter-email"
                     type="email"
+                    autoComplete="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Ваш email"
@@ -156,19 +166,20 @@ export default function Footer() {
                       w-full
                       h-[44px]
                       rounded-full
-                      bg-[var(--color-brand-beige)]
-                      text-[var(--text-main)]
-                      placeholder:text-gray-500
+                      bg-light
+                      text-main
+                      placeholder:text-brand-gray
                       pl-[18px]
                       pr-[48px]
-                      text-[14px]
+                      text-body-small
                       outline-none
-                      ${error ? "ring-2 ring-red-400" : ""}
+                      ${error ? "ring-2 ring-error" : ""}
                     `}
                   />
 
                   <button
                     type="submit"
+                    aria-label="Підписатися"
                     className="
                       absolute
                       right-[4px]
@@ -177,21 +188,20 @@ export default function Footer() {
                       w-[36px]
                       h-[36px]
                       rounded-full
-                      bg-black
-                      bg-[var(--color-brand-light)]
+                      bg-footer
                       flex
                       items-center
                       justify-center
                       transition-all
                       duration-200
                       active:scale-90
-                      hover:bg-[var(--color-brand-dark)]
+                      hover:bg-card
                     "
                   >
                     <svg
                       viewBox="0 0 24 24"
                       fill="none"
-                      className="w-5 h-5"
+                      className="w-5 h-5 text-brand-beige"
                     >
                       <path
                         d="M9 18l6-6-6-6"
@@ -205,7 +215,10 @@ export default function Footer() {
                 </div>
 
                 {error && (
-                  <p className="text-red-400 text-[12px] mt-[6px]">
+                  <p
+                    role="alert"
+                    className="text-error text-[12px] mt-[6px]"
+                  >
                     {error}
                   </p>
                 )}
@@ -214,10 +227,10 @@ export default function Footer() {
           </div>
 
           {/* LINE */}
-          <div className="w-full h-[0.5px] bg-[var(--color-brand-sand)] mt-[32px] mb-[32px]" />
+          <div className="w-full h-[0.5px] border-sand border-t mt-[32px] mb-[32px]" />
 
           {/* LEGAL */}
-          <p className="text-[12px] text-[var(--color-brand-sand)] text-center tablet:text-left">
+          <p className="text-[12px] text-brand-beige-60 text-center tablet:text-left">
             © 2025 Aquaculture Всі права захищені | Договір публічної оферти |
             Політика конфіденційності
           </p>

@@ -9,14 +9,12 @@
 /* ============================= */
 @theme {
   /* --- Colors --- */
-  --color-brand-dark: #262626;     /* Основний текст */
-  --color-brand-gray: #B8B5AD;     /* Неактивні елементи / легенда */
-  --color-brand-gold: #DAC284;     /* Активний прогрес / акценти */
-  --color-brand-sand: #E9E5DB;     /* Картки / бордери / фон бару */
-  --color-brand-beige: #FEFAF3;    /* Основний фон сторінки */
-  --color-brand-light: #F5F1E7;    /* Кнопки лічильника (світлі) */
-
-  /* NEW: темний колір для футера */
+  --color-brand-dark: #262626;
+  --color-brand-gray: #B8B5AD;
+  --color-brand-gold: #DAC284;
+  --color-brand-sand: #E9E5DB;
+  --color-brand-beige: #FEFAF3;
+  --color-brand-light: #F5F1E7;
   --color-brand-black: #1b1a1a;
 
   /* --- Breakpoints --- */
@@ -26,8 +24,6 @@
 
   /* --- Layout --- */
   --max-width-card: 366.67px;
-
-  /* Content field (main container) */
   --max-width-content-tablet: 794px;
   --max-width-content-desktop: 1180px;
 
@@ -64,14 +60,14 @@
 /* === Token implementation === */
 /* ============================= */
 
-/* Default: phone + phone-wide */
 :root {
-  /* Colors - Mapping tokens to usable variables */
+  /* Backgrounds */
   --bg-main: var(--color-brand-beige);
   --bg-card: var(--color-brand-sand);
   --bg-light: var(--color-brand-light);
   --bg-footer: var(--color-brand-black);
 
+  /* Text */
   --text-main: var(--color-brand-dark);
   --text-muted: var(--color-brand-gray);
   --accent-gold: var(--color-brand-gold);
@@ -80,7 +76,7 @@
   --h1-font-size: var(--font-size-h1-phone);
   --h2-font-size: var(--font-size-h2-phone);
   --h3-font-size: var(--font-size-h3-phone);
-  
+
   --body-font-size: var(--font-size-body-phone);
   --body-small-font-size: var(--font-size-body-small-phone);
 
@@ -88,13 +84,16 @@
   --content-max-width: 100%;
 }
 
-/* Tablet */
+/* ============================= */
+/* === Responsive tokens ====== */
+/* ============================= */
+
 @media (min-width: 660px) {
   :root {
     --h1-font-size: var(--font-size-h1-tablet);
     --h2-font-size: var(--font-size-h2-tablet);
     --h3-font-size: var(--font-size-h3-tablet);
-    
+
     --body-font-size: var(--font-size-body-tablet);
     --body-small-font-size: var(--font-size-body-small-tablet);
 
@@ -102,13 +101,12 @@
   }
 }
 
-/* Desktop */
 @media (min-width: 980px) {
   :root {
     --h1-font-size: var(--font-size-h1-desktop);
     --h2-font-size: var(--font-size-h2-desktop);
     --h3-font-size: var(--font-size-h3-desktop);
-    
+
     --body-font-size: var(--font-size-body-desktop);
     --body-small-font-size: var(--font-size-body-small-desktop);
 
@@ -116,15 +114,146 @@
   }
 }
 
-html.smooth-scroll {
-  scroll-behavior: smooth;
-}
+/* ============================= */
+/* === Utilities ============== */
+/* ============================= */
 
 @layer utilities {
+
+  /* ===== Layout ===== */
+
+  .max-content {
+    max-width: var(--content-max-width);
+  }
+
+  /* ===== Typography ===== */
+
+  .text-body-small {
+    font-size: var(--body-small-font-size);
+  }
+
+  .text-body {
+    font-size: var(--body-font-size);
+  }
+
+  .text-h1 {
+    font-size: var(--h1-font-size);
+  }
+
+  .text-h2 {
+    font-size: var(--h2-font-size);
+  }
+
+  .text-h3 {
+    font-size: var(--h3-font-size);
+  }
+
+  /* ===== Text colors (semantic) ===== */
+
+  .text-main {
+    color: var(--text-main);
+  }
+
+  .text-muted {
+    color: var(--text-muted);
+  }
+
+  .text-gold {
+    color: var(--accent-gold);
+  }
+
+  /* ===== Backgrounds (semantic) ===== */
+
+  .bg-main {
+    background-color: var(--bg-main);
+  }
+
+  .bg-card {
+    background-color: var(--bg-card);
+  }
+
+  .bg-light {
+    background-color: var(--bg-light);
+  }
+
+  .bg-footer {
+    background-color: var(--bg-footer);
+  }
+
+  /* ===== Brand colors (raw) ===== */
+
+  .bg-brand-dark { background-color: var(--color-brand-dark); }
+  .bg-brand-gray { background-color: var(--color-brand-gray); }
+  .bg-brand-gold { background-color: var(--color-brand-gold); }
+  .bg-brand-sand { background-color: var(--color-brand-sand); }
+  .bg-brand-beige { background-color: var(--color-brand-beige); }
+  .bg-brand-light { background-color: var(--color-brand-light); }
+  .bg-brand-black { background-color: var(--color-brand-black); }
+
+  .text-brand-dark { color: var(--color-brand-dark); }
+  .text-brand-gray { color: var(--color-brand-gray); }
+  .text-brand-gold { color: var(--color-brand-gold); }
+  .text-brand-sand { color: var(--color-brand-sand); }
+  .text-brand-beige { color: var(--color-brand-beige); }
+  .text-brand-light { color: var(--color-brand-light); }
+  .text-brand-black { color: var(--color-brand-black); }
+
+  .border-brand-dark { border-color: var(--color-brand-dark); }
+  .border-brand-gray { border-color: var(--color-brand-gray); }
+  .border-brand-gold { border-color: var(--color-brand-gold); }
+  .border-brand-sand { border-color: var(--color-brand-sand); }
+  .border-brand-beige { border-color: var(--color-brand-beige); }
+  .border-brand-light { border-color: var(--color-brand-light); }
+  .border-brand-black { border-color: var(--color-brand-black); }
+
+  /* ===== Opacity utilities ===== */
+
+  .text-brand-beige-80 {
+    color: color-mix(in srgb, var(--color-brand-beige) 80%, transparent);
+  }
+
+  .text-brand-beige-60 {
+    color: color-mix(in srgb, var(--color-brand-beige) 60%, transparent);
+  }
+
+  /* ===== Form / system ===== */
+
+  .placeholder-brand-gray::placeholder {
+    color: var(--color-brand-gray);
+  }
+
+  /* ===== Error ===== */
+
+  .text-error {
+    color: #f87171;
+  }
+
+  .ring-error {
+    --tw-ring-color: #f87171;
+  }
+
+  /* ===== Existing ===== */
+
+  .border-sand {
+    border-color: var(--color-brand-sand);
+  }
+
   .animate-fadeIn {
     animation: fadeIn 0.5s ease-in-out forwards;
   }
 }
+
+/* ============================= */
+/* === Smooth scroll ========== */
+/* ============================= */
+
+html.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+/* ============================= */
+/* === Animations ============= */
+/* ============================= */
 
 @keyframes fadeIn {
   from {
