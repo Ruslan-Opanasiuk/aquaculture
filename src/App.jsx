@@ -8,6 +8,7 @@ import Cart from "./pages/Cart";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -22,9 +23,7 @@ function App() {
         <Route path="/product/:productId" element={<Product />} />
         <Route path="/product" element={<Navigate to="/catalog" replace />} />
         <Route path="/cart" element={<Cart />} />
-
-        {/* TODO: замінити Home на справжню сторінку 404 */}
-        <Route path="*" element={<Home />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       <Footer />
@@ -32,4 +31,4 @@ function App() {
   );
 }
 
-export default App;
+export default App; 

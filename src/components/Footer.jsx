@@ -189,6 +189,7 @@ export default function Footer() {
                       h-[36px]
                       rounded-full
                       bg-footer
+                      hover:opacity-90
                       flex
                       items-center
                       justify-center
@@ -231,7 +232,7 @@ export default function Footer() {
 
           {/* LEGAL */}
           <p className="text-[12px] text-brand-beige-60 text-center tablet:text-left">
-            © 2025 Aquaculture Всі права захищені | Договір публічної оферти |
+            © 2025 Aquaculture | Всі права захищені | Договір публічної оферти |
             Політика конфіденційності
           </p>
         </div>

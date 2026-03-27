@@ -128,7 +128,6 @@ export default function WholesaleBanner() {
                 px-6
                 min-h-[44px]
                 font-['Montserrat']
-                tracking-[0.02em]
                 bg-brand-beige
                 text-brand-black
                 hover:bg-brand-sand
