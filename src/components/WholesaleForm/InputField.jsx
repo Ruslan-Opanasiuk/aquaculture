@@ -1,36 +1,43 @@
-// InputField.jsx
-import React from "react";
+import React, { useId } from "react";
 
-export default function InputField({ label, value, onChange, error, type = "text" }) {
-  const borderClass = error ? "border-[#b00020]" : "border-[#A8A8A8]";
+export default function InputField({ label, placeholder, value, onChange, error, type = "text" }) {
+  // Генеруємо унікальний ID для зв'язки label та input (важливо для доступності)
+  const id = useId();
 
   return (
-    <div className="w-full flex flex-col mt-[17px] items-center">
+    <div className="w-full flex flex-col font-['Montserrat']">
+      <label 
+        htmlFor={id} 
+        className="mb-[6px] text-body font-medium text-brand-black"
+      >
+        {label}
+      </label>
+
       <input
+        id={id}
         type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        placeholder={label.toUpperCase()}
+        placeholder={placeholder}
         aria-invalid={Boolean(error)}
         className={`
           w-full
-          bg-transparent
-          focus:outline-none
-          pb-[17px]
-          font-[Montserrat]
-          text-[17px]
-          text-[#000000]
-          text-center
-          placeholder:text-[#A8A8A8]
-          placeholder:text-[16px]
-          border-b-[1px]
-          ${borderClass}
-          transition-colors
+          h-[44px]
+          rounded-full
+          bg-brand-light
+          text-brand-black
+          px-[18px]
+          text-body-small
+          placeholder:text-brand-gray
+          outline-none
+          transition-all
+          duration-200
+          ${error ? "ring-2 ring-error" : "focus:ring-2 focus:ring-brand-gold"}
         `}
       />
 
       {error && (
-        <p className="mt-[8px] font-[Montserrat] text-[14px] text-[#b00020] leading-[1.2] text-center">
+        <p role="alert" className="text-error text-[12px] mt-[6px]">
           {error}
         </p>
       )}

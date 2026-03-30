@@ -131,7 +131,6 @@ export default function WholesaleBanner() {
                 bg-brand-beige
                 text-brand-black
                 hover:bg-brand-sand
-                active:bg-brand-gray
                 transition-colors
                 text-body
                 focus-visible:ring-2

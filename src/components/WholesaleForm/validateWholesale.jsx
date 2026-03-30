@@ -23,8 +23,16 @@ export function validateWholesale(values) {
     if (!allowed.test(phoneRaw)) {
       errors.phone = "Некоректний формат номера";
     } else {
-      const digitsCount = phoneRaw.replace(/\D/g, "").length;
-      if (digitsCount < 9) {
+      // Витягуємо тільки цифри
+      const digits = phoneRaw.replace(/\D/g, "");
+      const isUkrainianCode = digits.startsWith("380");
+
+      // Якщо починається з 380, вимагаємо 12 цифр
+      if (isUkrainianCode && digits.length < 12) {
+        errors.phone = "Введіть повний номер (12 цифр з кодом 380)";
+      } 
+      // Якщо починається з 0 або іншого коду, вимагаємо мінімум 10 цифр
+      else if (!isUkrainianCode && digits.length < 10) {
         errors.phone = "Номер телефону занадто короткий";
       }
     }
