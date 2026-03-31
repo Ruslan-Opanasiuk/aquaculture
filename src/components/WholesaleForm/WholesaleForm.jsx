@@ -153,7 +153,7 @@ export default function WholesaleForm() {
         font-['Montserrat']
       "
     >
-      <div className="w-full px-layout-gap max-content">
+      <div className="w-full px-layout-gap max-w-[980px] mx-auto">
         <div className="flex flex-col tablet:grid tablet:grid-cols-2 gap-[40px] tablet:gap-[60px] desktop:gap-[100px] items-start">
           
           <div className="flex flex-col text-left text-brand-black">

@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useId } from "react";
 
 export default function RadioGroup({ label, options, selected, onChange, error }) {
+  // Генеруємо унікальний ID для зв'язки заголовка і групи
+  const labelId = useId();
+
   return (
-    <fieldset className="w-full flex flex-col font-['Montserrat']">
-      {/* Заголовок групи */}
-      <legend className="mb-[12px] text-body font-medium text-brand-black">
+    <div 
+      className="w-full flex flex-col font-['Montserrat']"
+      role="radiogroup"
+      aria-labelledby={labelId}
+    >
+      <p 
+        id={labelId}
+        className="mb-[12px] text-body font-medium text-brand-black"
+      >
         {label}
-      </legend>
+      </p>
 
       <div className="flex flex-col gap-[12px]">
         {options.map((item) => (
@@ -14,11 +23,6 @@ export default function RadioGroup({ label, options, selected, onChange, error }
             key={item}
             className="flex items-center gap-[12px] cursor-pointer group select-none"
           >
-            {/* 
-              Прихований нативний інпут для доступності.
-              Клас 'peer' дозволяє стилізувати наш кастомний кружечок 
-              при фокусі на цьому прихованому інпуті.
-            */}
             <input
               type="radio"
               name={label}
@@ -29,7 +33,6 @@ export default function RadioGroup({ label, options, selected, onChange, error }
               className="peer sr-only"
             />
 
-            {/* Кастомний кружечок */}
             <span
               className={`
                 w-[24px]
@@ -41,12 +44,10 @@ export default function RadioGroup({ label, options, selected, onChange, error }
                 flex-shrink-0
                 transition-all
                 duration-200
-                /* Підсвітка при навігації клавіатурою (Tab) */
                 peer-focus-visible:ring-2 
                 peer-focus-visible:ring-brand-gold 
                 peer-focus-visible:ring-offset-2 
                 peer-focus-visible:ring-offset-brand-sand
-                /* Кольори обводки */
                 ${error 
                   ? "border-error" 
                   : selected === item 
@@ -55,7 +56,6 @@ export default function RadioGroup({ label, options, selected, onChange, error }
                 }
               `}
             >
-              {/* Внутрішня крапка */}
               <span 
                 className={`
                   w-[10px] 
@@ -69,7 +69,6 @@ export default function RadioGroup({ label, options, selected, onChange, error }
               />
             </span>
 
-            {/* Текст пункту */}
             <span className="text-body-small text-brand-black leading-tight">
               {item}
             </span>
@@ -83,6 +82,6 @@ export default function RadioGroup({ label, options, selected, onChange, error }
           {error}
         </p>
       )}
-    </fieldset>
+    </div>
   );
 }
