@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import InputField from "./InputField";
 import SelectField from "./SelectField";
 import RadioGroup from "./RadioGroup";
@@ -21,9 +21,20 @@ export default function WholesaleForm() {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  // Захист від фантомних та подвійних кліків
   const [isTransitioning, setIsTransitioning] = useState(false);
+
+  // ДОДАНО: Реф для скролу
+  const formTopRef = useRef(null);
+
+  // ДОДАНО: Функція плавного скролу
+  const scrollToStep = () => {
+    if (formTopRef.current) {
+      // Використовуємо setTimeout, щоб дати React мілісекунду на відмальовку нового кроку
+      setTimeout(() => {
+        formTopRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 50);
+    }
+  };
 
   const handleChange = (field, value) => {
     setValues((prev) => ({ ...prev, [field]: value }));
@@ -62,7 +73,6 @@ export default function WholesaleForm() {
       return;
     }
 
-    // ЖОРСТКА ЧИСТКА: Видаляємо помилки майбутніх кроків, щоб вони не вилізли завчасно
     setErrors((prev) => {
       const next = { ...prev };
       if (step === 1) {
@@ -75,15 +85,14 @@ export default function WholesaleForm() {
       return next;
     });
 
-    // Блокуємо відправку на 300мс, щоб з'їсти фантомні кліки
     setIsTransitioning(true);
     setTimeout(() => setIsTransitioning(false), 300);
 
     setStep((prev) => Math.min(prev + 1, 3));
+    scrollToStep(); // ДОДАНО: Скролимо наверх при успішному переході вперед
   };
 
   const prevStep = () => {
-    // При поверненні назад також підчищаємо помилки поточного кроку
     setErrors((prev) => {
       const next = { ...prev };
       delete next.workFormat; 
@@ -91,6 +100,7 @@ export default function WholesaleForm() {
       return next;
     });
     setStep((prev) => Math.max(prev - 1, 1));
+    scrollToStep(); // ДОДАНО: Скролимо наверх при поверненні назад
   };
 
   const handleSubmit = async (e) => {
@@ -101,26 +111,23 @@ export default function WholesaleForm() {
       return;
     }
 
-    // Якщо це фантомний клік одразу після переходу на 3-й крок — ігноруємо його
     if (isTransitioning) return;
 
     const finalErrors = validateWholesale(values);
     setErrors(finalErrors);
 
     if (Object.keys(finalErrors).length > 0) {
-      // Автоматичне повернення на крок з помилкою
       if (finalErrors.name || finalErrors.phone || finalErrors.email || finalErrors.city) {
         setStep(1);
       } else if (finalErrors.caviarType || finalErrors.caviarVolume) {
         setStep(2);
       }
+      scrollToStep(); // ДОДАНО: Якщо є помилка, скролимо туди, де вона сталася
       return;
     }
 
     setIsSubmitting(true);
 
-    // ТУТ БУДЕ ТВОЯ ЛОГІКА ВІДПРАВКИ
-    // Поки що форма просто чекає 1 секунду і показує повідомлення про успіх
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
@@ -130,6 +137,7 @@ export default function WholesaleForm() {
         caviarType: "", caviarVolume: "", workFormat: "", paymentFormat: "",
       });
       setErrors({});
+      scrollToStep(); // Опціонально: скролимо на початок після успішної відправки
     }, 1000);
   };
 
@@ -167,8 +175,8 @@ export default function WholesaleForm() {
             </p>
           </div>
 
-          {/* ПРИБРАНО max-w-[500px] — тепер поле тягнеться на всю доступну ширину колонки */}
-          <div className="w-full">
+          {/* ДОДАНО ref={formTopRef} та scroll-mt-[100px] для правильного позиціонування під шапкою */}
+          <div className="w-full scroll-mt-[100px]" ref={formTopRef}>
             <div className="mb-6 border-b border-brand-dark/10 pb-4">
               <p className="text-body-small opacity-60 font-semibold mb-1 tracking-wider">
                 КРОК {step} з 3
