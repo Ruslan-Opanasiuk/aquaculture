@@ -48,7 +48,7 @@ export default function CatalogSection({ products, title, subtitle, id }) {
                 id={p.key}
                 title={p.title}
                 price={p.priceText}
-                imageSrc={p.imageSrc}
+                images={p.images}
                 imageAlt={p.title}
               />
             </li>

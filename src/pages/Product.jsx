@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom"; // useNavigate більше не потрібен
+import { useParams } from "react-router-dom";
 
 import OrderVolumeGrid from "../components/OrderVolumeGrid";
 import WholesaleForm from "../components/WholesaleForm/WholesaleForm";
 import IndicatorRow from "../components/IndicatorRow";
 import SEO from "../components/SEO"; 
-import NotFound from "./NotFound"; // ДОДАНО: імпорт нашої нової сторінки 404
+import NotFound from "./NotFound";
 
 import { caviarCatalog } from "../data/caviarPackages";
 
@@ -33,8 +33,6 @@ export default function Product() {
   const [isLoading, setIsLoading] = useState(true);
   const [animate, setAnimate] = useState(false);
 
-  // ВИДАЛЕНО: useEffect з редіректом (navigate) більше не потрібен!
-
   useEffect(() => {
     setIsLoading(true);
     setAnimate(false);
@@ -43,7 +41,8 @@ export default function Product() {
   useEffect(() => {
     if (!product) return;
 
-    const imagesToLoad = [product.images.jar, product.images.lid];
+    // ЗМІНЕНО: Оскільки тепер це об'єкти, беремо src1x для прелоадера
+    const imagesToLoad = [product.images.jar.src1x, product.images.lid.src1x];
 
     const loadImage = (src) => {
       return new Promise((resolve) => {
@@ -62,7 +61,6 @@ export default function Product() {
     });
   }, [product]);
 
-  // ЗМІНЕНО: Якщо товару не існує в каталозі — показуємо сторінку 404
   if (!product) return <NotFound />;
   
   if (isLoading) return <FullScreenLoader />;
@@ -111,6 +109,7 @@ export default function Product() {
                     <div className="mt-[56px] mx-[-10px] tablet:mx-0">
                       <OrderVolumeGrid
                         packages={product.packages || []}
+                        // ЗМІНЕНО: Передаємо весь об'єкт { src1x, src2x }
                         productImage={product.images.jar}
                         productTitle={product.title}
                         productKey={productKey}
@@ -155,13 +154,16 @@ export default function Product() {
                   "
                 >
                   <div className="w-full relative flex justify-center items-center py-[20%]">
+                    {/* ЗМІНЕНО: Додано srcSet до всіх трьох зображень */}
                     <img
-                      src={product.images.jar}
+                      src={product.images.jar.src1x}
+                      srcSet={`${product.images.jar.src1x} 1x, ${product.images.jar.src2x} 2x`}
                       alt=""
                       className="w-[80%] h-auto opacity-0 pointer-events-none select-none"
                     />
                     <img
-                      src={product.images.lid}
+                      src={product.images.lid.src1x}
+                      srcSet={`${product.images.lid.src1x} 1x, ${product.images.lid.src2x} 2x`}
                       alt={`Кришка від ${product.title}`}
                       fetchPriority="high"
                       className={`
@@ -171,7 +173,8 @@ export default function Product() {
                       `}
                     />
                     <img
-                      src={product.images.jar}
+                      src={product.images.jar.src1x}
+                      srcSet={`${product.images.jar.src1x} 1x, ${product.images.jar.src2x} 2x`}
                       alt={`Банка ${product.title}`}
                       fetchPriority="high"
                       className={`
@@ -189,6 +192,7 @@ export default function Product() {
                     <div className="w-full max-w-[450px]">
                       <OrderVolumeGrid
                         packages={product.packages || []}
+                        // ЗМІНЕНО: Передаємо весь об'єкт { src1x, src2x }
                         productImage={product.images.jar}
                         productTitle={product.title}
                         productKey={productKey}

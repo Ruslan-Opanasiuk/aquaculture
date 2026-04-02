@@ -12,7 +12,8 @@ export default function ProductCard({
   id,
   title = "Назва продукту",
   price = "від 0 ₴",
-  imageSrc,
+  // ЗМІНЕНО: Приймаємо об'єкт images замість рядка imageSrc
+  images, 
   imageAlt = ""
 }) {
   const productPath = id ? `/product/${id}` : "/product";
@@ -54,9 +55,11 @@ export default function ProductCard({
           " 
         >
           <Link to={productPath} className="block w-full h-full" tabIndex="-1" aria-hidden="true">
-            {imageSrc ? (
+            {/* ЗМІНЕНО: Додано підтримку Retina через srcSet */}
+            {images && images.src1x ? (
               <img
-                src={imageSrc}
+                src={images.src1x}
+                srcSet={`${images.src1x} 1x, ${images.src2x} 2x`}
                 alt={imageAlt}
                 loading="lazy"
                 className="w-full h-full object-cover"

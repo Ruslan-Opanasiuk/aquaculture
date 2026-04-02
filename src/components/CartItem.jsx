@@ -23,8 +23,14 @@ export default function CartItem({
   onRemove,
 }) {
   const total = item.price * item.quantity;
-
   const productHref = item.productKey ? `/product/${item.productKey}` : null;
+
+  // РОЗУМНА ЛОГІКА КАРТИНОК:
+  // Підтримує як старі рядки (string), так і нові об'єкти { src1x, src2x }
+  const imgSrc = item.image?.src1x || item.image;
+  const imgSrcSet = item.image?.src2x 
+    ? `${item.image.src1x} 1x, ${item.image.src2x} 2x` 
+    : undefined;
 
   const Clickable = ({ children, className, ariaLabel }) => {
     if (!productHref) return <div className={className}>{children}</div>;
@@ -82,7 +88,8 @@ export default function CartItem({
                 }}
               >
                 <img
-                  src={item.image}
+                  src={imgSrc}
+                  srcSet={imgSrcSet}
                   alt={item.title}
                   style={{
                     width: "100px",
@@ -186,7 +193,8 @@ export default function CartItem({
             }}
           >
             <img
-              src={item.image}
+              src={imgSrc}
+              srcSet={imgSrcSet}
               alt={item.title}
               style={{
                 width: "125px",

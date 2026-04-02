@@ -1,3 +1,4 @@
+// --- Імпорти упаковок (залишаємо як є) ---
 import g100 from "../assets/images/packaging/100.png";
 import g100_tin from "../assets/images/packaging/100-tin.png";
 import g100_tin_box from "../assets/images/packaging/100-tin-box.png";
@@ -7,10 +8,52 @@ import g310_jar from "../assets/images/packaging/310-jar.png";
 import g500 from "../assets/images/packaging/500.png";
 import g500_jar from "../assets/images/packaging/500-jar.png";
 
+// --- Заглушки для наборів (банки) ---
 import troutJar from "../assets/images/product1.png";
-import troutLid from "../assets/images/product2.png";
+
+// ============================================================================
+// --- ОПТИМІЗОВАНІ ФОТО ІКРИ ТА КРИШКИ (RETINA READY) ---
+// ============================================================================
+
+// Універсальна кришка (тепер використовується для всіх товарів)
+import Lid1x from "../assets/images/optimized/trout_lid-512.webp";
+import Lid2x from "../assets/images/optimized/trout_lid-1024.webp";
+
+// --- ЧЕРВОНА ІКРА ---
+import redCaviarChavicha1x from "../assets/images/optimized/red_caviar_chavicha-512.webp";
+import redCaviarChavicha2x from "../assets/images/optimized/red_caviar_chavicha-1024.webp";
+
+import redCaviarForel1x from "../assets/images/optimized/red_caviar_forel-512.webp";
+import redCaviarForel2x from "../assets/images/optimized/red_caviar_forel-1024.webp";
+
+import redCaviarGorbusha1x from "../assets/images/optimized/red_caviar_gorbusha-512.webp";
+import redCaviarGorbusha2x from "../assets/images/optimized/red_caviar_gorbusha-1024.webp";
+
+import redCaviarKeta1x from "../assets/images/optimized/red_caviar_keta-512.webp";
+import redCaviarKeta2x from "../assets/images/optimized/red_caviar_keta-1024.webp";
+
+import redCaviarKizhuch1x from "../assets/images/optimized/red_caviar_kizhuch-512.webp";
+import redCaviarKizhuch2x from "../assets/images/optimized/red_caviar_kizhuch-1024.webp";
+
+import redCaviarNerka1x from "../assets/images/optimized/red_caviar_nerka-512.webp";
+import redCaviarNerka2x from "../assets/images/optimized/red_caviar_nerka-1024.webp";
+
+// --- ЧОРНА ІКРА ---
+import blackCaviarBeluga1x from "../assets/images/optimized/black_caviar_beluga-512.webp";
+import blackCaviarBeluga2x from "../assets/images/optimized/black_caviar_beluga-1024.webp";
+
+import blackCaviarOsetr1x from "../assets/images/optimized/black_caviar_osetr-512.webp";
+import blackCaviarOsetr2x from "../assets/images/optimized/black_caviar_osetr-1024.webp";
+
+// --- БІЛА ІКРА ---
+import whiteCaviarShchuka1x from "../assets/images/optimized/white_caviar_shchuka-512.webp";
+import whiteCaviarShchuka2x from "../assets/images/optimized/white_caviar_shchuka-1024.webp";
+
 
 export const caviarCatalog = {
+  // =========================================================================
+  // --- ЧЕРВОНА ІКРА ---
+  // =========================================================================
   forel: {
     id: "forel",
     title: "Форель",
@@ -26,7 +69,10 @@ export const caviarCatalog = {
       "М’який солонуватий акцент підкреслює глибину смаку, роблячи продукт універсальним для подачі як у класичних закусках, так і в сучасних гастрономічних поєднаннях. Ікринки добре тримають форму, не втрачають структури та створюють делікатне відчуття свіжості."
     ],
     specs: "СКЛАД\nікра, сіль, масло, Е 200, Е 211.\nПерший сорт.\n\nТЕРМІН ПРИДАТНОСТІ\n12 місяців",
-    images: { jar: troutJar, lid: troutLid },
+    images: { 
+      jar: { src1x: redCaviarForel1x, src2x: redCaviarForel2x }, 
+      lid: { src1x: Lid1x, src2x: Lid2x } 
+    },
     packages: [
       { id: "forel-100-tin", grams: 100, price: 525, image: g100_tin },
       { id: "forel-100-tin-box", grams: 100, price: 535, image: g100_tin_box },
@@ -52,7 +98,10 @@ export const caviarCatalog = {
       "М’який солонуватий акцент підкреслює глибину смаку, роблячи продукт універсальним для подачі як у класичних закусках, так і в сучасних гастрономічних поєднаннях. Ікринки добре тримають форму, не втрачають структури та створюють делікатне відчуття свіжості."
     ],
     specs: "СКЛАД\nікра, сіль, масло, Е 200, Е 211.\nПерший сорт.\n\nТЕРМІН ПРИДАТНОСТІ\n12 місяців",
-    images: { jar: troutJar, lid: troutLid },
+    images: { 
+      jar: { src1x: redCaviarGorbusha1x, src2x: redCaviarGorbusha2x }, 
+      lid: { src1x: Lid1x, src2x: Lid2x } 
+    },
     packages: [
       { id: "gorbusha-100-tin", grams: 100, price: 525, image: g100_tin },
       { id: "gorbusha-100-tin-box", grams: 100, price: 535, image: g100_tin_box },
@@ -80,7 +129,10 @@ export const caviarCatalog = {
       "М’який солонуватий акцент підкреслює глибину смаку, роблячи продукт універсальним для подачі як у класичних закусках, так і в сучасних гастрономічних поєднаннях. Ікринки добре тримають форму, не втрачають структури та створюють делікатне відчуття свіжості."
     ],
     specs: "СКЛАД\nікра, сіль, масло, Е 200, Е 211.\nПерший сорт.\n\nТЕРМІН ПРИДАТНОСТІ\n12 місяців",
-    images: { jar: troutJar, lid: troutLid },
+    images: { 
+      jar: { src1x: redCaviarKeta1x, src2x: redCaviarKeta2x }, 
+      lid: { src1x: Lid1x, src2x: Lid2x } 
+    },
     packages: [
       { id: "keta-100-tin", grams: 100, price: 525, image: g100_tin },
       { id: "keta-100-tin-box", grams: 100, price: 535, image: g100_tin_box },
@@ -108,7 +160,10 @@ export const caviarCatalog = {
       "М’який солонуватий акцент підкреслює глибину смаку, роблячи продукт універсальним для подачі як у класичних закусках, так і в сучасних гастрономічних поєднаннях. Ікринки добре тримають форму, не втрачають структури та створюють делікатне відчуття свіжості."
     ],
     specs: "СКЛАД\nікра, сіль, масло, Е 200, Е 211.\nПерший сорт.\n\nТЕРМІН ПРИДАТНОСТІ\n12 місяців",
-    images: { jar: troutJar, lid: troutLid },
+    images: { 
+      jar: { src1x: redCaviarChavicha1x, src2x: redCaviarChavicha2x }, 
+      lid: { src1x: Lid1x, src2x: Lid2x } 
+    },
     packages: [
       { id: "chavicha-100", grams: 100, price: 525, image: g100 },
       { id: "chavicha-200", grams: 200, price: 1025, image: g200 },
@@ -132,7 +187,10 @@ export const caviarCatalog = {
       "М’який солонуватий акцент підкреслює глибину смаку, роблячи продукт універсальним для подачі як у класичних закусках, так і в сучасних гастрономічних поєднаннях. Ікринки добре тримають форму, не втрачають структури та створюють делікатне відчуття свіжості."
     ],
     specs: "СКЛАД\nікра, сіль, масло, Е 200, Е 211.\nПерший сорт.\n\nТЕРМІН ПРИДАТНОСТІ\n12 місяців",
-    images: { jar: troutJar, lid: troutLid },
+    images: { 
+      jar: { src1x: redCaviarKizhuch1x, src2x: redCaviarKizhuch2x }, 
+      lid: { src1x: Lid1x, src2x: Lid2x } 
+    },
     packages: [
       { id: "kizhuch-100", grams: 100, price: 525, image: g100 },
       { id: "kizhuch-200", grams: 200, price: 1025, image: g200 },
@@ -156,7 +214,10 @@ export const caviarCatalog = {
       "М’який солонуватий акцент підкреслює глибину смаку, роблячи продукт універсальним для подачі як у класичних закусках, так і в сучасних гастрономічних поєднаннях. Ікринки добре тримають форму, не втрачають структури та створюють делікатне відчуття свіжості."
     ],
     specs: "СКЛАД\nікра, сіль, масло, Е 200, Е 211.\nПерший сорт.\n\nТЕРМІН ПРИДАТНОСТІ\n12 місяців",
-    images: { jar: troutJar, lid: troutLid },
+    images: { 
+      jar: { src1x: redCaviarNerka1x, src2x: redCaviarNerka2x }, 
+      lid: { src1x: Lid1x, src2x: Lid2x } 
+    },
     packages: [
       { id: "nerka-100", grams: 100, price: 525, image: g100 },
       { id: "nerka-200", grams: 200, price: 1025, image: g200 },
@@ -165,6 +226,9 @@ export const caviarCatalog = {
     ]
   },
 
+  // =========================================================================
+  // --- ЧОРНА ІКРА ---
+  // =========================================================================
   beluga: {
     id: "beluga",
     title: "Белуга",
@@ -180,7 +244,10 @@ export const caviarCatalog = {
       "М’який солонуватий акцент підкреслює глибину смаку, роблячи продукт універсальним для подачі як у класичних закусках, так і в сучасних гастрономічних поєднаннях. Ікринки добре тримають форму, не втрачають структури та створюють делікатне відчуття свіжості."
     ],
     specs: "СКЛАД\nікра, сіль, масло, Е 200, Е 211.\nПерший сорт.\n\nТЕРМІН ПРИДАТНОСТІ\n12 місяців",
-    images: { jar: troutJar, lid: troutLid },
+    images: { 
+      jar: { src1x: blackCaviarBeluga1x, src2x: blackCaviarBeluga2x }, 
+      lid: { src1x: Lid1x, src2x: Lid2x } 
+    },
     packages: [
       { id: "beluga-50", grams: 50, price: 1600, image: g100 },
       { id: "beluga-100", grams: 100, price: 3125, image: g200 },
@@ -203,7 +270,10 @@ export const caviarCatalog = {
       "М’який солонуватий акцент підкреслює глибину смаку, роблячи продукт універсальним для подачі як у класичних закусках, так і в сучасних гастрономічних поєднаннях. Ікринки добре тримають форму, не втрачають структури та створюють делікатне відчуття свіжості."
     ],
     specs: "СКЛАД\nікра, сіль, масло, Е 200, Е 211.\nПерший сорт.\n\nТЕРМІН ПРИДАТНОСТІ\n12 місяців",
-    images: { jar: troutJar, lid: troutLid },
+    images: { 
+      jar: { src1x: blackCaviarOsetr1x, src2x: blackCaviarOsetr2x }, 
+      lid: { src1x: Lid1x, src2x: Lid2x } 
+    },
     packages: [
       { id: "osetr-50", grams: 50, price: 1530, image: g100 },
       { id: "osetr-100", grams: 100, price: 2980, image: g200 },
@@ -211,6 +281,9 @@ export const caviarCatalog = {
     ]
   },
 
+  // =========================================================================
+  // --- БІЛА ІКРА ---
+  // =========================================================================
   shchuka: {
     id: "shchuka",
     title: "Щука",
@@ -226,13 +299,19 @@ export const caviarCatalog = {
       "М’який солонуватий акцент підкреслює глибину смаку, роблячи продукт універсальним для подачі як у класичних закусках, так і в сучасних гастрономічних поєднаннях. Ікринки добре тримають форму, не втрачають структури та створюють делікатне відчуття свіжості."
     ],
     specs: "СКЛАД\nікра, сіль, масло, Е 200, Е 211.\nПерший сорт.\n\nТЕРМІН ПРИДАТНОСТІ\n12 місяців",
-    images: { jar: troutJar, lid: troutLid },
+    images: { 
+      jar: { src1x: whiteCaviarShchuka1x, src2x: whiteCaviarShchuka2x }, 
+      lid: { src1x: Lid1x, src2x: Lid2x } 
+    },
     packages: [
       { id: "shchuka-100", grams: 100, price: 475, image: g100 },
       { id: "shchuka-230", grams: 230, price: 1115, image: g200 }
     ]
   },
 
+  // =========================================================================
+  // --- НАБОРИ ---
+  // =========================================================================
   set1: {
     id: "set1",
     title: "Набір 1",
@@ -241,7 +320,10 @@ export const caviarCatalog = {
     longDescription: ["Ікра — це збалансоване поєднання смаку, кольору й текстури у вишуканому та продуманому виконанні. Ікринки мають природний насичений відтінок і рівномірну структуру, приємну на вигляд та на дотик.",
     "М’який солонуватий акцент підкреслює глибину смаку, роблячи продукт універсальним для подачі як у класичних закусках, так і в сучасних гастрономічних поєднаннях. Ікринки добре тримають форму, не втрачають структури та створюють делікатне відчуття свіжості."],
     specs: "",
-    images: { jar: troutJar, lid: troutLid },
+    images: { 
+      jar: { src1x: troutJar, src2x: troutJar }, // Поки що залишаємо заглушку для банок набору
+      lid: { src1x: Lid1x, src2x: Lid2x } 
+    },
     packages: []
   },
 
@@ -253,7 +335,10 @@ export const caviarCatalog = {
     longDescription: ["Ікра — це збалансоване поєднання смаку, кольору й текстури у вишуканому та продуманому виконанні. Ікринки мають природний насичений відтінок і рівномірну структуру, приємну на вигляд та на дотик.",
     "М’який солонуватий акцент підкреслює глибину смаку, роблячи продукт універсальним для подачі як у класичних закусках, так і в сучасних гастрономічних поєднаннях. Ікринки добре тримають форму, не втрачають структури та створюють делікатне відчуття свіжості."],
     specs: "",
-    images: { jar: troutJar, lid: troutLid },
+    images: { 
+      jar: { src1x: troutJar, src2x: troutJar },
+      lid: { src1x: Lid1x, src2x: Lid2x } 
+    },
     packages: []
   },
 
@@ -265,7 +350,10 @@ export const caviarCatalog = {
     longDescription: ["Ікра — це збалансоване поєднання смаку, кольору й текстури у вишуканому та продуманому виконанні. Ікринки мають природний насичений відтінок і рівномірну структуру, приємну на вигляд та на дотик.",
     "М’який солонуватий акцент підкреслює глибину смаку, роблячи продукт універсальним для подачі як у класичних закусках, так і в сучасних гастрономічних поєднаннях. Ікринки добре тримають форму, не втрачають структури та створюють делікатне відчуття свіжості."],
     specs: "",
-    images: { jar: troutJar, lid: troutLid },
+    images: { 
+      jar: { src1x: troutJar, src2x: troutJar },
+      lid: { src1x: Lid1x, src2x: Lid2x } 
+    },
     packages: []
   }
 };
