@@ -90,7 +90,7 @@ export default function WholesaleBanner() {
                 font-['Montserrat']
                 font-medium
                 leading-[0.95]
-                mb-10
+                mb-8
                 text-h1
               "
             >
