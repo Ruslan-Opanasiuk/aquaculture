@@ -44,7 +44,7 @@ export default function Footer() {
             py-[64px]
 
             font-['Montserrat']
-            text-body-small
+            text-body
             leading-[1.6]
           "
         >
@@ -171,7 +171,7 @@ export default function Footer() {
                       placeholder:text-brand-gray
                       pl-[18px]
                       pr-[48px]
-                      text-body-small
+                      text-body
                       outline-none
                       ${error ? "ring-2 ring-error" : ""}
                     `}
