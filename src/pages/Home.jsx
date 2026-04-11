@@ -3,12 +3,8 @@ import HomeHeroBanner from "../components/HomeHeroBanner";
 import FeatureGrid from "../components/FeatureGrid";
 // Тимчасові імпорти іконок для переваг. 
 // Заміни на свої, коли будуть готові (наприклад SVG-іконки)
-import iconOrigin from "../assets/images/grid/1.1.png";
-import iconTexture from "../assets/images/grid/1.2.png";
-import iconSelection from "../assets/images/grid/1.3.png";
-import iconTraceability from "../assets/images/grid/2.1.png";
-import iconQuality from "../assets/images/grid/2.2.png";
-import iconDelivery from "../assets/images/grid/2.3.png";
+import iconOrigin from "../assets/images/grid/test-512.webp";
+
 
 export default function Home() {
   
@@ -22,31 +18,31 @@ export default function Home() {
     },
     {
       id: "texture",
-      imageSrc: iconTexture,
+      imageSrc: iconOrigin,
       title: "Автентична текстура",
       description: "Текстура і колір без втручання"
     },
     {
       id: "selection",
-      imageSrc: iconSelection,
+      imageSrc: iconOrigin,
       title: "Відбір як мистецтво",
       description: "Кожне зерно — результат відбору"
     },
     {
       id: "traceability",
-      imageSrc: iconTraceability,
+      imageSrc: iconOrigin,
       title: "Прозоре походження",
       description: "Ми знаємо походження кожного зерна"
     },
     {
       id: "quality",
-      imageSrc: iconQuality,
+      imageSrc: iconOrigin,
       title: "Гарантія якості",
       description: "Якість, за яку ми відповідаємо"
     },
     {
       id: "delivery",
-      imageSrc: iconDelivery,
+      imageSrc: iconOrigin,
       title: "Швидкість і точність",
       description: "Свіжість без затримок"
     }
@@ -62,7 +58,7 @@ export default function Home() {
       <FeatureGrid 
         title="НАШІ ПЕРЕВАГИ"
         bodyText="Ікра — це більше, ніж продукт. Це походження, відбір і точність на кожному етапі. Ми працюємо так, щоб у кожній банці зберігався її природний смак — без компромісів і випадковостей."
-        columns={3} // 3 колонки на десктопі (буде 2 ряди по 3 елементи)
+        columns={4}
         items={advantagesItems}
       />
 

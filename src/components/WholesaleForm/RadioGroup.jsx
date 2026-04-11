@@ -69,7 +69,7 @@ export default function RadioGroup({ label, options, selected, onChange, error }
               />
             </span>
 
-            <span className="text-body-small text-brand-black leading-tight">
+            <span className="text-body text-brand-black leading-tight">
               {item}
             </span>
           </label>

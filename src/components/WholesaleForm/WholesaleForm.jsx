@@ -345,12 +345,6 @@ export default function WholesaleForm() {
                   </button>
                 )}
               </div>
-
-              {isSubmitted && (
-                <p className="mt-[12px] text-body-small text-brand-black opacity-80 text-center font-medium animate-fadeIn">
-                  Дякуємо. Ми надіслали лист на вашу пошту.
-                </p>
-              )}
             </form>
           </div>
         </div>

@@ -43,7 +43,7 @@ export default function SelectField({
     <div className="w-full flex flex-col font-['Montserrat'] relative" ref={dropdownRef}>
       <label 
         htmlFor={`${id}-input`}
-        className="mb-[6px] text-body-small font-medium text-brand-black"
+        className="mb-[6px] text-body font-medium text-brand-black"
       >
         {label}
       </label>
@@ -87,7 +87,7 @@ export default function SelectField({
             w-full 
             bg-transparent 
             outline-none 
-            text-body-small
+            text-body
             ${!searchable ? "cursor-pointer select-none" : ""}
             ${value && !open ? "text-brand-black" : "text-brand-black"}
             placeholder:text-brand-gray
@@ -163,7 +163,7 @@ export default function SelectField({
                 className={`
                   px-[18px]
                   py-[10px]
-                  text-body-small
+                  text-body
                   cursor-pointer
                   transition-colors
                   text-left
@@ -177,7 +177,7 @@ export default function SelectField({
               </li>
             ))
           ) : (
-            <li className="px-[18px] py-[10px] text-body-small text-brand-gray text-center">
+            <li className="px-[18px] py-[10px] text-body text-brand-gray text-center">
               Нічого не знайдено
             </li>
           )}

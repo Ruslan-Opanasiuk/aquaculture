@@ -27,7 +27,7 @@ export default function InputField({ label, placeholder, value, onChange, error,
           bg-brand-light
           text-brand-black
           px-[18px]
-          text-body-small
+          text-body
           placeholder:text-brand-gray
           outline-none
           transition-all
