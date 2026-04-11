@@ -9,7 +9,7 @@ export default function FeatureGrid({
   const desktopColsClass = columns === 2 ? "tablet:grid-cols-2" : "tablet:grid-cols-3";
 
   return (
-    <section className="w-full py-[80px] flex justify-center font-['Montserrat'] bg-brand-beige">
+    <section className="w-full mt-[80px] flex justify-center font-['Montserrat']">
       <div className="w-full max-w-[980px] px-layout-gap mx-auto">
         <div className="flex flex-col items-center text-center mb-[64px]">
           {title && (
@@ -53,10 +53,10 @@ export default function FeatureGrid({
               </h3>
               
               {item.description && (
-                <p className="text-body text-brand-black">
+                <p className="text-body text-brand-black ">
                   {item.description}
                 </p>
-              )}
+              )} 
             </div>
           ))}
         </div>

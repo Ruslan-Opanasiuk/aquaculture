@@ -263,3 +263,45 @@ html.smooth-scroll {
     opacity: 1;
   }
 }
+
+@keyframes fadeInUp {
+  0% { 
+    opacity: 0; 
+    transform: translateY(10px); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+
+/* index.css */
+
+/* 1. Описуємо математику руху стрічки */
+@keyframes marquee {
+  0% { 
+    transform: translateX(0); 
+  }
+  100% { 
+    /* Соваємо стрічку ліворуч рівно на половину її довжини 
+      (тобто на довжину першого набору логотипів).
+      Завдяки дублюванню ми миттєво повертаємося на початок 
+      і око не бачить стрибка.
+    */
+    transform: translateX(-50%); 
+  }
+}
+
+/* 2. Створюємо клас animate-marquee */
+.animate-marquee {
+  /* 40s - швидкість руху всієї стрічки. 
+    linear - рух з постійною швидкістю.
+    infinite - повторювати нескінченно.
+  */
+  animation: marquee 40s linear infinite;
+}

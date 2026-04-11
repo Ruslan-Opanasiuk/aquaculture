@@ -63,14 +63,7 @@ export default function HomeHeroBanner() {
             "
           />
 
-          <div
-            className="
-              absolute
-              inset-0
-              bg-black/45
-            "
-            aria-hidden="true"
-          />
+
         </div>
       </div>
 
