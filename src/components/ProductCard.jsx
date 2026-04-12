@@ -12,7 +12,6 @@ export default function ProductCard({
   id,
   title = "Назва продукту",
   price = "від 0 ₴",
-  // ЗМІНЕНО: Приймаємо об'єкт images замість рядка imageSrc
   images, 
   imageAlt = ""
 }) {
@@ -21,27 +20,35 @@ export default function ProductCard({
   return (
     <div
       className="
-        rounded-[20px]
+        rounded-3xl
         w-full
         h-full
         font-['Montserrat']
-        p-[30px]
+        p-6 tablet:p-8 
         flex
         flex-col
         bg-brand-sand
       "
     >
-      <div className="h-[60px] flex items-start">
-        <h3
-          className="
-            font-semibold 
-            leading-[1.05]
-            text-h3
-            text-brand-black
-          "
+      {/* h-16 = 64px. Гарантує стабільну висоту заголовка */}
+      <div className="h-16 flex items-start">
+        {/* Додали посилання на назву для кращого UX на мобільних */}
+        <Link 
+          to={productPath} 
+          className="group focus-visible:outline-none rounded-md focus-visible:ring-2 focus-visible:ring-brand-gold"
         >
-          {title}
-        </h3>
+          <h3
+            className="
+              font-semibold 
+              leading-[1.05]
+              text-h3
+              text-brand-black
+              group-hover:text-brand-dark transition-colors
+            "
+          >
+            {title}
+          </h3>
+        </Link>
       </div>
 
       <div className="flex-1 min-h-0 w-full mt-4">
@@ -50,12 +57,11 @@ export default function ProductCard({
             w-full 
             aspect-square
             overflow-hidden 
-            rounded-[16px] 
-            bg-brand-sand 
+            rounded-2xl 
           " 
+ʼ
         >
           <Link to={productPath} className="block w-full h-full" tabIndex="-1" aria-hidden="true">
-            {/* ЗМІНЕНО: Додано підтримку Retina через srcSet */}
             {images && images.src1x ? (
               <img
                 src={images.src1x}
@@ -70,7 +76,7 @@ export default function ProductCard({
         </div>
       </div>
 
-      <div className="h-[60px] flex items-end justify-between mt-4">
+      <div className="h-16 flex items-end justify-between mt-4">
         <p
           className="
             font-normal 
@@ -87,13 +93,12 @@ export default function ProductCard({
           to={productPath} 
           aria-label={`Відкрити товар: ${title}`}
           className="
-            w-[44px]
-            h-[44px]
+            w-11 h-11 
             rounded-full
             flex
             items-center
             justify-center
-            transition-all
+            transition 
             active:scale-[0.92]
             bg-brand-dark
             text-brand-light
