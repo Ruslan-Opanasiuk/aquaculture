@@ -12,11 +12,16 @@ import CatalogSection from "../components/CatalogSection";
 import { brandFeatures, collaborationFeatures } from "../data/homeFeatures";
 import introImage from "../assets/images/grid/test2.png"; 
 
+import SEO from "../components/SEO";
+import { SEO_PAGES } from "../data/seoConfig";
+
 export default function Home() {
   
   const bestsellers = ["chavicha", "shchuka", "beluga"];
 
   return (
+    <>
+    <SEO {...SEO_PAGES.home} />
 
     <main className="min-h-screen flex flex-col font-['Montserrat'] bg-brand-beige pb-20">
 
@@ -120,5 +125,6 @@ export default function Home() {
       </div>
 
     </main>
+  </>
   );
 }
