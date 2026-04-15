@@ -1,5 +1,3 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import CartItem from "../components/CartItem";
 import { useCartStore } from "../store/cartStore";
 import { Link } from "react-router-dom";

@@ -1,5 +1,25 @@
 @import "tailwindcss";
 
+/* 1. Оптимізація шрифтів: додаємо swap для миттєвої появи тексту */
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/montserrat-v25-latin_cyrillic-600.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+
+/* 2. Базові налаштування для Perceived Performance */
+:root {
+  background-color: var(--color-brand-beige); /* Запобігає білим спалахам */
+  -webkit-text-size-adjust: 100%;
+}
+
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .container-type-size {
   container-type: size;
 }
@@ -120,68 +140,28 @@
 
 @layer utilities {
 
-  /* ===== Layout ===== */
-
   .max-content {
     max-width: var(--content-max-width);
   }
 
-  /* ===== Typography ===== */
+  /* Typography */
+  .text-body-small { font-size: var(--body-small-font-size); }
+  .text-body { font-size: var(--body-font-size); }
+  .text-h1 { font-size: var(--h1-font-size); }
+  .text-h2 { font-size: var(--h2-font-size); }
+  .text-h3 { font-size: var(--h3-font-size); }
 
-  .text-body-small {
-    font-size: var(--body-small-font-size);
-  }
+  /* Semantic colors */
+  .text-main { color: var(--text-main); }
+  .text-muted { color: var(--text-muted); }
+  .text-gold { color: var(--accent-gold); }
 
-  .text-body {
-    font-size: var(--body-font-size);
-  }
+  .bg-main { background-color: var(--bg-main); }
+  .bg-card { background-color: var(--bg-card); }
+  .bg-light { background-color: var(--bg-light); }
+  .bg-footer { background-color: var(--bg-footer); }
 
-  .text-h1 {
-    font-size: var(--h1-font-size);
-  }
-
-  .text-h2 {
-    font-size: var(--h2-font-size);
-  }
-
-  .text-h3 {
-    font-size: var(--h3-font-size);
-  }
-
-  /* ===== Text colors (semantic) ===== */
-
-  .text-main {
-    color: var(--text-main);
-  }
-
-  .text-muted {
-    color: var(--text-muted);
-  }
-
-  .text-gold {
-    color: var(--accent-gold);
-  }
-
-  /* ===== Backgrounds (semantic) ===== */
-
-  .bg-main {
-    background-color: var(--bg-main);
-  }
-
-  .bg-card {
-    background-color: var(--bg-card);
-  }
-
-  .bg-light {
-    background-color: var(--bg-light);
-  }
-
-  .bg-footer {
-    background-color: var(--bg-footer);
-  }
-
-  /* ===== Brand colors (raw) ===== */
-
+  /* Raw brand colors */
   .bg-brand-dark { background-color: var(--color-brand-dark); }
   .bg-brand-gray { background-color: var(--color-brand-gray); }
   .bg-brand-gold { background-color: var(--color-brand-gold); }
@@ -206,49 +186,35 @@
   .border-brand-light { border-color: var(--color-brand-light); }
   .border-brand-black { border-color: var(--color-brand-black); }
 
-  /* ===== Opacity utilities ===== */
+  /* Opacity mixes */
+  .text-brand-beige-80 { color: color-mix(in srgb, var(--color-brand-beige) 80%, transparent); }
+  .text-brand-beige-60 { color: color-mix(in srgb, var(--color-brand-beige) 60%, transparent); }
 
-  .text-brand-beige-80 {
-    color: color-mix(in srgb, var(--color-brand-beige) 80%, transparent);
-  }
+  .placeholder-brand-gray::placeholder { color: var(--color-brand-gray); }
 
-  .text-brand-beige-60 {
-    color: color-mix(in srgb, var(--color-brand-beige) 60%, transparent);
-  }
+  .text-error { color: #f87171; }
+  .ring-error { --tw-ring-color: #f87171; }
+  .border-sand { border-color: var(--color-brand-sand); }
 
-  /* ===== Form / system ===== */
-
-  .placeholder-brand-gray::placeholder {
-    color: var(--color-brand-gray);
-  }
-
-  /* ===== Error ===== */
-
-  .text-error {
-    color: #f87171;
-  }
-
-  .ring-error {
-    --tw-ring-color: #f87171;
-  }
-
-  /* ===== Existing ===== */
-
-  .border-sand {
-    border-color: var(--color-brand-sand);
-  }
-
+  /* Animations with GPU acceleration */
   .animate-fadeIn {
     animation: fadeIn 0.5s ease-in-out forwards;
+    will-change: opacity;
   }
-}
 
-/* ============================= */
-/* === Smooth scroll ========== */
-/* ============================= */
+  .animate-fade-in-up {
+    animation: fadeInUp 0.5s ease-out forwards;
+    will-change: transform, opacity;
+  }
 
-html.smooth-scroll {
-  scroll-behavior: smooth;
+  .animate-marquee {
+    animation: marquee 40s linear infinite;
+    will-change: transform;
+  }
+
+  .smooth-scroll {
+    scroll-behavior: smooth;
+  }
 }
 
 /* ============================= */
@@ -256,12 +222,8 @@ html.smooth-scroll {
 /* ============================= */
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes fadeInUp {
@@ -275,33 +237,7 @@ html.smooth-scroll {
   }
 }
 
-.animate-fade-in-up {
-  animation: fadeInUp 0.5s ease-out forwards;
-}
-
-
-/* index.css */
-
-/* 1. Описуємо математику руху стрічки */
 @keyframes marquee {
-  0% { 
-    transform: translateX(0); 
-  }
-  100% { 
-    /* Соваємо стрічку ліворуч рівно на половину її довжини 
-      (тобто на довжину першого набору логотипів).
-      Завдяки дублюванню ми миттєво повертаємося на початок 
-      і око не бачить стрибка.
-    */
-    transform: translateX(-50%); 
-  }
-}
-
-/* 2. Створюємо клас animate-marquee */
-.animate-marquee {
-  /* 40s - швидкість руху всієї стрічки. 
-    linear - рух з постійною швидкістю.
-    infinite - повторювати нескінченно.
-  */
-  animation: marquee 40s linear infinite;
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }

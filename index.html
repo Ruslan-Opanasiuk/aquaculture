@@ -3,45 +3,51 @@
 
 <head>
   <meta charset="UTF-8" />
-
-  <!-- Mobile адаптивність -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Базовий title. Реальні title сторінок задаються у React сторінках -->
-  <title>Aquaculture</title>
-
-  <!-- TODO: перед релізом написати нормальний SEO description -->
-  <meta
-    name="description"
-    content="Преміум червона та чорна ікра."
-  />
-
-  <!-- TODO: змінити після покупки домену -->
+  <title>Aquaculture | Преміальна ікра</title>
+  <meta name="description" content="Преміальна чорна та червона ікра Aquaculture. Власний відбір та стабільна якість." />
   <link rel="canonical" href="https://aquaculture.com" />
 
-  <!-- Оптимізація завантаження шрифтів -->
+  <link 
+    rel="preload" 
+    href="/fonts/montserrat-v25-latin_cyrillic-600.woff2" 
+    as="font" 
+    type="font/woff2" 
+    crossorigin="anonymous"
+  />
+
+  <link 
+    rel="preload" 
+    href="/assets/images/home-hero-desktop.webp" 
+    as="image" 
+    media="(min-width: 1024px)"
+  />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <!-- Основний шрифт сайту -->
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap"
     rel="stylesheet"
   />
 
-  <!-- TODO: додати favicon коли з'явиться іконка сайту -->
-  <!-- <link rel="icon" href="/favicon.ico" /> -->
-
+  <style>
+    /* Встановлюємо фон body одразу, щоб уникнути спалаху білого */
+    body {
+      background-color: #FDFBF7; /* твоя змінна brand-beige */
+      margin: 0;
+      overflow-x: hidden;
+    }
+    /* Простий скелетон для #root поки вантажиться React */
+    #root:empty {
+      background-color: #FDFBF7;
+      min-height: 100vh;
+    }
+  </style>
 </head>
 
 <body>
-
-  <!-- Тут React рендерить весь сайт -->
   <div id="root"></div>
-
-  <!-- Точка входу React додатку -->
   <script type="module" src="/src/main.jsx"></script>
-
 </body>
-
 </html>
