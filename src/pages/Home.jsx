@@ -10,7 +10,10 @@ import FeatureGrid from "../components/home/FeatureGrid";
 import CatalogSection from "../components/CatalogSection";
 
 import { brandFeatures, collaborationFeatures } from "../data/homeFeatures";
-import introImage from "../assets/images/grid/test2.png"; 
+
+// Нові оптимізовані фото для вступного блоку
+import introImage1x from "../assets/images/home_grid/main-256.webp"; 
+import introImage2x from "../assets/images/home_grid/main-512.webp"; 
 
 import SEO from "../components/SEO";
 import { SEO_PAGES } from "../data/seoConfig";
@@ -32,17 +35,19 @@ export default function Home() {
         {/* mb-10 (40px) */}
         <div className="w-full max-w-[980px] px-layout-gap mx-auto mb-10 flex justify-center">
           <img 
-            src={introImage} 
-            alt="Вступне фото" 
-            loading="lazy"
-            className="h-[250px] w-auto object-contain" 
+            src={introImage1x} 
+            srcSet={`${introImage1x} 1x, ${introImage2x} 2x`}
+            alt="Вступне фото: Aquaculture Selection" 
+            className="h-[250px] w-auto object-contain mix-blend-multiply" 
+            width="256"
+            height="250"
           />
         </div>
         <div className="flex flex-col items-center text-center px-layout-gap">
-          <h2 className="text-body font-medium text-brand-black mb-8 tracking-widest">
+          <h2 className="text-body font-medium text-brand-black mb-8 tracking-widest uppercase">
             ІКРА, ЯКУ ОБИРАЮТЬ ЗА РЕЗУЛЬТАТ
           </h2>
-          <p className="text-body text-brand-black max-w-[660px]">
+          <p className="text-body text-brand-black max-w-[660px] leading-relaxed">
             Ми працюємо з перевіреними постачальниками та відбираємо ікру за її природними характеристиками — смаком, текстурою та свіжістю. Без зайвої обробки. Лише продукт, який відповідає своєму походженню.
           </p>
         </div>
@@ -84,7 +89,7 @@ export default function Home() {
           Зробіть свій вибір
         </h2>
         
-        <p className="text-body text-brand-black leading-[1.6] mb-10 max-w-[600px]">
+        <p className="text-body text-brand-black leading-relaxed mb-10 max-w-[600px]">
           Ми вже відібрали ікру з перевіреним походженням і стабільною якістю. Вам залишається обрати продукт, який відповідає вашій задачі.
         </p>
 
@@ -95,18 +100,19 @@ export default function Home() {
             items-center
             justify-center
             rounded-full
-            px-8
-            min-h-[48px]
+            px-10
+            min-h-[52px]
             font-['Montserrat']
             bg-brand-black
             text-brand-beige
-            hover:opacity-80
-            transition-opacity
+            hover:opacity-90
+            active:scale-95
+            transition-all
             text-body
             focus-visible:ring-2
             focus-visible:ring-brand-gold
             focus-visible:ring-offset-2
-            focus-visible:ring-offset-brand-sand
+            focus-visible:ring-offset-brand-beige
             focus-visible:outline-none
           "
         >
@@ -120,7 +126,7 @@ export default function Home() {
       </div>
 
       {/* ПАРТНЕРИ */}
-      <div>
+      <div className="mt-10">
         <PartnersSection />
       </div>
 
