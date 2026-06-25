@@ -96,7 +96,7 @@ export default function Cart() {
               </p>
 
               <Link
-                to="/"
+                to="/catalog"
                 className="mt-6 font-semibold underline decoration-2 underline-offset-4"
                 style={{ color: "var(--color-brand-dark)" }}
               >
