@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import { useCartStore } from "../store/cartStore"; // 👈 Імпортуємо наш магазин
 import { breakpoints, discountPerBreakpoint, calculateDiscount } from "./discount";
+import DiscountProgressBar from "./DiscountProgressBar";
 
 function ArrowIcon(props) {
   return (
@@ -56,31 +57,11 @@ export default function OrderSummary({
 
   /* ================= PROGRESS BAR LOGIC ================= */
   const maxDiscount = breakpoints.length * discountPerBreakpoint;
-  const segmentCount = breakpoints.length + 1;
-  const segmentWidth = 100 / segmentCount;
-
-  let progressPercent = 0;
-  if (totalKg > 0) {
-    let prev = 0;
-    for (let i = 0; i < breakpoints.length; i++) {
-      const bp = breakpoints[i];
-      if (totalKg < bp) {
-        const segmentProgress = (totalKg - prev) / (bp - prev);
-        progressPercent = i * segmentWidth + segmentProgress * segmentWidth;
-        break;
-      }
-      prev = bp;
-      if (i === breakpoints.length - 1) {
-        progressPercent = 100;
-      }
-    }
-  }
 
   const currentDiscount = calculateDiscount(grandTotalGrams);
   const nextBreakpoint = breakpoints.find((bp) => bp > totalKg);
   const remainingKg = nextBreakpoint !== undefined ? (nextBreakpoint - totalKg).toFixed(2) : null;
   const isMaxDiscount = remainingKg === null;
-  const nextLegendKg = breakpoints.find((bp) => totalKg < bp);
 
   /* ================= HANDLERS ================= */
   const handleClick = () => {
@@ -114,59 +95,7 @@ export default function OrderSummary({
       </div>
 
       {/* BREAKPOINT BAR */}
-      <div style={{ width: "100%", maxWidth: 400, position: "relative", marginBottom: 24 }}>
-        <div style={{ height: 8, width: "100%", backgroundColor: "#E9E5DB", borderRadius: 4, overflow: "hidden" }}>
-          <div
-            style={{
-              height: "100%",
-              width: `${progressPercent}%`,
-              backgroundColor: "#DAC284",
-              transition: "width 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-            }}
-          />
-        </div>
-
-        {breakpoints.map((kg, index) => {
-          const isCompleted = totalKg >= kg;
-          const isActive = isCompleted || nextLegendKg === kg;
-          const position = ((index + 1) / segmentCount) * 100;
-
-          return (
-            <div key={kg}>
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: 18,
-                  left: `${position}%`,
-                  transform: "translateX(-50%)",
-                  fontSize: "var(--body-font-size)",
-                  fontWeight: 600,
-                  whiteSpace: "nowrap",
-                  color: isActive ? "#262626" : "#B8B5AD", 
-                  transition: "color 0.3s ease",
-                }}
-              >
-                {kg} кг
-              </div>
-              <div
-                style={{
-                  position: "absolute",
-                  top: "50%",
-                  left: `${position}%`,
-                  transform: "translate(-50%, -50%)",
-                  width: 18,
-                  height: 18,
-                  borderRadius: "50%",
-                  backgroundColor: "#F5F1E7",
-                  border: `4px solid ${isCompleted ? "#DAC284" : "#E9E5DB"}`,
-                  transition: "all 0.3s ease",
-                  zIndex: 2,
-                }}
-              />
-            </div>
-          );
-        })}
-      </div>
+      <DiscountProgressBar totalKg={totalKg} maxWidth={400} marginBottom={24} dotColor="#F5F1E7" />
 
       {/* DISCOUNT MESSAGE */}
       <div style={{ fontSize: "var(--body-font-size)", fontWeight: 400, marginBottom: 48, minHeight: "1.5em" }}>

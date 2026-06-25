@@ -3,7 +3,8 @@ import { useCartStore } from "../store/cartStore";
 import { Link } from "react-router-dom";
 import PageHeader from "../components/PageHeader";
 import ActionArrowButton from "../components/ActionArrowButton";
-import { calculateDiscount, breakpoints } from "../components/discount";
+import { calculateDiscount } from "../components/discount";
+import DiscountProgressBar from "../components/DiscountProgressBar";
 
 export default function Cart() {
   const items = useCartStore((state) => state.items);
@@ -31,31 +32,6 @@ export default function Cart() {
 
   const discount = Math.round((subtotal * discountPercent) / 100);
   const total = subtotal - discount;
-
-  /* ================= PROGRESS BAR LOGIC (same as OrderSummary) ================= */
-
-  const segmentCount = breakpoints.length + 1;
-  const segmentWidth = 100 / segmentCount;
-
-  let progressPercent = 0;
-  if (totalKg > 0) {
-    let prev = 0;
-    for (let i = 0; i < breakpoints.length; i++) {
-      const bp = breakpoints[i];
-      if (totalKg < bp) {
-        const segmentProgress = (totalKg - prev) / (bp - prev);
-        progressPercent =
-          i * segmentWidth + segmentProgress * segmentWidth;
-        break;
-      }
-      prev = bp;
-      if (i === breakpoints.length - 1) {
-        progressPercent = 100;
-      }
-    }
-  }
-
-  const nextLegendKg = breakpoints.find((bp) => totalKg < bp);
 
   /* ================= UI ================= */
 
@@ -168,82 +144,8 @@ export default function Cart() {
                     </span>
                   </div>
 
-                  {/* BREAKPOINT BAR (duplicated) */}
-                  <div
-                    style={{
-                      width: "100%",
-                      position: "relative",
-                      marginBottom: 18,
-                    }}
-                  >
-                    <div
-                      style={{
-                        height: 8,
-                        width: "100%",
-                        backgroundColor: "var(--color-brand-sand)",
-                        borderRadius: 4,
-                        overflow: "hidden",
-                      }}
-                    >
-                      <div
-                        style={{
-                          height: "100%",
-                          width: `${progressPercent}%`,
-                          backgroundColor: "var(--color-brand-gold)",
-                          transition:
-                            "width 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-                        }}
-                      />
-                    </div>
-
-                    {breakpoints.map((kg, index) => {
-                      const isCompleted = totalKg >= kg;
-                      const isActive = isCompleted || nextLegendKg === kg;
-                      const position =
-                        ((index + 1) / segmentCount) * 100;
-
-                      return (
-                        <div key={kg}>
-                          <div
-                            style={{
-                              position: "absolute",
-                              bottom: 18,
-                              left: `${position}%`,
-                              transform: "translateX(-50%)",
-                              fontSize: "var(--body-font-size)",
-                              fontWeight: 600,
-                              whiteSpace: "nowrap",
-                              color: isActive
-                                ? "var(--color-brand-dark)"
-                                : "var(--color-brand-gray)",
-                              transition: "color 0.3s ease",
-                            }}
-                          >
-                            {kg} кг
-                          </div>
-                          <div
-                            style={{
-                              position: "absolute",
-                              top: "50%",
-                              left: `${position}%`,
-                              transform: "translate(-50%, -50%)",
-                              width: 18,
-                              height: 18,
-                              borderRadius: "50%",
-                              backgroundColor: "var(--color-brand-beige)",
-                              border: `4px solid ${
-                                isCompleted
-                                  ? "var(--color-brand-gold)"
-                                  : "var(--color-brand-sand)"
-                              }`,
-                              transition: "all 0.3s ease",
-                              zIndex: 2,
-                            }}
-                          />
-                        </div>
-                      );
-                    })}
-                  </div>
+                  {/* BREAKPOINT BAR */}
+                  <DiscountProgressBar totalKg={totalKg} />
 
                   {/* DIVIDER */}
                   <div
