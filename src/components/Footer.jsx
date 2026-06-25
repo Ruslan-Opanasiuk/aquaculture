@@ -4,13 +4,15 @@ import { Link } from "react-router-dom";
 export default function Footer() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
+  const [status, setStatus] = useState("idle"); // idle | loading | success
+  const [website, setWebsite] = useState(""); // honeypot
 
   const validateEmail = (value) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!validateEmail(email)) {
@@ -19,7 +21,23 @@ export default function Footer() {
     }
 
     setError("");
-    console.log("EMAIL:", email);
+    setStatus("loading");
+
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, website }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.ok) throw new Error(data.message);
+
+      setStatus("success");
+      setEmail("");
+    } catch {
+      setStatus("idle");
+      setError("Не вдалося підписатися. Спробуйте пізніше.");
+    }
   };
 
   return (
@@ -145,6 +163,11 @@ export default function Footer() {
                 спеціальні пропозиції першими.
               </p>
 
+              {status === "success" ? (
+                <p className="text-brand-beige" role="status">
+                  Дякуємо! Ви підписані на оновлення.
+                </p>
+              ) : (
               <form
                 onSubmit={handleSubmit}
                 noValidate
@@ -154,6 +177,18 @@ export default function Footer() {
                   Email
                 </label>
 
+                {/* honeypot — приховане поле проти ботів */}
+                <input
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  value={website}
+                  onChange={(e) => setWebsite(e.target.value)}
+                  className="absolute left-[-9999px] w-px h-px opacity-0"
+                />
+
                 <div className="relative">
                   <input
                     id="newsletter-email"
@@ -162,6 +197,7 @@ export default function Footer() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Ваш email"
+                    disabled={status === "loading"}
                     className={`
                       w-full
                       h-[44px]
@@ -180,6 +216,7 @@ export default function Footer() {
                   <button
                     type="submit"
                     aria-label="Підписатися"
+                    disabled={status === "loading"}
                     className="
                       absolute
                       right-[4px]
@@ -197,6 +234,8 @@ export default function Footer() {
                       duration-200
                       active:scale-90
                       hover:bg-card
+                      disabled:opacity-50
+                      disabled:pointer-events-none
                     "
                   >
                     <svg
@@ -224,6 +263,7 @@ export default function Footer() {
                   </p>
                 )}
               </form>
+              )}
             </div>
           </div>
 
