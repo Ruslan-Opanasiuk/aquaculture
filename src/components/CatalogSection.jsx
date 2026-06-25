@@ -1,11 +1,25 @@
 import ProductCard from "./ProductCard";
-import { productVariants } from "../data/catalogData";
+import { caviarCatalog } from "../data/caviarPackages";
+
+const WHOLESALE_NOTE = "гурт — за запитом";
+
+// Ціна для каталогу = мінімальна ціна пакування ("від X"). Джерело — caviarPackages.
+function catalogPrice(productId) {
+  const packages = caviarCatalog[productId]?.packages ?? [];
+  if (packages.length === 0) return WHOLESALE_NOTE;
+  const min = Math.min(...packages.map((p) => p.price));
+  return `від ${new Intl.NumberFormat("uk-UA").format(min)} ₴\n${WHOLESALE_NOTE}`;
+}
 
 export default function CatalogSection({ products, title, subtitle, id }) {
-  const items = products.map((key) => ({
-    key,
-    ...productVariants[key],
-  }));
+  const items = products.map((key) => {
+    const product = caviarCatalog[key];
+    return {
+      key,
+      title: product.title,
+      images: product.images.jar,
+    };
+  });
 
   return (
     <section
@@ -51,7 +65,7 @@ export default function CatalogSection({ products, title, subtitle, id }) {
               <ProductCard
                 id={p.key}
                 title={p.title}
-                price={p.priceText}
+                price={catalogPrice(p.key)}
                 images={p.images}
                 imageAlt={p.title}
               />
