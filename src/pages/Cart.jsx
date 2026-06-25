@@ -9,6 +9,7 @@ export default function Cart() {
   const items = useCartStore((state) => state.items);
   const updateQuantity = useCartStore((state) => state.updateQuantity);
   const removeItem = useCartStore((state) => state.removeItem);
+  const clearCart = useCartStore((state) => state.clearCart);
 
   /* ================= SUBTOTAL ================= */
 
@@ -102,6 +103,21 @@ export default function Cart() {
             </div>
           ) : (
             <>
+              {/* CLEAR ALL */}
+              <div className="flex justify-end mb-4">
+                <button
+                  type="button"
+                  onClick={clearCart}
+                  className="font-semibold underline decoration-1 underline-offset-4 transition-opacity hover:opacity-70"
+                  style={{
+                    color: "var(--color-brand-gray)",
+                    fontSize: "var(--body-font-size)",
+                  }}
+                >
+                  Очистити все
+                </button>
+              </div>
+
               {/* ITEMS */}
               <div className="flex flex-col">
                 {items.map((item) => (
