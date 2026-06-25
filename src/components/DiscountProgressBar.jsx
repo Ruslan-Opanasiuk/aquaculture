@@ -6,7 +6,6 @@ export default function DiscountProgressBar({
   totalKg,
   maxWidth,
   marginBottom = 18,
-  dotColor = "var(--color-brand-beige)",
 }) {
   const segmentCount = breakpoints.length + 1;
   const segmentWidth = 100 / segmentCount;
@@ -84,7 +83,7 @@ export default function DiscountProgressBar({
                 width: 18,
                 height: 18,
                 borderRadius: "50%",
-                backgroundColor: dotColor,
+                backgroundColor: "var(--color-brand-beige)",
                 border: `4px solid ${
                   isCompleted
                     ? "var(--color-brand-gold)"

@@ -95,7 +95,7 @@ export default function OrderSummary({
       </div>
 
       {/* BREAKPOINT BAR */}
-      <DiscountProgressBar totalKg={totalKg} maxWidth={400} marginBottom={24} dotColor="#F5F1E7" />
+      <DiscountProgressBar totalKg={totalKg} maxWidth={400} marginBottom={24} />
 
       {/* DISCOUNT MESSAGE */}
       <div style={{ fontSize: "var(--body-font-size)", fontWeight: 400, marginBottom: 48, minHeight: "1.5em" }}>
