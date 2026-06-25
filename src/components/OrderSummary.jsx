@@ -2,6 +2,7 @@
 
 import { useMemo } from "react";
 import { useCartStore } from "../store/cartStore"; // 👈 Імпортуємо наш магазин
+import { breakpoints, discountPerBreakpoint, calculateDiscount } from "./discount";
 
 function ArrowIcon(props) {
   return (
@@ -54,8 +55,6 @@ export default function OrderSummary({
   const hasSelection = localTotalGrams > 0;
 
   /* ================= PROGRESS BAR LOGIC ================= */
-  const breakpoints = [3, 6, 12, 24];
-  const discountPerBreakpoint = 7;
   const maxDiscount = breakpoints.length * discountPerBreakpoint;
   const segmentCount = breakpoints.length + 1;
   const segmentWidth = 100 / segmentCount;
@@ -77,8 +76,7 @@ export default function OrderSummary({
     }
   }
 
-  const achievedBreakpoints = breakpoints.filter((bp) => totalKg >= bp).length;
-  const currentDiscount = achievedBreakpoints * discountPerBreakpoint;
+  const currentDiscount = calculateDiscount(grandTotalGrams);
   const nextBreakpoint = breakpoints.find((bp) => bp > totalKg);
   const remainingKg = nextBreakpoint !== undefined ? (nextBreakpoint - totalKg).toFixed(2) : null;
   const isMaxDiscount = remainingKg === null;

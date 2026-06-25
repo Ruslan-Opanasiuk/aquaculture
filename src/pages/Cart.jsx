@@ -3,6 +3,7 @@ import { useCartStore } from "../store/cartStore";
 import { Link } from "react-router-dom";
 import PageHeader from "../components/PageHeader";
 import ActionArrowButton from "../components/ActionArrowButton";
+import { calculateDiscount, breakpoints } from "../components/discount";
 
 export default function Cart() {
   const items = useCartStore((state) => state.items);
@@ -25,11 +26,7 @@ export default function Cart() {
 
   const totalKg = totalGrams / 1000;
 
-  const breakpoints = [3, 6, 12, 24];
-  const discountPerBreakpoint = 7;
-
-  const achievedBreakpoints = breakpoints.filter((bp) => totalKg >= bp).length;
-  const discountPercent = achievedBreakpoints * discountPerBreakpoint;
+  const discountPercent = calculateDiscount(totalGrams);
 
   const discount = Math.round((subtotal * discountPercent) / 100);
   const total = subtotal - discount;
