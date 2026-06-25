@@ -77,7 +77,7 @@ export default function Cart() {
         />
       </div>
 
-      <main className="flex-1 pt-[80px] pb-[80px]">
+      <main className="flex-1 pt-[40px] pb-[80px]">
         <div
           className="w-full px-layout-gap mx-auto"
           style={{ maxWidth: "var(--content-max-width)" }}
