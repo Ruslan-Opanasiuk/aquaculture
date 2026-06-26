@@ -12,16 +12,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ ok: false, message: "Method not allowed" });
   }
 
-  console.log("[subscribe] body:", JSON.stringify(req.body));
-  const { email, hp } = req.body || {};
-  console.log("[subscribe] email:", email, "| hp:", JSON.stringify(hp));
-
-  // Honeypot: приховане поле, яке заповнюють лише боти → тихо ігноруємо.
-  if (hp) {
-    console.log("[subscribe] honeypot triggered, skipping");
-
-    return res.status(200).json({ ok: true });
-  }
+  const { email } = req.body || {};
 
   if (!isValidEmail(email)) {
     return res
@@ -30,10 +21,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const result = await resend.contacts.create({ email });
-    console.log("[subscribe] resend result:", JSON.stringify(result));
-
-    const { error } = result;
+    const { error } = await resend.contacts.create({ email });
 
     // Уже підписаний — теж вважаємо успіхом.
     if (error && !/already|exist/i.test(error.message || "")) {
@@ -44,7 +32,7 @@ export default async function handler(req, res) {
 
     return res.status(200).json({ ok: true });
   } catch (err) {
-    console.error("[subscribe] caught error:", err?.message, err?.stack);
+    console.error("[subscribe] error:", err?.message);
     return res
       .status(500)
       .json({ ok: false, message: "Помилка сервера. Спробуйте пізніше." });

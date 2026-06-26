@@ -5,7 +5,6 @@ export default function Footer() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [status, setStatus] = useState("idle"); // idle | loading | success
-  const [hp, setHp] = useState(""); // honeypot
 
   const validateEmail = (value) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -27,7 +26,7 @@ export default function Footer() {
       const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, hp }),
+        body: JSON.stringify({ email }),
       });
       const data = await res.json();
       if (!res.ok || !data.ok) throw new Error(data.message);
@@ -176,18 +175,6 @@ export default function Footer() {
                 <label htmlFor="newsletter-email" className="sr-only">
                   Email
                 </label>
-
-                {/* honeypot — приховане поле проти ботів */}
-                <input
-                  type="text"
-                  name="b_confirm"
-                  tabIndex={-1}
-                  autoComplete="off"
-                  aria-hidden="true"
-                  value={hp}
-                  onChange={(e) => setHp(e.target.value)}
-                  className="absolute left-[-9999px] w-px h-px opacity-0"
-                />
 
                 <div className="relative">
                   <input
