@@ -12,10 +12,10 @@ export default async function handler(req, res) {
     return res.status(405).json({ ok: false, message: "Method not allowed" });
   }
 
-  const { email, website } = req.body || {};
+  const { email, hp } = req.body || {};
 
   // Honeypot: приховане поле, яке заповнюють лише боти → тихо ігноруємо.
-  if (website) {
+  if (hp) {
     return res.status(200).json({ ok: true });
   }
 
