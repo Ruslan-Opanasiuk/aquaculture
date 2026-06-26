@@ -12,10 +12,14 @@ export default async function handler(req, res) {
     return res.status(405).json({ ok: false, message: "Method not allowed" });
   }
 
+  console.log("[subscribe] body:", JSON.stringify(req.body));
   const { email, hp } = req.body || {};
+  console.log("[subscribe] email:", email, "| hp:", JSON.stringify(hp));
 
   // Honeypot: приховане поле, яке заповнюють лише боти → тихо ігноруємо.
   if (hp) {
+    console.log("[subscribe] honeypot triggered, skipping");
+
     return res.status(200).json({ ok: true });
   }
 
