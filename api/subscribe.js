@@ -26,7 +26,10 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { error } = await resend.contacts.create({ email });
+    const result = await resend.contacts.create({ email });
+    console.log("[subscribe] resend result:", JSON.stringify(result));
+
+    const { error } = result;
 
     // Уже підписаний — теж вважаємо успіхом.
     if (error && !/already|exist/i.test(error.message || "")) {
@@ -36,7 +39,8 @@ export default async function handler(req, res) {
     }
 
     return res.status(200).json({ ok: true });
-  } catch {
+  } catch (err) {
+    console.error("[subscribe] caught error:", err?.message, err?.stack);
     return res
       .status(500)
       .json({ ok: false, message: "Помилка сервера. Спробуйте пізніше." });
