@@ -77,7 +77,7 @@ export default function Footer() {
             <form
               onSubmit={handleSubmit}
               noValidate
-              className="w-full desktop:max-w-[360px]"
+              className="w-full desktop:max-w-[360px] desktop:ml-auto"
             >
               <label htmlFor="newsletter-email" className="sr-only">
                 Email
