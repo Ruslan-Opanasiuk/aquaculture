@@ -160,12 +160,12 @@ export default function Footer() {
               )}
               {status !== "success" && (
                 <p className="text-brand-beige-60 text-[11px] mt-[8px] leading-[1.5]">
-                  Підписуючись, ви погоджуєтесь з нашою{" "}
+                  Натискаючи, ви приймаєте{" "}
                   <a
                     href="/privacy"
                     className="underline hover:text-brand-beige-80 transition-colors"
                   >
-                    Політикою конфіденційності
+                    Політику конфіденційності
                   </a>
                   .
                 </p>
