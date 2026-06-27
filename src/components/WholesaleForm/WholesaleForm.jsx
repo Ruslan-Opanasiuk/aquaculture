@@ -186,9 +186,44 @@ export default function WholesaleForm() {
             </p>
           </div>
 
-          {/* ДОДАНО ref={formTopRef} та scroll-mt-[100px] для правильного позиціонування під шапкою */}
           <div className="w-full scroll-mt-[100px]" ref={formTopRef}>
-            <div className="mb-6 border-b border-brand-dark/10 pb-4">
+            {isSubmitted ? (
+              <div className="flex flex-col gap-[16px]">
+                <div className="mb-6 border-b border-brand-dark/10 pb-4">
+                  <h3 className="text-h3 font-semibold text-brand-black">
+                    Заявку отримано
+                  </h3>
+                </div>
+                <p className="text-body text-brand-black opacity-80 leading-[1.6]">
+                  Дякуємо! Ми отримали вашу анкету та підготуємо індивідуальну
+                  пропозицію з урахуванням ваших обсягів. Очікуйте на відповідь
+                  найближчим часом.
+                </p>
+                <p className="text-body text-brand-black opacity-60 leading-[1.6]">
+                  Якщо маєте термінові питання — телефонуйте напряму.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setIsSubmitted(false)}
+                  className="
+                    mt-[8px]
+                    w-fit
+                    h-[44px]
+                    px-[24px]
+                    rounded-full
+                    border border-brand-dark/20
+                    text-brand-black
+                    text-body
+                    font-medium
+                    hover:bg-brand-dark/5
+                    transition-colors
+                  "
+                >
+                  Надіслати ще одну заявку
+                </button>
+              </div>
+            ) : (
+            <><div className="mb-6 border-b border-brand-dark/10 pb-4">
               <p className="text-body-small opacity-60 font-semibold mb-1 tracking-wider">
                 КРОК {step} з 3
               </p>
@@ -362,6 +397,8 @@ export default function WholesaleForm() {
                 </p>
               )}
             </form>
+            </>
+            )}
           </div>
         </div>
       </div>

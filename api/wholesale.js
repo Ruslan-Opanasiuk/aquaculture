@@ -10,12 +10,37 @@ const isValidEmail = (v) =>
 
 const REQUIRED = ["name", "phone", "email", "city", "caviarType", "caviarVolume"];
 
+// Rate limit: max 3 заявки з одного IP за 60 хвилин.
+const rateLimitMap = new Map();
+const LIMIT = 3;
+const WINDOW_MS = 60 * 60 * 1000;
+
+function isRateLimited(ip) {
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip) || { count: 0, resetAt: now + WINDOW_MS };
+  if (now > entry.resetAt) {
+    entry.count = 0;
+    entry.resetAt = now + WINDOW_MS;
+  }
+  entry.count += 1;
+  rateLimitMap.set(ip, entry);
+  return entry.count > LIMIT;
+}
+
 // Vercel Serverless Function: POST /api/wholesale
 // 1. Шле сповіщення власнику з усіма полями анкети.
 // 2. Шле підтвердження на email користувача.
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ ok: false, message: "Method not allowed" });
+  }
+
+  const ip = req.headers["x-forwarded-for"]?.split(",")[0]?.trim() ?? "unknown";
+  if (isRateLimited(ip)) {
+    return res.status(429).json({
+      ok: false,
+      message: "Ви вже надіслали кілька заявок. Якщо маєте питання — телефонуйте нам напряму.",
+    });
   }
 
   const body = req.body || {};
