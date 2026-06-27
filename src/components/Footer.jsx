@@ -58,7 +58,7 @@ export default function Footer() {
             px-layout-gap
             tablet:max-w-[var(--max-width-content-tablet)]
             desktop:max-w-[var(--max-width-content-desktop)]
-            py-[40px]
+            py-[64px]
             font-['Montserrat']
             text-body
             leading-[1.6]
