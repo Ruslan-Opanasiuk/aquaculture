@@ -65,8 +65,8 @@ export default function Footer() {
           "
         >
           {/* NEWSLETTER ROW */}
-          <div className="flex flex-col desktop:flex-row desktop:items-start desktop:justify-between gap-[32px] pb-[48px]">
-            <div className="flex flex-col gap-[8px] desktop:max-w-[360px]">
+          <div className="grid grid-cols-1 desktop:grid-cols-2 gap-[32px] desktop:gap-0 pb-[48px]">
+            <div className="flex flex-col gap-[8px]">
               <p className="font-bold tracking-[0.08em]">БУДЬ В КУРСІ</p>
               <p className="text-brand-beige-80">
                 Підпишіться на останні оновлення та дізнавайтеся про новинки та
