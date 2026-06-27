@@ -194,6 +194,8 @@ body {
 
   .text-error { color: #f87171; }
   .ring-error { --tw-ring-color: #f87171; }
+  .text-success { color: #4ade80; }
+  .ring-success { --tw-ring-color: #4ade80; }
   .border-sand { border-color: var(--color-brand-sand); }
 
   /* Animations with GPU acceleration */

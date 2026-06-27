@@ -162,11 +162,6 @@ export default function Footer() {
                 спеціальні пропозиції першими.
               </p>
 
-              {status === "success" ? (
-                <p className="text-brand-beige" role="status">
-                  Дякуємо! Ви підписані на оновлення.
-                </p>
-              ) : (
               <form
                 onSubmit={handleSubmit}
                 noValidate
@@ -184,7 +179,7 @@ export default function Footer() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Ваш email"
-                    disabled={status === "loading"}
+                    disabled={status === "loading" || status === "success"}
                     className={`
                       w-full
                       h-[44px]
@@ -196,14 +191,14 @@ export default function Footer() {
                       pr-[48px]
                       text-body
                       outline-none
-                      ${error ? "ring-2 ring-error" : ""}
+                      ${error ? "ring-2 ring-error" : status === "success" ? "ring-2 ring-success" : ""}
                     `}
                   />
 
                   <button
                     type="submit"
                     aria-label="Підписатися"
-                    disabled={status === "loading"}
+                    disabled={status === "loading" || status === "success"}
                     className="
                       absolute
                       right-[4px]
@@ -242,15 +237,28 @@ export default function Footer() {
                 </div>
 
                 {error && (
-                  <p
-                    role="alert"
-                    className="text-error text-[12px] mt-[6px]"
-                  >
+                  <p role="alert" className="text-error text-[12px] mt-[6px]">
                     {error}
                   </p>
                 )}
+                {status === "success" && (
+                  <p role="status" className="text-success text-[12px] mt-[6px]">
+                    Дякуємо! Ви підписані на оновлення.
+                  </p>
+                )}
+                {status !== "success" && (
+                  <p className="text-brand-beige-60 text-[11px] mt-[8px] leading-[1.5]">
+                    Підписуючись, ви погоджуєтесь з нашою{" "}
+                    <a
+                      href="/privacy"
+                      className="underline hover:text-brand-beige-80 transition-colors"
+                    >
+                      Політикою конфіденційності
+                    </a>
+                    .
+                  </p>
+                )}
               </form>
-              )}
             </div>
           </div>
 
