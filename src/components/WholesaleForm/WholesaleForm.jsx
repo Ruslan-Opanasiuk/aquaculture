@@ -128,8 +128,15 @@ export default function WholesaleForm() {
 
     setIsSubmitting(true);
 
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const res = await fetch("/api/wholesale", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.ok) throw new Error(data.message);
+
       setIsSubmitted(true);
       setStep(1);
       setValues({
@@ -137,8 +144,12 @@ export default function WholesaleForm() {
         caviarType: "", caviarVolume: "", workFormat: "", paymentFormat: "",
       });
       setErrors({});
-      scrollToStep(); // Опціонально: скролимо на початок після успішної відправки
-    }, 1000);
+      scrollToStep();
+    } catch (err) {
+      setErrors({ submit: err.message || "Не вдалося надіслати заявку. Спробуйте пізніше." });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const stepTitles = {
@@ -345,6 +356,11 @@ export default function WholesaleForm() {
                   </button>
                 )}
               </div>
+              {errors.submit && (
+                <p className="text-red-500 text-[13px] mt-[12px] text-center">
+                  {errors.submit}
+                </p>
+              )}
             </form>
           </div>
         </div>
