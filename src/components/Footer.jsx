@@ -181,7 +181,7 @@ export default function Footer() {
             className="
               grid
               grid-cols-1
-              tablet:grid-cols-3
+              tablet:grid-cols-[2fr_1fr_1fr]
               gap-[48px]
             "
           >
