@@ -58,14 +58,14 @@ export default function Footer() {
             px-layout-gap
             tablet:max-w-[var(--max-width-content-tablet)]
             desktop:max-w-[var(--max-width-content-desktop)]
-            py-[64px]
+            py-[40px]
             font-['Montserrat']
             text-body
             leading-[1.6]
           "
         >
           {/* NEWSLETTER ROW */}
-          <div className="grid grid-cols-1 desktop:grid-cols-2 gap-[32px] desktop:gap-0 pb-[48px]">
+          <div className="grid grid-cols-1 desktop:grid-cols-2 gap-[32px] desktop:gap-0 pb-[32px]">
             <div className="flex flex-col gap-[8px]">
               <p className="font-bold tracking-[0.08em]">БУДЬ В КУРСІ</p>
               <p className="text-brand-beige-80">
@@ -174,7 +174,7 @@ export default function Footer() {
           </div>
 
           {/* LINE */}
-          <div className="w-full h-[0.5px] border-sand border-t mb-[48px]" />
+          <div className="w-full h-[0.5px] border-sand border-t mb-[32px]" />
 
           {/* BOTTOM GRID */}
           <div
@@ -254,7 +254,7 @@ export default function Footer() {
           </div>
 
           {/* LINE */}
-          <div className="w-full h-[0.5px] border-sand border-t mt-[48px] mb-[32px]" />
+          <div className="w-full h-[0.5px] border-sand border-t mt-[32px] mb-[20px]" />
 
           {/* LEGAL */}
           <p className="text-[12px] text-brand-beige-60 text-center tablet:text-left">
