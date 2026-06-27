@@ -4,9 +4,21 @@ import SelectField from "./SelectField";
 import RadioGroup from "./RadioGroup";
 import { validateWholesale } from "./validateWholesale";
 
+const STORAGE_KEY = "wholesale_submitted_at";
+const BLOCK_MS = 24 * 60 * 60 * 1000;
+
+function wasRecentlySubmitted() {
+  try {
+    const ts = localStorage.getItem(STORAGE_KEY);
+    return ts ? Date.now() - parseInt(ts, 10) < BLOCK_MS : false;
+  } catch {
+    return false;
+  }
+}
+
 export default function WholesaleForm() {
   const [step, setStep] = useState(1);
-  
+
   const [values, setValues] = useState({
     name: "",
     phone: "",
@@ -20,7 +32,7 @@ export default function WholesaleForm() {
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(() => wasRecentlySubmitted());
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   // ДОДАНО: Реф для скролу
@@ -137,6 +149,7 @@ export default function WholesaleForm() {
       const data = await res.json();
       if (!res.ok || !data.ok) throw new Error(data.message);
 
+      try { localStorage.setItem(STORAGE_KEY, Date.now().toString()); } catch {}
       setIsSubmitted(true);
       setStep(1);
       setValues({
@@ -202,25 +215,9 @@ export default function WholesaleForm() {
                 <p className="text-body text-brand-black opacity-60 leading-[1.6]">
                   Якщо маєте термінові питання — телефонуйте напряму.
                 </p>
-                <button
-                  type="button"
-                  onClick={() => setIsSubmitted(false)}
-                  className="
-                    mt-[8px]
-                    w-fit
-                    h-[44px]
-                    px-[24px]
-                    rounded-full
-                    border border-brand-dark/20
-                    text-brand-black
-                    text-body
-                    font-medium
-                    hover:bg-brand-dark/5
-                    transition-colors
-                  "
-                >
-                  Надіслати ще одну заявку
-                </button>
+                <p className="text-body-small text-brand-black opacity-40 leading-[1.6]">
+                  Повторна заявка буде доступна через 24 год.
+                </p>
               </div>
             ) : (
             <><div className="mb-6 border-b border-brand-dark/10 pb-4">
