@@ -44,32 +44,47 @@ export default function ActionArrowButton({
     }
   `;
 
-  const content = (
-    <div className="flex items-center gap-4 group cursor-pointer select-none transition-all duration-300">
-      <button type="button" onClick={onClick} className={circleClasses}>
+  const inner = (
+    <>
+      <div className={circleClasses}>
         <ArrowIcon
-          className={`w-6 h-6 ${
-            direction === "left" ? "rotate-180" : ""
-          }`}
+          className={`w-6 h-6 ${direction === "left" ? "rotate-180" : ""}`}
         />
-      </button>
-
+      </div>
       <span
         className="font-medium tracking-wider text-[#262626]"
         style={{ fontSize: "var(--body-font-size)" }}
       >
         {label}
       </span>
-    </div>
+    </>
   );
 
   if (to) {
     return (
       <Link to={to} className="inline-block">
-        {content}
+        <div className="flex items-center gap-4 group cursor-pointer select-none transition-all duration-300">
+          {inner}
+        </div>
       </Link>
     );
   }
 
-  return content;
+  if (onClick) {
+    return (
+      <button
+        type="button"
+        onClick={onClick}
+        className="flex items-center gap-4 group cursor-pointer select-none transition-all duration-300"
+      >
+        {inner}
+      </button>
+    );
+  }
+
+  return (
+    <div className="flex items-center gap-4 group cursor-pointer select-none transition-all duration-300">
+      {inner}
+    </div>
+  );
 }

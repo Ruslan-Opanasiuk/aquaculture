@@ -32,18 +32,36 @@ export default function PageHeader({ title, breadcrumbs }) {
 
               return (
                 <li key={item.label} className="flex items-center gap-2">
-                  {item.link ? (
+                  {item.onClick ? (
+                    <button
+                      type="button"
+                      onClick={item.onClick}
+                      className="
+                        min-h-[44px]
+                        flex
+                        items-center
+                        hover:opacity-70
+                        transition-opacity
+                        focus-visible:ring-2
+                        focus-visible:ring-brand-gold
+                        focus-visible:outline-none
+                        rounded-sm
+                      "
+                    >
+                      {item.label}
+                    </button>
+                  ) : item.link ? (
                     <Link
                       to={item.link}
                       className="
                         min-h-[44px]
-                        flex 
-                        items-center 
-                        hover:opacity-70 
+                        flex
+                        items-center
+                        hover:opacity-70
                         transition-opacity
-                        focus-visible:ring-2 
-                        focus-visible:ring-brand-gold 
-                        focus-visible:outline-none 
+                        focus-visible:ring-2
+                        focus-visible:ring-brand-gold
+                        focus-visible:outline-none
                         rounded-sm
                       "
                     >
