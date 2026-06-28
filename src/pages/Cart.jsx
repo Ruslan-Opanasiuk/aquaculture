@@ -186,7 +186,7 @@ export default function Cart() {
                   ))}
                 </div>
 
-                <div className="mt-8">
+                <div className="mt-[56px]">
                   <DiscountProgressBar totalKg={totalKg} />
                 </div>
 
