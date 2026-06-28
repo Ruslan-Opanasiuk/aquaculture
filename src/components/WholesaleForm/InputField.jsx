@@ -1,6 +1,6 @@
 import React, { useId } from "react";
 
-export default function InputField({ label, placeholder, value, onChange, error, type = "text" }) {
+export default function InputField({ label, placeholder, value, onChange, error, type = "text", maxLength }) {
   // Генеруємо унікальний ID для зв'язки label та input (важливо для доступності)
   const id = useId();
 
@@ -19,6 +19,7 @@ export default function InputField({ label, placeholder, value, onChange, error,
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
+        maxLength={maxLength}
         aria-invalid={Boolean(error)}
         className={`
           w-full
