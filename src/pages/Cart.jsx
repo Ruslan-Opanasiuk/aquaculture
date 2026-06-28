@@ -6,26 +6,33 @@ import PageHeader from "../components/PageHeader";
 import ActionArrowButton from "../components/ActionArrowButton";
 import { calculateDiscount } from "../components/discount";
 import DiscountProgressBar from "../components/DiscountProgressBar";
+import SelectField from "../components/WholesaleForm/SelectField";
 
-const LABEL_CLASS =
-  "block text-[12px] font-semibold opacity-50 mb-[6px] tracking-[0.08em] uppercase";
+const CITIES = [
+  "Вінниця", "Дніпро", "Донецьк", "Житомир", "Запоріжжя",
+  "Івано-Франківськ", "Київ", "Кропивницький", "Луганськ", "Луцьк",
+  "Львів", "Миколаїв", "Одеса", "Полтава", "Рівне",
+  "Сімферополь", "Суми", "Тернопіль", "Ужгород", "Харків",
+  "Херсон", "Хмельницький", "Черкаси", "Чернівці", "Чернігів",
+];
+
+const LABEL_CLASS = "mb-[6px] text-body font-medium text-brand-black";
 
 const INPUT_BASE =
-  "w-full h-[44px] rounded-full border border-brand-dark/20 bg-transparent px-[18px] text-body outline-none transition-colors placeholder:opacity-40 focus:border-brand-dark/60";
+  "w-full h-[44px] rounded-full bg-transparent text-brand-black px-[18px] text-body placeholder:text-brand-gray outline-none transition-all duration-200 border border-brand-sand";
 
 function CheckoutField({ label, type = "text", placeholder, value, onChange, error }) {
   return (
-    <div>
+    <div className="w-full flex flex-col font-['Montserrat']">
       <label className={LABEL_CLASS}>{label}</label>
       <input
         type={type}
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className={`${INPUT_BASE} ${error ? "border-red-400 ring-1 ring-red-400" : ""}`}
-        style={{ color: "var(--color-brand-dark)" }}
+        className={`${INPUT_BASE} ${error ? "ring-2 ring-error border-error" : "focus:ring-2 focus:ring-brand-gold"}`}
       />
-      {error && <p className="text-red-500 text-[12px] mt-[4px]">{error}</p>}
+      {error && <p role="alert" className="text-error text-[12px] mt-[6px]">{error}</p>}
     </div>
   );
 }
@@ -169,7 +176,7 @@ export default function Cart() {
                           {item.title}
                         </p>
                         <p style={{ fontSize: "var(--body-small-font-size)", opacity: 0.5 }}>
-                          {item.weight} · {item.quantity} шт.
+                          {item.grams}г · {item.quantity} шт.
                         </p>
                       </div>
                       <p className="shrink-0 font-medium" style={{ fontSize: "var(--body-font-size)" }}>
@@ -216,16 +223,26 @@ export default function Cart() {
                   <CheckoutField label="Ім'я" placeholder="Іван Іванов" value={values.name} onChange={(v) => handleChange("name", v)} error={fieldErrors.name} />
                   <CheckoutField label="Телефон" placeholder="+380 50 000 00 00" value={values.phone} onChange={(v) => handleChange("phone", v)} error={fieldErrors.phone} />
                   <CheckoutField label="Email" type="email" placeholder="email@example.com" value={values.email} onChange={(v) => handleChange("email", v)} error={fieldErrors.email} />
-                  <CheckoutField label="Місто" placeholder="Київ" value={values.city} onChange={(v) => handleChange("city", v)} error={fieldErrors.city} />
+                  <SelectField
+                    label="Місто"
+                    placeholder="Оберіть або введіть місто"
+                    searchable={true}
+                    options={CITIES}
+                    value={values.city}
+                    onChange={(v) => handleChange("city", v)}
+                    error={fieldErrors.city}
+                    bgClass="bg-transparent border border-brand-sand"
+                  />
 
-                  <div>
+                  <div className="w-full flex flex-col font-['Montserrat']">
                     <label className={LABEL_CLASS}>Коментар</label>
                     <textarea
                       placeholder="Побажання щодо доставки, часу зв'язку тощо"
                       value={values.comment}
                       onChange={(e) => handleChange("comment", e.target.value)}
                       rows={3}
-                      className="w-full rounded-[16px] border border-brand-dark/20 bg-transparent px-[18px] py-[12px] text-body outline-none transition-colors placeholder:opacity-40 focus:border-brand-dark/60 resize-none"
+                      maxLength={500}
+                      className="w-full rounded-[16px] bg-transparent text-brand-black px-[18px] py-[12px] text-body placeholder:text-brand-gray outline-none transition-all duration-200 border border-brand-sand focus:ring-2 focus:ring-brand-gold resize-none"
                     />
                   </div>
 

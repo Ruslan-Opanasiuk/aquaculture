@@ -15,12 +15,8 @@ export default function PageHeader({ title, breadcrumbs }) {
       <div className="max-w-[1200px] mx-auto text-center w-full px-layout-gap">
         
         <h1
-          className="
-            text-h2 
-            font-semibold 
-            mb-2
-            text-brand-black
-          "
+          className="font-semibold mb-2 text-brand-black"
+          style={{ fontSize: "clamp(1.5rem, 12.8vw, var(--h2-font-size))" }}
         >
           {title}
         </h1>
