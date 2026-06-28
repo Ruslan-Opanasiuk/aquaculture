@@ -186,7 +186,9 @@ export default function Cart() {
                   ))}
                 </div>
 
-                <DiscountProgressBar totalKg={totalKg} />
+                <div className="mt-8">
+                  <DiscountProgressBar totalKg={totalKg} />
+                </div>
 
                 <div className="mt-4 flex flex-col gap-[6px]" style={{ fontSize: "var(--body-font-size)" }}>
                   <div className="flex justify-between opacity-60">
@@ -214,7 +216,7 @@ export default function Cart() {
               </div>
 
               {/* RIGHT — contact form */}
-              <div style={{ color: "var(--color-brand-dark)" }}>
+              <div className="mt-12 tablet:mt-0" style={{ color: "var(--color-brand-dark)" }}>
                 <div className="pb-4 mb-6" style={{ borderBottom: "2px solid var(--color-brand-sand)" }}>
                   <p style={{ fontSize: "var(--h3-font-size)", fontWeight: 600 }}>Контактні дані</p>
                 </div>
