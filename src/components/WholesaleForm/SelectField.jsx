@@ -1,13 +1,14 @@
 import React, { useState, useId, useRef, useEffect } from "react";
 
-export default function SelectField({ 
-  label, 
-  placeholder, 
-  options, 
-  value, 
-  onChange, 
+export default function SelectField({
+  label,
+  placeholder,
+  options,
+  value,
+  onChange,
   error,
-  searchable = false // ДОДАНО: пропс для включення пошуку
+  searchable = false,
+  bgClass = "bg-brand-light",
 }) {
   const [open, setOpen] = useState(false);
   const [inputValue, setInputValue] = useState(value || ""); // Стан для тексту в полі
@@ -55,7 +56,7 @@ export default function SelectField({
           w-full
           h-[44px]
           rounded-full
-          bg-brand-light
+          ${bgClass}
           px-[18px]
           transition-all
           duration-200

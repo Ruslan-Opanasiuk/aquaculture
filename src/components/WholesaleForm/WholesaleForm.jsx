@@ -4,9 +4,21 @@ import SelectField from "./SelectField";
 import RadioGroup from "./RadioGroup";
 import { validateWholesale } from "./validateWholesale";
 
+const STORAGE_KEY = "wholesale_submitted_at";
+const BLOCK_MS = 24 * 60 * 60 * 1000;
+
+function wasRecentlySubmitted() {
+  try {
+    const ts = localStorage.getItem(STORAGE_KEY);
+    return ts ? Date.now() - parseInt(ts, 10) < BLOCK_MS : false;
+  } catch {
+    return false;
+  }
+}
+
 export default function WholesaleForm() {
   const [step, setStep] = useState(1);
-  
+
   const [values, setValues] = useState({
     name: "",
     phone: "",
@@ -20,7 +32,7 @@ export default function WholesaleForm() {
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(() => wasRecentlySubmitted());
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   // ДОДАНО: Реф для скролу
@@ -128,8 +140,16 @@ export default function WholesaleForm() {
 
     setIsSubmitting(true);
 
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const res = await fetch("/api/wholesale", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.ok) throw new Error(data.message);
+
+      try { localStorage.setItem(STORAGE_KEY, Date.now().toString()); } catch {}
       setIsSubmitted(true);
       setStep(1);
       setValues({
@@ -137,8 +157,12 @@ export default function WholesaleForm() {
         caviarType: "", caviarVolume: "", workFormat: "", paymentFormat: "",
       });
       setErrors({});
-      scrollToStep(); // Опціонально: скролимо на початок після успішної відправки
-    }, 1000);
+      scrollToStep();
+    } catch (err) {
+      setErrors({ submit: err.message || "Не вдалося надіслати заявку. Спробуйте пізніше." });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const stepTitles = {
@@ -175,9 +199,28 @@ export default function WholesaleForm() {
             </p>
           </div>
 
-          {/* ДОДАНО ref={formTopRef} та scroll-mt-[100px] для правильного позиціонування під шапкою */}
           <div className="w-full scroll-mt-[100px]" ref={formTopRef}>
-            <div className="mb-6 border-b border-brand-dark/10 pb-4">
+            {isSubmitted ? (
+              <div className="flex flex-col gap-[16px]">
+                <div className="mb-6 border-b border-brand-dark/10 pb-4">
+                  <h3 className="text-h3 font-semibold text-brand-black">
+                    Заявку отримано
+                  </h3>
+                </div>
+                <p className="text-body text-brand-black opacity-80 leading-[1.6]">
+                  Дякуємо! Ми отримали вашу анкету та підготуємо індивідуальну
+                  пропозицію з урахуванням ваших обсягів. Очікуйте на відповідь
+                  найближчим часом.
+                </p>
+                <p className="text-body text-brand-black opacity-60 leading-[1.6]">
+                  Якщо маєте термінові питання — телефонуйте напряму.
+                </p>
+                <p className="text-body-small text-brand-black opacity-40 leading-[1.6]">
+                  Повторна заявка буде доступна через 24 год.
+                </p>
+              </div>
+            ) : (
+            <><div className="mb-6 border-b border-brand-dark/10 pb-4">
               <p className="text-body-small opacity-60 font-semibold mb-1 tracking-wider">
                 КРОК {step} з 3
               </p>
@@ -345,7 +388,14 @@ export default function WholesaleForm() {
                   </button>
                 )}
               </div>
+              {errors.submit && (
+                <p className="text-red-500 text-[13px] mt-[12px] text-center">
+                  {errors.submit}
+                </p>
+              )}
             </form>
+            </>
+            )}
           </div>
         </div>
       </div>
