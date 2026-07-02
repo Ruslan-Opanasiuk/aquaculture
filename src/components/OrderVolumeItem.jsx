@@ -30,6 +30,8 @@ export default function OrderVolumeItem({
         <img
           src={imageSrc}
           alt=""
+          width="1024"
+          height="1024"
           draggable={false}
           style={{
             width: "100%",
