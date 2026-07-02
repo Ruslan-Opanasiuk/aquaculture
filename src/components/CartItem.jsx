@@ -1,5 +1,6 @@
 // src/components/CartItem.jsx
 import QuantityPicker from "./QuantityPicker";
+import FadeImage from "./FadeImage";
 import { Link } from "react-router-dom";
 
 function CloseIcon(props) {
@@ -87,7 +88,7 @@ export default function CartItem({
                   borderRadius: "16px",
                 }}
               >
-                <img
+                <FadeImage
                   src={imgSrc}
                   srcSet={imgSrcSet}
                   alt={item.title}
@@ -192,7 +193,7 @@ export default function CartItem({
               borderRadius: "16px",
             }}
           >
-            <img
+            <FadeImage
               src={imgSrc}
               srcSet={imgSrcSet}
               alt={item.title}

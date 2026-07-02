@@ -8,6 +8,7 @@ import TestimonialsSection from "../components/home/TestimonialsSection";
 import PartnersSection from "../components/home/PartnersSection";
 import FeatureGrid from "../components/home/FeatureGrid";
 import CatalogSection from "../components/CatalogSection";
+import FadeImage from "../components/FadeImage";
 
 import { brandFeatures, collaborationFeatures } from "../data/homeFeatures";
 
@@ -34,11 +35,11 @@ export default function Home() {
       <section className="mt-20 flex flex-col items-center">
         {/* mb-10 (40px) */}
         <div className="w-full max-w-[980px] px-layout-gap mx-auto mb-10 flex justify-center">
-          <img 
-            src={introImage1x} 
+          <FadeImage
+            src={introImage1x}
             srcSet={`${introImage1x} 1x, ${introImage2x} 2x`}
-            alt="Вступне фото: Aquaculture Selection" 
-            className="h-[250px] w-auto object-contain mix-blend-multiply" 
+            alt="Вступне фото: Aquaculture Selection"
+            className="h-[250px] w-auto object-contain mix-blend-multiply"
             width="256"
             height="250"
           />

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import FadeImage from "./FadeImage";
 
 function ArrowIcon(props) {
   return (
@@ -58,12 +59,11 @@ export default function ProductCard({
             aspect-square
             overflow-hidden 
             rounded-2xl 
-          " 
-ʼ
+          "
         >
           <Link to={productPath} className="block w-full h-full" tabIndex="-1" aria-hidden="true">
             {images && images.src1x ? (
-              <img
+              <FadeImage
                 src={images.src1x}
                 srcSet={`${images.src1x} 1x, ${images.src2x} 2x`}
                 alt={imageAlt}

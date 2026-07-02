@@ -1,7 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom"; 
-import wholesaleHeroDesktop from "../../assets/images/002.png"; 
-import wholesaleHeroMobile from "../../assets/images/003.png"; 
+import { Link } from "react-router-dom";
+import FadeImage from "../FadeImage";
+import wholesaleHeroDesktop from "../../assets/images/002.png";
+import wholesaleHeroMobile from "../../assets/images/003.png";
 
 export default function HomeHeroBanner() {
   return (
@@ -10,7 +11,7 @@ export default function HomeHeroBanner() {
         <div className="relative w-full h-full overflow-hidden rounded-2xl">
           <picture className="absolute inset-0 w-full h-full block">
             <source media="(min-width: 1024px)" srcSet={wholesaleHeroDesktop} />
-            <img
+            <FadeImage
               src={wholesaleHeroMobile}
               alt="Преміальна червона та чорна ікра"
               fetchPriority="high"

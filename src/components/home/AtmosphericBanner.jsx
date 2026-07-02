@@ -1,6 +1,7 @@
 import React from "react";
+import FadeImage from "../FadeImage";
 // ❗ Заміни на .webp формат, коли оптимізуєш графіку
-import atmosphericHero from "../../assets/images/001.png"; 
+import atmosphericHero from "../../assets/images/001.png";
 
 export default function AtmosphericBanner() {
   return (
@@ -10,7 +11,7 @@ export default function AtmosphericBanner() {
         
         <div className="relative w-full h-full overflow-hidden rounded-2xl bg-black/10"> 
           
-          <img
+          <FadeImage
             src={atmosphericHero}
             alt="Естетика та смак"
             loading="lazy"

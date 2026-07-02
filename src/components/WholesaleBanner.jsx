@@ -1,3 +1,4 @@
+import FadeImage from "./FadeImage";
 import wholesaleHero from "../assets/images/Frame-9.webp";
 
 export default function WholesaleBanner() {
@@ -30,7 +31,7 @@ export default function WholesaleBanner() {
             rounded-[20px]
           "
         >
-          <img
+          <FadeImage
             src={wholesaleHero}
             alt="Преміальна ікра для гуртових клієнтів"
             fetchPriority="high"

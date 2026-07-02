@@ -2,7 +2,8 @@ import { useParams } from "react-router-dom";
 import OrderVolumeGrid from "../components/OrderVolumeGrid";
 import WholesaleForm from "../components/WholesaleForm/WholesaleForm";
 import IndicatorRow from "../components/IndicatorRow";
-import SEO from "../components/SEO"; 
+import SEO from "../components/SEO";
+import FadeImage from "../components/FadeImage";
 import NotFound from "./NotFound";
 
 import { caviarCatalog } from "../data/caviarPackages";
@@ -100,28 +101,35 @@ export default function Product() {
                   tablet:self-start
                 ">
                   <div className="w-full relative flex justify-center items-center py-[20%]">
-                    {/* Invisible spacer to maintain proportions */}
+                    {/* Invisible spacer to maintain proportions. width/height (512x512, реальні пропорції
+                        оптимізованих фото) — резервує висоту блоку одразу, без стрибка макета під час завантаження */}
                     <img
                       src={product.images.jar.src1x}
                       alt=""
+                      width="512"
+                      height="512"
                       className="w-[80%] h-auto opacity-0 pointer-events-none select-none"
                     />
-                    
+
                     {/* LID - Fixed at the top position */}
-                    <img
+                    <FadeImage
                       src={product.images.lid.src1x}
                       srcSet={`${product.images.lid.src1x} 1x, ${product.images.lid.src2x} 2x`}
                       alt={`Кришка від ${product.title}`}
                       fetchPriority="high"
+                      width="512"
+                      height="512"
                       className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[80%] h-auto object-contain z-[20] -translate-y-[75%]"
                     />
-                    
+
                     {/* JAR - Fixed at the bottom position */}
-                    <img
+                    <FadeImage
                       src={product.images.jar.src1x}
                       srcSet={`${product.images.jar.src1x} 1x, ${product.images.jar.src2x} 2x`}
                       alt={`Банка ${product.title}`}
                       fetchPriority="high"
+                      width="512"
+                      height="512"
                       className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[80%] h-auto object-contain z-[10] translate-y-[-25%]"
                     />
                   </div>
