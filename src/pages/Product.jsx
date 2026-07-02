@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import OrderVolumeGrid from "../components/OrderVolumeGrid";
 import WholesaleForm from "../components/WholesaleForm/WholesaleForm";
@@ -7,6 +8,55 @@ import FadeImage from "../components/FadeImage";
 import NotFound from "./NotFound";
 
 import { caviarCatalog } from "../data/caviarPackages";
+
+// Банка і кришка — це один візуальний об'єкт, тому мають з'явитись одночасно:
+// чекаємо, поки завантажаться ОБИДВА фото, і показуємо разом (інакше видно,
+// що це два окремі шари, коли одне зʼявляється раніше за інше).
+function ProductJarLid({ product }) {
+  const [lidLoaded, setLidLoaded] = useState(false);
+  const [jarLoaded, setJarLoaded] = useState(false);
+  const bothLoaded = lidLoaded && jarLoaded;
+
+  return (
+    <div className="w-full relative flex justify-center items-center py-[20%]">
+      {/* Invisible spacer to maintain proportions. width/height (512x512, реальні пропорції
+          оптимізованих фото) — резервує висоту блоку одразу, без стрибка макета під час завантаження */}
+      <img
+        src={product.images.jar.src1x}
+        alt=""
+        width="512"
+        height="512"
+        className="w-[80%] h-auto opacity-0 pointer-events-none select-none"
+      />
+
+      {/* LID - Fixed at the top position */}
+      <FadeImage
+        src={product.images.lid.src1x}
+        srcSet={`${product.images.lid.src1x} 1x, ${product.images.lid.src2x} 2x`}
+        alt={`Кришка від ${product.title}`}
+        fetchPriority="high"
+        width="512"
+        height="512"
+        onLoad={() => setLidLoaded(true)}
+        ready={bothLoaded}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[80%] h-auto object-contain z-[20] -translate-y-[75%]"
+      />
+
+      {/* JAR - Fixed at the bottom position */}
+      <FadeImage
+        src={product.images.jar.src1x}
+        srcSet={`${product.images.jar.src1x} 1x, ${product.images.jar.src2x} 2x`}
+        alt={`Банка ${product.title}`}
+        fetchPriority="high"
+        width="512"
+        height="512"
+        onLoad={() => setJarLoaded(true)}
+        ready={bothLoaded}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[80%] h-auto object-contain z-[10] translate-y-[-25%]"
+      />
+    </div>
+  );
+}
 
 export default function Product() {
   const { productId } = useParams();
@@ -100,39 +150,7 @@ export default function Product() {
                   tablet:top-[120px]
                   tablet:self-start
                 ">
-                  <div className="w-full relative flex justify-center items-center py-[20%]">
-                    {/* Invisible spacer to maintain proportions. width/height (512x512, реальні пропорції
-                        оптимізованих фото) — резервує висоту блоку одразу, без стрибка макета під час завантаження */}
-                    <img
-                      src={product.images.jar.src1x}
-                      alt=""
-                      width="512"
-                      height="512"
-                      className="w-[80%] h-auto opacity-0 pointer-events-none select-none"
-                    />
-
-                    {/* LID - Fixed at the top position */}
-                    <FadeImage
-                      src={product.images.lid.src1x}
-                      srcSet={`${product.images.lid.src1x} 1x, ${product.images.lid.src2x} 2x`}
-                      alt={`Кришка від ${product.title}`}
-                      fetchPriority="high"
-                      width="512"
-                      height="512"
-                      className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[80%] h-auto object-contain z-[20] -translate-y-[75%]"
-                    />
-
-                    {/* JAR - Fixed at the bottom position */}
-                    <FadeImage
-                      src={product.images.jar.src1x}
-                      srcSet={`${product.images.jar.src1x} 1x, ${product.images.jar.src2x} 2x`}
-                      alt={`Банка ${product.title}`}
-                      fetchPriority="high"
-                      width="512"
-                      height="512"
-                      className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[80%] h-auto object-contain z-[10] translate-y-[-25%]"
-                    />
-                  </div>
+                  <ProductJarLid product={product} key={productKey} />
                 </div>
 
                 {/* 3. MOBILE DETAILS */}
