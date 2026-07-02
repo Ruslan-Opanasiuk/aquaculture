@@ -17,7 +17,9 @@ export default function PartnersSection() {
             {[1, 2, 3, 4, 5].map((index) => (
               <img 
                 key={`original-${index}`}
-                src={logotest} 
+                src={logotest}
+                width="200"
+                height="59"
                 alt={`Партнер ${index}`}
                 loading="lazy"
                 className="h-9 tablet:h-12 w-auto max-w-none flex-shrink-0 object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300"
@@ -32,7 +34,9 @@ export default function PartnersSection() {
             {[1, 2, 3, 4, 5].map((index) => (
               <img 
                 key={`duplicate-${index}`}
-                src={logotest} 
+                src={logotest}
+                width="200"
+                height="59"
                 alt={`Партнер копія ${index}`}
                 loading="lazy"
                 className="h-9 tablet:h-12 w-auto max-w-none flex-shrink-0 object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300"
