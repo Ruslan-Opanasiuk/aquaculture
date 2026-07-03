@@ -5,7 +5,7 @@ import atmosphericHero from "../../assets/images/001.png";
 
 export default function AtmosphericBanner() {
   return (
-    <section className="relative w-full h-screen flex justify-center">
+    <section className="relative w-full h-dvh flex justify-center">
       <div className="absolute left-0 right-0 bottom-0 top-[80px] p-2.5"> 
 
         
