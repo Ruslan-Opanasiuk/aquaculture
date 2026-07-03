@@ -6,7 +6,7 @@ import wholesaleHeroMobile from "../../assets/images/003.png";
 
 export default function HomeHeroBanner() {
   return (
-    <section className="relative w-full h-dvh flex justify-center">
+    <section className="relative w-full h-lvh flex justify-center">
       <div className="absolute inset-0 p-2.5 mt-[80px]">
         <div className="relative w-full h-full overflow-hidden rounded-2xl">
           <picture className="absolute inset-0 w-full h-full block">

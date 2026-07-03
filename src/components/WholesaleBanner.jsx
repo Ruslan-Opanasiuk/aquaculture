@@ -7,7 +7,7 @@ export default function WholesaleBanner() {
       className="
         relative
         w-full
-        h-dvh
+        h-lvh
         flex
         justify-center
       "
