@@ -12,6 +12,7 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import ViewportHeightFix from "./components/ViewportHeightFix";
 
 function App() {
   const location = useLocation();
@@ -19,6 +20,7 @@ function App() {
   return (
     <>
       <ScrollToTop />
+      <ViewportHeightFix />
 
       <Header />
       <Suspense fallback={<div className="min-h-screen bg-brand-beige" />}>

@@ -217,6 +217,12 @@ body {
   .smooth-scroll {
     scroll-behavior: smooth;
   }
+
+  /* Стабільна висота екрана для in-app браузерів (Telegram тощо) — див.
+     components/ViewportHeightFix.jsx. Фолбек 1vh, доки JS не виставив --vh. */
+  .h-vh-stable {
+    height: calc(var(--vh, 1vh) * 100);
+  }
 }
 
 /* ============================= */
