@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CartItem from "../components/CartItem";
 import { useCartStore } from "../store/cartStore";
 import { Link } from "react-router-dom";
@@ -61,6 +61,12 @@ export default function Cart() {
   const [values, setValues] = useState({
     name: "", phone: "", email: "", city: "", comment: "",
   });
+
+  // Кошик і чекаут — той самий маршрут /cart, ScrollToTop (реагує на pathname)
+  // тут не спрацьовує. Прокручуємо вручну при перемиканні між станами.
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [showForm]);
 
   const handleChange = (field, value) => {
     setValues((prev) => ({ ...prev, [field]: value }));
