@@ -44,7 +44,7 @@ export default function SelectField({
     <div className="w-full flex flex-col font-['Montserrat'] relative" ref={dropdownRef}>
       <label 
         htmlFor={`${id}-input`}
-        className="mb-[6px] text-body font-medium text-brand-black"
+        className="mb-[6px] text-body font-medium text-brand-dark"
       >
         {label}
       </label>
@@ -90,7 +90,7 @@ export default function SelectField({
             outline-none 
             text-body
             ${!searchable ? "cursor-pointer select-none" : ""}
-            ${value && !open ? "text-brand-black" : "text-brand-black"}
+            ${value && !open ? "text-brand-dark" : "text-brand-dark"}
             placeholder:text-brand-gray
           `}
           onChange={(e) => {
@@ -169,8 +169,8 @@ export default function SelectField({
                   transition-colors
                   text-left
                   ${value === item 
-                    ? "bg-brand-beige text-brand-black font-semibold" 
-                    : "text-brand-black hover:bg-brand-beige/50"
+                    ? "bg-brand-beige text-brand-dark font-semibold" 
+                    : "text-brand-dark hover:bg-brand-beige/50"
                   }
                 `}
               >

@@ -71,7 +71,7 @@ export default function OrderVolumeItem({
           marginTop: -5,
           textAlign: "center",
           fontWeight: 600,
-          color: "#000",
+          color: "var(--color-brand-dark)",
           fontSize: "var(--body-font-size)",
         }}
       >

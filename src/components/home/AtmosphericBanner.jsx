@@ -9,7 +9,7 @@ export default function AtmosphericBanner() {
       <div className="absolute left-0 right-0 bottom-0 top-[80px] p-2.5"> 
 
         
-        <div className="relative w-full h-full overflow-hidden rounded-2xl bg-black/10"> 
+        <div className="relative w-full h-full overflow-hidden rounded-2xl bg-brand-dark/10">
           
           <FadeImage
             src={atmosphericHero}
@@ -19,7 +19,7 @@ export default function AtmosphericBanner() {
           />
 
           <div
-            className="absolute inset-0 bg-black/45"
+            className="absolute inset-0 bg-brand-dark/45"
             aria-hidden="true"
           />
         </div>

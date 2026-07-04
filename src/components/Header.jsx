@@ -84,7 +84,7 @@ export default function Header() {
                   px-[4px]
                   flex items-center justify-center
                   rounded-full
-                  bg-brand-black
+                  bg-brand-dark
                   text-brand-beige
                   text-[11px]
                   font-semibold

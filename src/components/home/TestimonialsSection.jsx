@@ -18,7 +18,7 @@ export default function TestimonialsSection() {
     <section className="w-full py-20 flex justify-center font-['Montserrat'] bg-brand-sand">
       <div className="w-full max-w-[980px] px-layout-gap mx-auto">
         
-        <h2 className="text-body font-medium text-brand-black mb-8 tracking-widest text-center uppercase">
+        <h2 className="text-body font-medium text-brand-dark mb-8 tracking-widest text-center uppercase">
           Що говорять клієнти
         </h2>
 
@@ -30,12 +30,12 @@ export default function TestimonialsSection() {
             aria-label="Попередній відгук"
             className="
               absolute -left-2 tablet:left-4 z-10 w-10 h-10 tablet:w-12 tablet:h-12 
-              flex items-center justify-center rounded-full bg-black/5 
-              hover:bg-black/10 transition-colors 
+              flex items-center justify-center rounded-full bg-brand-dark/5
+              hover:bg-brand-dark/10 transition-colors 
               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4F0EB]
             "
           >
-            <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-brand-black">
+            <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-brand-dark">
               <path d="M19 12H5M12 19l-7-7 7-7"/>
             </svg>
           </button>
@@ -46,11 +46,11 @@ export default function TestimonialsSection() {
             aria-live="polite"
             className="flex flex-col items-center text-center px-12 tablet:px-20 max-w-[660px] animate-fade-in-up"
           >
-            <h3 className="text-body text-brand-black mb-6">
+            <h3 className="text-body text-brand-dark mb-6">
               {currentReview.title}
             </h3>
             
-            <p className="text-body leading-[1.4] text-brand-black mb-8">
+            <p className="text-body leading-[1.4] text-brand-dark mb-8">
               {currentReview.text}
             </p>
             
@@ -63,7 +63,7 @@ export default function TestimonialsSection() {
               ))}
             </div>
 
-            <span className="text-body text-brand-black">
+            <span className="text-body text-brand-dark">
               {currentReview.author}
             </span>
           </div>
@@ -74,12 +74,12 @@ export default function TestimonialsSection() {
             aria-label="Наступний відгук"
             className="
               absolute right-0 tablet:right-4 z-10 w-10 h-10 tablet:w-12 tablet:h-12 
-              flex items-center justify-center rounded-full bg-black/5 
-              hover:bg-black/10 transition-colors 
+              flex items-center justify-center rounded-full bg-brand-dark/5
+              hover:bg-brand-dark/10 transition-colors 
               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4F0EB]
             "
           >
-            <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-brand-black">
+            <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-brand-dark">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </button>

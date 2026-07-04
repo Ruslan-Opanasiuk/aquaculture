@@ -16,10 +16,10 @@ const CITIES = [
   "Херсон", "Хмельницький", "Черкаси", "Чернівці", "Чернігів",
 ];
 
-const LABEL_CLASS = "mb-[6px] text-body font-medium text-brand-black";
+const LABEL_CLASS = "mb-[6px] text-body font-medium text-brand-dark";
 
 const INPUT_BASE =
-  "w-full h-[44px] rounded-full bg-transparent text-brand-black px-[18px] text-body placeholder:text-brand-gray outline-none transition-all duration-200 border border-brand-sand";
+  "w-full h-[44px] rounded-full bg-transparent text-brand-dark px-[18px] text-body placeholder:text-brand-gray outline-none transition-all duration-200 border border-brand-sand";
 
 function CheckoutField({ label, type = "text", placeholder, value, onChange, error }) {
   return (
@@ -250,7 +250,7 @@ export default function Cart() {
                       onChange={(e) => handleChange("comment", e.target.value)}
                       rows={3}
                       maxLength={500}
-                      className="w-full rounded-[16px] bg-transparent text-brand-black px-[18px] py-[12px] text-body placeholder:text-brand-gray outline-none transition-all duration-200 border border-brand-sand focus:ring-2 focus:ring-brand-gold resize-none"
+                      className="w-full rounded-[16px] bg-transparent text-brand-dark px-[18px] py-[12px] text-body placeholder:text-brand-gray outline-none transition-all duration-200 border border-brand-sand focus:ring-2 focus:ring-brand-gold resize-none"
                     />
                   </div>
 

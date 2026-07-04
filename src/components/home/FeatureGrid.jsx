@@ -13,12 +13,12 @@ export default function FeatureGrid({
       <div className="w-full max-w-[980px] px-layout-gap mx-auto">
         <div className="flex flex-col items-center text-center mb-16">
           {title && (
-            <h2 className="text-body font-medium text-brand-black mb-8 tracking-widest uppercase">
+            <h2 className="text-body font-medium text-brand-dark mb-8 tracking-widest uppercase">
               {title}
             </h2>
           )}
           {bodyText && (
-            <p className="text-body text-brand-black max-w-[660px] leading-relaxed">
+            <p className="text-body text-brand-dark max-w-[660px] leading-relaxed">
               {bodyText}
             </p>
           )}
@@ -53,12 +53,12 @@ export default function FeatureGrid({
                 )}
               </div>
               
-              <h3 className="text-body font-medium text-brand-black mb-2 tablet:mb-3 px-2">
+              <h3 className="text-body font-medium text-brand-dark mb-2 tablet:mb-3 px-2">
                 {item.title}
               </h3>
               
               {item.description && (
-                <p className="text-body text-brand-black opacity-80 px-2">
+                <p className="text-body text-brand-dark opacity-80 px-2">
                   {item.description}
                 </p>
               )} 

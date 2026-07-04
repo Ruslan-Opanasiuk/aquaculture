@@ -45,10 +45,10 @@ export default function Home() {
           />
         </div>
         <div className="flex flex-col items-center text-center px-layout-gap">
-          <h2 className="text-body font-medium text-brand-black mb-8 tracking-widest uppercase">
+          <h2 className="text-body font-medium text-brand-dark mb-8 tracking-widest uppercase">
             ІКРА, ЯКУ ОБИРАЮТЬ ЗА РЕЗУЛЬТАТ
           </h2>
-          <p className="text-body text-brand-black max-w-[660px] leading-relaxed">
+          <p className="text-body text-brand-dark max-w-[660px] leading-relaxed">
             Ми працюємо з перевіреними постачальниками та відбираємо ікру за її природними характеристиками — смаком, текстурою та свіжістю. Без зайвої обробки. Лише продукт, який відповідає своєму походженню.
           </p>
         </div>
@@ -56,7 +56,7 @@ export default function Home() {
 
       {/* БЕСТСЕЛЕРИ | mt-32 (128px) */}
       <section className="mt-32 flex flex-col items-center w-full">
-        <h2 className="text-body font-medium text-brand-black mb-8 tracking-widest text-center uppercase">
+        <h2 className="text-body font-medium text-brand-dark mb-8 tracking-widest text-center uppercase">
           ЛІДЕРИ ПРОДАЖІВ
         </h2>
         <CatalogSection id="bestsellers" products={bestsellers} />
@@ -86,11 +86,11 @@ export default function Home() {
 
       {/* CTA БЛОК | mt-32 (128px) */}
       <section className="mt-32 w-full flex flex-col items-center text-center px-layout-gap mx-auto max-w-[760px]">
-        <h2 className="text-body font-medium text-brand-black mb-6 tracking-widest uppercase">
+        <h2 className="text-body font-medium text-brand-dark mb-6 tracking-widest uppercase">
           Зробіть свій вибір
         </h2>
         
-        <p className="text-body text-brand-black leading-relaxed mb-10 max-w-[600px]">
+        <p className="text-body text-brand-dark leading-relaxed mb-10 max-w-[600px]">
           Ми вже відібрали ікру з перевіреним походженням і стабільною якістю. Вам залишається обрати продукт, який відповідає вашій задачі.
         </p>
 
@@ -104,7 +104,7 @@ export default function Home() {
             px-10
             min-h-[52px]
             font-['Montserrat']
-            bg-brand-black
+            bg-brand-dark
             text-brand-beige
             hover:opacity-90
             active:scale-95

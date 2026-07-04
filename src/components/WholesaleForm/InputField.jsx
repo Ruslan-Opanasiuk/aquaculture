@@ -8,7 +8,7 @@ export default function InputField({ label, placeholder, value, onChange, error,
     <div className="w-full flex flex-col font-['Montserrat']">
       <label 
         htmlFor={id} 
-        className="mb-[6px] text-body font-medium text-brand-black"
+        className="mb-[6px] text-body font-medium text-brand-dark"
       >
         {label}
       </label>
@@ -26,7 +26,7 @@ export default function InputField({ label, placeholder, value, onChange, error,
           h-[44px]
           rounded-full
           bg-brand-light
-          text-brand-black
+          text-brand-dark
           px-[18px]
           text-body
           placeholder:text-brand-gray

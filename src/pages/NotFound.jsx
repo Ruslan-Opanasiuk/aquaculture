@@ -46,11 +46,11 @@ export default function NotFound() {
 
         <main className="relative z-10 text-center px-layout-gap flex flex-col items-center">
           
-          <h1 className="max-w-[460px] text-h3 font-semibold text-brand-black mb-4 leading-tight">
+          <h1 className="max-w-[460px] text-h3 font-semibold text-brand-dark mb-4 leading-tight">
             Упс! Сторінку не знайдено
           </h1>
           
-          <p className="max-w-[460px] text-body text-brand-black mb-8 opacity-90 leading-relaxed">
+          <p className="max-w-[460px] text-body text-brand-dark mb-8 opacity-90 leading-relaxed">
             Сторінка, яку ви шукаєте, була переміщена, видалена або ніколи не існувала. Але не хвилюйтеся, вся наша ікра чекає на вас у каталозі.
           </p>
 

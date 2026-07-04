@@ -124,7 +124,7 @@ export default function OrderVolumeGrid({
           }
           style={{
             backgroundColor: "#E9E5DB",
-            color: "#000",
+            color: "var(--color-brand-dark)",
             borderRadius: 20,
             fontWeight: 600,
             border: "none",

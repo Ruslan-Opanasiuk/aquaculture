@@ -30,14 +30,14 @@ export default function CatalogSection({ products, title, subtitle, id }) {
         
         {/* Тепер заголовок рендериться лише якщо його передано */}
         {title && (
-          <h2 className="font-['Montserrat'] font-semibold mb-3 text-h2 text-brand-black">
+          <h2 className="font-['Montserrat'] font-semibold mb-3 text-h2 text-brand-dark">
             {title}
           </h2>
         )}
 
         {/* Опис також рендериться лише за наявності */}
         {subtitle && (
-          <p className="font-['Montserrat'] leading-[1.5] max-w-[754px] mb-4 text-body text-brand-black">
+          <p className="font-['Montserrat'] leading-[1.5] max-w-[754px] mb-4 text-body text-brand-dark">
             {subtitle}
           </p>
         )}

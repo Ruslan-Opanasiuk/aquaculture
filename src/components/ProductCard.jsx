@@ -36,7 +36,7 @@ export default function ProductCard({
               font-semibold 
               leading-[1.05]
               text-h3
-              text-brand-black
+              text-brand-dark
               group-hover:text-brand-dark transition-colors
             "
           >
@@ -76,7 +76,7 @@ export default function ProductCard({
             leading-none 
             whitespace-pre-line
             text-body
-            text-brand-black
+            text-brand-dark
           "
         >
           {price}

@@ -12,7 +12,7 @@ export default function RadioGroup({ label, options, selected, onChange, error }
     >
       <p 
         id={labelId}
-        className="mb-[12px] text-body font-medium text-brand-black"
+        className="mb-[12px] text-body font-medium text-brand-dark"
       >
         {label}
       </p>
@@ -69,7 +69,7 @@ export default function RadioGroup({ label, options, selected, onChange, error }
               />
             </span>
 
-            <span className="text-body text-brand-black leading-tight">
+            <span className="text-body text-brand-dark leading-tight">
               {item}
             </span>
           </label>

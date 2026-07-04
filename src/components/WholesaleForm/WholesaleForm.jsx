@@ -188,7 +188,7 @@ export default function WholesaleForm() {
       <div className="w-full px-layout-gap max-w-[980px] mx-auto">
         <div className="flex flex-col tablet:grid tablet:grid-cols-2 gap-[40px] tablet:gap-[60px] desktop:gap-[100px] items-start">
           
-          <div className="flex flex-col text-left text-brand-black">
+          <div className="flex flex-col text-left text-brand-dark">
             <h2 className="text-h2 font-semibold leading-[1.1] mb-6">
               Прайс для гуртовиків
             </h2>
@@ -203,19 +203,19 @@ export default function WholesaleForm() {
             {isSubmitted ? (
               <div className="flex flex-col gap-[16px]">
                 <div className="mb-6 border-b border-brand-dark/10 pb-4">
-                  <h3 className="text-h3 font-semibold text-brand-black">
+                  <h3 className="text-h3 font-semibold text-brand-dark">
                     Заявку отримано
                   </h3>
                 </div>
-                <p className="text-body text-brand-black opacity-80 leading-[1.6]">
+                <p className="text-body text-brand-dark opacity-80 leading-[1.6]">
                   Дякуємо! Ми отримали вашу анкету та підготуємо індивідуальну
                   пропозицію з урахуванням ваших обсягів. Очікуйте на відповідь
                   найближчим часом.
                 </p>
-                <p className="text-body text-brand-black opacity-60 leading-[1.6]">
+                <p className="text-body text-brand-dark opacity-60 leading-[1.6]">
                   Якщо маєте термінові питання — телефонуйте напряму.
                 </p>
-                <p className="text-body-small text-brand-black opacity-40 leading-[1.6]">
+                <p className="text-body-small text-brand-dark opacity-40 leading-[1.6]">
                   Повторна заявка буде доступна через 24 год.
                 </p>
               </div>
@@ -224,7 +224,7 @@ export default function WholesaleForm() {
               <p className="text-body-small opacity-60 font-semibold mb-1 tracking-wider">
                 КРОК {step} з 3
               </p>
-              <h3 className="text-h3 font-semibold text-brand-black">
+              <h3 className="text-h3 font-semibold text-brand-dark">
                 {stepTitles[step]}
               </h3>
             </div>
@@ -324,7 +324,7 @@ export default function WholesaleForm() {
                       rounded-full
                       bg-transparent
                       border border-brand-dark/20
-                      text-brand-black
+                      text-brand-dark
                       text-body
                       font-medium
                       hover:bg-brand-dark/5

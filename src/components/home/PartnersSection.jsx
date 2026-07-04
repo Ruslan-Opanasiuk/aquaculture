@@ -6,7 +6,7 @@ export default function PartnersSection() {
   return (
     <section className="w-full py-20 flex flex-col items-center">
       
-      <h2 className="text-body font-medium text-brand-black mb-10 tablet:mb-14 tracking-widest uppercase text-center">
+      <h2 className="text-body font-medium text-brand-dark mb-10 tablet:mb-14 tracking-widest uppercase text-center">
         Нам довіряють
       </h2>
       

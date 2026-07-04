@@ -11,7 +11,7 @@ export default function IndicatorRow({ label, leftLabel, rightLabel, value = 3 }
          shrink-0 — забороняємо стискатися.
       */}
       <span
-        className="font-medium text-[#121212]/75 uppercase tracking-wider w-[120px] shrink-0"
+        className="font-medium text-brand-dark/75 uppercase tracking-wider w-[120px] shrink-0"
         style={{ fontSize: "var(--body-small-font-size)" }}
       >
         {label}
@@ -22,7 +22,7 @@ export default function IndicatorRow({ label, leftLabel, rightLabel, value = 3 }
          text-right — притискаємо текст до крапок.
       */}
       <span
-        className="text-right text-black/60 whitespace-nowrap w-[70px] shrink-0"
+        className="text-right text-brand-dark/60 whitespace-nowrap w-[70px] shrink-0"
         style={{ fontSize: "var(--body-font-size)" }}
       >
         {leftLabel}
@@ -49,7 +49,7 @@ export default function IndicatorRow({ label, leftLabel, rightLabel, value = 3 }
 
       {/* 4. КОЛОНКА: ПРАВИЙ ТЕКСТ */}
       <span
-        className="text-left text-black/60 whitespace-nowrap"
+        className="text-left text-brand-dark/60 whitespace-nowrap"
         style={{ fontSize: "var(--body-font-size)" }}
       >
         {rightLabel}

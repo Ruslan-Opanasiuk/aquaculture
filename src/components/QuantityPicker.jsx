@@ -39,7 +39,7 @@ export default function QuantityPicker({
       <button
         type="button"
         onClick={onDecrement}
-        style={{ ...baseButtonStyle, backgroundColor: "#FEFAF3", color: "#000" }}
+        style={{ ...baseButtonStyle, backgroundColor: "#FEFAF3", color: "var(--color-brand-dark)" }}
       >
         −
       </button>
@@ -54,7 +54,7 @@ export default function QuantityPicker({
           height: buttonHeight, // Додав висоту, щоб текст був по центру кнопок
           textAlign: "center",
           fontWeight: 600,
-          color: "#000",
+          color: "var(--color-brand-dark)",
           background: "transparent",
           border: "none",
           outline: "none",
@@ -68,7 +68,7 @@ export default function QuantityPicker({
       <button
         type="button"
         onClick={onIncrement}
-        style={{ ...baseButtonStyle, backgroundColor: "#000", color: "#fff" }}
+        style={{ ...baseButtonStyle, backgroundColor: "var(--color-brand-dark)", color: "#fff" }}
       >
         +
       </button>

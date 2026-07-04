@@ -15,14 +15,14 @@ export default function PageHeader({ title, breadcrumbs }) {
       <div className="max-w-[1200px] mx-auto text-center w-full px-layout-gap">
         
         <h1
-          className="font-semibold mb-2 text-brand-black"
+          className="font-semibold mb-2 text-brand-dark"
           style={{ fontSize: "clamp(1.5rem, 12.8vw, var(--h2-font-size))" }}
         >
           {title}
         </h1>
 
         <nav aria-label="Breadcrumb">
-          <ol className="flex flex-wrap justify-center gap-2 text-brand-black text-body">
+          <ol className="flex flex-wrap justify-center gap-2 text-brand-dark text-body">
             {breadcrumbs.map((item, i) => {
               const isLast = i === breadcrumbs.length - 1;
 
@@ -65,7 +65,7 @@ export default function PageHeader({ title, breadcrumbs }) {
                     </Link>
                   ) : (
                     <span 
-                      className={isLast ? "text-brand-black" : ""}
+                      className={isLast ? "text-brand-dark" : ""}
                       aria-current={isLast ? "page" : undefined}
                     >
                       {item.label}
@@ -73,7 +73,7 @@ export default function PageHeader({ title, breadcrumbs }) {
                   )}
 
                   {!isLast && (
-                    <span className="text-brand-black select-none" aria-hidden="true">
+                    <span className="text-brand-dark select-none" aria-hidden="true">
                       /
                     </span>
                   )}

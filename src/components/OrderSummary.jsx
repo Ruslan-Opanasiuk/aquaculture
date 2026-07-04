@@ -68,7 +68,7 @@ export default function OrderSummary({
       style={{
         marginTop: 40,
         fontFamily: "Montserrat, sans-serif",
-        color: "#262626",
+        color: "var(--color-brand-dark)",
         WebkitFontSmoothing: "antialiased",
         MozOsxFontSmoothing: "grayscale",
       }}

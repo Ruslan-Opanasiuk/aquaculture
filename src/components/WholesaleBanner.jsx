@@ -49,7 +49,7 @@ export default function WholesaleBanner() {
             className="
               absolute
               inset-0
-              bg-black/45
+              bg-brand-dark/45
             "
             aria-hidden="true"
           />
@@ -130,14 +130,14 @@ export default function WholesaleBanner() {
                 min-h-[44px]
                 font-['Montserrat']
                 bg-brand-beige
-                text-brand-black
+                text-brand-dark
                 hover:bg-brand-sand
                 transition-colors
                 text-body
                 focus-visible:ring-2
                 focus-visible:ring-brand-gold
                 focus-visible:ring-offset-2
-                focus-visible:ring-offset-black
+                focus-visible:ring-offset-brand-dark
                 focus-visible:outline-none
               "
             >

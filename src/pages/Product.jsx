@@ -94,7 +94,7 @@ export default function Product() {
                   tablet:items-start
                   tablet:text-left
                   tablet:pl-16
-                  text-brand-black
+                  text-brand-dark
                 ">
                   <h1 className="font-semibold leading-[1.1] text-h2 uppercase tracking-tight">
                     {product.title}
@@ -117,7 +117,7 @@ export default function Product() {
 
                     <div className="mt-20 flex flex-col gap-5 leading-relaxed opacity-90 text-left text-body">
                       {product.indicators && product.indicators.length > 0 && (
-                        <div className="flex flex-col w-full mb-4 pb-4 border-b border-brand-black/10">
+                        <div className="flex flex-col w-full mb-4 pb-4 border-b border-brand-dark/10">
                           {product.indicators.map((indicator, index) => (
                             <IndicatorRow
                               key={index}
@@ -166,9 +166,9 @@ export default function Product() {
                     </div>
                   </div>
 
-                  <div className="mt-20 flex flex-col gap-5 leading-relaxed text-left items-start text-body text-brand-black">
+                  <div className="mt-20 flex flex-col gap-5 leading-relaxed text-left items-start text-body text-brand-dark">
                     {product.indicators && product.indicators.length > 0 && (
-                      <div className="flex flex-col w-full mb-2 pb-4 border-b border-brand-black/10">
+                      <div className="flex flex-col w-full mb-2 pb-4 border-b border-brand-dark/10">
                         {product.indicators.map((indicator, index) => (
                           <IndicatorRow
                             key={index}
