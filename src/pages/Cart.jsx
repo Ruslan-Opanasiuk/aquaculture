@@ -320,14 +320,12 @@ export default function Cart() {
                   </div>
 
                   <div className="flex flex-col gap-3">
-                    {/* primary-дія сторінки кошика — суцільна кнопка, не стрілка */}
-                    <button
-                      type="button"
+                    <ActionArrowButton
+                      label="Оформити замовлення"
+                      direction="right"
+                      variant="filled"
                       onClick={() => setShowForm(true)}
-                      className="w-full h-[44px] rounded-full bg-brand-dark text-brand-light uppercase text-body font-semibold tracking-wider hover:opacity-90 transition-opacity"
-                    >
-                      Оформити замовлення
-                    </button>
+                    />
                     <ActionArrowButton
                       label="Продовжити покупки"
                       direction="left"
