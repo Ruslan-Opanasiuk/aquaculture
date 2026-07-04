@@ -7,13 +7,14 @@ export default function IndicatorRow({ label, leftLabel, rightLabel, value = 3 }
     // На вузьких телефонах не влазить в один рядок — ділимо на дві лінії
     // (назва / значення), з меншим відступом між ними, ніж між сусідніми
     // характеристиками (py-2 нижче). Від phone-wide — як було, один рядок.
+    // Ширина назви й лівого тексту — за вмістом (не фіксована): свідомо
+    // жертвуємо вирівнюванням крапок у колонку між рядками заради того,
+    // щоб рядок був компактнішим і не ламався на вузьких екранах.
     <div className="flex flex-col gap-1 phone-wide:flex-row phone-wide:items-center phone-wide:gap-0 font-['Montserrat'] py-2">
 
-      {/* 1. НАЗВА
-         w-[120px] — ширина, достатня для слова "ПРУЖНІСТЬ" (тільки від phone-wide).
-      */}
+      {/* 1. НАЗВА */}
       <span
-        className="font-medium text-brand-dark/75 uppercase tracking-wider phone-wide:w-[120px] phone-wide:shrink-0"
+        className="font-medium text-brand-dark/75 uppercase tracking-wider whitespace-nowrap"
         style={{ fontSize: "var(--body-small-font-size)" }}
       >
         {label}
@@ -22,7 +23,7 @@ export default function IndicatorRow({ label, leftLabel, rightLabel, value = 3 }
       {/* 2. ЗНАЧЕННЯ: лівий текст + крапки + правий текст — завжди в один рядок */}
       <div className="flex items-center">
         <span
-          className="text-right text-brand-dark/60 whitespace-nowrap w-[70px] shrink-0"
+          className="text-right text-brand-dark/60 whitespace-nowrap"
           style={{ fontSize: "var(--body-font-size)" }}
         >
           {leftLabel}
