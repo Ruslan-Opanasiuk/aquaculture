@@ -4,7 +4,6 @@ import { useMemo } from "react";
 import { useCartStore } from "../store/cartStore"; // 👈 Імпортуємо наш магазин
 import { breakpoints, discountPerBreakpoint, calculateDiscount } from "./discount";
 import DiscountProgressBar from "./DiscountProgressBar";
-import ActionArrowButton from "./ActionArrowButton";
 
 export default function OrderSummary({
   packages,
@@ -101,13 +100,16 @@ export default function OrderSummary({
         </span>
       </div>
 
-      {/* ADD TO CART BUTTON */}
-      <ActionArrowButton
+      {/* ADD TO CART BUTTON — primary-дія екрана товару, тому суцільна кнопка,
+          а не стрілка (стрілка — для другорядних/навігаційних дій) */}
+      <button
+        type="button"
         onClick={handleClick}
-        label="Додати в кошик"
         disabled={!hasSelection}
-        ringOffsetClassName="focus-visible:ring-offset-brand-beige"
-      />
+        className="px-10 h-[44px] rounded-full bg-brand-dark text-brand-light uppercase text-body font-semibold tracking-wider hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        Додати в кошик
+      </button>
     </div>
   );
 }
