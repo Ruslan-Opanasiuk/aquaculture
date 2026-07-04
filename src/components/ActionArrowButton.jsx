@@ -32,9 +32,7 @@ function circleClasses({ size, variant, tone, disabled }) {
     return `${base} bg-footer text-brand-beige group-hover:opacity-70`;
   }
   if (variant === "outline") {
-    // Прозора середина — opacity на ній непомітна (нема чого затемнювати),
-    // тому додаємо реальну заливку (тонкий tint), а не гасимо elem opacity.
-    return `${base} bg-transparent group-hover:bg-brand-dark/10 border border-brand-dark text-brand-dark`;
+    return `${base} bg-transparent border border-brand-dark text-brand-dark group-hover:opacity-80`;
   }
   return `${base} bg-brand-dark text-brand-light group-hover:opacity-70`;
 }
