@@ -7,13 +7,14 @@ export default function IndicatorRow({ label, leftLabel, rightLabel, value = 3 }
     // На вузьких телефонах не влазить в один рядок — ділимо на дві лінії
     // (назва / значення), з меншим відступом між ними, ніж між сусідніми
     // характеристиками (py-2 нижче). Від phone-wide — як було, один рядок.
-    <div className="flex flex-col gap-1 phone-wide:flex-row phone-wide:items-center phone-wide:gap-0 font-['Montserrat'] py-2">
+    <div className="flex flex-col items-center gap-1 phone-wide:flex-row phone-wide:items-center phone-wide:gap-0 font-['Montserrat'] py-2">
 
       {/* 1. НАЗВА
          w-[120px] — ширина, достатня для слова "ПРУЖНІСТЬ" (тільки від phone-wide).
+         По центру, доки в стовпчик — щоб різна довжина слова не "гуляла" ліворуч.
       */}
       <span
-        className="font-medium text-brand-dark/75 uppercase tracking-wider phone-wide:w-[120px] phone-wide:shrink-0"
+        className="font-medium text-brand-dark/75 uppercase tracking-wider text-center phone-wide:text-left phone-wide:w-[120px] phone-wide:shrink-0"
         style={{ fontSize: "var(--body-small-font-size)" }}
       >
         {label}
