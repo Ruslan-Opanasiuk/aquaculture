@@ -106,7 +106,7 @@ export default function Home() {
             font-['Montserrat']
             bg-brand-dark
             text-brand-beige
-            hover:opacity-90
+            hover:opacity-70
             active:scale-95
             transition-all
             text-body

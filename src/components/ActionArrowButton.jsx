@@ -29,12 +29,12 @@ function circleClasses({ size, variant, tone, disabled }) {
     return `${base} bg-transparent border border-brand-gray text-brand-gray`;
   }
   if (tone === "footer") {
-    return `${base} bg-footer text-brand-beige group-hover:opacity-90`;
+    return `${base} bg-footer text-brand-beige group-hover:opacity-70`;
   }
   if (variant === "outline") {
-    return `${base} bg-transparent border border-brand-dark text-brand-dark group-hover:opacity-90`;
+    return `${base} bg-transparent border border-brand-dark text-brand-dark group-hover:opacity-70`;
   }
-  return `${base} bg-brand-dark text-brand-light group-hover:opacity-90`;
+  return `${base} bg-brand-dark text-brand-light group-hover:opacity-70`;
 }
 
 // Єдина кнопка-стрілка для всього сайту (ProductCard, OrderSummary, Cart,
