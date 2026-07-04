@@ -39,7 +39,7 @@ export default function QuantityPicker({
       <button
         type="button"
         onClick={onDecrement}
-        className="bg-brand-beige hover:opacity-70 transition-opacity"
+        className="bg-brand-beige hover:bg-brand-dark/10 transition-colors"
         style={{ ...baseButtonStyle, color: "var(--color-brand-dark)" }}
       >
         −
