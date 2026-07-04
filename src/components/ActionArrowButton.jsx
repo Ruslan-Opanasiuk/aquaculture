@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
 
-function ArrowIcon({ direction = "right", ...props }) {
+function ArrowIcon({ direction = "right", className }) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" {...props}>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+      className={`${className} ${direction === "left" ? "rotate-180" : ""}`}
+    >
       <path
         d="M9 18l6-6-6-6"
         stroke="currentColor"
-        strokeWidth="1"
+        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
@@ -14,77 +19,91 @@ function ArrowIcon({ direction = "right", ...props }) {
   );
 }
 
+const CIRCLE_SIZE = { md: "w-11 h-11", sm: "w-9 h-9" };
+const ICON_SIZE = { md: "w-5 h-5", sm: "w-[18px] h-[18px]" };
+
+function circleClasses({ size, variant, tone, disabled }) {
+  const base = `${CIRCLE_SIZE[size]} rounded-full flex items-center justify-center shrink-0 transition-all duration-200 active:scale-[0.92]`;
+
+  if (disabled) {
+    return `${base} bg-transparent border border-brand-gray text-brand-gray`;
+  }
+  if (tone === "footer") {
+    return `${base} bg-footer text-brand-beige group-hover:bg-card group-hover:text-brand-dark`;
+  }
+  if (variant === "outline") {
+    return `${base} bg-transparent border border-brand-dark text-brand-dark group-hover:bg-brand-dark group-hover:text-brand-light`;
+  }
+  return `${base} bg-brand-dark text-brand-light group-hover:opacity-90`;
+}
+
+// Єдина кнопка-стрілка для всього сайту (ProductCard, OrderSummary, Cart,
+// Footer). size="sm" — для контекстів з обмеженим місцем (кнопка всередині
+// інпута футера), size="md" (за замовчуванням) — для самостійних кнопок.
 export default function ActionArrowButton({
   label,
+  ariaLabel,
   to,
   onClick,
+  type = "button",
   direction = "right",
   variant = "filled", // filled | outline
+  size = "md", // md | sm
+  tone = "default", // default | footer
+  disabled = false,
+  ringOffsetClassName = "focus-visible:ring-offset-brand-beige",
+  className = "",
 }) {
-  const isFilled = variant === "filled";
+  const circle = (
+    <div className={circleClasses({ size, variant, tone, disabled })}>
+      <ArrowIcon direction={direction} className={ICON_SIZE[size]} />
+    </div>
+  );
 
-  const circleClasses = `
-    w-[36px] h-[36px]
-    rounded-full
-    flex items-center justify-center
-    border-[1px] border-black
-    transition-all duration-200
-    active:scale-90
-    ${
-      isFilled
-        ? `
-          bg-black text-[#F5F1E7]
-          lg:bg-transparent lg:text-black 
-          lg:group-hover:bg-black lg:group-hover:text-[#F5F1E7]
-        `
-        : `
-          bg-transparent text-black
-          lg:group-hover:bg-black lg:group-hover:text-[#F5F1E7]
-        `
-    }
-  `;
-
-  const inner = (
+  const content = label ? (
     <>
-      <div className={circleClasses}>
-        <ArrowIcon
-          className={`w-6 h-6 ${direction === "left" ? "rotate-180" : ""}`}
-        />
-      </div>
+      {circle}
       <span
-        className="font-medium tracking-wider text-[#262626]"
+        className={`font-semibold tracking-wider transition-colors duration-200 ${disabled ? "text-brand-gray" : "text-brand-dark"}`}
         style={{ fontSize: "var(--body-font-size)" }}
       >
         {label}
       </span>
     </>
+  ) : (
+    circle
   );
+
+  const wrapperClasses = `
+    group inline-flex items-center gap-4 select-none transition-all duration-300
+    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2
+    ${ringOffsetClassName}
+    ${!label ? "rounded-full" : ""}
+    ${disabled ? "pointer-events-none cursor-default" : "cursor-pointer"}
+    ${className}
+  `;
 
   if (to) {
     return (
-      <Link to={to} className="inline-block">
-        <div className="flex items-center gap-4 group cursor-pointer select-none transition-all duration-300">
-          {inner}
-        </div>
+      <Link
+        to={to}
+        aria-label={label ? undefined : ariaLabel}
+        className={wrapperClasses}
+      >
+        {content}
       </Link>
     );
   }
 
-  if (onClick) {
-    return (
-      <button
-        type="button"
-        onClick={onClick}
-        className="flex items-center gap-4 group cursor-pointer select-none transition-all duration-300"
-      >
-        {inner}
-      </button>
-    );
-  }
-
   return (
-    <div className="flex items-center gap-4 group cursor-pointer select-none transition-all duration-300">
-      {inner}
-    </div>
+    <button
+      type={type}
+      onClick={onClick}
+      disabled={disabled}
+      aria-label={label ? undefined : ariaLabel}
+      className={wrapperClasses}
+    >
+      {content}
+    </button>
   );
 }

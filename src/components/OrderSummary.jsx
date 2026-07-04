@@ -4,20 +4,7 @@ import { useMemo } from "react";
 import { useCartStore } from "../store/cartStore"; // 👈 Імпортуємо наш магазин
 import { breakpoints, discountPerBreakpoint, calculateDiscount } from "./discount";
 import DiscountProgressBar from "./DiscountProgressBar";
-
-function ArrowIcon(props) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      <path
-        d="M9 18l6-6-6-6"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
+import ActionArrowButton from "./ActionArrowButton";
 
 export default function OrderSummary({
   packages,
@@ -115,51 +102,12 @@ export default function OrderSummary({
       </div>
 
       {/* ADD TO CART BUTTON */}
-      <div
+      <ActionArrowButton
         onClick={handleClick}
-        className={`
-          flex items-center gap-4 select-none transition-all duration-300
-          ${hasSelection ? "group cursor-pointer scale-100" : "pointer-events-none"}
-        `}
-      >
-        <button
-          type="button"
-          className={`
-            w-[36px] h-[36px]
-            rounded-full
-            flex items-center justify-center
-            border-[2px]
-            transition-all duration-200
-            ${
-              hasSelection
-                ? `
-                    border-black
-                    bg-black text-[#F5F1E7]
-                    lg:bg-transparent lg:text-black lg:group-hover:bg-black lg:group-hover:text-[#F5F1E7]
-                    active:scale-90
-                  `
-                : `
-                    border-[#B8B5AD] 
-                    text-[#B8B5AD] 
-                    bg-transparent
-                  `
-            }
-          `}
-        >
-          <ArrowIcon className="w-6 h-6" />
-        </button>
-
-        <span
-          className={`
-            font-semibold tracking-wider
-            transition-colors duration-200
-            ${hasSelection ? "text-[#262626]" : "text-[#B8B5AD]"}
-          `}
-          style={{ fontSize: "var(--body-font-size)" }}
-        >
-          ДОДАТИ В КОШИК
-        </span>
-      </div>
+        label="ДОДАТИ В КОШИК"
+        disabled={!hasSelection}
+        ringOffsetClassName="focus-visible:ring-offset-brand-beige"
+      />
     </div>
   );
 }

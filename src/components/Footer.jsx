@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import ActionArrowButton from "./ActionArrowButton";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -107,45 +108,14 @@ export default function Footer() {
                   `}
                 />
 
-                <button
+                <ActionArrowButton
                   type="submit"
-                  aria-label="Підписатися"
+                  ariaLabel="Підписатися"
                   disabled={status === "loading" || status === "success"}
-                  className="
-                    absolute
-                    right-[4px]
-                    top-1/2
-                    -translate-y-1/2
-                    w-[36px]
-                    h-[36px]
-                    rounded-full
-                    bg-footer
-                    hover:opacity-90
-                    flex
-                    items-center
-                    justify-center
-                    transition-all
-                    duration-200
-                    active:scale-90
-                    hover:bg-card
-                    disabled:opacity-50
-                    disabled:pointer-events-none
-                  "
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    className="w-5 h-5 text-brand-beige"
-                  >
-                    <path
-                      d="M9 18l6-6-6-6"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </button>
+                  size="sm"
+                  tone="footer"
+                  className="absolute right-[4px] top-1/2 -translate-y-1/2"
+                />
               </div>
 
               {error && (
