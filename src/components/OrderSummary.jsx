@@ -104,7 +104,7 @@ export default function OrderSummary({
       {/* ADD TO CART BUTTON */}
       <ActionArrowButton
         onClick={handleClick}
-        label="ДОДАТИ В КОШИК"
+        label="Додати в кошик"
         disabled={!hasSelection}
         ringOffsetClassName="focus-visible:ring-offset-brand-beige"
       />
