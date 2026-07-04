@@ -29,7 +29,7 @@ function circleClasses({ size, variant, tone, disabled }) {
     return `${base} bg-transparent border border-brand-gray text-brand-gray`;
   }
   if (tone === "footer") {
-    return `${base} bg-footer text-brand-beige group-hover:bg-card group-hover:text-brand-dark`;
+    return `${base} bg-footer text-brand-beige group-hover:opacity-90`;
   }
   if (variant === "outline") {
     return `${base} bg-transparent border border-brand-dark text-brand-dark group-hover:bg-brand-dark group-hover:text-brand-light`;
