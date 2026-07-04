@@ -16,6 +16,18 @@ function CloseIcon(props) {
   );
 }
 
+// Винесено за межі CartItem: визначення компонента всередині рендеру створювало
+// нову ідентичність на кожен ре-рендер (напр. зміна кількості) — React
+// перемонтовував усе всередині, скидаючи стан FadeImage (фото фейдилось знову).
+function Clickable({ productHref, children, className, ariaLabel }) {
+  if (!productHref) return <div className={className}>{children}</div>;
+  return (
+    <Link to={productHref} className={className} aria-label={ariaLabel}>
+      {children}
+    </Link>
+  );
+}
+
 export default function CartItem({
   item,
   onIncrement,
@@ -32,15 +44,6 @@ export default function CartItem({
   const imgSrcSet = item.image?.src2x 
     ? `${item.image.src1x} 1x, ${item.image.src2x} 2x` 
     : undefined;
-
-  const Clickable = ({ children, className, ariaLabel }) => {
-    if (!productHref) return <div className={className}>{children}</div>;
-    return (
-      <Link to={productHref} className={className} aria-label={ariaLabel}>
-        {children}
-      </Link>
-    );
-  };
 
   return (
     <div
@@ -77,6 +80,7 @@ export default function CartItem({
           {/* CENTER: IMAGE + COUNTER */}
           <div className="flex flex-col items-center justify-start">
             <Clickable
+              productHref={productHref}
               className={`block ${productHref ? "cursor-pointer" : ""}`}
               ariaLabel={`Відкрити товар: ${item.title}`}
             >
@@ -118,7 +122,7 @@ export default function CartItem({
             className="flex flex-col items-end text-right"
             style={{ maxWidth: "125px" }}
           >
-            <Clickable className="w-full" ariaLabel={`Відкрити товар: ${item.title}`}>
+            <Clickable productHref={productHref} className="w-full" ariaLabel={`Відкрити товар: ${item.title}`}>
               <h3
                 className={`truncate w-full ${productHref ? "cursor-pointer" : ""}`}
                 style={{
@@ -184,7 +188,7 @@ export default function CartItem({
 
         <div className="w-[32px] flex-shrink-0" />
 
-        <Clickable className="block flex-shrink-0" ariaLabel={`Відкрити товар: ${item.title}`}>
+        <Clickable productHref={productHref} className="block flex-shrink-0" ariaLabel={`Відкрити товар: ${item.title}`}>
           <div
             style={{
               width: "125px",
@@ -210,7 +214,7 @@ export default function CartItem({
         <div className="w-[32px] flex-shrink-0" />
 
         <div className="flex flex-col justify-center min-w-[200px]">
-          <Clickable ariaLabel={`Відкрити товар: ${item.title}`}>
+          <Clickable productHref={productHref} ariaLabel={`Відкрити товар: ${item.title}`}>
             <h3
               className={productHref ? "cursor-pointer" : ""}
               style={{
