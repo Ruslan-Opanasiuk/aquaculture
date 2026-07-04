@@ -78,7 +78,7 @@ export default function FeatureGrid({
                   duration-500 
                   ease-out 
                   origin-center
-                  group-hover:scale-x-100
+                  group-hover:scale-x-[0.8]
                   group-hover:opacity-100
               " />
             </div>
