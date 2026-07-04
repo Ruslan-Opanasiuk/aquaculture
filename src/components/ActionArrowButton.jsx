@@ -64,7 +64,7 @@ export default function ActionArrowButton({
     <>
       {circle}
       <span
-        className={`font-semibold uppercase tracking-wider transition-colors duration-200 ${disabled ? "text-brand-gray" : "text-brand-dark"}`}
+        className={`font-medium uppercase tracking-wider transition-colors duration-200 ${disabled ? "text-brand-gray" : "text-brand-dark"}`}
         style={{ fontSize: "var(--body-font-size)" }}
       >
         {label}
@@ -75,7 +75,7 @@ export default function ActionArrowButton({
   );
 
   const wrapperClasses = `
-    group inline-flex items-center gap-4 select-none transition-all duration-300
+    group inline-flex items-center gap-3 select-none transition-all duration-300
     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2
     ${ringOffsetClassName}
     ${!label ? "rounded-full" : ""}
