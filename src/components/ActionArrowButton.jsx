@@ -32,9 +32,9 @@ function circleClasses({ size, variant, tone, disabled }) {
     return `${base} bg-footer text-brand-beige group-hover:opacity-90`;
   }
   if (variant === "outline") {
-    // Мікс фону (beige) і бордера (brand-dark) — м'яка заливка замість
-    // суцільного чорного кола на hover.
-    return `${base} bg-transparent border border-brand-dark text-brand-dark group-hover:bg-[#D3D0CA]`;
+    // Той самий hover-колір, що і на "−" (QuantityPicker) — м'яка заливка
+    // замість суцільного чорного кола.
+    return `${base} bg-transparent border border-brand-dark text-brand-dark group-hover:bg-hover-tint`;
   }
   return `${base} bg-brand-dark text-brand-light group-hover:opacity-90`;
 }

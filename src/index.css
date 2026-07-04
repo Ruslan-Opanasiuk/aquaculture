@@ -36,6 +36,7 @@ body {
   --color-brand-beige: #FEFAF3;
   --color-brand-light: #F5F1E7;
   --color-brand-black: #1b1a1a;
+  --color-hover-tint: #F8F4EC; /* м'яка заливка для hover на прозорих/світлих кнопках */
 
   /* --- Breakpoints --- */
   --breakpoint-phone-wide: 406.67px;
