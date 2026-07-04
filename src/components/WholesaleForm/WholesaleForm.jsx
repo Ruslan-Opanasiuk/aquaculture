@@ -350,7 +350,7 @@ export default function WholesaleForm() {
                       text-brand-light
                       text-body
                       font-medium
-                      hover:opacity-70
+                      hover:opacity-90
                       transition-opacity
                       focus-visible:ring-2
                       focus-visible:ring-brand-gold
@@ -373,7 +373,7 @@ export default function WholesaleForm() {
                       text-brand-light
                       text-body
                       font-medium
-                      hover:opacity-70
+                      hover:opacity-90
                       transition-opacity
                       disabled:opacity-50
                       disabled:cursor-not-allowed

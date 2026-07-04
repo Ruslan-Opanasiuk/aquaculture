@@ -39,7 +39,7 @@ export default function QuantityPicker({
       <button
         type="button"
         onClick={onDecrement}
-        className="bg-brand-beige hover:opacity-80 transition-opacity"
+        className="bg-brand-beige hover:opacity-90 transition-opacity"
         style={{ ...baseButtonStyle, color: "var(--color-brand-dark)" }}
       >
         −
@@ -69,7 +69,7 @@ export default function QuantityPicker({
       <button
         type="button"
         onClick={onIncrement}
-        className="hover:opacity-80 transition-opacity"
+        className="hover:opacity-90 transition-opacity"
         style={{ ...baseButtonStyle, backgroundColor: "var(--color-brand-dark)", color: "#fff" }}
       >
         +

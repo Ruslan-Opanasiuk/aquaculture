@@ -66,7 +66,7 @@ export default function NotFound() {
               text-body
               bg-brand-dark
               text-brand-light
-              hover:opacity-70
+              hover:opacity-90
               transition-opacity
               focus-visible:ring-2
               focus-visible:ring-brand-gold

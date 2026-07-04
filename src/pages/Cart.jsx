@@ -261,7 +261,7 @@ export default function Cart() {
                   <button
                     type="submit"
                     disabled={formStatus === "loading"}
-                    className="mt-2 w-full h-[44px] rounded-full bg-brand-dark text-brand-light text-body font-medium hover:opacity-70 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="mt-2 w-full h-[44px] rounded-full bg-brand-dark text-brand-light text-body font-medium hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {formStatus === "loading" ? "Надсилаємо..." : "Підтвердити замовлення"}
                   </button>
