@@ -57,8 +57,8 @@ export default function HomeHeroBanner() {
                 font-['Montserrat']
                 bg-brand-beige
                 text-brand-dark
-                hover:bg-brand-sand
-                transition-colors
+                hover:opacity-90
+                transition-opacity
                 text-body
                 focus-visible:ring-2
                 focus-visible:ring-brand-gold
