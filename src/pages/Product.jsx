@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import OrderVolumeGrid from "../components/OrderVolumeGrid";
 import WholesaleForm from "../components/WholesaleForm/WholesaleForm";
 import IndicatorRow from "../components/IndicatorRow";
@@ -80,9 +80,23 @@ export default function Product() {
           {/* ===== HERO / PRODUCT SECTION ===== */}
           <section className="w-full flex justify-center">
             <div className="w-full px-layout-gap max-content">
-              {/* mt-40 (160px) для відступу від хедера */}
-              <div className="flex flex-col tablet:grid tablet:grid-cols-2 mt-40 gap-y-10">
-                
+              {/* Крихти — мінімальна навігація, без банера/великого заголовка, як у PageHeader */}
+              <nav aria-label="Хлібні крихти" className="mt-40">
+                <ol className="flex items-center flex-wrap gap-2 text-body-small text-brand-dark/50">
+                  <li>
+                    <Link to="/" className="hover:text-brand-dark/80 transition-colors">Головна</Link>
+                  </li>
+                  <li aria-hidden="true">/</li>
+                  <li>
+                    <Link to="/catalog" className="hover:text-brand-dark/80 transition-colors">Каталог</Link>
+                  </li>
+                  <li aria-hidden="true">/</li>
+                  <li aria-current="page" className="text-brand-dark/70">{product.title}</li>
+                </ol>
+              </nav>
+
+              <div className="flex flex-col tablet:grid tablet:grid-cols-2 mt-6 tablet:mt-8 gap-y-10">
+
                 {/* 1. TEXT INFO */}
                 <div className="
                   order-1
@@ -147,7 +161,7 @@ export default function Product() {
                   tablet:order-1
                   w-full
                   tablet:sticky
-                  tablet:top-40
+                  tablet:top-[215px]
                   tablet:self-start
                 ">
                   <ProductJarLid product={product} key={productKey} />
