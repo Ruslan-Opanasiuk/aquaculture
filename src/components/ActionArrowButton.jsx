@@ -78,6 +78,7 @@ export default function ActionArrowButton({
 
   const wrapperClasses = `
     group inline-flex items-center gap-4 select-none transition-all duration-300
+    text-left appearance-none
     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2
     ${ringOffsetClassName}
     ${!label ? "rounded-full" : ""}

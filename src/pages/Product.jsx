@@ -80,8 +80,8 @@ export default function Product() {
           {/* ===== HERO / PRODUCT SECTION ===== */}
           <section className="w-full flex justify-center">
             <div className="w-full px-layout-gap max-content">
-              {/* mt-30 (120px) на мобільному, mt-36 (144px) від tablet — для відступу від хедера */}
-              <div className="flex flex-col tablet:grid tablet:grid-cols-2 mt-30 tablet:mt-36 gap-y-10">
+              {/* mt-30 (120px) — для відступу від хедера */}
+              <div className="flex flex-col tablet:grid tablet:grid-cols-2 mt-30 gap-y-10">
                 
                 {/* 1. TEXT INFO */}
                 <div className="
@@ -147,7 +147,7 @@ export default function Product() {
                   tablet:order-1
                   w-full
                   tablet:sticky
-                  tablet:top-36
+                  tablet:top-30
                   tablet:self-start
                 ">
                   <ProductJarLid product={product} key={productKey} />
