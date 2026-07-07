@@ -208,7 +208,7 @@ export default function Cart() {
                   className="mt-6 font-semibold underline decoration-1 underline-offset-4 transition-opacity hover:opacity-70"
                   style={{ color: "var(--color-brand-gray)", fontSize: "var(--body-font-size)" }}
                 >
-                  ← Повернутися до кошика
+                  ← Редагувати кошик
                 </button>
               </div>
 
