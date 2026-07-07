@@ -31,6 +31,9 @@ function circleClasses({ size, variant, tone, disabled }) {
   if (tone === "footer") {
     return `${base} bg-footer text-brand-beige group-hover:opacity-90`;
   }
+  if (tone === "subtle") {
+    return `${base} bg-brand-dark/5 text-brand-dark group-hover:bg-brand-dark/10`;
+  }
   if (variant === "outline") {
     // Той самий hover-колір, що і на "−" (QuantityPicker) — м'яка заливка
     // замість суцільного чорного кола.
@@ -51,7 +54,7 @@ export default function ActionArrowButton({
   direction = "right",
   variant = "filled", // filled | outline
   size = "md", // md | sm
-  tone = "default", // default | footer
+  tone = "default", // default | footer | subtle
   disabled = false,
   ringOffsetClassName = "focus-visible:ring-offset-brand-beige",
   className = "",

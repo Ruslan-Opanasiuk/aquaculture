@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { reviews } from "../../data/homeFeatures";
+import ActionArrowButton from "../ActionArrowButton";
 
 export default function TestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -24,21 +25,15 @@ export default function TestimonialsSection() {
 
         <div className="relative flex items-center justify-center min-h-[300px]">
           
-          {/* Ліва кнопка + Правильний Focus-visible */}
-          <button
+          {/* Ліва кнопка */}
+          <ActionArrowButton
             onClick={handlePrev}
-            aria-label="Попередній відгук"
-            className="
-              absolute -left-2 tablet:left-4 z-10 w-10 h-10 tablet:w-12 tablet:h-12 
-              flex items-center justify-center rounded-full bg-brand-dark/5
-              hover:bg-brand-dark/10 transition-colors 
-              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4F0EB]
-            "
-          >
-            <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-brand-dark">
-              <path d="M19 12H5M12 19l-7-7 7-7"/>
-            </svg>
-          </button>
+            ariaLabel="Попередній відгук"
+            direction="left"
+            tone="subtle"
+            ringOffsetClassName="focus-visible:ring-offset-[#F4F0EB]"
+            className="absolute -left-2 tablet:left-4 z-10"
+          />
 
           {/* Контент відгуку + aria-live="polite" */}
           <div 
@@ -68,21 +63,15 @@ export default function TestimonialsSection() {
             </span>
           </div>
 
-          {/* Права кнопка + Правильний Focus-visible */}
-          <button
+          {/* Права кнопка */}
+          <ActionArrowButton
             onClick={handleNext}
-            aria-label="Наступний відгук"
-            className="
-              absolute right-0 tablet:right-4 z-10 w-10 h-10 tablet:w-12 tablet:h-12 
-              flex items-center justify-center rounded-full bg-brand-dark/5
-              hover:bg-brand-dark/10 transition-colors 
-              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4F0EB]
-            "
-          >
-            <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-brand-dark">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </button>
+            ariaLabel="Наступний відгук"
+            direction="right"
+            tone="subtle"
+            ringOffsetClassName="focus-visible:ring-offset-[#F4F0EB]"
+            className="absolute right-0 tablet:right-4 z-10"
+          />
 
         </div>
       </div>
