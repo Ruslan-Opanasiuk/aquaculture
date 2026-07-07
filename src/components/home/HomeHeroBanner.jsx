@@ -41,7 +41,10 @@ export default function HomeHeroBanner() {
               desktop:left-[20%]
             "
           >
-            <h1 className="font-['Montserrat'] font-medium leading-[0.95] mb-6 text-h2">
+            <h1
+              className="font-['Montserrat'] font-medium leading-[0.95] mb-6"
+              style={{ fontSize: "clamp(1.5rem, 12.8vw, var(--h2-font-size))" }}
+            >
               Ікра без <br /> компромісів
             </h1>
 
