@@ -116,7 +116,7 @@ export default function Cart() {
     >
       <div className="mt-[80px]">
         <PageHeader
-          title={showForm ? "Оформлення" : "Кошик"}
+          title={showForm ? undefined : "Кошик"}
           breadcrumbs={
             showForm
               ? [

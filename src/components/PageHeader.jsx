@@ -14,12 +14,14 @@ export default function PageHeader({ title, breadcrumbs }) {
     >
       <div className="max-w-[1200px] mx-auto text-center w-full px-layout-gap">
         
-        <h1
-          className="font-semibold mb-2 text-brand-dark"
-          style={{ fontSize: "clamp(1.5rem, 12.8vw, var(--h2-font-size))" }}
-        >
-          {title}
-        </h1>
+        {title && (
+          <h1
+            className="font-semibold mb-2 text-brand-dark"
+            style={{ fontSize: "clamp(1.5rem, 12.8vw, var(--h2-font-size))" }}
+          >
+            {title}
+          </h1>
+        )}
 
         <nav aria-label="Breadcrumb">
           <ol className="flex flex-wrap justify-center gap-2 text-brand-dark text-body">
