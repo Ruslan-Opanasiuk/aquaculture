@@ -116,21 +116,12 @@ export default function Cart() {
     >
       <div className="mt-[80px]">
         <PageHeader
-          title={showForm ? undefined : "Кошик"}
-          breadcrumbs={
-            showForm
-              ? [
-                  { label: "Головна", link: "/" },
-                  { label: "Каталог", link: "/catalog" },
-                  { label: "Кошик", onClick: () => setShowForm(false) },
-                  { label: "Оформлення" },
-                ]
-              : [
-                  { label: "Головна", link: "/" },
-                  { label: "Каталог", link: "/catalog" },
-                  { label: "Кошик" },
-                ]
-          }
+          title="Кошик"
+          breadcrumbs={[
+            { label: "Головна", link: "/" },
+            { label: "Каталог", link: "/catalog" },
+            { label: "Кошик" },
+          ]}
         />
       </div>
 
