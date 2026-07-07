@@ -19,6 +19,19 @@ function App() {
 
   return (
     <>
+      <a
+        href="#main-content"
+        className="
+          sr-only focus:not-sr-only
+          focus:fixed focus:top-4 focus:left-4 focus:z-[100]
+          focus:rounded-full focus:bg-brand-dark focus:text-brand-beige
+          focus:px-6 focus:py-3 focus:text-body
+          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold
+        "
+      >
+        Перейти до основного вмісту
+      </a>
+
       <ScrollToTop />
       <ViewportHeightFix />
 
@@ -26,7 +39,7 @@ function App() {
       <Suspense fallback={<div className="min-h-screen bg-brand-beige" />}>
         {/* key={pathname} перезапускає animate-fadeIn при кожній навігації —
             плавний перехід замість миттєвого "снепу" макета */}
-        <div key={location.pathname} className="animate-fadeIn">
+        <div key={location.pathname} id="main-content" tabIndex={-1} className="animate-fadeIn focus:outline-none">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/catalog" element={<Catalog />} />

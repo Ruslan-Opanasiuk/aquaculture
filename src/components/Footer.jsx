@@ -159,8 +159,8 @@ export default function Footer() {
             <div className="flex flex-col gap-[12px]">
               <p className="font-bold tracking-[0.08em]">ПРО НАС</p>
               <p className="text-brand-beige-80">
-                Ми спеціалізуємось на гуртових постачаннях червоної ікри для
-                ресторанів, магазинів та корпоративних клієнтів.
+                Преміальна ікра для приватних клієнтів, ресторанів та гуртових
+                партнерів — від подарункової банки до постачань для бізнесу.
               </p>
               <p className="text-brand-beige-80">
                 Працюємо безпосередньо з виробниками та гарантуємо стабільну
@@ -189,12 +189,13 @@ export default function Footer() {
               >
                 Біла ікра
               </Link>
-              <Link
+              {/* Welcome Pack прихований: секція закоментована в catalogData.jsx, поки немає товарів */}
+              {/* <Link
                 to="/catalog#welcome_pack"
                 className="text-brand-beige-80 hover:text-brand-beige transition-colors"
               >
                 Welcome Pack
-              </Link>
+              </Link> */}
             </div>
 
             {/* CONTACTS */}
