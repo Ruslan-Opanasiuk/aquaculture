@@ -35,6 +35,13 @@ const squareJobs = [
     sizes: [256, 512],
     lossless: true,
     sharpen: true,
+    // Джерела — непрозорі PNG (білий фон запечений у пікселі, без alpha).
+    // Сайт покладався на CSS mix-blend-multiply, щоб імітувати прозорість —
+    // ламається (а) якщо колір фону не 1-в-1 співпадає з фоном сторінки,
+    // (б) на hover, бо transform + mix-blend-mode — відома пастка браузерів
+    // (transform піднімає елемент в окремий compositing-шар, blend перестає
+    // бачити фон під ним). Тому ріжемо білий у справжню альфу тут.
+    whiteToAlpha: true,
   },
 ];
 
@@ -66,7 +73,26 @@ function isImage(file) {
   return /\.(jpe?g|png|webp|avif)$/i.test(file);
 }
 
-async function runSquareJob({ name, inputDir, outputDir, sizes, lossless, quality, sharpen }) {
+// Ріже білий/близький-до-білого фон у справжню альфа-прозорість:
+// alpha = 255 - min(R,G,B) — чим світліший піксель, тим прозоріший.
+// Колір пікселів не чіпаємо (лишає нюанси тону лінійної графіки).
+async function whiteToAlphaBuffer(inputPath) {
+  const { data, info } = await sharp(inputPath)
+    .ensureAlpha()
+    .raw()
+    .toBuffer({ resolveWithObject: true });
+
+  for (let i = 0; i < data.length; i += info.channels) {
+    const whiteness = Math.min(data[i], data[i + 1], data[i + 2]);
+    data[i + 3] = Math.round((255 - whiteness) * (data[i + 3] / 255));
+  }
+
+  return sharp(data, {
+    raw: { width: info.width, height: info.height, channels: info.channels },
+  });
+}
+
+async function runSquareJob({ name, inputDir, outputDir, sizes, lossless, quality, sharpen, whiteToAlpha }) {
   ensureDir(outputDir);
   const files = fs.readdirSync(inputDir).filter(isImage);
 
@@ -76,12 +102,14 @@ async function runSquareJob({ name, inputDir, outputDir, sizes, lossless, qualit
 
     for (const size of sizes) {
       try {
-        let pipeline = sharp(inputPath)
-          .ensureAlpha()
-          .resize(size, size, {
-            fit: "contain",
-            background: { r: 0, g: 0, b: 0, alpha: 0 },
-          });
+        let pipeline = whiteToAlpha
+          ? await whiteToAlphaBuffer(inputPath)
+          : sharp(inputPath).ensureAlpha();
+
+        pipeline = pipeline.resize(size, size, {
+          fit: "contain",
+          background: { r: 0, g: 0, b: 0, alpha: 0 },
+        });
 
         if (sharpen) {
           // Підвищуємо чіткість (параметри підібрані під графічні ілюстрації)
