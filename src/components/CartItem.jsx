@@ -2,6 +2,7 @@
 import QuantityPicker from "./QuantityPicker";
 import FadeImage from "./FadeImage";
 import { Link } from "react-router-dom";
+import { caviarCatalog } from "../data/caviarPackages";
 
 function CloseIcon(props) {
   return (
@@ -38,11 +39,17 @@ export default function CartItem({
   const total = item.price * item.quantity;
   const productHref = item.productKey ? `/product/${item.productKey}` : null;
 
-  // РОЗУМНА ЛОГІКА КАРТИНОК:
-  // Підтримує як старі рядки (string), так і нові об'єкти { src1x, src2x }
-  const imgSrc = item.image?.src1x || item.image;
-  const imgSrcSet = item.image?.src2x 
-    ? `${item.image.src1x} 1x, ${item.image.src2x} 2x` 
+  // Кошик зберігається в localStorage (Zustand persist) — item.image, якщо
+  // покладатись лише на нього, "заморожує" build-час URL на диску назавжди:
+  // будь-яке перейменування/переміщення файлів (як у оптимізації зображень)
+  // ламає фото в кошиках, які вже лежать у браузерах користувачів. Тому
+  // завжди пробуємо спершу живе фото з поточних даних товару за productKey,
+  // і лише як резерв — те, що збереглось у кошику.
+  const liveImage = caviarCatalog[item.productKey]?.images?.jar;
+  const image = liveImage || item.image;
+  const imgSrc = image?.src1x || image;
+  const imgSrcSet = image?.src2x
+    ? `${image.src1x} 1x, ${image.src2x} 2x`
     : undefined;
 
   return (
