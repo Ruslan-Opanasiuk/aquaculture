@@ -13,8 +13,8 @@ import FadeImage from "../components/FadeImage";
 import { brandFeatures, collaborationFeatures } from "../data/homeFeatures";
 
 // Нові оптимізовані фото для вступного блоку
-import introImage1x from "../assets/images/home_grid/main-256.webp"; 
-import introImage2x from "../assets/images/home_grid/main-512.webp"; 
+import introImage1x from "../assets/images/optimized/grid/main-256.webp";
+import introImage2x from "../assets/images/optimized/grid/main-512.webp";
 
 import SEO from "../components/SEO";
 import { SEO_PAGES } from "../data/seoConfig";

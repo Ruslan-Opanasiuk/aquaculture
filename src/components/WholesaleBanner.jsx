@@ -1,5 +1,6 @@
 import FadeImage from "./FadeImage";
-import wholesaleHero from "../assets/images/Frame-9.webp";
+import wholesaleHero1x from "../assets/images/optimized/banners/wholesale-hero-769.webp";
+import wholesaleHero2x from "../assets/images/optimized/banners/wholesale-hero-1537.webp";
 
 export default function WholesaleBanner() {
   return (
@@ -32,7 +33,8 @@ export default function WholesaleBanner() {
           "
         >
           <FadeImage
-            src={wholesaleHero}
+            src={wholesaleHero1x}
+            srcSet={`${wholesaleHero1x} 1x, ${wholesaleHero2x} 2x`}
             alt="Преміальна ікра для гуртових клієнтів"
             fetchPriority="high"
             className="

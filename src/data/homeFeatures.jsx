@@ -1,31 +1,31 @@
 // Імпортуємо всі іконки (1x та 2x)
 // Brand Features
-import origin1x from "../assets/images/home_grid/feature-origin-256.webp";
-import origin2x from "../assets/images/home_grid/feature-origin-512.webp";
-import texture1x from "../assets/images/home_grid/feature-texture-256.webp";
-import texture2x from "../assets/images/home_grid/feature-texture-512.webp";
-import selection1x from "../assets/images/home_grid/feature-selection-256.webp";
-import selection2x from "../assets/images/home_grid/feature-selection-512.webp";
-import traceability1x from "../assets/images/home_grid/feature-traceability-256.webp";
-import traceability2x from "../assets/images/home_grid/feature-traceability-512.webp";
-import quality1x from "../assets/images/home_grid/feature-quality-256.webp";
-import quality2x from "../assets/images/home_grid/feature-quality-512.webp";
-import delivery1x from "../assets/images/home_grid/feature-delivery-256.webp";
-import delivery2x from "../assets/images/home_grid/feature-delivery-512.webp";
+import origin1x from "../assets/images/optimized/grid/feature-origin-256.webp";
+import origin2x from "../assets/images/optimized/grid/feature-origin-512.webp";
+import texture1x from "../assets/images/optimized/grid/feature-texture-256.webp";
+import texture2x from "../assets/images/optimized/grid/feature-texture-512.webp";
+import selection1x from "../assets/images/optimized/grid/feature-selection-256.webp";
+import selection2x from "../assets/images/optimized/grid/feature-selection-512.webp";
+import traceability1x from "../assets/images/optimized/grid/feature-traceability-256.webp";
+import traceability2x from "../assets/images/optimized/grid/feature-traceability-512.webp";
+import quality1x from "../assets/images/optimized/grid/feature-quality-256.webp";
+import quality2x from "../assets/images/optimized/grid/feature-quality-512.webp";
+import delivery1x from "../assets/images/optimized/grid/feature-delivery-256.webp";
+import delivery2x from "../assets/images/optimized/grid/feature-delivery-512.webp";
 
 // Collaboration Features
-import horeca1x from "../assets/images/home_grid/collab-horeca-256.webp";
-import horeca2x from "../assets/images/home_grid/collab-horeca-512.webp";
-import wholesale1x from "../assets/images/home_grid/collab-wholesale-256.webp";
-import wholesale2x from "../assets/images/home_grid/collab-wholesale-512.webp";
-import personal1x from "../assets/images/home_grid/collab-personal-256.webp";
-import personal2x from "../assets/images/home_grid/collab-personal-512.webp";
-import request1x from "../assets/images/home_grid/collab-request-256.webp";
-import request2x from "../assets/images/home_grid/collab-request-512.webp";
-import formation1x from "../assets/images/home_grid/collab-formation-256.webp";
-import formation2x from "../assets/images/home_grid/collab-formation-512.webp";
-import collabDelivery1x from "../assets/images/home_grid/collab-delivery-256.webp";
-import collabDelivery2x from "../assets/images/home_grid/collab-delivery-512.webp";
+import horeca1x from "../assets/images/optimized/grid/collab-horeca-256.webp";
+import horeca2x from "../assets/images/optimized/grid/collab-horeca-512.webp";
+import wholesale1x from "../assets/images/optimized/grid/collab-wholesale-256.webp";
+import wholesale2x from "../assets/images/optimized/grid/collab-wholesale-512.webp";
+import personal1x from "../assets/images/optimized/grid/collab-personal-256.webp";
+import personal2x from "../assets/images/optimized/grid/collab-personal-512.webp";
+import request1x from "../assets/images/optimized/grid/collab-request-256.webp";
+import request2x from "../assets/images/optimized/grid/collab-request-512.webp";
+import formation1x from "../assets/images/optimized/grid/collab-formation-256.webp";
+import formation2x from "../assets/images/optimized/grid/collab-formation-512.webp";
+import collabDelivery1x from "../assets/images/optimized/grid/collab-delivery-256.webp";
+import collabDelivery2x from "../assets/images/optimized/grid/collab-delivery-512.webp";
 
 export const brandFeatures = [
   {

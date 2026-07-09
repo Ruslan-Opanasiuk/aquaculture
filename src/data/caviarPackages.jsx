@@ -16,38 +16,38 @@ import troutJar from "../assets/images/product1.png";
 // ============================================================================
 
 // Універсальна кришка (тепер використовується для всіх товарів)
-import Lid1x from "../assets/images/optimized/trout_lid-512.webp";
-import Lid2x from "../assets/images/optimized/trout_lid-1024.webp";
+import Lid1x from "../assets/images/optimized/products/trout_lid-512.webp";
+import Lid2x from "../assets/images/optimized/products/trout_lid-1024.webp";
 
 // --- ЧЕРВОНА ІКРА ---
-import redCaviarChavicha1x from "../assets/images/optimized/red_caviar_chavicha-512.webp";
-import redCaviarChavicha2x from "../assets/images/optimized/red_caviar_chavicha-1024.webp";
+import redCaviarChavicha1x from "../assets/images/optimized/products/red_caviar_chavicha-512.webp";
+import redCaviarChavicha2x from "../assets/images/optimized/products/red_caviar_chavicha-1024.webp";
 
-import redCaviarForel1x from "../assets/images/optimized/red_caviar_forel-512.webp";
-import redCaviarForel2x from "../assets/images/optimized/red_caviar_forel-1024.webp";
+import redCaviarForel1x from "../assets/images/optimized/products/red_caviar_forel-512.webp";
+import redCaviarForel2x from "../assets/images/optimized/products/red_caviar_forel-1024.webp";
 
-import redCaviarGorbusha1x from "../assets/images/optimized/red_caviar_gorbusha-512.webp";
-import redCaviarGorbusha2x from "../assets/images/optimized/red_caviar_gorbusha-1024.webp";
+import redCaviarGorbusha1x from "../assets/images/optimized/products/red_caviar_gorbusha-512.webp";
+import redCaviarGorbusha2x from "../assets/images/optimized/products/red_caviar_gorbusha-1024.webp";
 
-import redCaviarKeta1x from "../assets/images/optimized/red_caviar_keta-512.webp";
-import redCaviarKeta2x from "../assets/images/optimized/red_caviar_keta-1024.webp";
+import redCaviarKeta1x from "../assets/images/optimized/products/red_caviar_keta-512.webp";
+import redCaviarKeta2x from "../assets/images/optimized/products/red_caviar_keta-1024.webp";
 
-import redCaviarKizhuch1x from "../assets/images/optimized/red_caviar_kizhuch-512.webp";
-import redCaviarKizhuch2x from "../assets/images/optimized/red_caviar_kizhuch-1024.webp";
+import redCaviarKizhuch1x from "../assets/images/optimized/products/red_caviar_kizhuch-512.webp";
+import redCaviarKizhuch2x from "../assets/images/optimized/products/red_caviar_kizhuch-1024.webp";
 
-import redCaviarNerka1x from "../assets/images/optimized/red_caviar_nerka-512.webp";
-import redCaviarNerka2x from "../assets/images/optimized/red_caviar_nerka-1024.webp";
+import redCaviarNerka1x from "../assets/images/optimized/products/red_caviar_nerka-512.webp";
+import redCaviarNerka2x from "../assets/images/optimized/products/red_caviar_nerka-1024.webp";
 
 // --- ЧОРНА ІКРА ---
-import blackCaviarBeluga1x from "../assets/images/optimized/black_caviar_beluga-512.webp";
-import blackCaviarBeluga2x from "../assets/images/optimized/black_caviar_beluga-1024.webp";
+import blackCaviarBeluga1x from "../assets/images/optimized/products/black_caviar_beluga-512.webp";
+import blackCaviarBeluga2x from "../assets/images/optimized/products/black_caviar_beluga-1024.webp";
 
-import blackCaviarOsetr1x from "../assets/images/optimized/black_caviar_osetr-512.webp";
-import blackCaviarOsetr2x from "../assets/images/optimized/black_caviar_osetr-1024.webp";
+import blackCaviarOsetr1x from "../assets/images/optimized/products/black_caviar_osetr-512.webp";
+import blackCaviarOsetr2x from "../assets/images/optimized/products/black_caviar_osetr-1024.webp";
 
 // --- БІЛА ІКРА ---
-import whiteCaviarShchuka1x from "../assets/images/optimized/white_caviar_shchuka-512.webp";
-import whiteCaviarShchuka2x from "../assets/images/optimized/white_caviar_shchuka-1024.webp";
+import whiteCaviarShchuka1x from "../assets/images/optimized/products/white_caviar_shchuka-512.webp";
+import whiteCaviarShchuka2x from "../assets/images/optimized/products/white_caviar_shchuka-1024.webp";
 
 
 export const caviarCatalog = {

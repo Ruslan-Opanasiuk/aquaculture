@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import FadeImage from "../FadeImage";
-import wholesaleHeroDesktop from "../../assets/images/002.png";
-import wholesaleHeroMobile from "../../assets/images/003.png";
+import heroDesktop1x from "../../assets/images/optimized/banners/home-hero-desktop-768.webp";
+import heroDesktop2x from "../../assets/images/optimized/banners/home-hero-desktop-1536.webp";
+import heroMobile1x from "../../assets/images/optimized/banners/home-hero-mobile-450.webp";
+import heroMobile2x from "../../assets/images/optimized/banners/home-hero-mobile-900.webp";
 
 export default function HomeHeroBanner() {
   return (
@@ -10,9 +12,13 @@ export default function HomeHeroBanner() {
       <div className="absolute inset-0 p-2.5 mt-[80px]">
         <div className="relative w-full h-full overflow-hidden rounded-2xl">
           <picture className="absolute inset-0 w-full h-full block">
-            <source media="(min-width: 1024px)" srcSet={wholesaleHeroDesktop} />
+            <source
+              media="(min-width: 1024px)"
+              srcSet={`${heroDesktop1x} 1x, ${heroDesktop2x} 2x`}
+            />
             <FadeImage
-              src={wholesaleHeroMobile}
+              src={heroMobile1x}
+              srcSet={`${heroMobile1x} 1x, ${heroMobile2x} 2x`}
               alt="Преміальна червона та чорна ікра"
               fetchPriority="high"
               className="w-full h-full object-cover object-center desktop:object-[78%_50%]"
