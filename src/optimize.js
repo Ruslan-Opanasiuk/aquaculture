@@ -45,14 +45,18 @@ const squareJobs = [
   },
 ];
 
-// --- Банери: повнокадрові фото, без прозорості. Пропорційний resize по
-// ширині (без contain/паддінгу), lossy — для фото це в рази менша вага при
-// візуально нерозрізнимій якості. "2x" = реальний розмір оригіналу,
-// "1x" = половина. ---
+// --- Банери: повнокадрові фото на весь екран (h-vh-stable, object-cover) —
+// ширина рендеру залежить від viewport, а не густини пікселів. Density-свіч
+// (1x/2x) тут була помилкою: на звичайному (не-ретіна) широкому моніторі
+// браузер свідомо бере менший "1x"-варіант і розтягує на весь екран — звідси
+// мутність. Джерела й так лише ~1536px завширшки (стеля без нових фото-
+// оригіналів), тому віддаємо ОДИН максимальний розмір без штучного
+// зменшення — це найкраща доступна якість на будь-якому екрані. ---
 const bannerJob = {
   name: "banners",
   inputDir: `${ROOT}/raw/banners`,
   outputDir: `${ROOT}/optimized/banners`,
+  quality: 90,
 };
 
 // --- Партнерські лого: плоска графіка з прозорістю, resize по висоті
@@ -76,6 +80,14 @@ function isImage(file) {
 // Ріже білий/близький-до-білого фон у справжню альфа-прозорість:
 // alpha = 255 - min(R,G,B) — чим світліший піксель, тим прозоріший.
 // Колір пікселів не чіпаємо (лишає нюанси тону лінійної графіки).
+//
+// Джерела рідко бувають ідеально (255,255,255) — фон типу (253,248,241) без
+// порогу лишає ~5% залишкової непрозорості. На каліброваному екрані (Mac/
+// iPhone) це непомітно, на VA-матриці з іншою гамою — видно ледь інший
+// відтінок прямокутника. WHITE_CUTOFF примусово зануляє все, що й так уже
+// "майже фон", замість плавно тягнути залишковий відсоток до нуля.
+const WHITE_CUTOFF = 20; // alpha нижче цього — примусово 0
+
 async function whiteToAlphaBuffer(inputPath) {
   const { data, info } = await sharp(inputPath)
     .ensureAlpha()
@@ -84,7 +96,9 @@ async function whiteToAlphaBuffer(inputPath) {
 
   for (let i = 0; i < data.length; i += info.channels) {
     const whiteness = Math.min(data[i], data[i + 1], data[i + 2]);
-    data[i + 3] = Math.round((255 - whiteness) * (data[i + 3] / 255));
+    let alpha = Math.round((255 - whiteness) * (data[i + 3] / 255));
+    if (alpha < WHITE_CUTOFF) alpha = 0;
+    data[i + 3] = alpha;
   }
 
   return sharp(data, {
@@ -128,7 +142,7 @@ async function runSquareJob({ name, inputDir, outputDir, sizes, lossless, qualit
   }
 }
 
-async function runBannerJob({ name, inputDir, outputDir }) {
+async function runBannerJob({ name, inputDir, outputDir, quality }) {
   ensureDir(outputDir);
   const files = fs.readdirSync(inputDir).filter(isImage);
 
@@ -138,17 +152,13 @@ async function runBannerJob({ name, inputDir, outputDir }) {
 
     try {
       const meta = await sharp(inputPath).metadata();
-      const fullWidth = meta.width;
-      const halfWidth = Math.round(fullWidth / 2);
+      const width = meta.width;
 
-      for (const width of [fullWidth, halfWidth]) {
-        await sharp(inputPath)
-          .resize({ width })
-          .webp({ quality: 84, effort: 6 })
-          .toFile(`${outputDir}/${base}-${width}.webp`);
+      await sharp(inputPath)
+        .webp({ quality, effort: 6 })
+        .toFile(`${outputDir}/${base}-${width}.webp`);
 
-        console.log(`✅ [${name}] ${base} @${width}px (lossy q84)`);
-      }
+      console.log(`✅ [${name}] ${base} @${width}px (lossy q${quality}, оригінальна роздільність)`);
     } catch (err) {
       console.error(`❌ [${name}] ${file}:`, err.message);
     }
