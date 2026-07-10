@@ -102,7 +102,7 @@ export default function Home() {
             justify-center
             rounded-full
             px-10
-            min-h-[52px]
+            min-h-[44px]
             font-['Montserrat']
             bg-brand-dark
             text-brand-beige
