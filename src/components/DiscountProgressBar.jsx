@@ -30,23 +30,14 @@ export default function DiscountProgressBar({
   const nextLegendKg = breakpoints.find((bp) => totalKg < bp);
 
   return (
-    <div style={{ width: "100%", maxWidth, position: "relative", marginBottom }}>
-      <div
-        style={{
-          height: 8,
-          width: "100%",
-          backgroundColor: "var(--color-brand-sand)",
-          borderRadius: 4,
-          overflow: "hidden",
-        }}
-      >
+    <div
+      className="relative w-full max-w-[var(--dpb-max-w)] mb-[var(--dpb-mb)]"
+      style={{ "--dpb-max-w": maxWidth ? `${maxWidth}px` : "none", "--dpb-mb": `${marginBottom}px` }}
+    >
+      <div className="h-2 w-full bg-brand-sand rounded overflow-hidden">
         <div
-          style={{
-            height: "100%",
-            width: `${progressPercent}%`,
-            backgroundColor: "var(--color-brand-gold)",
-            transition: "width 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-          }}
+          className="h-full bg-brand-gold transition-[width] duration-[400ms] w-[var(--dpb-progress)]"
+          style={{ "--dpb-progress": `${progressPercent}%` }}
         />
       </div>
 
@@ -58,40 +49,18 @@ export default function DiscountProgressBar({
         return (
           <div key={kg}>
             <div
-              style={{
-                position: "absolute",
-                bottom: 18,
-                left: `${position}%`,
-                transform: "translateX(-50%)",
-                fontSize: "var(--body-font-size)",
-                fontWeight: 600,
-                whiteSpace: "nowrap",
-                color: isActive
-                  ? "var(--color-brand-dark)"
-                  : "var(--color-brand-gray)",
-                transition: "color 0.3s ease",
-              }}
+              className={`absolute bottom-[18px] -translate-x-1/2 text-body font-semibold whitespace-nowrap transition-colors duration-300 left-[var(--dpb-pos)] ${
+                isActive ? "text-brand-dark" : "text-brand-gray"
+              }`}
+              style={{ "--dpb-pos": `${position}%` }}
             >
               {kg} кг
             </div>
             <div
-              style={{
-                position: "absolute",
-                top: "50%",
-                left: `${position}%`,
-                transform: "translate(-50%, -50%)",
-                width: 18,
-                height: 18,
-                borderRadius: "50%",
-                backgroundColor: "var(--color-brand-beige)",
-                border: `4px solid ${
-                  isCompleted
-                    ? "var(--color-brand-gold)"
-                    : "var(--color-brand-sand)"
-                }`,
-                transition: "all 0.3s ease",
-                zIndex: 2,
-              }}
+              className={`absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-[18px] h-[18px] rounded-full bg-brand-beige border-4 transition-all duration-300 z-[2] left-[var(--dpb-pos)] ${
+                isCompleted ? "border-brand-gold" : "border-brand-sand"
+              }`}
+              style={{ "--dpb-pos": `${position}%` }}
             />
           </div>
         );

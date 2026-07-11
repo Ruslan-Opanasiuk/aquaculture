@@ -64,19 +64,13 @@ export default function OrderSummary({
         flex flex-col w-full
         items-center text-center          /* Mobile: Center */
         tablet:items-start tablet:text-left /* Desktop: Left align */
+        mt-10 font-['Montserrat'] text-brand-dark
       "
-      style={{
-        marginTop: 40,
-        fontFamily: "Montserrat, sans-serif",
-        color: "var(--color-brand-dark)",
-        WebkitFontSmoothing: "antialiased",
-        MozOsxFontSmoothing: "grayscale",
-      }}
     >
       {/* TOTAL WEIGHT (Тепер показує загальну вагу з урахуванням кошика) */}
-      <div style={{ fontSize: "var(--body-font-size)", fontWeight: 400, marginBottom: 56 }}>
+      <div className="text-body font-normal mb-14">
         Загальний обʼєм{" "}
-        <span style={{ fontSize: "var(--h3-font-size)", fontWeight: 600 }}>
+        <span className="text-h3 font-semibold">
           {formattedKg} кг
         </span>
       </div>
@@ -85,18 +79,18 @@ export default function OrderSummary({
       <DiscountProgressBar totalKg={totalKg} maxWidth={400} marginBottom={24} />
 
       {/* DISCOUNT MESSAGE */}
-      <div style={{ fontSize: "var(--body-font-size)", fontWeight: 400, marginBottom: 48, minHeight: "1.5em" }}>
+      <div className="text-body font-normal mb-12 min-h-[1.5em]">
         {isMaxDiscount ? (
-          <>Максимальну знижку <span style={{ fontWeight: 600 }}>{maxDiscount}%</span> досягнуто</>
+          <>Максимальну знижку <span className="font-semibold">{maxDiscount}%</span> досягнуто</>
         ) : (
-          <>До знижки <span style={{ fontWeight: 600 }}>{currentDiscount + discountPerBreakpoint}%</span> залишилось <span style={{ fontWeight: 600 }}>{remainingKg} кг</span></>
+          <>До знижки <span className="font-semibold">{currentDiscount + discountPerBreakpoint}%</span> залишилось <span className="font-semibold">{remainingKg} кг</span></>
         )}
       </div>
 
       {/* TOTAL PRICE (Показує ціну тільки за те, що додається зараз) */}
-      <div style={{ fontSize: "var(--body-font-size)", fontWeight: 400, marginBottom: 32 }}>
+      <div className="text-body font-normal mb-8">
         Сума додання{" "}
-        <span style={{ fontSize: "var(--h3-font-size)", fontWeight: 600 }}>
+        <span className="text-h3 font-semibold">
           {formattedPrice} ₴
         </span>
       </div>

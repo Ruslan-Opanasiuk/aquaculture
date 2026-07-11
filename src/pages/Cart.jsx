@@ -110,10 +110,7 @@ export default function Cart() {
   };
 
   return (
-    <div
-      className="min-h-screen flex flex-col font-['Montserrat']"
-      style={{ backgroundColor: "var(--color-brand-beige)" }}
-    >
+    <div className="min-h-screen flex flex-col font-['Montserrat'] bg-brand-beige">
       <div className="mt-[80px]">
         <PageHeader
           title="Кошик"
@@ -126,20 +123,17 @@ export default function Cart() {
       </div>
 
       <main className="flex-1 pt-[40px] pb-[80px]">
-        <div
-          className="w-full px-layout-gap mx-auto"
-          style={{ maxWidth: "var(--content-max-width)" }}
-        >
+        <div className="w-full px-layout-gap mx-auto max-w-[var(--content-max-width)]">
           {/* ── SUCCESS ── */}
           {formStatus === "success" ? (
             <div className="text-center py-20 flex flex-col items-center">
-              <p style={{ color: "var(--color-brand-dark)", fontSize: "var(--h3-font-size)", fontWeight: 600 }}>
+              <p className="text-brand-dark text-h3 font-semibold">
                 Замовлення прийнято
               </p>
-              <p className="mt-4 max-w-[420px] leading-[1.6]" style={{ color: "var(--color-brand-gray)", fontSize: "var(--body-font-size)" }}>
+              <p className="mt-4 max-w-[420px] leading-[1.6] text-brand-gray text-body">
                 Ми зв'яжемося з вами найближчим часом для підтвердження та обговорення деталей доставки.
               </p>
-              <Link to="/catalog" className="mt-8 font-semibold underline decoration-2 underline-offset-4" style={{ color: "var(--color-brand-dark)" }}>
+              <Link to="/catalog" className="mt-8 font-semibold underline decoration-2 underline-offset-4 text-brand-dark">
                 Повернутися до каталогу
               </Link>
             </div>
@@ -147,10 +141,10 @@ export default function Cart() {
           /* ── EMPTY ── */
           ) : items.length === 0 ? (
             <div className="text-center py-20 flex flex-col items-center">
-              <p style={{ color: "var(--color-brand-gray)", fontSize: "var(--h3-font-size)" }}>
+              <p className="text-brand-gray text-h3">
                 Ваш кошик порожній
               </p>
-              <Link to="/catalog" className="mt-6 font-semibold underline decoration-2 underline-offset-4" style={{ color: "var(--color-brand-dark)" }}>
+              <Link to="/catalog" className="mt-6 font-semibold underline decoration-2 underline-offset-4 text-brand-dark">
                 Повернутися до каталогу
               </Link>
             </div>
@@ -160,23 +154,23 @@ export default function Cart() {
             <div className="grid grid-cols-1 tablet:grid-cols-2 gap-[60px] desktop:gap-[100px] items-start">
 
               {/* LEFT — order summary */}
-              <div style={{ color: "var(--color-brand-dark)" }}>
-                <div className="pb-4 mb-6" style={{ borderBottom: "2px solid var(--color-brand-sand)" }}>
-                  <p style={{ fontSize: "var(--h3-font-size)", fontWeight: 600 }}>Ваше замовлення</p>
+              <div className="text-brand-dark">
+                <div className="pb-4 mb-6 border-b-2 border-brand-sand">
+                  <p className="text-h3 font-semibold">Ваше замовлення</p>
                 </div>
 
                 <div className="flex flex-col gap-[12px] mb-8">
                   {items.map((item) => (
                     <div key={item.id} className="flex justify-between items-center gap-4">
                       <div>
-                        <p className="font-medium" style={{ fontSize: "var(--body-font-size)" }}>
+                        <p className="font-medium text-body">
                           {item.title}
                         </p>
-                        <p style={{ fontSize: "var(--body-small-font-size)", opacity: 0.5 }}>
+                        <p className="text-body-small opacity-50">
                           {item.grams}г · {item.quantity} шт.
                         </p>
                       </div>
-                      <p className="shrink-0 font-medium" style={{ fontSize: "var(--body-font-size)" }}>
+                      <p className="shrink-0 font-medium text-body">
                         {fmt(item.price * item.quantity)} ₴
                       </p>
                     </div>
@@ -187,7 +181,7 @@ export default function Cart() {
                   <DiscountProgressBar totalKg={totalKg} />
                 </div>
 
-                <div className="mt-4 flex flex-col gap-[6px]" style={{ fontSize: "var(--body-font-size)" }}>
+                <div className="mt-4 flex flex-col gap-[6px] text-body">
                   <div className="flex justify-between opacity-60">
                     <span>Вартість</span>
                     <span>{fmt(subtotal)} ₴</span>
@@ -196,26 +190,25 @@ export default function Cart() {
                     <span>Знижка ({discountPercent}%)</span>
                     <span>− {fmt(discount)} ₴</span>
                   </div>
-                  <div className="flex justify-between mt-3 pt-3" style={{ borderTop: "2px solid var(--color-brand-sand)", fontWeight: 600 }}>
+                  <div className="flex justify-between mt-3 pt-3 border-t-2 border-brand-sand font-semibold">
                     <span>До сплати</span>
-                    <span style={{ fontSize: "var(--h3-font-size)" }}>{fmt(total)} ₴</span>
+                    <span className="text-h3">{fmt(total)} ₴</span>
                   </div>
                 </div>
 
                 <button
                   type="button"
                   onClick={() => setShowForm(false)}
-                  className="mt-6 font-semibold underline decoration-1 underline-offset-4 transition-opacity hover:opacity-70"
-                  style={{ color: "var(--color-brand-gray)", fontSize: "var(--body-font-size)" }}
+                  className="mt-6 font-semibold underline decoration-1 underline-offset-4 transition-opacity hover:opacity-70 text-brand-gray text-body"
                 >
                   ← Редагувати кошик
                 </button>
               </div>
 
               {/* RIGHT — contact form */}
-              <div className="mt-12 tablet:mt-0" style={{ color: "var(--color-brand-dark)" }}>
-                <div className="pb-4 mb-6" style={{ borderBottom: "2px solid var(--color-brand-sand)" }}>
-                  <p style={{ fontSize: "var(--h3-font-size)", fontWeight: 600 }}>Контактні дані</p>
+              <div className="mt-12 tablet:mt-0 text-brand-dark">
+                <div className="pb-4 mb-6 border-b-2 border-brand-sand">
+                  <p className="text-h3 font-semibold">Контактні дані</p>
                 </div>
 
                 <form onSubmit={handleCheckout} noValidate className="flex flex-col gap-[16px]">
@@ -267,8 +260,7 @@ export default function Cart() {
                 <button
                   type="button"
                   onClick={clearCart}
-                  className="font-semibold underline decoration-1 underline-offset-4 transition-opacity hover:opacity-70"
-                  style={{ color: "var(--color-brand-gray)", fontSize: "var(--body-font-size)" }}
+                  className="font-semibold underline decoration-1 underline-offset-4 transition-opacity hover:opacity-70 text-brand-gray text-body"
                 >
                   Очистити все
                 </button>
@@ -291,7 +283,7 @@ export default function Cart() {
               </div>
 
               <div className="flex mt-[60px] tablet:justify-end">
-                <div className="w-full tablet:max-w-[350px]" style={{ color: "var(--color-brand-dark)", fontSize: "var(--body-font-size)", fontWeight: 400 }}>
+                <div className="w-full tablet:max-w-[350px] text-brand-dark text-body font-normal">
                   <div className="flex justify-between mb-2">
                     <span>Вартість</span>
                     <span>{fmt(subtotal)} ₴</span>
@@ -303,11 +295,11 @@ export default function Cart() {
 
                   <DiscountProgressBar totalKg={totalKg} />
 
-                  <div className="mb-3" style={{ borderTop: "2px solid var(--color-brand-sand)" }} />
+                  <div className="mb-3 border-t-2 border-brand-sand" />
 
                   <div className="flex justify-between mb-8">
-                    <span style={{ fontWeight: 600 }}>До сплати</span>
-                    <span style={{ fontWeight: 600, fontSize: "var(--h3-font-size)" }}>{fmt(total)} ₴</span>
+                    <span className="font-semibold">До сплати</span>
+                    <span className="font-semibold text-h3">{fmt(total)} ₴</span>
                   </div>
 
                   <div className="flex flex-col gap-3">

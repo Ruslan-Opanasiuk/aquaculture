@@ -90,19 +90,13 @@ export default function OrderVolumeGrid({
         tablet:items-start
       "
     >
-      <div
-        className="text-center tablet:text-left mb-8"
-        style={{ fontSize: "var(--body-font-size)" }}
-      >
+      <div className="text-center tablet:text-left mb-8 text-body">
         СКЛАДІТЬ СВІЙ НАБІР
       </div>
 
       <div
-        className="grid justify-center tablet:justify-start"
-        style={{
-          gridTemplateColumns: `repeat(${columns}, ${size}px)`,
-          gap,
-        }}
+        className="grid justify-center tablet:justify-start grid-cols-[repeat(var(--ovg-cols),var(--ovg-size))] gap-[var(--ovg-gap)]"
+        style={{ "--ovg-cols": columns, "--ovg-size": `${size}px`, "--ovg-gap": `${gap}px` }}
       >
         {packages.map((pkg, index) => (
           <OrderVolumeItem
@@ -122,21 +116,10 @@ export default function OrderVolumeGrid({
           onClick={() =>
             document.getElementById("wholesale-form")?.scrollIntoView({ behavior: "smooth" })
           }
+          className="bg-brand-sand text-brand-dark rounded-[20px] font-semibold border-none flex items-center justify-center text-center p-3 cursor-pointer transition-all duration-200 [grid-column:var(--ovg-cta-col)] min-h-[var(--ovg-cta-min-h)]"
           style={{
-            backgroundColor: "#E9E5DB",
-            color: "var(--color-brand-dark)",
-            borderRadius: 20,
-            fontWeight: 600,
-            border: "none",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            textAlign: "center",
-            padding: 12,
-            cursor: "pointer",
-            gridColumn: ctaGridColumn,
-            minHeight: isFullRow ? size / 2.5 : size,
-            transition: "all 0.2s ease",
+            "--ovg-cta-col": ctaGridColumn,
+            "--ovg-cta-min-h": `${isFullRow ? size / 2.5 : size}px`,
           }}
         >
           Ви — гуртовик?

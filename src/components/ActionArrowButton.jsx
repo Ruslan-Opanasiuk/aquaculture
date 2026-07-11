@@ -69,8 +69,7 @@ export default function ActionArrowButton({
     <>
       {circle}
       <span
-        className={`font-medium uppercase tracking-wide transition-colors duration-200 ${disabled ? "text-brand-gray" : "text-brand-dark"}`}
-        style={{ fontSize: "var(--body-font-size)" }}
+        className={`font-medium uppercase tracking-wide transition-colors duration-200 text-body ${disabled ? "text-brand-gray" : "text-brand-dark"}`}
       >
         {label}
       </span>

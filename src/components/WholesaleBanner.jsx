@@ -92,8 +92,8 @@ export default function WholesaleBanner() {
                 font-medium
                 leading-[0.95]
                 mb-8
+                text-[clamp(1.5rem,14.93vw,var(--h1-font-size))]
               "
-              style={{ fontSize: "clamp(1.5rem, 14.93vw, var(--h1-font-size))" }}
             >
               Гуртовим клієнтам
             </h2>

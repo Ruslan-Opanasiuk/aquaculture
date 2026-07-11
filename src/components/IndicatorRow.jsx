@@ -12,19 +12,13 @@ export default function IndicatorRow({ label, leftLabel, rightLabel, value = 3 }
       {/* 1. НАЗВА
          w-[120px] — ширина, достатня для слова "ПРУЖНІСТЬ" (тільки від phone-wide).
       */}
-      <span
-        className="font-medium text-brand-dark/75 uppercase tracking-wider phone-wide:w-[120px] phone-wide:shrink-0"
-        style={{ fontSize: "var(--body-small-font-size)" }}
-      >
+      <span className="font-medium text-brand-dark/75 uppercase tracking-wider phone-wide:w-[120px] phone-wide:shrink-0 text-body-small">
         {label}
       </span>
 
       {/* 2. ЗНАЧЕННЯ: лівий текст + крапки + правий текст — завжди в один рядок */}
       <div className="flex items-center">
-        <span
-          className="text-left text-brand-dark/60 whitespace-nowrap w-[70px] shrink-0"
-          style={{ fontSize: "var(--body-font-size)" }}
-        >
+        <span className="text-left text-brand-dark/60 whitespace-nowrap w-[70px] shrink-0 text-body">
           {leftLabel}
         </span>
 
@@ -32,20 +26,12 @@ export default function IndicatorRow({ label, leftLabel, rightLabel, value = 3 }
           {[...Array(total)].map((_, i) => (
             <div
               key={i}
-              className="rounded-full shrink-0"
-              style={{
-                width: "10px",
-                height: "10px",
-                backgroundColor: i < value ? "#DAC284" : "rgba(218, 194, 132, 0.3)",
-              }}
+              className={`rounded-full shrink-0 w-[10px] h-[10px] ${i < value ? "bg-brand-gold" : "bg-brand-gold/30"}`}
             ></div>
           ))}
         </div>
 
-        <span
-          className="text-left text-brand-dark/60 whitespace-nowrap"
-          style={{ fontSize: "var(--body-font-size)" }}
-        >
+        <span className="text-left text-brand-dark/60 whitespace-nowrap text-body">
           {rightLabel}
         </span>
       </div>

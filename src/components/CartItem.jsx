@@ -53,32 +53,14 @@ export default function CartItem({
     : undefined;
 
   return (
-    <div
-      className="w-full"
-      style={{
-        borderBottom: "2px solid var(--color-brand-sand)",
-      }}
-    >
+    <div className="w-full border-b-2 border-brand-sand">
       {/* ================= MOBILE ================= */}
-      <div
-        className="tablet:hidden w-full"
-        style={{
-          paddingTop: "24px",
-          paddingBottom: "24px",
-        }}
-      >
-        <div
-          className="w-full grid items-start"
-          style={{ gridTemplateColumns: "36px 1fr 125px" }}
-        >
-          <div style={{ marginTop: (100 - 36) / 2 }}>
+      <div className="tablet:hidden w-full py-6">
+        <div className="w-full grid items-start grid-cols-[36px_1fr_125px]">
+          <div className="mt-8">
             <button
               onClick={onRemove}
-              className="w-[36px] h-[36px] rounded-full flex items-center justify-center active:scale-[0.95]"
-              style={{
-                backgroundColor: "var(--color-brand-sand)",
-                color: "var(--color-brand-dark)",
-              }}
+              className="w-[36px] h-[36px] rounded-full flex items-center justify-center active:scale-[0.95] bg-brand-sand text-brand-dark"
             >
               <CloseIcon className="w-4 h-4" />
             </button>
@@ -91,29 +73,18 @@ export default function CartItem({
               className={`block ${productHref ? "cursor-pointer" : ""}`}
               ariaLabel={`Відкрити товар: ${item.title}`}
             >
-              <div
-                style={{
-                  width: "100px",
-                  height: "100px",
-                  backgroundColor: "var(--color-brand-beige)",
-                  borderRadius: "16px",
-                }}
-              >
+              <div className="w-[100px] h-[100px] bg-brand-beige rounded-2xl">
                 <FadeImage
                   src={imgSrc}
                   srcSet={imgSrcSet}
                   alt={item.title}
-                  style={{
-                    width: "100px",
-                    height: "100px",
-                    objectFit: "contain",
-                  }}
+                  className="w-[100px] h-[100px] object-contain"
                   draggable={false}
                 />
               </div>
             </Clickable>
 
-            <div style={{ marginTop: "24px", width: "100px" }}>
+            <div className="mt-6 w-[100px]">
               <QuantityPicker
                 value={item.quantity}
                 onIncrement={onIncrement}
@@ -125,54 +96,25 @@ export default function CartItem({
           </div>
 
           {/* RIGHT: TEXT */}
-          <div
-            className="flex flex-col items-end text-right"
-            style={{ maxWidth: "125px" }}
-          >
+          <div className="flex flex-col items-end text-right max-w-[125px]">
             <Clickable productHref={productHref} className="w-full" ariaLabel={`Відкрити товар: ${item.title}`}>
               <h3
-                className={`truncate w-full ${productHref ? "cursor-pointer" : ""}`}
-                style={{
-                  fontSize: "var(--h3-font-size)",
-                  fontWeight: 600,
-                  color: "var(--color-brand-dark)",
-                }}
+                className={`truncate w-full text-h3 font-semibold text-brand-dark ${productHref ? "cursor-pointer" : ""}`}
               >
                 {item.title}
               </h3>
             </Clickable>
 
-            <p
-              className="w-full"
-              style={{
-                fontSize: "var(--body-font-size)",
-                color: "var(--color-brand-dark)",
-                marginTop: "6px",
-              }}
-            >
+            <p className="w-full text-body text-brand-dark mt-1.5">
               Фасовка: {item.grams}г
             </p>
 
-            <div className="flex flex-col items-end w-full" style={{ marginTop: "32px" }}>
-              <span
-                className="w-full"
-                style={{
-                  fontSize: "var(--body-font-size)",
-                  color: "var(--color-brand-dark)",
-                }}
-              >
+            <div className="flex flex-col items-end w-full mt-8">
+              <span className="w-full text-body text-brand-dark">
                 {new Intl.NumberFormat("uk-UA").format(item.price)} ₴ / шт
               </span>
 
-              <span
-                className="w-full"
-                style={{
-                  fontSize: "var(--body-font-size)",
-                  fontWeight: 600,
-                  color: "var(--color-brand-dark)",
-                  marginTop: "6px",
-                }}
-              >
+              <span className="w-full text-body font-semibold text-brand-dark mt-1.5">
                 {new Intl.NumberFormat("uk-UA").format(total)} ₴
               </span>
             </div>
@@ -181,14 +123,10 @@ export default function CartItem({
       </div>
 
       {/* ================= DESKTOP ================= */}
-      <div className="hidden tablet:flex w-full items-center" style={{ height: "150px" }}>
+      <div className="hidden tablet:flex w-full items-center h-[150px]">
         <button
           onClick={onRemove}
-          className="w-[36px] h-[36px] rounded-full flex items-center justify-center flex-shrink-0 active:scale-[0.95]"
-          style={{
-            backgroundColor: "var(--color-brand-sand)",
-            color: "var(--color-brand-dark)",
-          }}
+          className="w-[36px] h-[36px] rounded-full flex items-center justify-center flex-shrink-0 active:scale-[0.95] bg-brand-sand text-brand-dark"
         >
           <CloseIcon className="w-4 h-4" />
         </button>
@@ -196,23 +134,12 @@ export default function CartItem({
         <div className="w-[32px] flex-shrink-0" />
 
         <Clickable productHref={productHref} className="block flex-shrink-0" ariaLabel={`Відкрити товар: ${item.title}`}>
-          <div
-            style={{
-              width: "125px",
-              height: "125px",
-              backgroundColor: "var(--color-brand-beige)",
-              borderRadius: "16px",
-            }}
-          >
+          <div className="w-[125px] h-[125px] bg-brand-beige rounded-2xl">
             <FadeImage
               src={imgSrc}
               srcSet={imgSrcSet}
               alt={item.title}
-              style={{
-                width: "125px",
-                height: "125px",
-                objectFit: "contain",
-              }}
+              className="w-[125px] h-[125px] object-contain"
               draggable={false}
             />
           </div>
@@ -223,24 +150,13 @@ export default function CartItem({
         <div className="flex flex-col justify-center min-w-[200px]">
           <Clickable productHref={productHref} ariaLabel={`Відкрити товар: ${item.title}`}>
             <h3
-              className={productHref ? "cursor-pointer" : ""}
-              style={{
-                fontSize: "var(--h3-font-size)",
-                fontWeight: 600,
-                color: "var(--color-brand-dark)",
-              }}
+              className={`text-h3 font-semibold text-brand-dark ${productHref ? "cursor-pointer" : ""}`}
             >
               {item.title}
             </h3>
           </Clickable>
 
-          <p
-            style={{
-              fontSize: "var(--body-font-size)",
-              color: "var(--color-brand-dark)",
-              marginTop: "6px",
-            }}
-          >
+          <p className="text-body text-brand-dark mt-1.5">
             Фасовка: {item.grams}г
           </p>
         </div>
@@ -260,23 +176,11 @@ export default function CartItem({
         <div className="w-[32px] flex-shrink-0" />
 
         <div className="flex flex-col items-end flex-shrink-0 min-w-[140px]">
-          <span
-            style={{
-              fontSize: "var(--body-font-size)",
-              color: "var(--color-brand-dark)",
-            }}
-          >
+          <span className="text-body text-brand-dark">
             {new Intl.NumberFormat("uk-UA").format(item.price)} ₴ / шт
           </span>
 
-          <span
-            style={{
-              fontSize: "var(--body-font-size)",
-              fontWeight: 600,
-              color: "var(--color-brand-dark)",
-              marginTop: "6px",
-            }}
-          >
+          <span className="text-body font-semibold text-brand-dark mt-1.5">
             {new Intl.NumberFormat("uk-UA").format(total)} ₴
           </span>
         </div>

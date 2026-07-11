@@ -15,79 +15,36 @@ export default function OrderVolumeItem({
 
   return (
     <div
-      style={{
-        width: size,
-        aspectRatio: "3 / 4",
-        backgroundColor: "#E9E5DB",
-        borderRadius: 15,
-        fontFamily: "Montserrat, sans-serif",
-        position: "relative",
-        overflow: "hidden",
-      }}
+      className="aspect-[3/4] bg-brand-sand rounded-[15px] font-['Montserrat'] relative overflow-hidden w-[var(--ovi-size)]"
+      style={{ "--ovi-size": `${size}px` }}
     >
       {/* ВЕРХ — ФОТО */}
-      <div style={{ width: "90%", margin: "0 auto", position: "relative" }}>
+      <div className="w-[90%] mx-auto relative">
         <img
           src={imageSrc}
           alt=""
           width="1024"
           height="1024"
           draggable={false}
-          style={{
-            width: "100%",
-            height: "auto",
-            objectFit: "contain",
-            mixBlendMode: "multiply",
-            userSelect: "none",
-            pointerEvents: "none",
-            display: "block",
-            filter: isActive ? "grayscale(0)" : "grayscale(1)",
-            opacity: isActive ? 1 : 0.5,
-            transition: "filter 0.25s ease, opacity 0.25s ease",
-          }}
+          className={`w-full h-auto object-contain mix-blend-multiply select-none pointer-events-none block transition-[filter,opacity] duration-[250ms] ease-[ease] ${
+            isActive ? "grayscale-0 opacity-100" : "grayscale opacity-50"
+          }`}
         />
 
         {/* ФАСОВКА */}
-        <div
-          style={{
-            position: "absolute",
-            top: "70%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            color: "#fff",
-            fontWeight: 600,
-            pointerEvents: "none",
-            textShadow: "0 1px 2px rgba(0,0,0,0.35)",
-            fontSize: "var(--body-font-size)",
-          }}
-        >
+        <div className="absolute top-[70%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-white font-semibold pointer-events-none text-body [text-shadow:0_1px_2px_rgba(0,0,0,0.35)]">
           {grams}г
         </div>
       </div>
 
       {/* ЦІНА */}
-      <div
-        style={{
-          marginTop: -5,
-          textAlign: "center",
-          fontWeight: 600,
-          color: "var(--color-brand-dark)",
-          fontSize: "var(--body-font-size)",
-        }}
-      >
+      <div className="mt-[-5px] text-center font-semibold text-brand-dark text-body">
         {price} ₴
       </div>
 
       {/* НИЗ — КНОПКИ (використовуємо QuantityPicker) */}
-      <div
-        style={{
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          width: "100%",
-        }}
-      >
-        <QuantityPicker 
+      <div className="absolute bottom-0 left-0 w-full">
+        <QuantityPicker
           value={value}
           onIncrement={onIncrement}
           onDecrement={onDecrement}
