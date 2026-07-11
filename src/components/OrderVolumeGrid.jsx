@@ -102,7 +102,8 @@ export default function OrderVolumeGrid({
           <OrderVolumeItem
             key={pkg.id}
             size={size}
-            imageSrc={pkg.image}
+            imageSrc={pkg.image?.src1x || pkg.image}
+            imageSrcSet={pkg.image?.src2x ? `${pkg.image.src1x} 1x, ${pkg.image.src2x} 2x` : undefined}
             grams={pkg.grams}
             price={pkg.price}
             value={quantities[index]}

@@ -8,6 +8,7 @@ export default function OrderVolumeItem({
   onDecrement,
   onChange,
   imageSrc,
+  imageSrcSet,
   grams,
   price,
 }) {
@@ -22,9 +23,10 @@ export default function OrderVolumeItem({
       <div className="w-[90%] mx-auto relative">
         <img
           src={imageSrc}
+          srcSet={imageSrcSet}
           alt=""
-          width="1024"
-          height="1024"
+          width="512"
+          height="512"
           draggable={false}
           className={`w-full h-auto object-contain mix-blend-multiply select-none pointer-events-none block transition-[filter,opacity] duration-[250ms] ease-[ease] ${
             isActive ? "grayscale-0 opacity-100" : "grayscale opacity-50"

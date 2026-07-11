@@ -12,7 +12,7 @@ export default function QuantityPicker({
   onDecrement,
   onChange,
   size = 120,
-  borderColor = "#E9E5DB",
+  borderColor = "var(--color-brand-sand)",
 }) {
   const buttonWidth = Math.round(size * 0.3333);
   const cssVars = { "--qp-w": `${buttonWidth}px`, "--qp-border": borderColor };

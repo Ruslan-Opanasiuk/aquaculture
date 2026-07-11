@@ -1,15 +1,29 @@
-// --- Імпорти упаковок (залишаємо як є) ---
-import g100 from "../assets/images/packaging/100.png";
-import g100_tin from "../assets/images/packaging/100-tin.png";
-import g100_tin_box from "../assets/images/packaging/100-tin-box.png";
-import g200 from "../assets/images/packaging/200.png";
-import g250 from "../assets/images/packaging/250.png";
-import g310_jar from "../assets/images/packaging/310-jar.png";
-import g500 from "../assets/images/packaging/500.png";
-import g500_jar from "../assets/images/packaging/500-jar.png";
+// --- Імпорти упаковок (WebP, retina 1x/2x) ---
+import g100_1x from "../assets/images/optimized/packaging/100-256.webp";
+import g100_2x from "../assets/images/optimized/packaging/100-512.webp";
+import g100_tin_1x from "../assets/images/optimized/packaging/100-tin-256.webp";
+import g100_tin_2x from "../assets/images/optimized/packaging/100-tin-512.webp";
+import g100_tin_box_1x from "../assets/images/optimized/packaging/100-tin-box-256.webp";
+import g100_tin_box_2x from "../assets/images/optimized/packaging/100-tin-box-512.webp";
+import g200_1x from "../assets/images/optimized/packaging/200-256.webp";
+import g200_2x from "../assets/images/optimized/packaging/200-512.webp";
+import g250_1x from "../assets/images/optimized/packaging/250-256.webp";
+import g250_2x from "../assets/images/optimized/packaging/250-512.webp";
+import g310_jar_1x from "../assets/images/optimized/packaging/310-jar-256.webp";
+import g310_jar_2x from "../assets/images/optimized/packaging/310-jar-512.webp";
+import g500_1x from "../assets/images/optimized/packaging/500-256.webp";
+import g500_2x from "../assets/images/optimized/packaging/500-512.webp";
+import g500_jar_1x from "../assets/images/optimized/packaging/500-jar-256.webp";
+import g500_jar_2x from "../assets/images/optimized/packaging/500-jar-512.webp";
 
-// --- Заглушки для наборів (банки) ---
-import troutJar from "../assets/images/product1.png";
+const g100 = { src1x: g100_1x, src2x: g100_2x };
+const g100_tin = { src1x: g100_tin_1x, src2x: g100_tin_2x };
+const g100_tin_box = { src1x: g100_tin_box_1x, src2x: g100_tin_box_2x };
+const g200 = { src1x: g200_1x, src2x: g200_2x };
+const g250 = { src1x: g250_1x, src2x: g250_2x };
+const g310_jar = { src1x: g310_jar_1x, src2x: g310_jar_2x };
+const g500 = { src1x: g500_1x, src2x: g500_2x };
+const g500_jar = { src1x: g500_jar_1x, src2x: g500_jar_2x };
 
 // ============================================================================
 // --- ОПТИМІЗОВАНІ ФОТО ІКРИ ТА КРИШКИ (RETINA READY) ---
@@ -312,53 +326,5 @@ export const caviarCatalog = {
       { id: "shchuka-100", grams: 100, price: 475, image: g100 },
       { id: "shchuka-230", grams: 230, price: 1115, image: g200 }
     ]
-  },
-
-  // =========================================================================
-  // --- НАБОРИ ---
-  // =========================================================================
-  set1: {
-    id: "set1",
-    title: "Набір 1",
-    subtitle: "Аквакультура",
-    shortDescription: "Три смаки для знайомства.",
-    longDescription: ["Ікра — це збалансоване поєднання смаку, кольору й текстури у вишуканому та продуманому виконанні. Ікринки мають природний насичений відтінок і рівномірну структуру, приємну на вигляд та на дотик.",
-    "М’який солонуватий акцент підкреслює глибину смаку, роблячи продукт універсальним для подачі як у класичних закусках, так і в сучасних гастрономічних поєднаннях. Ікринки добре тримають форму, не втрачають структури та створюють делікатне відчуття свіжості."],
-    specs: "",
-    images: { 
-      jar: { src1x: troutJar, src2x: troutJar }, // Поки що залишаємо заглушку для банок набору
-      lid: { src1x: Lid1x, src2x: Lid2x } 
-    },
-    packages: []
-  },
-
-  set2: {
-    id: "set2",
-    title: "Набір 2",
-    subtitle: "Аквакультура",
-    shortDescription: "Добірка для гурманів.",
-    longDescription: ["Ікра — це збалансоване поєднання смаку, кольору й текстури у вишуканому та продуманому виконанні. Ікринки мають природний насичений відтінок і рівномірну структуру, приємну на вигляд та на дотик.",
-    "М’який солонуватий акцент підкреслює глибину смаку, роблячи продукт універсальним для подачі як у класичних закусках, так і в сучасних гастрономічних поєднаннях. Ікринки добре тримають форму, не втрачають структури та створюють делікатне відчуття свіжості."],
-    specs: "",
-    images: { 
-      jar: { src1x: troutJar, src2x: troutJar },
-      lid: { src1x: Lid1x, src2x: Lid2x } 
-    },
-    packages: []
-  },
-
-  set3: {
-    id: "set3",
-    title: "Набір 3",
-    subtitle: "Аквакультура",
-    shortDescription: "Максимальний преміум набір.",
-    longDescription: ["Ікра — це збалансоване поєднання смаку, кольору й текстури у вишуканому та продуманому виконанні. Ікринки мають природний насичений відтінок і рівномірну структуру, приємну на вигляд та на дотик.",
-    "М’який солонуватий акцент підкреслює глибину смаку, роблячи продукт універсальним для подачі як у класичних закусках, так і в сучасних гастрономічних поєднаннях. Ікринки добре тримають форму, не втрачають структури та створюють делікатне відчуття свіжості."],
-    specs: "",
-    images: { 
-      jar: { src1x: troutJar, src2x: troutJar },
-      lid: { src1x: Lid1x, src2x: Lid2x } 
-    },
-    packages: []
   }
 };

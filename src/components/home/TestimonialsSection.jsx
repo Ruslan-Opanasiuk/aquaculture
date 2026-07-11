@@ -31,7 +31,7 @@ export default function TestimonialsSection() {
             ariaLabel="Попередній відгук"
             direction="left"
             tone="subtle"
-            ringOffsetClassName="focus-visible:ring-offset-[#F4F0EB]"
+            ringOffsetClassName="focus-visible:ring-offset-brand-sand"
             className="absolute -left-2 tablet:left-4 z-10"
           />
 
@@ -69,7 +69,7 @@ export default function TestimonialsSection() {
             ariaLabel="Наступний відгук"
             direction="right"
             tone="subtle"
-            ringOffsetClassName="focus-visible:ring-offset-[#F4F0EB]"
+            ringOffsetClassName="focus-visible:ring-offset-brand-sand"
             className="absolute right-0 tablet:right-4 z-10"
           />
 

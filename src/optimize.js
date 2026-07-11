@@ -43,6 +43,17 @@ const squareJobs = [
     // бачити фон під ним). Тому ріжемо білий у справжню альфу тут.
     whiteToAlpha: true,
   },
+  {
+    name: "packaging",
+    inputDir: `${ROOT}/raw/packaging`,
+    outputDir: `${ROOT}/optimized/packaging`,
+    sizes: [256, 512],
+    lossless: true,
+    sharpen: true,
+    // Плоскі чорні силуети на білому тлі (той самий mix-blend-multiply
+    // патерн, що й grid) — та сама причина різати білий у альфу.
+    whiteToAlpha: true,
+  },
 ];
 
 // --- Банери: повнокадрові фото на весь екран (h-vh-stable, object-cover) —
