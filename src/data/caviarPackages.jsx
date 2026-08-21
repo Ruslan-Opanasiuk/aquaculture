@@ -87,7 +87,6 @@ export const caviarCatalog = {
       jar: { src1x: redCaviarForel1x, src2x: redCaviarForel2x },
       lid: { src1x: Lid1x, src2x: Lid2x }
     },
-    // Ціни — чернетка для презентації, потребують звірки перед реальним запуском.
     packages: [
       { id: "forel-100-tin", grams: 100, price: 500, image: g100_tin },
       { id: "forel-100-tin-box", grams: 100, price: 510, image: g100_tin_box },
@@ -148,7 +147,6 @@ export const caviarCatalog = {
       jar: { src1x: redCaviarKeta1x, src2x: redCaviarKeta2x },
       lid: { src1x: Lid1x, src2x: Lid2x }
     },
-    // Ціни — чернетка для презентації, потребують звірки перед реальним запуском.
     packages: [
       { id: "keta-100-tin", grams: 100, price: 620, image: g100_tin },
       { id: "keta-100-tin-box", grams: 100, price: 630, image: g100_tin_box },
@@ -180,7 +178,6 @@ export const caviarCatalog = {
       jar: { src1x: redCaviarChavicha1x, src2x: redCaviarChavicha2x },
       lid: { src1x: Lid1x, src2x: Lid2x }
     },
-    // Ціни — чернетка для презентації, потребують звірки перед реальним запуском.
     packages: [
       { id: "chavicha-100", grams: 100, price: 685, image: g100 },
       { id: "chavicha-200", grams: 200, price: 1335, image: g200 },
@@ -208,7 +205,6 @@ export const caviarCatalog = {
       jar: { src1x: redCaviarKizhuch1x, src2x: redCaviarKizhuch2x },
       lid: { src1x: Lid1x, src2x: Lid2x }
     },
-    // Ціни — чернетка для презентації, потребують звірки перед реальним запуском.
     packages: [
       { id: "kizhuch-100", grams: 100, price: 605, image: g100 },
       { id: "kizhuch-200", grams: 200, price: 1180, image: g200 },
@@ -236,7 +232,6 @@ export const caviarCatalog = {
       jar: { src1x: redCaviarNerka1x, src2x: redCaviarNerka2x },
       lid: { src1x: Lid1x, src2x: Lid2x }
     },
-    // Ціни — чернетка для презентації, потребують звірки перед реальним запуском.
     packages: [
       { id: "nerka-100", grams: 100, price: 565, image: g100 },
       { id: "nerka-200", grams: 200, price: 1105, image: g200 },
