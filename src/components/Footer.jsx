@@ -229,8 +229,14 @@ export default function Footer() {
 
           {/* LEGAL */}
           <p className="text-[12px] text-brand-beige-60 text-center tablet:text-left">
-            © 2025 Aquaculture | Всі права захищені | Договір публічної оферти |
-            Політика конфіденційності
+            © 2025 Aquaculture | Всі права захищені |{" "}
+            <Link to="/oferta" className="underline hover:text-brand-beige-80 transition-colors">
+              Договір публічної оферти
+            </Link>{" "}
+            |{" "}
+            <Link to="/privacy" className="underline hover:text-brand-beige-80 transition-colors">
+              Політика конфіденційності
+            </Link>
           </p>
         </div>
       </div>

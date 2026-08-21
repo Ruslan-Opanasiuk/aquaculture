@@ -6,6 +6,8 @@ const Home = lazy(() => import("./pages/Home"));
 const Catalog = lazy(() => import("./pages/Catalog"));
 const Product = lazy(() => import("./pages/Product"));
 const Cart = lazy(() => import("./pages/Cart"));
+const Privacy = lazy(() => import("./pages/Privacy"));
+const Offer = lazy(() => import("./pages/Offer"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 // Спільні компоненти (залишаємо статичними для миттєвої появи)
@@ -46,6 +48,8 @@ function App() {
             <Route path="/product/:productId" element={<Product />} />
             <Route path="/product" element={<Navigate to="/catalog" replace />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/oferta" element={<Offer />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
