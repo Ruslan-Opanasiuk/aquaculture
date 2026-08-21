@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"; 
 
-export default function PageHeader({ title, breadcrumbs, titleSize = "large" }) {
+export default function PageHeader({ title, breadcrumbs }) {
   return (
     <section
       className="
@@ -15,12 +15,11 @@ export default function PageHeader({ title, breadcrumbs, titleSize = "large" }) 
     >
       <div className="max-w-[1200px] mx-auto text-center w-full px-layout-gap">
         
+        {/* text-balance розкладає заголовок на рівні рядки й не рве слова, які
+            влазять цілком; hyphens-auto вмикається лише коли слово ширше за
+            рядок ("конфіденційності"); break-words — фолбек без словника uk */}
         {title && (
-          <h1
-            className={`font-semibold mb-2 text-brand-dark ${
-              titleSize === "small" ? "text-h3" : "text-[clamp(1.5rem,12.8vw,var(--h2-font-size))]"
-            }`}
-          >
+          <h1 className="font-semibold mb-2 text-brand-dark text-[clamp(1.5rem,12.8vw,var(--h2-font-size))] text-balance hyphens-auto break-words">
             {title}
           </h1>
         )}

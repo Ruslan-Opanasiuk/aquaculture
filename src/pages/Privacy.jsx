@@ -15,7 +15,6 @@ export default function Privacy() {
       <div className="mt-[80px]">
         <PageHeader
           title="Політика конфіденційності"
-          titleSize="small"
           breadcrumbs={[
             { label: "Головна", link: "/" },
             { label: "Політика конфіденційності" },

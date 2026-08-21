@@ -15,7 +15,6 @@ export default function Offer() {
       <div className="mt-[80px]">
         <PageHeader
           title="Договір публічної оферти"
-          titleSize="small"
           breadcrumbs={[
             { label: "Головна", link: "/" },
             { label: "Договір публічної оферти" },
