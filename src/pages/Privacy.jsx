@@ -32,7 +32,7 @@ export default function Privacy() {
           </p>
 
           <section className="flex flex-col gap-[10px]">
-            <h2 className="font-semibold" style={{ fontSize: "20px" }}>
+            <h2 className="font-bold text-body uppercase tracking-widest">
               1. Загальні положення
             </h2>
             <p className="leading-[1.7]" style={{ fontSize: "var(--body-font-size)" }}>
@@ -44,7 +44,7 @@ export default function Privacy() {
           </section>
 
           <section className="flex flex-col gap-[10px]">
-            <h2 className="font-semibold" style={{ fontSize: "20px" }}>
+            <h2 className="font-bold text-body uppercase tracking-widest">
               2. Які дані ми збираємо
             </h2>
             <p className="leading-[1.7]" style={{ fontSize: "var(--body-font-size)" }}>
@@ -57,7 +57,7 @@ export default function Privacy() {
           </section>
 
           <section className="flex flex-col gap-[10px]">
-            <h2 className="font-semibold" style={{ fontSize: "20px" }}>
+            <h2 className="font-bold text-body uppercase tracking-widest">
               3. Мета обробки даних
             </h2>
             <p className="leading-[1.7]" style={{ fontSize: "var(--body-font-size)" }}>
@@ -71,7 +71,7 @@ export default function Privacy() {
           </section>
 
           <section className="flex flex-col gap-[10px]">
-            <h2 className="font-semibold" style={{ fontSize: "20px" }}>
+            <h2 className="font-bold text-body uppercase tracking-widest">
               4. Зберігання даних
             </h2>
             <p className="leading-[1.7]" style={{ fontSize: "var(--body-font-size)" }}>
@@ -83,7 +83,7 @@ export default function Privacy() {
           </section>
 
           <section className="flex flex-col gap-[10px]">
-            <h2 className="font-semibold" style={{ fontSize: "20px" }}>
+            <h2 className="font-bold text-body uppercase tracking-widest">
               5. Права користувача
             </h2>
             <p className="leading-[1.7]" style={{ fontSize: "var(--body-font-size)" }}>
@@ -95,7 +95,7 @@ export default function Privacy() {
           </section>
 
           <section className="flex flex-col gap-[10px]">
-            <h2 className="font-semibold" style={{ fontSize: "20px" }}>
+            <h2 className="font-bold text-body uppercase tracking-widest">
               6. Контакти
             </h2>
             <p className="leading-[1.7]" style={{ fontSize: "var(--body-font-size)" }}>

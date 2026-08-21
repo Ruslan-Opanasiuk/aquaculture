@@ -202,22 +202,22 @@ export default function Footer() {
             <div className="flex flex-col gap-[8px]">
               <p className="font-bold tracking-[0.08em]">КОНТАКТИ</p>
               <a
-                href="tel:+380509999999"
+                href="tel:+380675535808"
                 className="text-brand-beige-80 hover:text-brand-beige transition-colors"
               >
-                +38 050 999 99 99
+                067 553 58 08
               </a>
               <a
-                href="tel:+380509999999"
+                href="tel:+380982960608"
                 className="text-brand-beige-80 hover:text-brand-beige transition-colors"
               >
-                +38 050 999 99 99
+                098 296 06 08
               </a>
               <a
-                href="mailto:poshta@gmail.com"
+                href="mailto:zakaz.ikura@gmail.com"
                 className="text-brand-beige-80 hover:text-brand-beige transition-colors"
               >
-                poshta@gmail.com
+                zakaz.ikura@gmail.com
               </a>
               <p className="font-bold tracking-[0.08em] mt-[12px]">ПРАЦЮЄМО</p>
               <p className="text-brand-beige-80">Пн-Нд: 10:00–19:00</p>

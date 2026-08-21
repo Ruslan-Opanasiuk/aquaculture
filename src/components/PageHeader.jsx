@@ -4,11 +4,12 @@ export default function PageHeader({ title, breadcrumbs }) {
   return (
     <section
       className="
-        w-full 
-        flex 
-        items-center 
-        h-[192px] 
-        bg-brand-sand 
+        w-full
+        flex
+        items-center
+        min-h-[192px]
+        py-8
+        bg-brand-sand
         font-['Montserrat']
       "
     >

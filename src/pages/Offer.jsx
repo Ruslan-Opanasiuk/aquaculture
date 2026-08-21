@@ -39,7 +39,7 @@ export default function Offer() {
           </p>
 
           <section className="flex flex-col gap-[10px]">
-            <h2 className="font-semibold" style={{ fontSize: "20px" }}>
+            <h2 className="font-bold text-body uppercase tracking-widest">
               1. Предмет договору
             </h2>
             <p className="leading-[1.7]" style={{ fontSize: "var(--body-font-size)" }}>
@@ -50,7 +50,7 @@ export default function Offer() {
           </section>
 
           <section className="flex flex-col gap-[10px]">
-            <h2 className="font-semibold" style={{ fontSize: "20px" }}>
+            <h2 className="font-bold text-body uppercase tracking-widest">
               2. Оформлення замовлення
             </h2>
             <p className="leading-[1.7]" style={{ fontSize: "var(--body-font-size)" }}>
@@ -63,7 +63,7 @@ export default function Offer() {
           </section>
 
           <section className="flex flex-col gap-[10px]">
-            <h2 className="font-semibold" style={{ fontSize: "20px" }}>
+            <h2 className="font-bold text-body uppercase tracking-widest">
               3. Ціна та оплата
             </h2>
             <p className="leading-[1.7]" style={{ fontSize: "var(--body-font-size)" }}>
@@ -76,7 +76,7 @@ export default function Offer() {
           </section>
 
           <section className="flex flex-col gap-[10px]">
-            <h2 className="font-semibold" style={{ fontSize: "20px" }}>
+            <h2 className="font-bold text-body uppercase tracking-widest">
               4. Доставка
             </h2>
             <p className="leading-[1.7]" style={{ fontSize: "var(--body-font-size)" }}>
@@ -89,7 +89,7 @@ export default function Offer() {
           </section>
 
           <section className="flex flex-col gap-[10px]">
-            <h2 className="font-semibold" style={{ fontSize: "20px" }}>
+            <h2 className="font-bold text-body uppercase tracking-widest">
               5. Якість товару
             </h2>
             <p className="leading-[1.7]" style={{ fontSize: "var(--body-font-size)" }}>
@@ -101,7 +101,7 @@ export default function Offer() {
           </section>
 
           <section className="flex flex-col gap-[10px]">
-            <h2 className="font-semibold" style={{ fontSize: "20px" }}>
+            <h2 className="font-bold text-body uppercase tracking-widest">
               6. Відповідальність сторін
             </h2>
             <p className="leading-[1.7]" style={{ fontSize: "var(--body-font-size)" }}>
@@ -113,7 +113,7 @@ export default function Offer() {
           </section>
 
           <section className="flex flex-col gap-[10px]">
-            <h2 className="font-semibold" style={{ fontSize: "20px" }}>
+            <h2 className="font-bold text-body uppercase tracking-widest">
               7. Зміна умов договору
             </h2>
             <p className="leading-[1.7]" style={{ fontSize: "var(--body-font-size)" }}>
@@ -126,7 +126,7 @@ export default function Offer() {
           </section>
 
           <section className="flex flex-col gap-[10px]">
-            <h2 className="font-semibold" style={{ fontSize: "20px" }}>
+            <h2 className="font-bold text-body uppercase tracking-widest">
               8. Контакти Продавця
             </h2>
             <p className="leading-[1.7]" style={{ fontSize: "var(--body-font-size)" }}>
