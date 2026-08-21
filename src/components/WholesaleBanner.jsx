@@ -40,9 +40,8 @@ export default function WholesaleBanner() {
               inset-0
               w-full
               h-full
-              object-cover
-              object-[28%_72%]
             "
+            imgClassName="object-cover object-[28%_72%]"
           />
 
           <div

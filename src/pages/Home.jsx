@@ -39,7 +39,8 @@ export default function Home() {
             src={introImage1x}
             srcSet={`${introImage1x} 1x, ${introImage2x} 2x`}
             alt="Вступне фото: Aquaculture Selection"
-            className="h-[250px] w-auto object-contain mix-blend-multiply"
+            className="h-[250px] aspect-[256/250]"
+            imgClassName="object-contain mix-blend-multiply"
             width="256"
             height="250"
           />

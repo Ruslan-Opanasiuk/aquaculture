@@ -14,7 +14,8 @@ export default function AtmosphericBanner() {
             src={atmosphericHero}
             alt="Естетика та смак"
             loading="lazy"
-            className="absolute inset-0 w-full h-full object-cover object-[32%_50%]"
+            className="absolute inset-0 w-full h-full"
+            imgClassName="object-cover object-[32%_50%]"
           />
 
           <div

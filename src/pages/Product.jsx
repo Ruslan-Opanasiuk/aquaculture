@@ -29,6 +29,17 @@ function ProductJarLid({ product }) {
         className="w-[80%] h-auto opacity-0 pointer-events-none select-none"
       />
 
+      {/* Skeleton: маленька pulse-крапка в центрі, поки не завантажились ОБИДВА
+          фото. Суцільна заливка контейнера тут не підходить — банка/кришка не
+          заповнюють бокс (object-contain + transform-зсуви), заливка лишилась
+          би видимою плямою навколо товару навіть після завантаження. */}
+      {!bothLoaded && (
+        <div
+          aria-hidden="true"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-brand-sand animate-pulse z-[30]"
+        />
+      )}
+
       {/* LID - Fixed at the top position */}
       <FadeImage
         src={product.images.lid.src1x}
@@ -39,6 +50,7 @@ function ProductJarLid({ product }) {
         height="512"
         onLoad={() => setLidLoaded(true)}
         ready={bothLoaded}
+        skeleton={false}
         className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[80%] h-auto object-contain z-[20] -translate-y-[75%]"
       />
 
@@ -52,6 +64,7 @@ function ProductJarLid({ product }) {
         height="512"
         onLoad={() => setJarLoaded(true)}
         ready={bothLoaded}
+        skeleton={false}
         className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[80%] h-auto object-contain z-[10] translate-y-[-25%]"
       />
     </div>

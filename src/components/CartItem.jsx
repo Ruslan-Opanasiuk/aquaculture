@@ -73,12 +73,13 @@ export default function CartItem({
               className={`block ${productHref ? "cursor-pointer" : ""}`}
               ariaLabel={`Відкрити товар: ${item.title}`}
             >
-              <div className="w-[100px] h-[100px] bg-brand-beige rounded-2xl">
+              <div className="w-[100px] h-[100px] bg-brand-beige rounded-2xl overflow-hidden">
                 <FadeImage
                   src={imgSrc}
                   srcSet={imgSrcSet}
                   alt={item.title}
-                  className="w-[100px] h-[100px] object-contain"
+                  className="w-full h-full"
+                  imgClassName="object-contain"
                   draggable={false}
                 />
               </div>
@@ -134,12 +135,13 @@ export default function CartItem({
         <div className="w-[32px] flex-shrink-0" />
 
         <Clickable productHref={productHref} className="block flex-shrink-0" ariaLabel={`Відкрити товар: ${item.title}`}>
-          <div className="w-[125px] h-[125px] bg-brand-beige rounded-2xl">
+          <div className="w-[125px] h-[125px] bg-brand-beige rounded-2xl overflow-hidden">
             <FadeImage
               src={imgSrc}
               srcSet={imgSrcSet}
               alt={item.title}
-              className="w-[125px] h-[125px] object-contain"
+              className="w-full h-full"
+              imgClassName="object-contain"
               draggable={false}
             />
           </div>

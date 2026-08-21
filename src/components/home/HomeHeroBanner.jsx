@@ -1,20 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import FadeImage from "../FadeImage";
 import heroDesktop from "../../assets/images/optimized/banners/home-hero-desktop-1536.webp";
 import heroMobile from "../../assets/images/optimized/banners/home-hero-mobile-900.webp";
 
 export default function HomeHeroBanner() {
+  // FadeImage не може обгорнути img у <picture> (невалідний HTML) — заливку
+  // тримаємо тут окремо, як sibling перед <picture>, синхронізовану через onLoad.
+  const [loaded, setLoaded] = useState(false);
+
   return (
     <section className="relative w-full h-vh-stable flex justify-center">
       <div className="absolute inset-0 p-2.5 mt-[80px]">
         <div className="relative w-full h-full overflow-hidden rounded-2xl">
+          <div
+            aria-hidden="true"
+            className={`absolute inset-0 bg-brand-sand pointer-events-none transition-opacity duration-300 ${
+              loaded ? "opacity-0" : "opacity-100 animate-pulse"
+            }`}
+          />
           <picture className="absolute inset-0 w-full h-full block">
             <source media="(min-width: 1024px)" srcSet={heroDesktop} />
             <FadeImage
               src={heroMobile}
               alt="Преміальна червона та чорна ікра"
               fetchPriority="high"
+              skeleton={false}
+              onLoad={() => setLoaded(true)}
               className="w-full h-full object-cover object-center desktop:object-[78%_50%]"
             />
           </picture>

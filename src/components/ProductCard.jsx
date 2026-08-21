@@ -61,7 +61,9 @@ export default function ProductCard({
                 srcSet={`${images.src1x} 1x, ${images.src2x} 2x`}
                 alt={imageAlt}
                 loading="lazy"
-                className="w-full h-full object-cover"
+                className="w-full h-full"
+                imgClassName="object-cover"
+                skeletonClassName="bg-brand-beige"
                 draggable="false"
               />
             ) : null}
