@@ -8,9 +8,12 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/favicon.svg" />
 
-  <title>Aquaculture | Преміальна ікра</title>
-  <meta name="description" content="Преміальна чорна та червона ікра Aquaculture. Власний відбір та стабільна якість." />
-  <link rel="canonical" href="https://aquaculture.com" />
+  <!-- title/description/canonical свідомо тут відсутні: їх ставить
+       react-helmet-async через components/SEO на кожній сторінці. Helmet не
+       замінює статичні теги, а додає свої поруч — з ними в DOM виходило два
+       <title> і два різні <link rel="canonical">, і пошуковик має право
+       проігнорувати обидва або взяти не той. -->
+  <meta name="theme-color" content="#FEFAF3" />
 
   <link 
     rel="preload" 
