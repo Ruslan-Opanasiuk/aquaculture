@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Кошик — функціональна сторінка, індексувати нема чого
+Disallow: /cart
+
+Sitemap: https://aquaculture.com/sitemap.xml

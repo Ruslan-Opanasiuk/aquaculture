@@ -90,29 +90,34 @@ export default async function handler(req, res) {
     </div>`;
 
   try {
-    const sends = [];
-
-    if (OWNER_EMAIL) {
-      sends.push(
-        resend.emails.send({
+    // Лист власнику — критичний: без нього заявка просто губиться.
+    // Лист-підтвердження клієнту — ні: поки домен у Resend не верифіковано,
+    // надсилання на довільні адреси відхиляється, і це не привід валити заявку.
+    const ownerSend = OWNER_EMAIL
+      ? resend.emails.send({
           from: FROM_EMAIL,
           to: OWNER_EMAIL,
           subject: `Нова заявка: ${name} (${city})`,
           html: ownerHtml,
         })
-      );
+      : Promise.resolve(null);
+
+    const userSend = resend.emails.send({
+      from: FROM_EMAIL,
+      to: email,
+      subject: "Aquaculture — ми отримали вашу заявку",
+      html: userHtml,
+    });
+
+    const [ownerResult, userResult] = await Promise.allSettled([ownerSend, userSend]);
+
+    if (ownerResult.status === "rejected") {
+      throw ownerResult.reason;
     }
 
-    sends.push(
-      resend.emails.send({
-        from: FROM_EMAIL,
-        to: email,
-        subject: "Aquaculture — ми отримали вашу заявку",
-        html: userHtml,
-      })
-    );
-
-    await Promise.all(sends);
+    if (userResult.status === "rejected") {
+      console.warn("[wholesale] лист клієнту не надіслано:", userResult.reason?.message);
+    }
 
     return res.status(200).json({ ok: true });
   } catch (err) {

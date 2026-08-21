@@ -6,6 +6,7 @@ export default function SEO({
   canonical,
   image,
   type = "website",
+  noindex = false,
 }) {
   const site = "Aquaculture";
   const fullTitle = title ? `${title} | ${site}` : site;
@@ -16,6 +17,10 @@ export default function SEO({
 
       {description && (
         <meta name="description" content={description} />
+      )}
+
+      {noindex && (
+        <meta name="robots" content="noindex, follow" />
       )}
 
       {canonical && (

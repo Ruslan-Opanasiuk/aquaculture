@@ -1,4 +1,5 @@
 import SEO from "../components/SEO";
+import { SITE_URL } from "../data/seoConfig";
 import PageHeader from "../components/PageHeader";
 
 export default function Offer() {
@@ -10,6 +11,7 @@ export default function Offer() {
       <SEO
         title="Договір публічної оферти"
         description="Умови продажу товарів на сайті Aquaculture."
+        canonical={`${SITE_URL}/oferta`}
       />
 
       <div className="mt-[80px]">

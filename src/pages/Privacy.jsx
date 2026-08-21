@@ -1,4 +1,5 @@
 import SEO from "../components/SEO";
+import { SITE_URL } from "../data/seoConfig";
 import PageHeader from "../components/PageHeader";
 
 export default function Privacy() {
@@ -10,6 +11,7 @@ export default function Privacy() {
       <SEO
         title="Політика конфіденційності"
         description="Політика конфіденційності та обробки персональних даних Aquaculture."
+        canonical={`${SITE_URL}/privacy`}
       />
 
       <div className="mt-[80px]">

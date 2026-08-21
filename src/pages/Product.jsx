@@ -4,6 +4,7 @@ import OrderVolumeGrid from "../components/OrderVolumeGrid";
 import WholesaleForm from "../components/WholesaleForm/WholesaleForm";
 import IndicatorRow from "../components/IndicatorRow";
 import SEO from "../components/SEO";
+import { SITE_URL } from "../data/seoConfig";
 import FadeImage from "../components/FadeImage";
 import NotFound from "./NotFound";
 
@@ -83,7 +84,7 @@ export default function Product() {
       <SEO 
         title={product.title} 
         description={product.shortDescription} 
-        canonical={`https://aquaculture.com/product/${productKey}`}
+        canonical={`${SITE_URL}/product/${productKey}`}
       />
 
       <div className="min-h-screen flex flex-col font-['Montserrat'] bg-brand-beige">
