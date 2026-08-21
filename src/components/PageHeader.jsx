@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"; 
 
-export default function PageHeader({ title, breadcrumbs }) {
+export default function PageHeader({ title, breadcrumbs, titleSize = "large" }) {
   return (
     <section
       className="
@@ -16,7 +16,11 @@ export default function PageHeader({ title, breadcrumbs }) {
       <div className="max-w-[1200px] mx-auto text-center w-full px-layout-gap">
         
         {title && (
-          <h1 className="font-semibold mb-2 text-brand-dark text-[clamp(1.5rem,12.8vw,var(--h2-font-size))]">
+          <h1
+            className={`font-semibold mb-2 text-brand-dark ${
+              titleSize === "small" ? "text-h3" : "text-[clamp(1.5rem,12.8vw,var(--h2-font-size))]"
+            }`}
+          >
             {title}
           </h1>
         )}
