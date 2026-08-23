@@ -35,6 +35,36 @@ const WIDTH = 1200;
 const HEIGHT = 630;
 const BRAND_BEIGE = { r: 254, g: 250, b: 243 };
 
+// Заглушка для сторінок без власного зображення (кошик, оферта, політика, 404).
+// Без неї їхні картки в месенджерах — голий текст, і поруч із картками товарів
+// це виглядає як недоробка. Фото ікри тут не підходить: на політиці
+// конфіденційності воно недоречне, тому — логотип на фоні бренду.
+async function buildFallback() {
+  const LOGO = "src/assets/images/logo.png";
+  if (!fs.existsSync(LOGO)) {
+    console.warn("  пропущено default.jpg (немає логотипа)");
+    return 0;
+  }
+
+  const logo = await sharp(LOGO)
+    .resize({ width: Math.round(WIDTH * 0.5) }) // половина ширини — лишаємо повітря навколо
+    .toBuffer();
+
+  await sharp({
+    create: {
+      width: WIDTH,
+      height: HEIGHT,
+      channels: 3,
+      background: BRAND_BEIGE,
+    },
+  })
+    .composite([{ input: logo, gravity: "centre" }])
+    .jpeg({ quality: 88, progressive: true })
+    .toFile(path.join(OUT, "default.jpg"));
+
+  return 1;
+}
+
 async function run() {
   fs.mkdirSync(OUT, { recursive: true });
 
@@ -61,7 +91,9 @@ async function run() {
     done++;
   }
 
-  console.log(`OG-зображення: ${done}/${jobs.length} → ${OUT}/ (${WIDTH}×${HEIGHT})`);
+  done += await buildFallback();
+
+  console.log(`OG-зображення: ${done}/${jobs.length + 1} → ${OUT}/ (${WIDTH}×${HEIGHT})`);
 }
 
 run().catch((err) => {

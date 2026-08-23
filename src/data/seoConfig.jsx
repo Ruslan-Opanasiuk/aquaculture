@@ -5,6 +5,11 @@
 export const SITE_URL = "https://aquaculture-five.vercel.app";
 export const SITE_NAME = "Aquaculture";
 
+// Картка без зображення поруч із картками товарів виглядає як недоробка, тому
+// сторінки без власного фото (кошик, оферта, політика, 404) отримують логотип
+// на фоні бренду. Генерується src/generate-og.js разом з рештою OG-картинок.
+export const DEFAULT_OG_IMAGE = "/og/default.jpg";
+
 // Телефони й пошта дублюються у футері. Тут вони потрібні для structured data —
 // саме з неї Google бере контакти у видачі та в панель знання.
 export const ORG_PHONES = ["+380675535808", "+380982960608"];

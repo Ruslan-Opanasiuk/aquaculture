@@ -6,6 +6,7 @@
 import {
   SITE_URL,
   SITE_NAME,
+  DEFAULT_OG_IMAGE,
   SEO_PAGES,
   organizationJsonLd,
   breadcrumbJsonLd,
@@ -15,7 +16,7 @@ import {
 } from "../src/data/seoConfig.jsx";
 import { caviarCatalog } from "../src/data/caviarPackages.jsx";
 
-export const site = { SITE_URL, SITE_NAME };
+export const site = { SITE_URL, SITE_NAME, DEFAULT_OG_IMAGE };
 
 export function getRoutes() {
   const routes = [

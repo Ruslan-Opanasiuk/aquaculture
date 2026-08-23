@@ -61,10 +61,11 @@ const esc = (s) =>
 // один набір), але Googlebot рендерить сторінку й побачив би дублікати.
 const RH = 'data-prerender';
 
-function buildHead({ SITE_URL, SITE_NAME }, route) {
+function buildHead({ SITE_URL, SITE_NAME, DEFAULT_OG_IMAGE }, route) {
   const { title, description, canonical, image, imageAlt, type = "website", noindex, jsonLd } = route;
   const fullTitle = title ? `${title} | ${SITE_NAME}` : SITE_NAME;
-  const img = image ? (image.startsWith("http") ? image : SITE_URL + image) : null;
+  const src = image || DEFAULT_OG_IMAGE;
+  const img = src ? (src.startsWith("http") ? src : SITE_URL + src) : null;
 
   const tags = [
     `<title ${RH}>${esc(fullTitle)}</title>`,

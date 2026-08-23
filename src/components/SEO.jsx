@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import { SITE_URL, SITE_NAME } from "../data/seoConfig";
+import { SITE_URL, SITE_NAME, DEFAULT_OG_IMAGE } from "../data/seoConfig";
 
 // Зображення в проєкті імпортуються Vite і дають шлях виду /assets/foo-hash.webp.
 // Соцмережі вимагають абсолютний URL, інакше картка залишиться без картинки.
@@ -17,7 +17,7 @@ export default function SEO({
   jsonLd,
 }) {
   const fullTitle = title ? `${title} | ${SITE_NAME}` : SITE_NAME;
-  const imageUrl = absolute(image);
+  const imageUrl = absolute(image || DEFAULT_OG_IMAGE);
 
   return (
     <Helmet>
