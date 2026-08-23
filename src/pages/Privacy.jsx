@@ -1,5 +1,5 @@
 import SEO from "../components/SEO";
-import { SITE_URL, breadcrumbJsonLd } from "../data/seoConfig";
+import { SEO_PAGES, breadcrumbJsonLd } from "../data/seoConfig";
 import PageHeader from "../components/PageHeader";
 
 export default function Privacy() {
@@ -9,9 +9,7 @@ export default function Privacy() {
       style={{ backgroundColor: "var(--color-brand-beige)" }}
     >
       <SEO
-        title="Політика конфіденційності"
-        description="Політика конфіденційності та обробки персональних даних Aquaculture."
-        canonical={`${SITE_URL}/privacy`}
+        {...SEO_PAGES.privacy}
         jsonLd={breadcrumbJsonLd([
           { name: "Головна", path: "/" },
           { name: "Політика конфіденційності", path: "/privacy" },

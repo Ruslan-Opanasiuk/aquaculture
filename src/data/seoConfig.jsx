@@ -1,6 +1,3 @@
-import ogHome from "../assets/images/optimized/banners/home-hero-desktop-1536.webp";
-import ogCatalog from "../assets/images/optimized/banners/atmospheric-1536.webp";
-
 // Домен — заглушка до підключення реального. Міняти тут, у public/robots.txt
 // і public/sitemap.xml (в index.html домену вже немає — canonical ставить SEO.jsx).
 export const SITE_URL = "https://aquaculture.com";
@@ -19,7 +16,7 @@ export const SEO_PAGES = {
     description:
       "Червона, чорна та біла ікра преміального класу з контрольованим походженням. Доставка по Україні, гуртові ціни для ресторанів і корпоративних клієнтів.",
     canonical: SITE_URL,
-    image: ogHome,
+    image: "/og/home.jpg",
     imageAlt: "Преміальна червона ікра Aquaculture",
   },
 
@@ -28,8 +25,36 @@ export const SEO_PAGES = {
     description:
       "Каталог преміальної ікри: форель, горбуша, кета, чавича, кіжуч, нерка, білуга, осетр, щука. Фасування від 100 г до 500 г, знижки від 3 кг.",
     canonical: `${SITE_URL}/catalog`,
-    image: ogCatalog,
+    image: "/og/catalog.jpg",
     imageAlt: "Каталог преміальної ікри Aquaculture",
+  },
+
+  privacy: {
+    title: "Політика конфіденційності",
+    description:
+      "Як Aquaculture збирає, використовує та зберігає персональні дані користувачів: склад даних, мета обробки, строк зберігання і права користувача.",
+    canonical: `${SITE_URL}/privacy`,
+  },
+
+  oferta: {
+    title: "Договір публічної оферти",
+    description:
+      "Умови продажу ікри Aquaculture: оформлення замовлення, ціни та оплата, доставка, гарантії якості та відповідальність сторін.",
+    canonical: `${SITE_URL}/oferta`,
+  },
+
+  // Кошик і 404 у sitemap не входять і закриті від індексації, але мета-теги
+  // їм потрібні: без них у картці посилання буде порожній заголовок.
+  cart: {
+    title: "Кошик",
+    description: "Ваше замовлення преміальної ікри Aquaculture.",
+    noindex: true,
+  },
+
+  notFound: {
+    title: "Сторінку не знайдено",
+    description: "На жаль, такої сторінки не існує в нашому магазині.",
+    noindex: true,
   },
 };
 
@@ -96,7 +121,7 @@ export const productDescription = (product) => {
 // наявність прямо у видачі. Ціни беремо з packages, а не хардкодимо.
 export const productJsonLd = (product, productKey) => {
   const prices = (product.packages || []).map((p) => p.price);
-  const image = product.images?.jar?.src2x;
+  const image = product.ogImage;
 
   return {
     "@context": "https://schema.org",

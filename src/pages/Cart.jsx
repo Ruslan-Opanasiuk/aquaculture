@@ -8,6 +8,7 @@ import { calculateDiscount } from "../components/discount";
 import DiscountProgressBar from "../components/DiscountProgressBar";
 import SelectField from "../components/WholesaleForm/SelectField";
 import SEO from "../components/SEO";
+import { SEO_PAGES } from "../data/seoConfig";
 
 const CITIES = [
   "Вінниця", "Дніпро", "Донецьк", "Житомир", "Запоріжжя",
@@ -113,11 +114,7 @@ export default function Cart() {
   return (
     <div className="min-h-screen flex flex-col font-['Montserrat'] bg-brand-beige">
       {/* noindex: кошик у кожного свій, індексувати нема чого (те саме в robots.txt) */}
-      <SEO
-        title="Кошик"
-        description="Ваше замовлення преміальної ікри Aquaculture."
-        noindex
-      />
+      <SEO {...SEO_PAGES.cart} />
 
       <div className="mt-[80px]">
         <PageHeader

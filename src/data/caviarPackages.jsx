@@ -70,6 +70,7 @@ export const caviarCatalog = {
   // =========================================================================
   forel: {
     id: "forel",
+    ogImage: "/og/red_caviar_forel.jpg",
     title: "Форель",
     titleGenitive: "форелі",
     subtitle: "Аквакультура",
@@ -100,6 +101,7 @@ export const caviarCatalog = {
 
   gorbusha: {
     id: "gorbusha",
+    ogImage: "/og/red_caviar_gorbusha.jpg",
     title: "Горбуша",
     titleGenitive: "горбуші",
     subtitle: "Аквакультура",
@@ -132,6 +134,7 @@ export const caviarCatalog = {
 
   keta: {
     id: "keta",
+    ogImage: "/og/red_caviar_keta.jpg",
     title: "Кета",
     titleGenitive: "кети",
     subtitle: "Аквакультура",
@@ -164,6 +167,7 @@ export const caviarCatalog = {
 
   chavicha: {
     id: "chavicha",
+    ogImage: "/og/red_caviar_chavicha.jpg",
     title: "Чавича",
     titleGenitive: "чавичі",
     subtitle: "Аквакультура",
@@ -192,6 +196,7 @@ export const caviarCatalog = {
 
   kizhuch: {
     id: "kizhuch",
+    ogImage: "/og/red_caviar_kizhuch.jpg",
     title: "Кіжуч",
     titleGenitive: "кіжуча",
     subtitle: "Аквакультура",
@@ -220,6 +225,7 @@ export const caviarCatalog = {
 
   nerka: {
     id: "nerka",
+    ogImage: "/og/red_caviar_nerka.jpg",
     title: "Нерка",
     titleGenitive: "нерки",
     subtitle: "Аквакультура",
@@ -251,6 +257,7 @@ export const caviarCatalog = {
   // =========================================================================
   beluga: {
     id: "beluga",
+    ogImage: "/og/black_caviar_beluga.jpg",
     title: "Белуга",
     titleGenitive: "білуги",
     subtitle: "Аквакультура",
@@ -278,6 +285,7 @@ export const caviarCatalog = {
 
   osetr: {
     id: "osetr",
+    ogImage: "/og/black_caviar_osetr.jpg",
     title: "Осетр",
     titleGenitive: "осетра",
     subtitle: "Аквакультура",
@@ -308,6 +316,7 @@ export const caviarCatalog = {
   // =========================================================================
   shchuka: {
     id: "shchuka",
+    ogImage: "/og/white_caviar_shchuka.jpg",
     title: "Щука",
     titleGenitive: "щуки",
     subtitle: "Аквакультура",

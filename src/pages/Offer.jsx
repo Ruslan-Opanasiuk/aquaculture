@@ -1,5 +1,5 @@
 import SEO from "../components/SEO";
-import { SITE_URL, breadcrumbJsonLd } from "../data/seoConfig";
+import { SEO_PAGES, breadcrumbJsonLd } from "../data/seoConfig";
 import PageHeader from "../components/PageHeader";
 
 export default function Offer() {
@@ -9,9 +9,7 @@ export default function Offer() {
       style={{ backgroundColor: "var(--color-brand-beige)" }}
     >
       <SEO
-        title="Договір публічної оферти"
-        description="Умови продажу товарів на сайті Aquaculture."
-        canonical={`${SITE_URL}/oferta`}
+        {...SEO_PAGES.oferta}
         jsonLd={breadcrumbJsonLd([
           { name: "Головна", path: "/" },
           { name: "Договір публічної оферти", path: "/oferta" },

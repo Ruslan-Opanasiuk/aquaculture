@@ -8,11 +8,11 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/favicon.svg" />
 
-  <!-- title/description/canonical свідомо тут відсутні: їх ставить
-       react-helmet-async через components/SEO на кожній сторінці. Helmet не
-       замінює статичні теги, а додає свої поруч — з ними в DOM виходило два
-       <title> і два різні <link rel="canonical">, і пошуковик має право
-       проігнорувати обидва або взяти не той. -->
+  <!-- Заголовка, опису й canonical тут немає навмисно. Для кожного маршруту
+       їх дописує scripts/prerender.js під час збірки (краулери соцмереж не
+       виконують JS), а в браузері ставить components/SEO через
+       react-helmet-async. Якщо продублювати їх ще й тут, у head буде по два
+       однойменні теги — Helmet не замінює чужі, а додає свої поруч. -->
   <meta name="theme-color" content="#FEFAF3" />
 
   <link 

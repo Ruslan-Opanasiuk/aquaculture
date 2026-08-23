@@ -91,7 +91,7 @@ export default function Product() {
         title={productTitle(product)}
         description={productDescription(product)}
         canonical={`${SITE_URL}/product/${productKey}`}
-        image={product.images?.jar?.src2x}
+        image={product.ogImage}
         imageAlt={`${productTitle(product)} — Aquaculture`}
         type="product"
         jsonLd={[

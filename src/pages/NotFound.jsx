@@ -1,14 +1,11 @@
 import { Link } from "react-router-dom";
 import SEO from "../components/SEO";
+import { SEO_PAGES } from "../data/seoConfig";
 
 export default function NotFound() {
   return (
     <>
-      <SEO 
-        title="Сторінку не знайдено" 
-        description="На жаль, такої сторінки не існує в нашому магазині."
-        noindex
-      />
+      <SEO {...SEO_PAGES.notFound} />
       <div 
         className="
           relative 
