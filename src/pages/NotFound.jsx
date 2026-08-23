@@ -7,6 +7,7 @@ export default function NotFound() {
       <SEO 
         title="Сторінку не знайдено" 
         description="На жаль, такої сторінки не існує в нашому магазині."
+        noindex
       />
       <div 
         className="

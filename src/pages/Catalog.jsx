@@ -9,7 +9,7 @@ import PageHeader from "../components/PageHeader";
 
 
 import SEO from "../components/SEO";
-import { SEO_PAGES } from "../data/seoConfig";
+import { SEO_PAGES, breadcrumbJsonLd } from "../data/seoConfig";
 
 
 export default function Catalog() {
@@ -29,7 +29,13 @@ export default function Catalog() {
 
   return (
     <>
-      <SEO {...SEO_PAGES.catalog} />
+      <SEO
+        {...SEO_PAGES.catalog}
+        jsonLd={breadcrumbJsonLd([
+          { name: "Головна", path: "/" },
+          { name: "Каталог", path: "/catalog" },
+        ])}
+      />
 
       <div className="min-h-screen flex flex-col animate-fadeIn bg-main">
         <main className="pb-[120px] flex flex-col gap-[80px] flex-1 bg-main">

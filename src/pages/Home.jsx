@@ -17,7 +17,7 @@ import introImage1x from "../assets/images/optimized/grid/main-256.webp";
 import introImage2x from "../assets/images/optimized/grid/main-512.webp";
 
 import SEO from "../components/SEO";
-import { SEO_PAGES } from "../data/seoConfig";
+import { SEO_PAGES, organizationJsonLd } from "../data/seoConfig";
 
 export default function Home() {
   
@@ -25,7 +25,7 @@ export default function Home() {
 
   return (
     <>
-    <SEO {...SEO_PAGES.home} />
+    <SEO {...SEO_PAGES.home} jsonLd={organizationJsonLd} />
 
     <main className="min-h-screen flex flex-col font-['Montserrat'] bg-brand-beige pb-20">
 

@@ -71,6 +71,7 @@ export const caviarCatalog = {
   forel: {
     id: "forel",
     title: "Форель",
+    titleGenitive: "форелі",
     subtitle: "Аквакультура",
     shortDescription: "Ніжна, яскрава, збалансована.",
     indicators: [
@@ -100,6 +101,7 @@ export const caviarCatalog = {
   gorbusha: {
     id: "gorbusha",
     title: "Горбуша",
+    titleGenitive: "горбуші",
     subtitle: "Аквакультура",
     shortDescription: "Класичний м’який морський смак.",
     indicators: [
@@ -131,6 +133,7 @@ export const caviarCatalog = {
   keta: {
     id: "keta",
     title: "Кета",
+    titleGenitive: "кети",
     subtitle: "Аквакультура",
     shortDescription: "Великі зерна, вишуканий смак.",
     indicators: [
@@ -162,6 +165,7 @@ export const caviarCatalog = {
   chavicha: {
     id: "chavicha",
     title: "Чавича",
+    titleGenitive: "чавичі",
     subtitle: "Аквакультура",
     shortDescription: "Королівське зерно, ніжний смак.",
     indicators: [
@@ -189,6 +193,7 @@ export const caviarCatalog = {
   kizhuch: {
     id: "kizhuch",
     title: "Кіжуч",
+    titleGenitive: "кіжуча",
     subtitle: "Аквакультура",
     shortDescription: "Щільна текстура, легка гірчинка.",
     indicators: [
@@ -216,6 +221,7 @@ export const caviarCatalog = {
   nerka: {
     id: "nerka",
     title: "Нерка",
+    titleGenitive: "нерки",
     subtitle: "Аквакультура",
     shortDescription: "Дрібне зерно, інтенсивний смак.",
     indicators: [
@@ -246,6 +252,7 @@ export const caviarCatalog = {
   beluga: {
     id: "beluga",
     title: "Белуга",
+    titleGenitive: "білуги",
     subtitle: "Аквакультура",
     shortDescription: "Делікатний смак, великі зерна.",
     indicators: [
@@ -272,6 +279,7 @@ export const caviarCatalog = {
   osetr: {
     id: "osetr",
     title: "Осетр",
+    titleGenitive: "осетра",
     subtitle: "Аквакультура",
     shortDescription: "Класичний чорний делікатес.",
     indicators: [
@@ -301,6 +309,7 @@ export const caviarCatalog = {
   shchuka: {
     id: "shchuka",
     title: "Щука",
+    titleGenitive: "щуки",
     subtitle: "Аквакультура",
     shortDescription: "Світле зерно, м’який смак.",
     indicators: [

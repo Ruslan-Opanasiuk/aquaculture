@@ -4,7 +4,13 @@ import OrderVolumeGrid from "../components/OrderVolumeGrid";
 import WholesaleForm from "../components/WholesaleForm/WholesaleForm";
 import IndicatorRow from "../components/IndicatorRow";
 import SEO from "../components/SEO";
-import { SITE_URL } from "../data/seoConfig";
+import {
+  SITE_URL,
+  productJsonLd,
+  productDescription,
+  productTitle,
+  breadcrumbJsonLd,
+} from "../data/seoConfig";
 import FadeImage from "../components/FadeImage";
 import NotFound from "./NotFound";
 
@@ -81,10 +87,21 @@ export default function Product() {
 
   return (
     <>
-      <SEO 
-        title={product.title} 
-        description={product.shortDescription} 
+      <SEO
+        title={productTitle(product)}
+        description={productDescription(product)}
         canonical={`${SITE_URL}/product/${productKey}`}
+        image={product.images?.jar?.src2x}
+        imageAlt={`${productTitle(product)} — Aquaculture`}
+        type="product"
+        jsonLd={[
+          productJsonLd(product, productKey),
+          breadcrumbJsonLd([
+            { name: "Головна", path: "/" },
+            { name: "Каталог", path: "/catalog" },
+            { name: product.title, path: `/product/${productKey}` },
+          ]),
+        ]}
       />
 
       <div className="min-h-screen flex flex-col font-['Montserrat'] bg-brand-beige">
