@@ -1,6 +1,8 @@
-// Домен — заглушка до підключення реального. Міняти тут, у public/robots.txt
-// і public/sitemap.xml (в index.html домену вже немає — canonical ставить SEO.jsx).
-export const SITE_URL = "https://aquaculture.com";
+// Поточний домен деплою. Він потрапляє в canonical, og:url і og:image, тому
+// має бути справжнім: на неіснуючому домені Telegram не завантажить картинку
+// і покаже картку без зображення.
+// Купите власний домен — міняти тут, у public/robots.txt і public/sitemap.xml.
+export const SITE_URL = "https://aquaculture-five.vercel.app";
 export const SITE_NAME = "Aquaculture";
 
 // Телефони й пошта дублюються у футері. Тут вони потрібні для structured data —

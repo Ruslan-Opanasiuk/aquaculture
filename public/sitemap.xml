@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Домен — заглушка https://aquaculture.com; замінити на реальний разом із
-  canonical у src/data/seoConfig.jsx, index.html та Sitemap: у robots.txt.
+  Домен продубльовано з SITE_URL у src/data/seoConfig.jsx — при переїзді на
+  власний домен міняти в обох місцях і в public/robots.txt.
   Товари мають збігатися з ключами caviarCatalog у src/data/caviarPackages.jsx.
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://aquaculture.com/</loc>
+    <loc>https://aquaculture-five.vercel.app/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://aquaculture.com/catalog</loc>
+    <loc>https://aquaculture-five.vercel.app/catalog</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <url><loc>https://aquaculture.com/product/forel</loc><priority>0.8</priority></url>
-  <url><loc>https://aquaculture.com/product/gorbusha</loc><priority>0.8</priority></url>
-  <url><loc>https://aquaculture.com/product/keta</loc><priority>0.8</priority></url>
-  <url><loc>https://aquaculture.com/product/chavicha</loc><priority>0.8</priority></url>
-  <url><loc>https://aquaculture.com/product/kizhuch</loc><priority>0.8</priority></url>
-  <url><loc>https://aquaculture.com/product/nerka</loc><priority>0.8</priority></url>
-  <url><loc>https://aquaculture.com/product/beluga</loc><priority>0.8</priority></url>
-  <url><loc>https://aquaculture.com/product/osetr</loc><priority>0.8</priority></url>
-  <url><loc>https://aquaculture.com/product/shchuka</loc><priority>0.8</priority></url>
+  <url><loc>https://aquaculture-five.vercel.app/product/forel</loc><priority>0.8</priority></url>
+  <url><loc>https://aquaculture-five.vercel.app/product/gorbusha</loc><priority>0.8</priority></url>
+  <url><loc>https://aquaculture-five.vercel.app/product/keta</loc><priority>0.8</priority></url>
+  <url><loc>https://aquaculture-five.vercel.app/product/chavicha</loc><priority>0.8</priority></url>
+  <url><loc>https://aquaculture-five.vercel.app/product/kizhuch</loc><priority>0.8</priority></url>
+  <url><loc>https://aquaculture-five.vercel.app/product/nerka</loc><priority>0.8</priority></url>
+  <url><loc>https://aquaculture-five.vercel.app/product/beluga</loc><priority>0.8</priority></url>
+  <url><loc>https://aquaculture-five.vercel.app/product/osetr</loc><priority>0.8</priority></url>
+  <url><loc>https://aquaculture-five.vercel.app/product/shchuka</loc><priority>0.8</priority></url>
 
-  <url><loc>https://aquaculture.com/privacy</loc><priority>0.3</priority></url>
-  <url><loc>https://aquaculture.com/oferta</loc><priority>0.3</priority></url>
+  <url><loc>https://aquaculture-five.vercel.app/privacy</loc><priority>0.3</priority></url>
+  <url><loc>https://aquaculture-five.vercel.app/oferta</loc><priority>0.3</priority></url>
 </urlset>
