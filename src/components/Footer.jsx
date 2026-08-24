@@ -214,10 +214,10 @@ export default function Footer() {
                 098 296 06 08
               </a>
               <a
-                href="mailto:opanasiukruslan2003@gmail.com"
+                href="mailto:aquaculture.caviar@gmail.com"
                 className="text-brand-beige-80 hover:text-brand-beige transition-colors"
               >
-                opanasiukruslan2003@gmail.com
+                aquaculture.caviar@gmail.com
               </a>
               <p className="font-bold tracking-[0.08em] mt-[12px]">ПРАЦЮЄМО</p>
               <p className="text-brand-beige-80">Пн-Нд: 10:00–19:00</p>

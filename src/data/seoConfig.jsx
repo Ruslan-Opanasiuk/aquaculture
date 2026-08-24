@@ -13,7 +13,7 @@ export const DEFAULT_OG_IMAGE = "/og/default.jpg";
 // Телефони й пошта дублюються у футері. Тут вони потрібні для structured data —
 // саме з неї Google бере контакти у видачі та в панель знання.
 export const ORG_PHONES = ["+380675535808", "+380982960608"];
-export const ORG_EMAIL = "opanasiukruslan2003@gmail.com";
+export const ORG_EMAIL = "aquaculture.caviar@gmail.com";
 
 // description тримаємо в межах ~150–160 символів: довше Google обрізає
 // трикрапкою, коротше — марно втрачений простір у видачі.
